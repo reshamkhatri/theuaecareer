@@ -204,6 +204,7 @@ export default async function JobsPage({
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
+                      flexWrap: 'wrap',
                       gap: 'var(--space-md)',
                     }}
                   >

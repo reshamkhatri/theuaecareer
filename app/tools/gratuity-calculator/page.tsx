@@ -101,7 +101,7 @@ export default function GratuityCalculatorPage() {
           <div style={{ display: 'inline-block', background: 'rgba(8, 145, 178, 0.2)', color: 'var(--accent)', padding: '6px 12px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px' }}>
             Calculator Tool
           </div>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '16px', letterSpacing: '-1px', color: 'white' }}>
+          <h1 style={{ fontSize: 'clamp(2rem, 7vw, 3rem)', fontWeight: 800, marginBottom: '16px', letterSpacing: '-1px', color: 'white' }}>
             UAE Gratuity Calculator
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.125rem', maxWidth: '550px', lineHeight: 1.6 }}>
@@ -111,13 +111,13 @@ export default function GratuityCalculatorPage() {
       </section>
 
       <div className="container" style={{ maxWidth: '1200px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '32px', alignItems: 'start' }}>
+        <div className="gratuity-layout" style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: '32px', alignItems: 'start' }}>
           
           {/* Left Column: Form & Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             
             {/* Form Card */}
-            <div className="card" style={{ padding: '32px', borderRadius: '16px' }}>
+            <div className="card gratuity-card" style={{ padding: '32px', borderRadius: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px', color: 'var(--primary)', fontWeight: 800, fontSize: '1.25rem' }}>
                 <div style={{ background: '#E2E8F0', padding: '8px', borderRadius: '8px', color: 'var(--accent)' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
@@ -133,7 +133,7 @@ export default function GratuityCalculatorPage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+              <div className="gratuity-dual-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '8px' }}>Start Date</label>
                   <input type="date" className="form-input" style={{ background: '#F8FAFC', border: 'none' }} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
@@ -144,7 +144,7 @@ export default function GratuityCalculatorPage() {
                 </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+              <div className="gratuity-dual-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '8px' }}>Contract Type</label>
                   <select className="form-input" style={{ background: '#F8FAFC', border: 'none' }} value={contractType} onChange={(e) => setContractType(e.target.value)}>
@@ -163,7 +163,7 @@ export default function GratuityCalculatorPage() {
             </div>
 
             {/* Legal Formula Overview */}
-            <div className="card" style={{ padding: '32px', borderRadius: '16px', background: '#F4F7FA', border: 'none' }}>
+            <div className="card gratuity-card" style={{ padding: '32px', borderRadius: '16px', background: '#F4F7FA', border: 'none' }}>
               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '16px' }}>Legal Formula Overview</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', marginBottom: '16px', lineHeight: 1.6 }}>
                 According to the UAE Labour Law, the end-of-service gratuity is calculated as follows:
@@ -183,10 +183,10 @@ export default function GratuityCalculatorPage() {
 
 
           {/* Right Column: Sticky Summary & Ads */}
-          <div style={{ position: 'sticky', top: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="gratuity-sidebar" style={{ position: 'sticky', top: '32px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             
             {/* Summary Card */}
-            <div ref={summaryRef} style={{ background: 'var(--primary)', borderRadius: '16px', padding: '32px', color: 'white', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}>
+            <div ref={summaryRef} className="gratuity-summary-card" style={{ background: 'var(--primary)', borderRadius: '16px', padding: '32px', color: 'white', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}>
               <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.6)', marginBottom: '8px' }}>Total Gratuity Amount</div>
               
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '32px' }}>
@@ -228,7 +228,7 @@ export default function GratuityCalculatorPage() {
             </div>
 
             {/* Read Article Promo Card */}
-            <div className="card" style={{ padding: '24px', borderRadius: '16px', display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <div className="card gratuity-promo-card" style={{ padding: '24px', borderRadius: '16px', display: 'flex', gap: '16px', alignItems: 'center' }}>
                <div style={{ width: '80px', height: '100px', background: 'var(--primary)', borderRadius: '8px', flexShrink: 0, overflow: 'hidden', position: 'relative' }}>
                   {/* Pseudo image representation */}
                   <div style={{ position: 'absolute', bottom: 0, left: '10%', right: '10%', height: '40%', background: '#F59E0B', borderRadius: '4px 4px 0 0' }}></div>
@@ -251,7 +251,7 @@ export default function GratuityCalculatorPage() {
       {/* FAQ Section */}
       <div className="container" style={{ marginTop: '80px', maxWidth: '1000px' }}>
          <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary)', marginBottom: '40px' }}>Frequently Asked Questions</h2>
-         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+         <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
                <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Am I eligible for gratuity if I resign?</h4>
                <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Yes, under the new 2024 law, employees are eligible for gratuity even if they resign, provided they have completed at least one year of continuous service.</p>
@@ -263,6 +263,35 @@ export default function GratuityCalculatorPage() {
          </div>
       </div>
 
+      <style jsx>{`
+        @media (max-width: 1024px) {
+          .gratuity-layout {
+            grid-template-columns: 1fr !important;
+          }
+
+          .gratuity-sidebar {
+            position: static !important;
+            top: auto !important;
+          }
+        }
+
+        @media (max-width: 720px) {
+          .gratuity-card,
+          .gratuity-summary-card {
+            padding: 22px !important;
+          }
+
+          .gratuity-dual-grid,
+          .gratuity-faq-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          .gratuity-promo-card {
+            flex-direction: column;
+            align-items: flex-start !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

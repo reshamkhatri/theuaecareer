@@ -96,12 +96,12 @@ export default async function ArticlePage({
               {article.category}
             </div>
 
-            <article className="card" style={{ padding: 'var(--space-2xl)' }}>
+            <article className="card article-detail-card" style={{ padding: 'var(--space-2xl)' }}>
               <span className="badge badge-primary" style={{ marginBottom: 'var(--space-md)' }}>
                 {article.category}
               </span>
 
-              <h1 style={{ fontSize: '2.5rem', marginBottom: 'var(--space-lg)' }}>{article.title}</h1>
+              <h1 className="article-detail-title" style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', marginBottom: 'var(--space-lg)' }}>{article.title}</h1>
 
               <div
                 style={{

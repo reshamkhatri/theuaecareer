@@ -122,12 +122,12 @@ export default async function JobDetailPage({
               {job.location.city}
             </div>
 
-            <div className="card" style={{ padding: 'var(--space-2xl)', position: 'relative' }}>
+            <div className="card job-detail-card" style={{ padding: 'var(--space-2xl)', position: 'relative' }}>
               <span className="badge badge-primary" style={{ marginBottom: 'var(--space-md)' }}>
                 {job.categoryLabel || job.category}
               </span>
 
-              <h1 style={{ fontSize: '2.5rem', marginBottom: 'var(--space-lg)', lineHeight: '1.2' }}>
+              <h1 className="job-detail-title" style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', marginBottom: 'var(--space-lg)', lineHeight: '1.2' }}>
                 {job.title}
               </h1>
 
@@ -186,6 +186,7 @@ export default async function JobDetailPage({
                   Job Overview
                 </h3>
                 <ul
+                  className="job-detail-overview"
                   style={{
                     listStyle: 'none',
                     padding: 0,
@@ -196,19 +197,19 @@ export default async function JobDetailPage({
                     fontSize: '0.9375rem',
                   }}
                 >
-                  <li style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
+                  <li className="job-detail-overview-item" style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
                     <strong style={{ minWidth: '120px', color: 'var(--text-secondary)' }}>Industry:</strong>{' '}
                     {job.categoryLabel || job.category}
                   </li>
-                  <li style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
+                  <li className="job-detail-overview-item" style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
                     <strong style={{ minWidth: '120px', color: 'var(--text-secondary)' }}>Job Type:</strong> {job.jobType}
                   </li>
-                  <li style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
+                  <li className="job-detail-overview-item" style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
                     <strong style={{ minWidth: '120px', color: 'var(--text-secondary)' }}>Experience:</strong>{' '}
                     {job.experienceRequired || 'Not specified'}
                   </li>
                   {job.salaryRange?.label && (
-                    <li style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
+                    <li className="job-detail-overview-item" style={{ display: 'flex', borderBottom: '1px dashed #CBD5E1', paddingBottom: '8px' }}>
                       <strong style={{ minWidth: '120px', color: 'var(--text-secondary)' }}>Salary:</strong>{' '}
                       {job.salaryRange.label}
                     </li>

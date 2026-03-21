@@ -301,7 +301,7 @@ export default function CVMakerPage() {
           </p>
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginBottom: '24px' }}>
+        <div className="cv-stepper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginBottom: '24px' }}>
           {steps.map((label, index) => (
             <button key={label} className="btn" onClick={() => setStep(index + 1)} style={{ background: index + 1 === step ? '#0f172a' : '#e2e8f0', color: index + 1 === step ? '#fff' : '#334155', minWidth: '132px', justifyContent: 'center' }}>
               <span style={{ width: '24px', height: '24px', borderRadius: '999px', background: filledSections[index] ? '#14b8a6' : 'rgba(255,255,255,0.35)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem' }}>
@@ -318,9 +318,9 @@ export default function CVMakerPage() {
           </div>
         )}
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px', alignItems: 'start' }}>
+        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div className="card" style={{ padding: '28px' }}>
+            <div className="card cv-editor-card" style={{ padding: '28px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', gap: '12px', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0f766e', fontWeight: 800 }}>
@@ -391,7 +391,7 @@ export default function CVMakerPage() {
               </div>
             </div>
 
-            <div className="card" style={{ padding: '24px', background: activeTemplate.panel }}>
+            <div className="card cv-editor-card" style={{ padding: '24px', background: activeTemplate.panel }}>
               <h3 style={{ fontSize: '1.05rem', color: '#0f172a', marginBottom: '10px' }}>What makes this version stronger</h3>
               <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '14px' }}>
                 Each experience entry lets you keep raw notes and turn them into cleaner bullets. That keeps the tool useful even before a full AI integration is configured.
@@ -404,9 +404,9 @@ export default function CVMakerPage() {
             </div>
           </div>
 
-          <div style={{ position: 'sticky', top: '24px' }}>
-            <div className="card" style={{ padding: '18px', background: '#e2e8f0' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+          <div className="cv-preview-column" style={{ position: 'sticky', top: '24px' }}>
+            <div className="card cv-preview-card" style={{ padding: '18px', background: '#e2e8f0' }}>
+              <div className="cv-preview-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                 <div style={{ display: 'flex', gap: '6px' }}>
                   <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: '#ef4444' }} />
                   <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: '#f59e0b' }} />
@@ -420,7 +420,7 @@ export default function CVMakerPage() {
                 </button>
               </div>
 
-              <div ref={previewRef} style={{ background: '#fff', color: activeTemplate.text, borderTop: `8px solid ${activeTemplate.accent}`, borderRadius: '14px', padding: '36px', boxShadow: '0 18px 30px rgba(15, 23, 42, 0.08)' }}>
+              <div ref={previewRef} className="cv-preview-sheet" style={{ background: '#fff', color: activeTemplate.text, borderTop: `8px solid ${activeTemplate.accent}`, borderRadius: '14px', padding: '36px', boxShadow: '0 18px 30px rgba(15, 23, 42, 0.08)' }}>
                 <div style={{ marginBottom: '28px' }}>
                   <h2 style={{ fontSize: '2rem', lineHeight: 1.05, marginBottom: '8px', textTransform: cvData.template === 'executive' ? 'uppercase' : 'none' }}>
                     {fullName}
@@ -480,6 +480,52 @@ export default function CVMakerPage() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 1024px) {
+          .cv-maker-layout {
+            grid-template-columns: 1fr !important;
+          }
+
+          .cv-preview-column {
+            position: static !important;
+            top: auto !important;
+          }
+        }
+
+        @media (max-width: 720px) {
+          .cv-stepper {
+            justify-content: flex-start !important;
+          }
+
+          .cv-editor-card,
+          .cv-preview-card {
+            padding: 20px !important;
+          }
+
+          :global(.cv-profile-grid),
+          :global(.cv-entry-grid),
+          :global(.cv-template-grid) {
+            grid-template-columns: 1fr !important;
+          }
+
+          :global(.cv-skills-row) {
+            flex-direction: column;
+          }
+
+          :global(.cv-skill-input) {
+            min-width: 0 !important;
+          }
+
+          .cv-preview-toolbar {
+            flex-wrap: wrap;
+            gap: 10px;
+          }
+
+          .cv-preview-sheet {
+            padding: 22px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
@@ -492,7 +538,7 @@ function StepProfile({
   updateField: (field: keyof CVData, value: string | string[] | TemplateId) => void;
 }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+    <div className="cv-profile-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
       {(['firstName', 'lastName', 'title', 'email', 'phone', 'location', 'linkedin'] as const).map((field) => (
         <label key={field} style={{ display: 'flex', flexDirection: 'column', gap: '8px', color: '#334155', fontWeight: 600, textTransform: 'capitalize' }}>
           {field === 'linkedin' ? 'LinkedIn / Portfolio' : field.replace(/([A-Z])/g, ' $1').trim()}
@@ -532,7 +578,7 @@ function StepExperience({
               <FiTrash2 /> Remove
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
+          <div className="cv-entry-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
             {(['title', 'company', 'location', 'startDate', 'endDate'] as const).map((field) => (
               <input key={field} className="form-input" placeholder={field.replace(/([A-Z])/g, ' $1')} value={item[field]} onChange={(event) => onChange(item.id, { [field]: event.target.value })} />
             ))}
@@ -578,7 +624,7 @@ function StepEducation({
               <FiTrash2 /> Remove
             </button>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
+          <div className="cv-entry-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
             <input className="form-input" placeholder="Degree or certification" value={item.degree} onChange={(event) => onChange(item.id, { degree: event.target.value })} />
             <input className="form-input" placeholder="School or institute" value={item.school} onChange={(event) => onChange(item.id, { school: event.target.value })} />
             <input className="form-input" placeholder="Year" value={item.year} onChange={(event) => onChange(item.id, { year: event.target.value })} />
@@ -608,8 +654,8 @@ function StepSkills({
 }) {
   return (
     <div>
-      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
-        <input className="form-input" style={{ flex: 1, minWidth: '220px' }} placeholder="Add a skill or keyword" value={skillInput} onChange={(event) => setSkillInput(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); onAdd(); } }} />
+      <div className="cv-skills-row" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
+        <input className="form-input cv-skill-input" style={{ flex: 1, minWidth: '220px' }} placeholder="Add a skill or keyword" value={skillInput} onChange={(event) => setSkillInput(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); onAdd(); } }} />
         <button className="btn btn-primary" onClick={onAdd}>Add skill</button>
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
@@ -631,7 +677,7 @@ function StepStyle({
   onSelect: (template: TemplateId) => void;
 }) {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+    <div className="cv-template-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
       {(Object.entries(templates) as [TemplateId, (typeof templates)[TemplateId]][]).map(([id, template]) => (
         <button key={id} className="btn" onClick={() => onSelect(id)} style={{ display: 'block', textAlign: 'left', padding: '18px', background: selected === id ? template.panel : '#fff', border: selected === id ? `2px solid ${template.accent}` : '1px solid #e2e8f0' }}>
           <div style={{ height: '120px', borderRadius: '12px', background: '#fff', borderTop: `8px solid ${template.accent}`, marginBottom: '12px', padding: '10px' }}>

@@ -56,7 +56,7 @@ export default async function HomePage() {
         <div className="hero-gradient-blob-2"></div>
 
         <div className="container hero-content-modern">
-          <h1 className="hero-title-modern" style={{ fontSize: '3.5rem', marginBottom: '1.25rem' }}>
+          <h1 className="hero-title-modern" style={{ fontSize: 'clamp(2.4rem, 8vw, 3.5rem)', marginBottom: '1.25rem' }}>
             Find Your <span style={{ color: 'var(--accent)' }}>Future</span> in the Gulf.
           </h1>
           <p
@@ -196,10 +196,13 @@ export default async function HomePage() {
       >
         <div className="container">
           <div
+            className="home-section-header"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
+              flexWrap: 'wrap',
+              gap: '16px',
               marginBottom: 'var(--space-2xl)',
             }}
           >
@@ -244,7 +247,7 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-xl)' }}>
+          <div className="home-walkin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-xl)' }}>
             {walkInJobs.items.map((job) => (
               <div
                 key={job._id}
@@ -322,7 +325,7 @@ export default async function HomePage() {
             Fresh listings from employers across the UAE, Saudi Arabia, and Qatar.
           </p>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-lg)', marginBottom: 'var(--space-2xl)' }}>
+          <div className="home-jobs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-lg)', marginBottom: 'var(--space-2xl)' }}>
             {latestJobs.items.map((job) => (
               <div key={job._id} className="card job-card">
                 {job.isWalkIn && (
@@ -391,7 +394,7 @@ export default async function HomePage() {
           <div style={{ textAlign: 'center' }}>
             <Link
               href="/jobs"
-              className="btn btn-primary"
+              className="btn btn-primary home-primary-cta"
               style={{ padding: '16px 32px', fontSize: '1.125rem', borderRadius: '100px' }}
             >
               Explore All {latestJobs.pagination.total}+ Jobs <FiArrowRight />
@@ -409,10 +412,13 @@ export default async function HomePage() {
       >
         <div className="container">
           <div
+            className="home-section-header"
             style={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'flex-end',
+              flexWrap: 'wrap',
+              gap: '16px',
               marginBottom: 'var(--space-2xl)',
             }}
           >
@@ -429,7 +435,7 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-lg)' }}>
+          <div className="home-articles-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-lg)' }}>
             {latestArticles.items.map((article) => (
               <Link
                 href={`/blog/${article.slug}`}
@@ -512,11 +518,11 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-xl)' }}>
+          <div className="home-tools-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-xl)' }}>
             {toolCards.map((tool) => (
               <Link key={tool.href} href={tool.href} style={{ textDecoration: 'none' }}>
                 <div
-                  className="card"
+                  className="card home-tool-card"
                   style={{
                     padding: '40px',
                     background: `${tool.glow}, linear-gradient(160deg, #0f172a 0%, #13233a 55%, #18314d 100%)`,
@@ -568,8 +574,9 @@ export default async function HomePage() {
                   >
                     {tool.icon}
                   </div>
-                  <h3 style={{ fontSize: '1.85rem', marginBottom: '12px', fontWeight: 800, color: 'white' }}>{tool.title}</h3>
+                  <h3 className="home-tool-card-title" style={{ fontSize: '1.85rem', marginBottom: '12px', fontWeight: 800, color: 'white' }}>{tool.title}</h3>
                   <p
+                    className="home-tool-card-copy"
                     style={{
                       color: 'rgba(226,232,240,0.82)',
                       fontSize: '1.0625rem',

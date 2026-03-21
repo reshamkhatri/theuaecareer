@@ -68,7 +68,7 @@ export default async function BlogListingPage({
         </div>
 
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
-          <h1 style={{ fontSize: '3rem', color: 'white', marginBottom: 'var(--space-md)', maxWidth: '600px', lineHeight: 1.2 }}>
+          <h1 style={{ fontSize: 'clamp(2.1rem, 7vw, 3rem)', color: 'white', marginBottom: 'var(--space-md)', maxWidth: '600px', lineHeight: 1.2 }}>
             Expert Career Insights
             <br />
             for the Emirates
@@ -78,6 +78,7 @@ export default async function BlogListingPage({
           </p>
 
           <form
+            className="blog-search-form"
             action="/blog"
             method="get"
             style={{
@@ -166,7 +167,7 @@ export default async function BlogListingPage({
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
                 gap: 'var(--space-lg)',
               }}
             >
@@ -176,7 +177,7 @@ export default async function BlogListingPage({
                 return (
                   <div
                     key={article._id}
-                    className="article-card"
+                    className={`article-card ${isFeatured ? 'blog-featured-card' : ''}`}
                     style={{
                       gridColumn: isFeatured ? '1 / span 2' : 'auto',
                       display: 'flex',
@@ -185,6 +186,7 @@ export default async function BlogListingPage({
                     }}
                   >
                     <div
+                      className={isFeatured ? 'blog-featured-media' : undefined}
                       style={{
                         background: article.featuredImage
                           ? `linear-gradient(0deg, rgba(15,23,42,0.35), rgba(15,23,42,0.35)), url(${article.featuredImage}) center / cover`
