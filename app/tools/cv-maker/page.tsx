@@ -316,7 +316,7 @@ export default function CVMakerPage() {
 
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '40px 0 72px' }}>
-      <div className="container" style={{ maxWidth: '1400px' }}>
+      <div className="container" style={{ maxWidth: '1600px' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '999px', background: 'rgba(15, 118, 110, 0.12)', color: '#0f766e', fontSize: '0.8rem', fontWeight: 700, marginBottom: '18px' }}>
             <FiCpu /> Gulf-ready CV builder
@@ -347,7 +347,7 @@ export default function CVMakerPage() {
           </div>
         )}
 
-        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr', gap: '28px', alignItems: 'start' }}>
+        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 420px) 1fr', gap: '28px', alignItems: 'start' }}>
           {/* Left: Editor */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="card cv-editor-card" style={{ padding: '28px' }}>
@@ -427,7 +427,7 @@ export default function CVMakerPage() {
               </div>
 
               <div style={{ overflowX: 'auto', paddingBottom: '12px', borderRadius: '8px' }}>
-                <div ref={previewRef} style={{ minWidth: '750px', backgroundColor: '#fff' }}>
+                <div ref={previewRef} className="cv-preview-sheet">
                   {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
                   {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
                   {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
@@ -438,9 +438,16 @@ export default function CVMakerPage() {
         </div>
       </div>
       <style jsx>{`
+        .cv-preview-sheet {
+          background-color: #fff;
+          width: 100%;
+          max-width: 850px;
+          margin: 0 auto;
+        }
         @media (max-width: 1024px) {
           .cv-maker-layout { grid-template-columns: 1fr !important; }
           .cv-preview-column { position: static !important; top: auto !important; }
+          .cv-preview-sheet { min-width: 750px; }
         }
         @media (max-width: 720px) {
           .cv-stepper { justify-content: flex-start !important; }
