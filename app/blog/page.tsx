@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FiArrowRight, FiClock, FiSearch } from 'react-icons/fi';
 import AdPlaceholder from '@/components/AdPlaceholder';
+import ArticleCover from '@/components/ArticleCover';
 import { ARTICLE_CATEGORIES } from '@/lib/constants';
 import { formatDisplayDate, getArticles } from '@/lib/content';
 
@@ -185,22 +186,16 @@ export default async function BlogListingPage({
                       minHeight: isFeatured ? '360px' : 'auto',
                     }}
                   >
-                    <div
-                      className={isFeatured ? 'blog-featured-media' : undefined}
+                    <ArticleCover
+                      article={article}
+                      variant={isFeatured ? 'feature' : 'card'}
+                      className={isFeatured ? 'blog-featured-media' : ''}
                       style={{
-                        background: article.featuredImage
-                          ? `linear-gradient(0deg, rgba(15,23,42,0.35), rgba(15,23,42,0.35)), url(${article.featuredImage}) center / cover`
-                          : 'var(--bg-alt)',
                         width: isFeatured ? '50%' : '100%',
-                        height: isFeatured ? '100%' : '200px',
-                        position: 'relative',
+                        height: isFeatured ? '100%' : '220px',
                         flexShrink: 0,
                       }}
-                    >
-                      <span className="badge" style={{ position: 'absolute', top: '16px', left: '16px', background: 'var(--primary)', color: 'white' }}>
-                        {article.category.toUpperCase()}
-                      </span>
-                    </div>
+                    />
 
                     <div className="article-card-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 'var(--space-xl)' }}>
                       {!isFeatured && (

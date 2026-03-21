@@ -9,6 +9,7 @@ import {
   FiTwitter,
 } from 'react-icons/fi';
 import AdPlaceholder from '@/components/AdPlaceholder';
+import ArticleCover from '@/components/ArticleCover';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import DisqusThread from '@/components/DisqusThread';
 import NewsletterForm from '@/components/NewsletterForm';
@@ -127,6 +128,8 @@ export default async function ArticlePage({
                 </span>
               </div>
 
+              <ArticleCover article={article} variant="hero" style={{ marginBottom: 'var(--space-2xl)' }} />
+
               <div className="prose">
                 <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
                 <div style={{ margin: 'var(--space-2xl) 0' }}>
@@ -191,6 +194,7 @@ export default async function ArticlePage({
                 <div className="grid-2 mt-xl">
                   {relatedArticles.map((relatedArticle) => (
                     <div key={relatedArticle._id} className="article-card">
+                      <ArticleCover article={relatedArticle} variant="compact" />
                       <div className="article-card-body">
                         <span className="article-card-category">{relatedArticle.category}</span>
                         <h3 className="article-card-title">
