@@ -200,7 +200,6 @@ export default async function ArticlePage({
                         <h3 className="article-card-title">
                           <Link href={`/blog/${relatedArticle.slug}`}>{relatedArticle.title}</Link>
                         </h3>
-                        <p className="article-card-excerpt">{relatedArticle.excerpt}</p>
                       </div>
                     </div>
                   ))}

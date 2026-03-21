@@ -221,15 +221,11 @@ export default async function BlogListingPage({
                         </div>
                       )}
 
-                      <h3 style={{ fontSize: isFeatured ? '2rem' : '1.25rem', marginBottom: 'var(--space-md)', lineHeight: 1.3 }}>
+                      <h3 style={{ fontSize: isFeatured ? '2rem' : '1.25rem', marginBottom: 'var(--space-md)', lineHeight: 1.3, flex: 1 }}>
                         <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text)' }}>
                           {article.title}
                         </Link>
                       </h3>
-
-                      <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', marginBottom: 'var(--space-xl)', flex: 1 }}>
-                        {article.excerpt}
-                      </p>
 
                       <div
                         style={{

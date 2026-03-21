@@ -464,12 +464,9 @@ export default async function HomePage() {
                   >
                     {article.category}
                   </span>
-                  <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '12px', lineHeight: 1.4 }}>
+                  <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '12px', lineHeight: 1.4, flex: 1 }}>
                     {article.title}
                   </h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9375rem', marginBottom: '24px', flex: 1 }}>
-                    {article.excerpt}
-                  </p>
                   <div
                     style={{
                       display: 'flex',
