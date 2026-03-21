@@ -347,10 +347,10 @@ export default function CVMakerPage() {
           </div>
         )}
 
-        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(350px, 420px) 1fr', gap: '28px', alignItems: 'start' }}>
+        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px', alignItems: 'start' }}>
           {/* Left: Editor */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div className="card cv-editor-card" style={{ padding: '28px' }}>
+            <div className="card cv-editor-card" style={{ padding: '28px', overflowX: 'hidden' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', gap: '12px', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0f766e', fontWeight: 800 }}>
