@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="hero" style={{ padding: 'var(--space-2xl) 0' }}>
-        <div className="container hero-content">
+      <section className="about-hero">
+        <div className="container about-hero-content">
           <h1>
             About <span>theuaecareer</span>.com
           </h1>

@@ -185,9 +185,11 @@ export default function Footer() {
           color: #111827;
         }
         @media (max-width: 1024px) {
-          .footer-card { padding: 2.5rem 2rem 2rem; border-radius: 20px; }
+          .footer-card { padding: 2rem 1.5rem 1.75rem; border-radius: 20px; }
           .footer-grid { flex-direction: column; }
           .footer-brand-col {
+            min-width: 0;
+            width: 100%;
             max-width: 100%;
             border-right: none;
             border-bottom: 1px solid #e5e7eb;
@@ -199,6 +201,7 @@ export default function Footer() {
           .footer-links-row { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         }
         @media (max-width: 640px) {
+          .footer-card { padding: 1.5rem 1.25rem; margin: 3rem 0 1.5rem; }
           .footer-links-row { grid-template-columns: 1fr; gap: 1.5rem; }
         }
       `,
