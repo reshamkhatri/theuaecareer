@@ -23,9 +23,6 @@ function createLoginResponse(adminId: string, email: string) {
 }
 
 function isLocalEnvAdmin(email: string, password: string): boolean {
-  if (process.env.NODE_ENV === 'production') {
-    return false;
-  }
 
   const configuredEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
   const configuredPassword = process.env.ADMIN_PASSWORD?.trim();
