@@ -347,7 +347,7 @@ export default function CVMakerPage() {
           </div>
         )}
 
-        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px', alignItems: 'start' }}>
+        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr', gap: '28px', alignItems: 'start' }}>
           {/* Left: Editor */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div className="card cv-editor-card" style={{ padding: '28px' }}>
@@ -426,10 +426,12 @@ export default function CVMakerPage() {
                 </button>
               </div>
 
-              <div ref={previewRef}>
-                {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
-                {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
-                {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
+              <div style={{ overflowX: 'auto', paddingBottom: '12px', borderRadius: '8px' }}>
+                <div ref={previewRef} style={{ minWidth: '750px', backgroundColor: '#fff' }}>
+                  {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
+                  {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
+                  {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
+                </div>
               </div>
             </div>
           </div>
@@ -493,7 +495,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
         <div key={exp.id} style={{ marginBottom: '14px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
             <strong style={{ fontSize: '11pt' }}>{exp.title || 'Role Title'}</strong>
-            <span style={{ color: '#666', fontSize: '9.5pt' }}>{exp.startDate || 'Start'} — {exp.current ? 'Present' : exp.endDate || 'End'}</span>
+            <span style={{ color: '#444', fontSize: '9.5pt', fontWeight: 500 }}>{exp.startDate || 'Start'} — {exp.current ? 'Present' : exp.endDate || 'End'}</span>
           </div>
           <div style={{ color: '#555', fontSize: '10pt', marginBottom: '4px' }}>{[exp.company, exp.location].filter(Boolean).join(', ') || 'Company, Location'}</div>
           <ul style={{ paddingLeft: '18px', margin: '4px 0 0', color: '#333' }}>
@@ -510,7 +512,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
         <div key={edu.id} style={{ marginBottom: '10px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
             <strong>{edu.degree || 'Degree'}</strong>
-            <span style={{ color: '#666', fontSize: '9.5pt' }}>{edu.year}</span>
+            <span style={{ color: '#444', fontSize: '9.5pt', fontWeight: 500 }}>{edu.year}</span>
           </div>
           <div style={{ color: '#555' }}>{edu.school || 'Institution'}</div>
           {edu.details && <div style={{ color: '#777', fontSize: '9.5pt', marginTop: '2px' }}>{edu.details}</div>}
@@ -616,7 +618,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
           <div key={exp.id} style={{ marginBottom: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
               <strong style={{ fontSize: '10.5pt' }}>{exp.title || 'Role Title'}</strong>
-              <span style={{ color: '#888', fontSize: '9pt' }}>{exp.startDate} — {exp.current ? 'Present' : exp.endDate}</span>
+              <span style={{ color: '#94a3b8', fontSize: '9pt', fontWeight: 500 }}>{exp.startDate} — {exp.current ? 'Present' : exp.endDate}</span>
             </div>
             <div style={{ color: '#6366f1', fontWeight: 600, fontSize: '9.5pt', marginBottom: '4px' }}>{[exp.company, exp.location].filter(Boolean).join(' | ')}</div>
             <ul style={{ paddingLeft: '16px', margin: '4px 0 0', color: '#333' }}>
@@ -692,7 +694,7 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
             <div key={exp.id} style={{ marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
                 <strong>{exp.title || 'Role'}</strong>
-                <span style={{ color: '#999', fontSize: '9pt' }}>{exp.startDate} — {exp.current ? 'Present' : exp.endDate}</span>
+                <span style={{ color: '#555', fontSize: '9pt', fontWeight: 500 }}>{exp.startDate} — {exp.current ? 'Present' : exp.endDate}</span>
               </div>
               <div style={{ color: '#6366f1', fontSize: '9.5pt', fontWeight: 600 }}>{[exp.company, exp.location].filter(Boolean).join(', ')}</div>
               <ul style={{ paddingLeft: '16px', margin: '4px 0 0', color: '#333' }}>
