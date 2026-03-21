@@ -101,7 +101,9 @@ export default function GratuityCalculatorPage() {
           <div style={{ display: 'inline-block', background: 'rgba(8, 145, 178, 0.2)', color: 'var(--accent)', padding: '6px 12px', borderRadius: '4px', fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px' }}>
             Calculator Tool
           </div>
-          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '16px', letterSpacing: '-1px' }}>UAE Gratuity Calculator</h1>
+          <h1 style={{ fontSize: '3rem', fontWeight: 800, marginBottom: '16px', letterSpacing: '-1px', color: 'white' }}>
+            UAE Gratuity Calculator
+          </h1>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.125rem', maxWidth: '550px', lineHeight: 1.6 }}>
             Estimate your end-of-service benefits based on the latest UAE Labour Law. Accurate, fast, and compliant with the 2024 regulations.
           </p>

@@ -24,6 +24,30 @@ export default async function HomePage() {
     getJobs({ limit: 3 }),
     getJobs({ limit: 2, walkIn: true, sort: 'walk-in' }),
   ]);
+  const toolCards = [
+    {
+      href: '/tools/gratuity-calculator',
+      icon: <FiTool />,
+      label: 'Legal Toolkit',
+      title: 'Gratuity Calculator',
+      description:
+        'Instantly estimate your end-of-service gratuity using a UAE-focused calculator with a downloadable breakdown.',
+      cta: 'Calculate Now',
+      accent: '#2dd4bf',
+      glow: 'radial-gradient(circle at top right, rgba(45,212,191,0.22), transparent 38%)',
+    },
+    {
+      href: '/tools/cv-maker',
+      icon: <FiFileText />,
+      label: 'Smart Builder',
+      title: 'CV Builder',
+      description:
+        'Build a Gulf-ready resume, enhance your experience bullets, choose a template, and export it as a polished PDF.',
+      cta: 'Create My CV',
+      accent: '#818cf8',
+      glow: 'radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 38%)',
+    },
+  ];
 
   return (
     <>
@@ -488,125 +512,91 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 1fr) minmax(300px, 1fr)', gap: 'var(--space-xl)' }}>
-            <Link href="/tools/gratuity-calculator" style={{ textDecoration: 'none' }}>
-              <div
-                className="card"
-                style={{
-                  padding: '40px',
-                  background: 'linear-gradient(145deg, var(--primary) 0%, #0F2B46 100%)',
-                  color: 'white',
-                  borderRadius: '24px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                }}
-              >
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-xl)' }}>
+            {toolCards.map((tool) => (
+              <Link key={tool.href} href={tool.href} style={{ textDecoration: 'none' }}>
                 <div
+                  className="card"
                   style={{
-                    width: '64px',
-                    height: '64px',
-                    background: 'rgba(255,255,255,0.1)',
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2rem',
-                    marginBottom: '24px',
-                  }}
-                >
-                  <FiTool color="var(--accent)" />
-                </div>
-                <h3 style={{ fontSize: '1.75rem', marginBottom: '12px', fontWeight: 800 }}>Gratuity Calculator</h3>
-                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.0625rem', marginBottom: '32px', flex: 1, lineHeight: 1.6 }}>
-                  Instantly estimate your end-of-service gratuity using a UAE-focused calculator with a downloadable breakdown.
-                </p>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    color: 'var(--accent)',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    fontSize: '0.875rem',
-                  }}
-                >
-                  Calculate Now <FiArrowRight />
-                </div>
-              </div>
-            </Link>
-
-            <Link href="/tools/cv-maker" style={{ textDecoration: 'none' }}>
-              <div
-                className="card"
-                style={{
-                  padding: '40px',
-                  background: 'linear-gradient(145deg, #F0F9FF 0%, #E0F2FE 100%)',
-                  color: 'var(--primary)',
-                  borderRadius: '24px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  border: '1px solid #BAE6FD',
-                }}
-              >
-                <div
-                  style={{
-                    width: '64px',
-                    height: '64px',
-                    background: 'white',
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '2rem',
-                    marginBottom: '24px',
-                    boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)',
-                  }}
-                >
-                  <FiFileText color="var(--accent)" />
-                </div>
-                <div
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    background: 'var(--accent)',
+                    padding: '40px',
+                    background: `${tool.glow}, linear-gradient(160deg, #0f172a 0%, #13233a 55%, #18314d 100%)`,
                     color: 'white',
-                    padding: '4px 12px',
-                    borderRadius: '100px',
-                    fontSize: '0.7rem',
-                    fontWeight: 800,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    marginBottom: '12px',
-                    alignSelf: 'flex-start',
-                  }}
-                >
-                  Smart Builder
-                </div>
-                <h3 style={{ fontSize: '1.75rem', marginBottom: '12px', fontWeight: 800 }}>CV Builder</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.0625rem', marginBottom: '32px', flex: 1, lineHeight: 1.6 }}>
-                  Build a Gulf-ready resume, enhance your experience bullets, choose a template, and export it as a polished PDF.
-                </p>
-                <div
-                  style={{
+                    borderRadius: '28px',
                     display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    color: 'var(--accent)',
-                    fontWeight: 700,
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                    fontSize: '0.875rem',
+                    flexDirection: 'column',
+                    height: '100%',
+                    border: '1px solid rgba(148,163,184,0.18)',
+                    boxShadow: '0 24px 48px rgba(15,23,42,0.12)',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}
                 >
-                  Create My CV <FiArrowRight />
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      background: 'rgba(255,255,255,0.08)',
+                      color: tool.accent,
+                      padding: '6px 14px',
+                      borderRadius: '999px',
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      marginBottom: '18px',
+                      alignSelf: 'flex-start',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    {tool.label}
+                  </div>
+                  <div
+                    style={{
+                      width: '68px',
+                      height: '68px',
+                      background: 'rgba(255,255,255,0.08)',
+                      borderRadius: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '2rem',
+                      marginBottom: '26px',
+                      color: tool.accent,
+                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
+                    }}
+                  >
+                    {tool.icon}
+                  </div>
+                  <h3 style={{ fontSize: '1.85rem', marginBottom: '12px', fontWeight: 800, color: 'white' }}>{tool.title}</h3>
+                  <p
+                    style={{
+                      color: 'rgba(226,232,240,0.82)',
+                      fontSize: '1.0625rem',
+                      marginBottom: '32px',
+                      flex: 1,
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {tool.description}
+                  </p>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      color: tool.accent,
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      fontSize: '0.875rem',
+                    }}
+                  >
+                    {tool.cta} <FiArrowRight />
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
