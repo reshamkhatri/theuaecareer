@@ -186,7 +186,7 @@ export default function CVMakerPage() {
 
   const handleEnhanceExperience = async (experience: ExperienceItem) => {
     if (!experience.notes.trim()) {
-      setStatusMessage('Add a few work notes first, then use AI to turn them into bullet points.');
+      setStatusMessage('Paste a few rough notes first, then let AI turn them into polished CV bullet points.');
       return;
     }
 
@@ -198,9 +198,25 @@ export default function CVMakerPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          mode: 'experience',
           title: experience.title || cvData.title,
+          company: experience.company,
+          location: experience.location,
+          startDate: experience.startDate,
+          endDate: experience.endDate,
+          current: experience.current,
           notes: experience.notes,
           skills: cvData.skills,
+          experiences: cvData.experiences.map((item) => ({
+            title: item.title,
+            company: item.company,
+            location: item.location,
+            startDate: item.startDate,
+            endDate: item.endDate,
+            current: item.current,
+            notes: item.notes,
+            bullets: item.bullets,
+          })),
         }),
       });
       const payload = await response.json();
@@ -219,7 +235,11 @@ export default function CVMakerPage() {
         }));
       });
 
-      setStatusMessage('Experience bullets refreshed. Review them and tweak the wording to match your voice.');
+      setStatusMessage(
+        payload.provider === 'gemini'
+          ? 'AI turned your raw notes into stronger CV bullets. Review the wording and keep only what is accurate.'
+          : payload.warning || 'A basic rewrite was applied. Add a real Gemini API key for stronger AI writing.'
+      );
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : 'Failed to enhance experience.');
     } finally {
@@ -242,7 +262,22 @@ export default function CVMakerPage() {
       const response = await fetch('/api/tools/cv-enhance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: cvData.title, notes, skills: cvData.skills }),
+        body: JSON.stringify({
+          mode: 'summary',
+          title: cvData.title,
+          notes,
+          skills: cvData.skills,
+          experiences: cvData.experiences.map((item) => ({
+            title: item.title,
+            company: item.company,
+            location: item.location,
+            startDate: item.startDate,
+            endDate: item.endDate,
+            current: item.current,
+            notes: item.notes,
+            bullets: item.bullets,
+          })),
+        }),
       });
       const payload = await response.json();
 
@@ -251,7 +286,11 @@ export default function CVMakerPage() {
       }
 
       setCvData((current) => ({ ...current, summary: payload.summary || current.summary }));
-      setStatusMessage('Summary updated. It is ready for a final personal pass before sending.');
+      setStatusMessage(
+        payload.provider === 'gemini'
+          ? 'AI wrote a sharper professional summary from your raw experience notes. Give it one final personal pass before sending.'
+          : payload.warning || 'A basic summary rewrite was applied. Add a real Gemini API key for stronger AI writing.'
+      );
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : 'Failed to improve summary.');
     } finally {
@@ -297,7 +336,7 @@ export default function CVMakerPage() {
             Build a sharper CV in one sitting.
           </h1>
           <p style={{ maxWidth: '760px', margin: '0 auto', color: '#475569', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Fill in your story, use AI to tighten the language, switch templates, and export a polished PDF that is easier to scan for recruiters.
+            Paste rough notes, let AI turn them into stronger CV writing, switch templates, and export a polished PDF that is easier for recruiters to scan.
           </p>
         </div>
 
@@ -329,7 +368,7 @@ export default function CVMakerPage() {
                   <h2 style={{ fontSize: '1.35rem', color: '#0f172a', marginTop: '6px' }}>{steps[step - 1]}</h2>
                 </div>
                 <button className="btn btn-secondary" onClick={handleEnhanceSummary} disabled={isSummaryLoading}>
-                  {isSummaryLoading ? 'Improving summary...' : 'AI summary assist'}
+                  {isSummaryLoading ? 'Writing summary...' : 'Write summary with AI'}
                 </button>
               </div>
 
@@ -394,11 +433,11 @@ export default function CVMakerPage() {
             <div className="card cv-editor-card" style={{ padding: '24px', background: activeTemplate.panel }}>
               <h3 style={{ fontSize: '1.05rem', color: '#0f172a', marginBottom: '10px' }}>What makes this version stronger</h3>
               <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '14px' }}>
-                Each experience entry lets you keep raw notes and turn them into cleaner bullets. That keeps the tool useful even before a full AI integration is configured.
+                Each experience entry keeps the user&apos;s raw notes, then turns them into cleaner ATS-friendly bullets and a stronger summary with AI help.
               </p>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#334155', paddingLeft: '20px' }}>
                 <li>Live preview updates as you edit.</li>
-                <li>Template switcher changes tone without rebuilding your content.</li>
+                <li>Raw notes can be rewritten into recruiter-ready CV bullets in one click.</li>
                 <li>PDF export is ready when your layout looks right.</li>
               </ul>
             </div>
@@ -587,11 +626,14 @@ function StepExperience({
             <input type="checkbox" checked={item.current} onChange={(event) => onChange(item.id, { current: event.target.checked })} />
             I currently work here
           </label>
-          <textarea className="form-input" rows={5} placeholder="Paste raw notes, responsibilities, wins, projects, or recruiter keywords here." value={item.notes} onChange={(event) => onChange(item.id, { notes: event.target.value })} />
+          <textarea className="form-input" rows={5} placeholder="Paste rough notes here: responsibilities, wins, numbers, tools, team size, projects, or recruiter keywords." value={item.notes} onChange={(event) => onChange(item.id, { notes: event.target.value })} />
+          <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.6, margin: '10px 0 0' }}>
+            Write messy notes like “handled 40 calls daily, trained 2 new hires, reduced complaints” and AI will turn them into cleaner CV bullets.
+          </p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px', gap: '12px', flexWrap: 'wrap' }}>
             <span style={{ color: '#64748b', fontSize: '0.92rem' }}>{item.bullets.length} bullet points ready</span>
             <button className="btn btn-primary" onClick={() => onEnhance(item)} disabled={enhancingId === item.id}>
-              {enhancingId === item.id ? 'Generating...' : 'Create bullet points'}
+              {enhancingId === item.id ? 'Writing bullets...' : 'Auto-write bullets'}
             </button>
           </div>
         </div>
