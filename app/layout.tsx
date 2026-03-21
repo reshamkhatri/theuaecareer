@@ -1,10 +1,18 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+export const viewport: Viewport = {
+  themeColor: '#6366f1',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
+  manifest: '/manifest.webmanifest',
   title: {
     default: 'Jobs in UAE 2026 - Dubai, Abu Dhabi, Gulf Careers | theuaecareer.com',
     template: '%s | theuaecareer.com',

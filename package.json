@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@serwist/next": "^9.5.7",
     "bcryptjs": "^3.0.3",
     "csv-parser": "^3.2.0",
     "html2pdf.js": "^0.14.0",
@@ -19,6 +20,7 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-icons": "^5.6.0",
+    "serwist": "^9.5.7",
     "slugify": "^1.6.8"
   },
   "devDependencies": {
