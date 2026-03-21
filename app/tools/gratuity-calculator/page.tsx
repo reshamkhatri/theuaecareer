@@ -1,8 +1,64 @@
 'use client';
 
-import { useState, useMemo, useRef } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
-import { FiDownload, FiInfo, FiArrowRight } from 'react-icons/fi';
+import { FiArrowRight, FiDownload } from 'react-icons/fi';
+
+function calculateGratuity({
+  salary,
+  startDate,
+  endDate,
+}: {
+  salary: string;
+  startDate: string;
+  endDate: string;
+}) {
+  if (!salary || !startDate || !endDate) return null;
+
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  if (end <= start) return null;
+
+  const diffTime = Math.abs(end.getTime() - start.getTime());
+  const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  const years = Math.floor(totalDays / 365);
+  const remainingDaysAfterYears = totalDays % 365;
+  const months = Math.floor(remainingDaysAfterYears / 30);
+
+  const basicSalary = parseFloat(salary);
+  if (isNaN(basicSalary)) return null;
+
+  const dailyWage = basicSalary / 30;
+
+  let first5YearsDays = 0;
+  let after5YearsDays = 0;
+
+  if (years <= 5) {
+     first5YearsDays = (years * 21) + ((remainingDaysAfterYears / 365) * 21);
+  } else {
+     first5YearsDays = 5 * 21;
+     const additionalYears = (years - 5) + (remainingDaysAfterYears / 365);
+     after5YearsDays = additionalYears * 30;
+  }
+
+  const first5Amount = first5YearsDays * dailyWage;
+  const after5Amount = after5YearsDays * dailyWage;
+  let totalGratuity = first5Amount + after5Amount;
+
+  if (totalGratuity > basicSalary * 24) {
+    totalGratuity = basicSalary * 24;
+  }
+
+  return {
+    years,
+    months,
+    dailyWage,
+    first5Amount,
+    after5Amount,
+    totalGratuity
+  };
+}
 
 export default function GratuityCalculatorPage() {
   const [salary, setSalary] = useState<string>('');
@@ -13,56 +69,7 @@ export default function GratuityCalculatorPage() {
   
   const summaryRef = useRef<HTMLDivElement>(null);
 
-  const calculateGratuity = () => {
-    if (!salary || !startDate || !endDate) return null;
-
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    if (end <= start) return null;
-
-    const diffTime = Math.abs(end.getTime() - start.getTime());
-    const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    const years = Math.floor(totalDays / 365);
-    const remainingDaysAfterYears = totalDays % 365;
-    const months = Math.floor(remainingDaysAfterYears / 30);
-    
-    const basicSalary = parseFloat(salary);
-    if (isNaN(basicSalary)) return null;
-
-    const dailyWage = basicSalary / 30;
-    
-    let first5YearsDays = 0;
-    let after5YearsDays = 0;
-
-    if (years <= 5) {
-       first5YearsDays = (years * 21) + ((remainingDaysAfterYears / 365) * 21);
-    } else {
-       first5YearsDays = 5 * 21;
-       const additionalYears = (years - 5) + (remainingDaysAfterYears / 365);
-       after5YearsDays = additionalYears * 30;
-    }
-
-    const first5Amount = first5YearsDays * dailyWage;
-    const after5Amount = after5YearsDays * dailyWage;
-    let totalGratuity = first5Amount + after5Amount;
-
-    // Cap at 2 years salary
-    if (totalGratuity > basicSalary * 24) {
-      totalGratuity = basicSalary * 24;
-    }
-
-    return {
-      years,
-      months,
-      dailyWage,
-      first5Amount,
-      after5Amount,
-      totalGratuity
-    };
-  };
-
-  const results = useMemo(() => calculateGratuity(), [salary, startDate, endDate, contractType, reason]);
+  const results = calculateGratuity({ salary, startDate, endDate });
 
   const handleDownload = async () => {
     if (typeof window === 'undefined') return;

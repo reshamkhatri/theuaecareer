@@ -1,316 +1,667 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { FiCheck, FiDownload, FiCpu, FiPlus, FiTrash2, FiSearch } from 'react-icons/fi';
-// import html2pdf from 'html2pdf.js'; // Will be dynamic imported to avoid SSR issues
+import type { ReactNode } from 'react';
+import { startTransition, useMemo, useRef, useState } from 'react';
+import { FiCheck, FiCpu, FiDownload, FiPlus, FiTrash2 } from 'react-icons/fi';
+
+type TemplateId = 'professional' | 'modern' | 'executive';
+
+interface ExperienceItem {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  current: boolean;
+  notes: string;
+  bullets: string[];
+}
+
+interface EducationItem {
+  id: string;
+  degree: string;
+  school: string;
+  year: string;
+  details: string;
+}
+
+interface CVData {
+  firstName: string;
+  lastName: string;
+  title: string;
+  email: string;
+  phone: string;
+  location: string;
+  linkedin: string;
+  summary: string;
+  skills: string[];
+  template: TemplateId;
+  experiences: ExperienceItem[];
+  education: EducationItem[];
+}
+
+const steps = ['Profile', 'Experience', 'Education', 'Skills', 'Style'];
+
+const templates: Record<
+  TemplateId,
+  { label: string; accent: string; panel: string; text: string; description: string }
+> = {
+  professional: {
+    label: 'Professional',
+    accent: '#0f766e',
+    panel: '#f0fdfa',
+    text: '#0f172a',
+    description: 'Clean and ATS-friendly for most roles.',
+  },
+  modern: {
+    label: 'Modern',
+    accent: '#1d4ed8',
+    panel: '#eff6ff',
+    text: '#111827',
+    description: 'Sharper contrast for product, tech, and digital roles.',
+  },
+  executive: {
+    label: 'Executive',
+    accent: '#92400e',
+    panel: '#fffbeb',
+    text: '#1f2937',
+    description: 'Warm premium tone for leadership and operations roles.',
+  },
+};
+
+const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+
+const createExperience = (): ExperienceItem => ({
+  id: createId(),
+  title: '',
+  company: '',
+  location: '',
+  startDate: '',
+  endDate: '',
+  current: false,
+  notes: '',
+  bullets: [],
+});
+
+const createEducation = (): EducationItem => ({
+  id: createId(),
+  degree: '',
+  school: '',
+  year: '',
+  details: '',
+});
+
+const initialData: CVData = {
+  firstName: 'Ahmed',
+  lastName: 'Al-Maktoum',
+  title: 'Project Manager',
+  email: 'ahmed@example.com',
+  phone: '+971 50 000 0000',
+  location: 'Dubai, UAE',
+  linkedin: 'linkedin.com/in/ahmed-almaktoum',
+  summary:
+    'Project manager with 8+ years of experience leading cross-functional delivery teams, improving operations, and shipping high-visibility work across the Gulf market.',
+  skills: ['Project Delivery', 'Stakeholder Management', 'Agile', 'Budget Planning'],
+  template: 'professional',
+  experiences: [
+    {
+      id: createId(),
+      title: 'Project Manager',
+      company: 'TechVision Global',
+      location: 'Dubai',
+      startDate: '2021',
+      endDate: '',
+      current: true,
+      notes:
+        'Led a 45-person delivery team across product, engineering, and QA. Improved reporting cadence for leadership. Reduced project delays by tightening planning and handoffs.',
+      bullets: [
+        'Led a 45-person delivery team across product, engineering, and QA.',
+        'Improved leadership reporting cadence with clearer status updates and risk tracking.',
+        'Reduced project delays by tightening planning, scope alignment, and handoffs.',
+      ],
+    },
+  ],
+  education: [
+    {
+      id: createId(),
+      degree: 'BSc Business Administration',
+      school: 'American University of Sharjah',
+      year: '2016',
+      details: 'Graduated with a focus on operations and strategic planning.',
+    },
+  ],
+};
 
 export default function CVMakerPage() {
   const [step, setStep] = useState(1);
-  const [isGenerating, setIsGenerating] = useState(false);
+  const [cvData, setCvData] = useState<CVData>(initialData);
+  const [skillInput, setSkillInput] = useState('');
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [enhancingId, setEnhancingId] = useState<string | null>(null);
+  const [isSummaryLoading, setIsSummaryLoading] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
 
-  const [cvData, setCvData] = useState({
-    firstName: 'Ahmed',
-    lastName: 'Al-Maktoum',
-    title: 'Project Manager',
-    email: 'ahmed@example.com',
-    phone: '+971 50 000 0000',
-    location: 'Dubai, UAE',
-    summary: 'A highly experienced Project Manager with over 10 years of expertise in delivering mega-projects in the Gulf region. Adept at agile methodologies, cross-functional team leadership, and strategic planning.',
-    experience: [
-      { id: 1, title: 'Project Manager', company: 'TechVision Global', location: 'Dubai', date: '2021 — Present', desc: 'Led a team of 45 engineers to deliver a $50M smart city platform on time and under budget.' }
+  const activeTemplate = templates[cvData.template];
+  const fullName = [cvData.firstName, cvData.lastName].filter(Boolean).join(' ') || 'Your Name';
+  const contactLine = [cvData.email, cvData.phone, cvData.location, cvData.linkedin].filter(Boolean);
+  const filledSections = useMemo(
+    () => [
+      Boolean(cvData.firstName && cvData.title),
+      cvData.experiences.some((item) => item.title || item.company || item.bullets.length > 0),
+      cvData.education.some((item) => item.degree || item.school),
+      cvData.skills.length > 0,
+      Boolean(cvData.template),
     ],
-    education: [
-      { id: 1, degree: 'BSc Business Admin', school: 'American University of Sharjah', year: '2016' }
-    ],
-    skills: ['Strategic Planning', 'PMP Certified', 'Agile', 'Stakeholder Management']
-  });
+    [cvData]
+  );
 
-  const handleDownload = async () => {
-    if (typeof window === 'undefined') return;
-    const element = previewRef.current;
-    if (!element) return;
-
-    // Dynamically import html2pdf to prevent SSR "window is not defined" error
-    const html2pdf = (await import('html2pdf.js')).default;
-    const opt = {
-      margin:       0,
-      filename:     `CV_${cvData.firstName}_${cvData.lastName}.pdf`,
-      image:        { type: 'jpeg' as const, quality: 0.98 },
-      html2canvas:  { scale: 2, useCORS: true },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' as const }
-    };
-    html2pdf().set(opt).from(element).save();
+  const updateField = (field: keyof CVData, value: string | string[] | TemplateId) => {
+    setCvData((current) => ({ ...current, [field]: value }));
   };
 
-  const steps = [
-    { num: 1, label: 'INFO' },
-    { num: 2, label: 'WORK' },
-    { num: 3, label: 'EDU' },
-    { num: 4, label: 'SKILLS' },
-    { num: 5, label: 'STYLE' },
-  ];
+  const updateExperience = (id: string, changes: Partial<ExperienceItem>) => {
+    setCvData((current) => ({
+      ...current,
+      experiences: current.experiences.map((item) => (item.id === id ? { ...item, ...changes } : item)),
+    }));
+  };
+
+  const updateEducation = (id: string, changes: Partial<EducationItem>) => {
+    setCvData((current) => ({
+      ...current,
+      education: current.education.map((item) => (item.id === id ? { ...item, ...changes } : item)),
+    }));
+  };
+
+  const addSkill = () => {
+    const value = skillInput.trim();
+    if (!value || cvData.skills.includes(value)) {
+      return;
+    }
+    setCvData((current) => ({ ...current, skills: [...current.skills, value] }));
+    setSkillInput('');
+  };
+
+  const handleEnhanceExperience = async (experience: ExperienceItem) => {
+    if (!experience.notes.trim()) {
+      setStatusMessage('Add a few work notes first, then use AI to turn them into bullet points.');
+      return;
+    }
+
+    setEnhancingId(experience.id);
+    setStatusMessage(null);
+
+    try {
+      const response = await fetch('/api/tools/cv-enhance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: experience.title || cvData.title,
+          notes: experience.notes,
+          skills: cvData.skills,
+        }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || 'Failed to enhance experience.');
+      }
+
+      startTransition(() => {
+        setCvData((current) => ({
+          ...current,
+          summary: current.summary.trim() || payload.summary,
+          experiences: current.experiences.map((item) =>
+            item.id === experience.id ? { ...item, bullets: payload.bullets || item.bullets } : item
+          ),
+        }));
+      });
+
+      setStatusMessage('Experience bullets refreshed. Review them and tweak the wording to match your voice.');
+    } catch (error) {
+      setStatusMessage(error instanceof Error ? error.message : 'Failed to enhance experience.');
+    } finally {
+      setEnhancingId(null);
+    }
+  };
+
+  const handleEnhanceSummary = async () => {
+    const notes = cvData.experiences.map((item) => item.notes || item.bullets.join('. ')).filter(Boolean).join('. ');
+
+    if (!notes) {
+      setStatusMessage('Add at least one experience note before generating a stronger summary.');
+      return;
+    }
+
+    setIsSummaryLoading(true);
+    setStatusMessage(null);
+
+    try {
+      const response = await fetch('/api/tools/cv-enhance', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title: cvData.title, notes, skills: cvData.skills }),
+      });
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || 'Failed to improve summary.');
+      }
+
+      setCvData((current) => ({ ...current, summary: payload.summary || current.summary }));
+      setStatusMessage('Summary updated. It is ready for a final personal pass before sending.');
+    } catch (error) {
+      setStatusMessage(error instanceof Error ? error.message : 'Failed to improve summary.');
+    } finally {
+      setIsSummaryLoading(false);
+    }
+  };
+
+  const handleDownload = async () => {
+    if (!previewRef.current || typeof window === 'undefined') {
+      return;
+    }
+
+    setIsDownloading(true);
+    setStatusMessage(null);
+
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      await html2pdf()
+        .set({
+          margin: 0.4,
+          filename: `${fullName.replace(/\s+/g, '_') || 'CV'}.pdf`,
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        })
+        .from(previewRef.current)
+        .save();
+    } catch (error) {
+      setStatusMessage(error instanceof Error ? error.message : 'Failed to export CV.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
 
   return (
-    <div style={{ background: '#F8FAFC', minHeight: '100vh', padding: '40px 0 80px' }}>
+    <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '40px 0 72px' }}>
       <div className="container" style={{ maxWidth: '1400px' }}>
-        
-        {/* Header Section */}
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(8, 145, 178, 0.15)', color: 'var(--accent)', padding: '6px 16px', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '1px', marginBottom: '24px' }}>
-            <FiCpu /> AI-POWERED CV BUILDER
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', borderRadius: '999px', background: 'rgba(15, 118, 110, 0.12)', color: '#0f766e', fontSize: '0.8rem', fontWeight: 700, marginBottom: '18px' }}>
+            <FiCpu /> Gulf-ready CV builder
           </div>
-          <h1 style={{ fontSize: '3.5rem', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-1px', marginBottom: '16px', lineHeight: 1.1 }}>
-            Craft your career story in<br/>minutes.
+          <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', lineHeight: 1.05, marginBottom: '14px', color: '#0f172a' }}>
+            Build a sharper CV in one sitting.
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto' }}>
-            Leverage Gulf-optimized AI to generate a professional CV that beats the ATS and lands you the interview.
+          <p style={{ maxWidth: '760px', margin: '0 auto', color: '#475569', fontSize: '1.05rem', lineHeight: 1.7 }}>
+            Fill in your story, use AI to tighten the language, switch templates, and export a polished PDF that is easier to scan for recruiters.
           </p>
         </div>
 
-        {/* Stepper */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginBottom: '40px' }}>
-          {steps.map((s) => (
-            <div key={s.num} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', opacity: step === s.num ? 1 : 0.5, cursor: 'pointer', transition: 'all 0.3s' }} onClick={() => setStep(s.num)}>
-              <div style={{ 
-                width: '40px', height: '40px', borderRadius: '50%', 
-                background: step >= s.num ? 'var(--primary)' : '#E2E8F0', 
-                color: step >= s.num ? 'white' : 'var(--text-muted)', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 
-              }}>
-                {step > s.num ? <FiCheck /> : s.num}
-              </div>
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--primary)', letterSpacing: '1px' }}>{s.label}</span>
-            </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px', marginBottom: '24px' }}>
+          {steps.map((label, index) => (
+            <button key={label} className="btn" onClick={() => setStep(index + 1)} style={{ background: index + 1 === step ? '#0f172a' : '#e2e8f0', color: index + 1 === step ? '#fff' : '#334155', minWidth: '132px', justifyContent: 'center' }}>
+              <span style={{ width: '24px', height: '24px', borderRadius: '999px', background: filledSections[index] ? '#14b8a6' : 'rgba(255,255,255,0.35)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem' }}>
+                {filledSections[index] ? <FiCheck /> : index + 1}
+              </span>
+              {label}
+            </button>
           ))}
         </div>
 
-        {/* Builder Layout */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '40px', alignItems: 'start' }}>
-          
-          {/* Left Column: Form Controls */}
+        {statusMessage && (
+          <div className="card" style={{ marginBottom: '24px', padding: '16px 18px', borderLeft: `4px solid ${activeTemplate.accent}`, color: '#334155' }}>
+            {statusMessage}
+          </div>
+        )}
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            
-            {/* Form Card */}
-            <div className="card" style={{ padding: '32px' }}>
-              
+            <div className="card" style={{ padding: '28px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', gap: '12px', flexWrap: 'wrap' }}>
+                <div>
+                  <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0f766e', fontWeight: 800 }}>
+                    Step {step} of {steps.length}
+                  </div>
+                  <h2 style={{ fontSize: '1.35rem', color: '#0f172a', marginTop: '6px' }}>{steps[step - 1]}</h2>
+                </div>
+                <button className="btn btn-secondary" onClick={handleEnhanceSummary} disabled={isSummaryLoading}>
+                  {isSummaryLoading ? 'Improving summary...' : 'AI summary assist'}
+                </button>
+              </div>
+
               {step === 1 && (
-                <>
-                  <h2 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '24px' }}>Step 1: Personal Information</h2>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>First Name</label>
-                      <input type="text" className="form-input" value={cvData.firstName} onChange={e => setCvData({...cvData, firstName: e.target.value})} placeholder="e.g. Ahmed" />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>Last Name</label>
-                      <input type="text" className="form-input" value={cvData.lastName} onChange={e => setCvData({...cvData, lastName: e.target.value})} placeholder="e.g. Al-Maktoum" />
-                    </div>
-                  </div>
-                  <div style={{ marginBottom: '20px' }}>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>Professional Title</label>
-                    <input type="text" className="form-input" value={cvData.title} onChange={e => setCvData({...cvData, title: e.target.value})} placeholder="e.g. Project Manager" />
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>Email Address</label>
-                      <input type="email" className="form-input" value={cvData.email} onChange={e => setCvData({...cvData, email: e.target.value})} placeholder="ahmed@example.com" />
-                    </div>
-                    <div>
-                      <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>Phone Number</label>
-                      <input type="text" className="form-input" value={cvData.phone} onChange={e => setCvData({...cvData, phone: e.target.value})} placeholder="+971 50 000 0000" />
-                    </div>
-                  </div>
-                  <div style={{ marginBottom: '32px' }}>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 600, marginBottom: '8px' }}>Location</label>
-                    <input type="text" className="form-input" value={cvData.location} onChange={e => setCvData({...cvData, location: e.target.value})} placeholder="Dubai, UAE" />
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <button className="btn" style={{ background: 'transparent', color: 'var(--text-secondary)' }}>Skip for now</button>
-                    <button className="btn btn-primary" onClick={() => setStep(2)}>Next Step →</button>
-                  </div>
-                </>
+                <StepProfile cvData={cvData} updateField={updateField} />
               )}
 
               {step === 2 && (
-                <>
-                  <h2 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '24px' }}>Step 2: Work Experience</h2>
-                  {cvData.experience.map((exp, idx) => (
-                    <div key={exp.id} style={{ background: '#F8FAFC', padding: '20px', borderRadius: '8px', border: '1px solid var(--border)', marginBottom: '16px' }}>
-                      <input type="text" className="form-input" value={exp.title} onChange={(e) => {
-                        const newArray = [...cvData.experience];
-                        newArray[idx].title = e.target.value;
-                        setCvData({...cvData, experience: newArray});
-                      }} style={{ marginBottom: '12px', fontWeight: 700 }} />
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
-                         <input type="text" className="form-input" value={exp.company} onChange={(e) => {
-                          const newArray = [...cvData.experience];
-                          newArray[idx].company = e.target.value;
-                          setCvData({...cvData, experience: newArray});
-                         }} />
-                         <input type="text" className="form-input" value={exp.date} onChange={(e) => {
-                          const newArray = [...cvData.experience];
-                          newArray[idx].date = e.target.value;
-                          setCvData({...cvData, experience: newArray});
-                         }} />
+                <StepExperience
+                  experiences={cvData.experiences}
+                  onAdd={() => setCvData((current) => ({ ...current, experiences: [...current.experiences, createExperience()] }))}
+                  onRemove={(id) =>
+                    setCvData((current) => ({
+                      ...current,
+                      experiences: current.experiences.length > 1 ? current.experiences.filter((item) => item.id !== id) : current.experiences,
+                    }))
+                  }
+                  onChange={updateExperience}
+                  onEnhance={handleEnhanceExperience}
+                  enhancingId={enhancingId}
+                />
+              )}
+
+              {step === 3 && (
+                <StepEducation
+                  education={cvData.education}
+                  onAdd={() => setCvData((current) => ({ ...current, education: [...current.education, createEducation()] }))}
+                  onRemove={(id) =>
+                    setCvData((current) => ({
+                      ...current,
+                      education: current.education.length > 1 ? current.education.filter((item) => item.id !== id) : current.education,
+                    }))
+                  }
+                  onChange={updateEducation}
+                />
+              )}
+
+              {step === 4 && (
+                <StepSkills
+                  skills={cvData.skills}
+                  skillInput={skillInput}
+                  setSkillInput={setSkillInput}
+                  onAdd={addSkill}
+                  onRemove={(skill) => updateField('skills', cvData.skills.filter((item) => item !== skill))}
+                />
+              )}
+
+              {step === 5 && (
+                <StepStyle selected={cvData.template} onSelect={(template) => updateField('template', template)} />
+              )}
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '24px', gap: '12px' }}>
+                <button className="btn" onClick={() => setStep((current) => Math.max(1, current - 1))} disabled={step === 1}>
+                  Back
+                </button>
+                <button className="btn btn-primary" onClick={() => setStep((current) => Math.min(steps.length, current + 1))}>
+                  {step === steps.length ? 'Review preview' : 'Next step'}
+                </button>
+              </div>
+            </div>
+
+            <div className="card" style={{ padding: '24px', background: activeTemplate.panel }}>
+              <h3 style={{ fontSize: '1.05rem', color: '#0f172a', marginBottom: '10px' }}>What makes this version stronger</h3>
+              <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '14px' }}>
+                Each experience entry lets you keep raw notes and turn them into cleaner bullets. That keeps the tool useful even before a full AI integration is configured.
+              </p>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#334155', paddingLeft: '20px' }}>
+                <li>Live preview updates as you edit.</li>
+                <li>Template switcher changes tone without rebuilding your content.</li>
+                <li>PDF export is ready when your layout looks right.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{ position: 'sticky', top: '24px' }}>
+            <div className="card" style={{ padding: '18px', background: '#e2e8f0' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: '#ef4444' }} />
+                  <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: '#f59e0b' }} />
+                  <span style={{ width: '10px', height: '10px', borderRadius: '999px', background: '#22c55e' }} />
+                </div>
+                <strong style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#475569' }}>
+                  Live preview
+                </strong>
+                <button className="btn btn-primary" onClick={handleDownload} disabled={isDownloading}>
+                  <FiDownload /> {isDownloading ? 'Exporting...' : 'Export PDF'}
+                </button>
+              </div>
+
+              <div ref={previewRef} style={{ background: '#fff', color: activeTemplate.text, borderTop: `8px solid ${activeTemplate.accent}`, borderRadius: '14px', padding: '36px', boxShadow: '0 18px 30px rgba(15, 23, 42, 0.08)' }}>
+                <div style={{ marginBottom: '28px' }}>
+                  <h2 style={{ fontSize: '2rem', lineHeight: 1.05, marginBottom: '8px', textTransform: cvData.template === 'executive' ? 'uppercase' : 'none' }}>
+                    {fullName}
+                  </h2>
+                  <div style={{ fontSize: '1.05rem', fontWeight: 700, color: activeTemplate.accent, marginBottom: '10px' }}>{cvData.title || 'Professional Title'}</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', fontSize: '0.92rem', color: '#475569' }}>
+                    {contactLine.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </div>
+
+                <PreviewSection title="Professional Summary" accent={activeTemplate.accent}>
+                  <p style={{ lineHeight: 1.7, color: '#334155' }}>
+                    {cvData.summary || 'Add a summary that quickly explains your experience, strengths, and the type of role you want next.'}
+                  </p>
+                </PreviewSection>
+
+                <PreviewSection title="Experience" accent={activeTemplate.accent}>
+                  {cvData.experiences.map((item) => (
+                    <div key={item.id} style={{ marginBottom: '20px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', marginBottom: '6px' }}>
+                        <strong>{item.title || 'Role title'}</strong>
+                        <span style={{ color: '#64748b' }}>{item.startDate || 'Start'} - {item.current ? 'Present' : item.endDate || 'End'}</span>
                       </div>
-                      <textarea className="form-input" value={exp.desc} onChange={(e) => {
-                          const newArray = [...cvData.experience];
-                          newArray[idx].desc = e.target.value;
-                          setCvData({...cvData, experience: newArray});
-                      }} rows={3} />
+                      <div style={{ color: '#475569', marginBottom: '8px' }}>{[item.company, item.location].filter(Boolean).join(' | ') || 'Company | Location'}</div>
+                      <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '6px', color: '#334155' }}>
+                        {(item.bullets.length > 0 ? item.bullets : ['Add results-focused bullet points for this role.']).map((bullet) => (
+                          <li key={bullet}>{bullet}</li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
-                  <button className="btn" style={{ width: '100%', marginBottom: '24px', background: 'white', border: '1px dashed var(--border-alt)' }}><FiPlus /> Add Entry</button>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <button className="btn" style={{ background: 'transparent', color: 'var(--text-secondary)' }} onClick={() => setStep(1)}>← Back</button>
-                    <button className="btn btn-primary" onClick={() => setStep(3)}>Next Step →</button>
-                  </div>
-                </>
-              )}
+                </PreviewSection>
 
-              {step >= 3 && (
-                <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                   <p style={{ color: 'var(--text-muted)' }}>Other steps functionality in progress...</p>
-                   <button className="btn btn-primary mt-md" onClick={() => setStep(1)}>Restart</button>
-                </div>
-              )}
-
-            </div>
-
-            {/* Template Selector Card (Static for UX matching) */}
-            <div className="card" style={{ padding: '24px', background: '#F4F7FA' }}>
-              <div style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary)', letterSpacing: '1px', marginBottom: '16px' }}>
-                Quick Select Template
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
-                 <div style={{ background: 'white', border: '2px solid var(--primary)', borderRadius: '8px', height: '140px', padding: '12px', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ width: '100%', height: '8px', background: '#E2E8F0', marginBottom: '4px' }}></div>
-                    <div style={{ width: '60%', height: '4px', background: '#F1F5F9', marginBottom: '12px' }}></div>
-                    <div style={{ width: '100%', flex: 1, background: '#F8FAFC' }}></div>
-                    <div style={{ textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, marginTop: '8px', color: 'var(--primary)' }}>Clean Professional</div>
-                 </div>
-                 <div style={{ background: 'white', border: '2px solid transparent', borderRadius: '8px', height: '140px', padding: '12px', display: 'flex', flexDirection: 'column', opacity: 0.5 }}>
-                    <div style={{ display: 'flex', gap: '8px', height: '100%' }}>
-                      <div style={{ width: '30%', background: '#CBD5E1', height: '100%' }}></div>
-                      <div style={{ flex: 1, background: '#F1F5F9' }}></div>
+                <PreviewSection title="Education" accent={activeTemplate.accent}>
+                  {cvData.education.map((item) => (
+                    <div key={item.id} style={{ marginBottom: '14px' }}>
+                      <strong>{item.degree || 'Degree or certification'}</strong>
+                      <div style={{ color: '#475569' }}>{[item.school, item.year].filter(Boolean).join(' | ') || 'School | Year'}</div>
+                      {item.details && <div style={{ color: '#64748b', marginTop: '4px' }}>{item.details}</div>}
                     </div>
-                    <div style={{ textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, marginTop: '8px', color: 'var(--text-secondary)' }}>Modern Side</div>
-                 </div>
-                 <div style={{ background: 'white', border: '2px solid transparent', borderRadius: '8px', height: '140px', padding: '12px', display: 'flex', flexDirection: 'column', opacity: 0.5, alignItems: 'center' }}>
-                    <div style={{ width: '40%', height: '8px', background: '#CBD5E1', marginBottom: '8px' }}></div>
-                    <div style={{ width: '80%', height: '2px', background: '#F1F5F9', marginBottom: '12px' }}></div>
-                    <div style={{ width: '100%', flex: 1, background: '#F8FAFC' }}></div>
-                    <div style={{ textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, marginTop: '8px', color: 'var(--text-secondary)' }}>Classic Serif</div>
-                 </div>
+                  ))}
+                </PreviewSection>
+
+                <PreviewSection title="Skills" accent={activeTemplate.accent}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {(cvData.skills.length > 0 ? cvData.skills : ['Add your strongest tools and capabilities']).map((skill) => (
+                      <span key={skill} style={{ background: activeTemplate.panel, color: activeTemplate.accent, padding: '6px 10px', borderRadius: '999px', fontSize: '0.9rem', fontWeight: 600 }}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </PreviewSection>
               </div>
             </div>
-
           </div>
-
-          {/* Right Column: Live PDF Preview */}
-          <div style={{ position: 'sticky', top: '100px' }}>
-            <div style={{ background: 'white', borderRadius: '16px', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.1)', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.05)' }}>
-               
-               {/* Preview Browser Header */}
-               <div style={{ background: '#F8FAFC', padding: '12px 20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border)' }}>
-                 <div style={{ display: 'flex', gap: '6px' }}>
-                   <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                   <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                   <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#27c93f' }}></div>
-                 </div>
-                 <div style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--text-muted)' }}>Live AI Preview</div>
-                 <div><FiSearch style={{ color: 'var(--text-muted)' }} /></div>
-               </div>
-
-               {/* Actual CV Canvas */}
-               <div style={{ padding: '0px', background: '#E2E8F0' }}>
-                  <div style={{ 
-                     background: 'white', 
-                     margin: '24px auto', 
-                     width: '210mm', 
-                     minHeight: '297mm', // strict A4
-                     transformOrigin: 'top center',
-                     transform: 'scale(0.8)', // scale to fit sidebar
-                     padding: '40px 50px',
-                     boxShadow: '0 4px 6px -1px rgba(0,0,0,0.1)'
-                  }} ref={previewRef}>
-                     <div style={{ borderBottom: '2px solid var(--primary)', paddingBottom: '24px', marginBottom: '32px' }}>
-                        <h1 style={{ fontSize: '28pt', fontWeight: 800, color: 'var(--primary)', letterSpacing: '-0.5px', textTransform: 'uppercase', marginBottom: '8px', lineHeight: 1 }}>
-                          {cvData.firstName} {cvData.lastName}
-                        </h1>
-                        <div style={{ display: 'flex', gap: '16px', fontSize: '10pt', color: '#475569', fontWeight: 500 }}>
-                           <span>{cvData.email}</span>
-                           <span>•</span>
-                           <span>{cvData.phone}</span>
-                           <span>•</span>
-                           <span>{cvData.location}</span>
-                        </div>
-                     </div>
-
-                     <div style={{ marginBottom: '32px' }}>
-                        <h3 style={{ fontSize: '12pt', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '12px' }}>Professional Profile</h3>
-                        <p style={{ fontSize: '10.5pt', lineHeight: 1.6, color: '#334155' }}>
-                          {cvData.summary}
-                        </p>
-                     </div>
-
-                     <div style={{ marginBottom: '32px' }}>
-                        <h3 style={{ fontSize: '12pt', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>Work Experience</h3>
-                        {cvData.experience.map(exp => (
-                          <div key={exp.id} style={{ marginBottom: '20px' }}>
-                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '4px' }}>
-                               <strong style={{ fontSize: '11pt', color: 'var(--primary)' }}>{exp.title}</strong>
-                               <span style={{ fontSize: '10pt', color: '#64748B' }}>{exp.date}</span>
-                             </div>
-                             <div style={{ fontSize: '10.5pt', color: '#0F172A', fontWeight: 500, marginBottom: '8px' }}>
-                               {exp.company} — {exp.location}
-                             </div>
-                             <p style={{ fontSize: '10pt', lineHeight: 1.5, color: '#475569' }}>
-                               {exp.desc}
-                             </p>
-                          </div>
-                        ))}
-                     </div>
-                     
-                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px' }}>
-                        <div>
-                          <h3 style={{ fontSize: '12pt', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>Education</h3>
-                          {cvData.education.map(edu => (
-                            <div key={edu.id} style={{ marginBottom: '16px' }}>
-                               <strong style={{ display: 'block', fontSize: '10.5pt', color: 'var(--primary)', marginBottom: '4px' }}>{edu.degree}</strong>
-                               <div style={{ fontSize: '10pt', color: '#475569' }}>{edu.school}</div>
-                            </div>
-                          ))}
-                        </div>
-                        <div>
-                          <h3 style={{ fontSize: '12pt', color: 'var(--accent)', letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '16px' }}>Technical Skills</h3>
-                          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                             {cvData.skills.map(skill => (
-                               <span key={skill} style={{ display: 'inline-block', fontSize: '9pt', padding: '4px 10px', border: '1px solid #E2E8F0', borderRadius: '4px', color: '#334155' }}>
-                                 {skill}
-                               </span>
-                             ))}
-                          </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-
-               {/* Download Footer */}
-               <div style={{ background: 'white', padding: '20px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border)' }}>
-                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8125rem', color: '#10B981', fontWeight: 600 }}>
-                   <FiCheck /> Changes saved automatically
-                 </div>
-                 <button onClick={handleDownload} className="btn" style={{ background: '#0F766E', color: 'white' }}>
-                   DOWNLOAD AS PDF <FiDownload style={{ marginLeft: '8px' }} />
-                 </button>
-               </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+  );
+}
+
+function StepProfile({
+  cvData,
+  updateField,
+}: {
+  cvData: CVData;
+  updateField: (field: keyof CVData, value: string | string[] | TemplateId) => void;
+}) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
+      {(['firstName', 'lastName', 'title', 'email', 'phone', 'location', 'linkedin'] as const).map((field) => (
+        <label key={field} style={{ display: 'flex', flexDirection: 'column', gap: '8px', color: '#334155', fontWeight: 600, textTransform: 'capitalize' }}>
+          {field === 'linkedin' ? 'LinkedIn / Portfolio' : field.replace(/([A-Z])/g, ' $1').trim()}
+          <input className="form-input" value={cvData[field]} onChange={(event) => updateField(field, event.target.value)} />
+        </label>
+      ))}
+      <label style={{ display: 'flex', flexDirection: 'column', gap: '8px', color: '#334155', fontWeight: 600, gridColumn: '1 / -1' }}>
+        Professional summary
+        <textarea className="form-input" rows={6} value={cvData.summary} onChange={(event) => updateField('summary', event.target.value)} />
+      </label>
+    </div>
+  );
+}
+
+function StepExperience({
+  experiences,
+  onAdd,
+  onRemove,
+  onChange,
+  onEnhance,
+  enhancingId,
+}: {
+  experiences: ExperienceItem[];
+  onAdd: () => void;
+  onRemove: (id: string) => void;
+  onChange: (id: string, changes: Partial<ExperienceItem>) => void;
+  onEnhance: (experience: ExperienceItem) => Promise<void>;
+  enhancingId: string | null;
+}) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+      {experiences.map((item, index) => (
+        <div key={item.id} style={{ border: '1px solid #e2e8f0', borderRadius: '16px', padding: '18px', background: '#f8fafc' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+            <strong style={{ color: '#0f172a' }}>Role {index + 1}</strong>
+            <button className="btn btn-secondary" onClick={() => onRemove(item.id)} disabled={experiences.length === 1}>
+              <FiTrash2 /> Remove
+            </button>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
+            {(['title', 'company', 'location', 'startDate', 'endDate'] as const).map((field) => (
+              <input key={field} className="form-input" placeholder={field.replace(/([A-Z])/g, ' $1')} value={item[field]} onChange={(event) => onChange(item.id, { [field]: event.target.value })} />
+            ))}
+          </div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '14px 0', color: '#475569', fontWeight: 600 }}>
+            <input type="checkbox" checked={item.current} onChange={(event) => onChange(item.id, { current: event.target.checked })} />
+            I currently work here
+          </label>
+          <textarea className="form-input" rows={5} placeholder="Paste raw notes, responsibilities, wins, projects, or recruiter keywords here." value={item.notes} onChange={(event) => onChange(item.id, { notes: event.target.value })} />
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px', gap: '12px', flexWrap: 'wrap' }}>
+            <span style={{ color: '#64748b', fontSize: '0.92rem' }}>{item.bullets.length} bullet points ready</span>
+            <button className="btn btn-primary" onClick={() => onEnhance(item)} disabled={enhancingId === item.id}>
+              {enhancingId === item.id ? 'Generating...' : 'Create bullet points'}
+            </button>
+          </div>
+        </div>
+      ))}
+      <button className="btn" onClick={onAdd} style={{ justifyContent: 'center', border: '1px dashed #94a3b8', background: '#fff' }}>
+        <FiPlus /> Add another role
+      </button>
+    </div>
+  );
+}
+
+function StepEducation({
+  education,
+  onAdd,
+  onRemove,
+  onChange,
+}: {
+  education: EducationItem[];
+  onAdd: () => void;
+  onRemove: (id: string) => void;
+  onChange: (id: string, changes: Partial<EducationItem>) => void;
+}) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+      {education.map((item, index) => (
+        <div key={item.id} style={{ border: '1px solid #e2e8f0', borderRadius: '16px', padding: '18px', background: '#f8fafc' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
+            <strong style={{ color: '#0f172a' }}>Education {index + 1}</strong>
+            <button className="btn btn-secondary" onClick={() => onRemove(item.id)} disabled={education.length === 1}>
+              <FiTrash2 /> Remove
+            </button>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '12px' }}>
+            <input className="form-input" placeholder="Degree or certification" value={item.degree} onChange={(event) => onChange(item.id, { degree: event.target.value })} />
+            <input className="form-input" placeholder="School or institute" value={item.school} onChange={(event) => onChange(item.id, { school: event.target.value })} />
+            <input className="form-input" placeholder="Year" value={item.year} onChange={(event) => onChange(item.id, { year: event.target.value })} />
+          </div>
+          <textarea className="form-input" rows={3} style={{ marginTop: '12px' }} placeholder="Optional details, honors, coursework, or specializations." value={item.details} onChange={(event) => onChange(item.id, { details: event.target.value })} />
+        </div>
+      ))}
+      <button className="btn" onClick={onAdd} style={{ justifyContent: 'center', border: '1px dashed #94a3b8', background: '#fff' }}>
+        <FiPlus /> Add education
+      </button>
+    </div>
+  );
+}
+
+function StepSkills({
+  skills,
+  skillInput,
+  setSkillInput,
+  onAdd,
+  onRemove,
+}: {
+  skills: string[];
+  skillInput: string;
+  setSkillInput: (value: string) => void;
+  onAdd: () => void;
+  onRemove: (skill: string) => void;
+}) {
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
+        <input className="form-input" style={{ flex: 1, minWidth: '220px' }} placeholder="Add a skill or keyword" value={skillInput} onChange={(event) => setSkillInput(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') { event.preventDefault(); onAdd(); } }} />
+        <button className="btn btn-primary" onClick={onAdd}>Add skill</button>
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        {skills.map((skill) => (
+          <button key={skill} className="btn btn-secondary" onClick={() => onRemove(skill)}>
+            {skill} <FiTrash2 />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function StepStyle({
+  selected,
+  onSelect,
+}: {
+  selected: TemplateId;
+  onSelect: (template: TemplateId) => void;
+}) {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px' }}>
+      {(Object.entries(templates) as [TemplateId, (typeof templates)[TemplateId]][]).map(([id, template]) => (
+        <button key={id} className="btn" onClick={() => onSelect(id)} style={{ display: 'block', textAlign: 'left', padding: '18px', background: selected === id ? template.panel : '#fff', border: selected === id ? `2px solid ${template.accent}` : '1px solid #e2e8f0' }}>
+          <div style={{ height: '120px', borderRadius: '12px', background: '#fff', borderTop: `8px solid ${template.accent}`, marginBottom: '12px', padding: '10px' }}>
+            <div style={{ width: '55%', height: '10px', borderRadius: '999px', background: template.accent, marginBottom: '10px' }} />
+            <div style={{ width: '85%', height: '8px', borderRadius: '999px', background: '#cbd5e1', marginBottom: '8px' }} />
+            <div style={{ width: '100%', height: '40px', borderRadius: '10px', background: template.panel }} />
+          </div>
+          <strong style={{ display: 'block', color: '#0f172a', marginBottom: '6px' }}>{template.label}</strong>
+          <span style={{ color: '#475569', fontSize: '0.92rem' }}>{template.description}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function PreviewSection({
+  title,
+  accent,
+  children,
+}: {
+  title: string;
+  accent: string;
+  children: ReactNode;
+}) {
+  return (
+    <section style={{ marginBottom: '26px' }}>
+      <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: accent, marginBottom: '12px' }}>
+        {title}
+      </h3>
+      {children}
+    </section>
   );
 }

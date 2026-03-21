@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FiBriefcase, FiFileText, FiEye, FiTrendingUp, FiPlus } from 'react-icons/fi';
+import {
+  FiArrowRight,
+  FiBriefcase,
+  FiEye,
+  FiFileText,
+  FiPlus,
+  FiTrendingUp,
+  FiUsers,
+} from 'react-icons/fi';
 
 interface Stats {
   totalJobs: number;
@@ -52,11 +60,47 @@ export default function AdminDashboard() {
     fetchStats();
   }, []);
 
+  const statCards = [
+    {
+      label: 'Total Jobs',
+      value: stats.totalJobs,
+      note: 'Everything currently loaded into the portal.',
+      icon: <FiBriefcase />,
+    },
+    {
+      label: 'Active Jobs',
+      value: stats.activeJobs,
+      note: 'Listings currently visible to visitors.',
+      icon: <FiEye />,
+    },
+    {
+      label: 'Walk-In Jobs',
+      value: stats.walkInJobs,
+      note: 'Urgent interview posts that deserve fast refreshes.',
+      icon: <FiTrendingUp />,
+    },
+    {
+      label: 'Published Articles',
+      value: stats.publishedArticles,
+      note: 'Editorial pieces feeding search and trust.',
+      icon: <FiFileText />,
+    },
+  ];
+
+  const totalAssets = stats.activeJobs + stats.publishedArticles;
+
   return (
     <>
       <div className="admin-header">
-        <h1>Dashboard</h1>
-        <div className="flex gap-sm">
+        <div className="admin-header-copy">
+          <span className="admin-eyebrow">Control Room</span>
+          <h1>Dashboard</h1>
+          <p>
+            Keep the hiring inventory fresh, spotlight walk-ins quickly, and manage the content engine from one place.
+          </p>
+        </div>
+
+        <div className="admin-header-actions">
           <Link href="/admin/jobs/new" className="btn btn-primary btn-sm">
             <FiPlus /> Add Job
           </Link>
@@ -73,53 +117,129 @@ export default function AdminDashboard() {
           </div>
         ) : (
           <>
+            <section className="admin-overview-card">
+              <div className="admin-overview-top">
+                <div>
+                  <span className="admin-eyebrow">Today&apos;s Pulse</span>
+                  <h2>{totalAssets} live assets are currently powering the site.</h2>
+                  <p>
+                    Use this space to keep the homepage current, maintain walk-in freshness, and grow the content base that drives search traffic.
+                  </p>
+                </div>
+
+                <div className="admin-header-actions">
+                  <Link href="/admin/jobs" className="btn btn-secondary btn-sm">
+                    Manage listings <FiArrowRight />
+                  </Link>
+                </div>
+              </div>
+
+              <div className="admin-overview-metrics">
+                <div className="admin-overview-pill">
+                  <span>Active jobs</span>
+                  <strong>{stats.activeJobs}</strong>
+                </div>
+                <div className="admin-overview-pill">
+                  <span>Walk-ins to monitor</span>
+                  <strong>{stats.walkInJobs}</strong>
+                </div>
+                <div className="admin-overview-pill">
+                  <span>Published articles</span>
+                  <strong>{stats.publishedArticles}</strong>
+                </div>
+              </div>
+            </section>
+
             <div className="admin-stats">
-              <div className="admin-stat-card">
-                <h3><FiBriefcase style={{ marginRight: 6 }} /> Total Jobs</h3>
-                <div className="stat-value">{stats.totalJobs}</div>
-              </div>
-              <div className="admin-stat-card">
-                <h3><FiEye style={{ marginRight: 6 }} /> Active Jobs</h3>
-                <div className="stat-value">{stats.activeJobs}</div>
-              </div>
-              <div className="admin-stat-card">
-                <h3><FiTrendingUp style={{ marginRight: 6 }} /> Walk-In Jobs</h3>
-                <div className="stat-value">{stats.walkInJobs}</div>
-              </div>
-              <div className="admin-stat-card">
-                <h3><FiFileText style={{ marginRight: 6 }} /> Published Articles</h3>
-                <div className="stat-value">{stats.publishedArticles}</div>
-              </div>
+              {statCards.map((card) => (
+                <div key={card.label} className="admin-stat-card">
+                  <div className="admin-stat-meta">
+                    <h3>{card.label}</h3>
+                    <div className="admin-stat-icon">{card.icon}</div>
+                  </div>
+                  <div className="stat-value">{card.value}</div>
+                  <p className="admin-stat-note">{card.note}</p>
+                </div>
+              ))}
             </div>
 
-            {/* Quick Actions */}
-            <div className="admin-card">
-              <h2 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-lg)' }}>Quick Actions</h2>
-              <div className="grid-2" style={{ maxWidth: 500 }}>
-                <Link href="/admin/jobs/new" className="btn btn-primary">
-                  <FiPlus /> Post New Job
-                </Link>
-                <Link href="/admin/articles/new" className="btn btn-secondary">
-                  <FiPlus /> Write Article
-                </Link>
-                <Link href="/admin/jobs" className="btn btn-secondary">
-                  <FiBriefcase /> Manage Jobs
-                </Link>
-                <Link href="/admin/articles" className="btn btn-secondary">
-                  <FiFileText /> Manage Articles
-                </Link>
-              </div>
+            <div className="admin-grid-2col">
+              <section className="admin-card">
+                <div className="admin-section-head">
+                  <div>
+                    <h2>Quick Actions</h2>
+                    <p>The fastest ways to keep the portal moving.</p>
+                  </div>
+                </div>
+
+                <div className="admin-action-grid">
+                  <Link href="/admin/jobs/new" className="admin-action-card">
+                    <div>
+                      <h3>Post a new job</h3>
+                      <p>Add a listing with salary, expiry, and walk-in details.</p>
+                    </div>
+                    <span className="admin-action-icon">
+                      <FiBriefcase />
+                    </span>
+                  </Link>
+
+                  <Link href="/admin/jobs/import" className="admin-action-card">
+                    <div>
+                      <h3>Import from CSV</h3>
+                      <p>Bulk-load listings when you have a batch ready to go.</p>
+                    </div>
+                    <span className="admin-action-icon">
+                      <FiTrendingUp />
+                    </span>
+                  </Link>
+
+                  <Link href="/admin/articles/new" className="admin-action-card">
+                    <div>
+                      <h3>Write an article</h3>
+                      <p>Publish a search-friendly guide or hiring roundup.</p>
+                    </div>
+                    <span className="admin-action-icon">
+                      <FiFileText />
+                    </span>
+                  </Link>
+
+                  <Link href="/admin/leads" className="admin-action-card">
+                    <div>
+                      <h3>Review audience inbox</h3>
+                      <p>Check subscriber growth and recent contact messages.</p>
+                    </div>
+                    <span className="admin-action-icon">
+                      <FiUsers />
+                    </span>
+                  </Link>
+                </div>
+              </section>
+
+              <section className="admin-card">
+                <div className="admin-section-head">
+                  <div>
+                    <h2>Publishing Checklist</h2>
+                    <p>A simple rhythm that keeps the portal feeling alive.</p>
+                  </div>
+                </div>
+
+                <ul className="admin-checklist">
+                  <li>Refresh walk-in listings first so time-sensitive posts never feel stale.</li>
+                  <li>Add new long-tail job pages and supporting articles in the same publishing session.</li>
+                  <li>Review the audience inbox regularly to spot topics people are actually asking about.</li>
+                  <li>Use the import flow for batch updates, then review formatting on the public side.</li>
+                </ul>
+              </section>
             </div>
 
-            {/* Getting Started */}
             {stats.totalJobs === 0 && stats.totalArticles === 0 && (
-              <div className="admin-card" style={{ marginTop: 'var(--space-lg)', textAlign: 'center', padding: 'var(--space-3xl)' }}>
-                <h2 style={{ marginBottom: 'var(--space-md)' }}>Welcome to theuaecareer.com Admin!</h2>
-                <p style={{ color: 'var(--text-muted)', marginBottom: 'var(--space-xl)' }}>
-                  Your portal is ready. Start by seeding sample data or adding your first job listing.
+              <div className="admin-card admin-empty-state">
+                <h2 style={{ marginBottom: 'var(--space-md)' }}>This workspace is ready for its first publishing sprint.</h2>
+                <p>
+                  Start by seeding sample content or add your first real listing. Once jobs and articles exist, this dashboard becomes much more informative.
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)' }}>
-                  Use the <strong>Seed Sample Data</strong> button in the sidebar to populate with demo content.
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                  The sidebar has a sample data tool if you want a quick preview before loading real content.
                 </p>
               </div>
             )}

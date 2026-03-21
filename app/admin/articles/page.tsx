@@ -50,10 +50,16 @@ export default function AdminArticlesPage() {
   return (
     <>
       <div className="admin-header">
-        <h1>Manage Articles</h1>
-        <Link href="/admin/articles/new" className="btn btn-primary btn-sm">
-          <FiPlus /> New Article
-        </Link>
+        <div className="admin-header-copy">
+          <span className="admin-eyebrow">Editorial</span>
+          <h1>Manage Articles</h1>
+          <p>Review published guides and drafts, then keep the content engine organized.</p>
+        </div>
+        <div className="admin-header-actions">
+          <Link href="/admin/articles/new" className="btn btn-primary btn-sm">
+            <FiPlus /> New Article
+          </Link>
+        </div>
       </div>
 
       <div className="admin-content">

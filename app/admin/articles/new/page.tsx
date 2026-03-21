@@ -62,9 +62,13 @@ export default function NewArticlePage() {
   return (
     <>
       <div className="admin-header">
-        <div className="flex gap-md" style={{ alignItems: 'center' }}>
-          <Link href="/admin/articles" className="btn btn-ghost btn-sm"><FiArrowLeft /></Link>
-          <h1>New Article</h1>
+        <div className="admin-header-copy">
+          <span className="admin-eyebrow">Editorial</span>
+          <div className="flex gap-md" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
+            <Link href="/admin/articles" className="btn btn-ghost btn-sm"><FiArrowLeft /></Link>
+            <h1>New Article</h1>
+          </div>
+          <p>Write a fresh article, save it as a draft, or publish it directly when it is ready.</p>
         </div>
       </div>
 

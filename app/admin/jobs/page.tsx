@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { FiPlus, FiEdit2, FiTrash2, FiSearch } from 'react-icons/fi';
 
@@ -22,7 +22,7 @@ export default function AdminJobsPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
 
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     try {
       const params = new URLSearchParams({ limit: '100' });
       if (search) params.set('search', search);
@@ -34,9 +34,11 @@ export default function AdminJobsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [search]);
 
-  useEffect(() => { fetchJobs(); }, []);
+  useEffect(() => {
+    fetchJobs();
+  }, [fetchJobs]);
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this job?')) return;
@@ -56,26 +58,36 @@ export default function AdminJobsPage() {
   return (
     <>
       <div className="admin-header">
-        <h1>Manage Jobs</h1>
-        <Link href="/admin/jobs/new" className="btn btn-primary btn-sm">
-          <FiPlus /> Add New Job
-        </Link>
+        <div className="admin-header-copy">
+          <span className="admin-eyebrow">Listings</span>
+          <h1>Manage Jobs</h1>
+          <p>Search, review, and maintain the full job inventory from one table.</p>
+        </div>
+        <div className="admin-header-actions">
+          <Link href="/admin/jobs/import" className="btn btn-secondary btn-sm">
+            Import CSV
+          </Link>
+          <Link href="/admin/jobs/new" className="btn btn-primary btn-sm">
+            <FiPlus /> Add New Job
+          </Link>
+        </div>
       </div>
 
       <div className="admin-content">
-        {/* Search bar */}
-        <div className="flex gap-sm mb-lg">
+        <div className="admin-card" style={{ padding: '18px' }}>
+          <div className="flex gap-sm" style={{ flexWrap: 'wrap' }}>
           <input
             className="form-input"
             placeholder="Search jobs..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            style={{ maxWidth: 400 }}
+            style={{ maxWidth: 440, flex: '1 1 320px' }}
           />
           <button className="btn btn-secondary btn-sm" onClick={handleSearch}>
             <FiSearch /> Search
           </button>
+          </div>
         </div>
 
         {loading ? (

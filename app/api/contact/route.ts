@@ -1,6 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import ContactMessage from '@/lib/models/ContactMessage';
+import { getAuthFromCookies } from '@/lib/auth';
 
-// POST /api/contact — Public contact form submission
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+export async function GET() {
+  try {
+    const admin = await getAuthFromCookies();
+    if (!admin) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    await dbConnect();
+    const messages = await ContactMessage.find({}).sort({ createdAt: -1 }).limit(200).lean();
+
+    return NextResponse.json({ messages });
+  } catch (error) {
+    console.error('Contact list error:', error);
+    return NextResponse.json({ error: 'Failed to load contact messages' }, { status: 500 });
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const { name, email, subject, message } = await request.json();
@@ -12,23 +35,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: 'Invalid email format' },
         { status: 400 }
       );
     }
 
-    // In production, this would send an email via SMTP or a service like Brevo
-    // For now, log the submission
-    console.log('Contact form submission:', {
+    await dbConnect();
+
+    await ContactMessage.create({
       name,
-      email,
+      email: email.toLowerCase(),
       subject: subject || 'No subject',
       message,
-      timestamp: new Date().toISOString(),
     });
 
     return NextResponse.json({

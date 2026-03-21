@@ -42,6 +42,9 @@ export default function AdminLoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div style={{ textAlign: 'center', marginBottom: 'var(--space-xl)' }}>
+          <div className="admin-eyebrow" style={{ justifyContent: 'center', marginBottom: '12px' }}>
+            Admin Access
+          </div>
           <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)' }}>
             the<span style={{ color: 'var(--accent)' }}>uae</span>career
           </div>
@@ -115,6 +118,10 @@ export default function AdminLoginPage() {
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
+
+        <p style={{ marginTop: 'var(--space-lg)', marginBottom: 0, fontSize: '0.85rem', textAlign: 'center' }}>
+          Local development uses the admin credentials configured in your <code>.env.local</code>.
+        </p>
       </div>
     </div>
   );

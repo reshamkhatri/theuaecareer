@@ -85,9 +85,13 @@ export default function NewJobPage() {
   return (
     <>
       <div className="admin-header">
-        <div className="flex gap-md" style={{ alignItems: 'center' }}>
-          <Link href="/admin/jobs" className="btn btn-ghost btn-sm"><FiArrowLeft /></Link>
-          <h1>Add New Job</h1>
+        <div className="admin-header-copy">
+          <span className="admin-eyebrow">Listings</span>
+          <div className="flex gap-md" style={{ alignItems: 'center', flexWrap: 'wrap' }}>
+            <Link href="/admin/jobs" className="btn btn-ghost btn-sm"><FiArrowLeft /></Link>
+            <h1>Add New Job</h1>
+          </div>
+          <p>Create a listing with clear details, salary range, and optional walk-in interview fields.</p>
         </div>
       </div>
 

@@ -27,14 +27,31 @@ export async function POST(request: NextRequest) {
     const { seedType } = await request.json().catch(() => ({ seedType: 'all' }));
 
     const results: Record<string, string> = {};
+    const adminEmail = process.env.ADMIN_EMAIL?.trim();
+    const adminPassword = process.env.ADMIN_PASSWORD?.trim();
+    const isProduction = process.env.NODE_ENV === 'production';
 
     // Seed admin account
     if (seedType === 'all' || seedType === 'admin') {
-      const existingAdmin = await Admin.findOne({ email: process.env.ADMIN_EMAIL || 'admin@theuaecareer.com' });
+      if (!adminEmail || !adminPassword) {
+        return NextResponse.json(
+          { error: 'ADMIN_EMAIL and ADMIN_PASSWORD must be set before seeding an admin account.' },
+          { status: 400 }
+        );
+      }
+
+      if (isProduction && adminPassword === 'admin123') {
+        return NextResponse.json(
+          { error: 'Refusing to seed the default admin password in production. Set a secure ADMIN_PASSWORD first.' },
+          { status: 400 }
+        );
+      }
+
+      const existingAdmin = await Admin.findOne({ email: adminEmail });
       if (!existingAdmin) {
         await Admin.create({
-          email: process.env.ADMIN_EMAIL || 'admin@theuaecareer.com',
-          password: process.env.ADMIN_PASSWORD || 'admin123',
+          email: adminEmail,
+          password: adminPassword,
         });
         results.admin = 'Admin account created';
       } else {

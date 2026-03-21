@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms of Service for theuaecareer.com — user agreements, disclaimers, and usage terms.',
+  description:
+    'Terms of Service for theuaecareer.com - user agreements, disclaimers, and usage terms.',
 };
 
 export default function TermsPage() {
@@ -10,7 +11,9 @@ export default function TermsPage() {
     <>
       <section className="hero" style={{ padding: 'var(--space-2xl) 0' }}>
         <div className="container hero-content">
-          <h1>Terms of <span>Service</span></h1>
+          <h1>
+            Terms of <span>Service</span>
+          </h1>
           <p>Last updated: March 2026</p>
         </div>
       </section>
@@ -20,71 +23,63 @@ export default function TermsPage() {
           <div className="prose">
             <h2>1. Acceptance of Terms</h2>
             <p>
-              By accessing and using theuaecareer.com (&quot;the site&quot;), you agree to be bound
-              by these Terms of Service. If you do not agree to these terms, please do not use the site.
+              By accessing and using theuaecareer.com (&quot;the site&quot;), you agree to these
+              Terms of Service. If you do not agree, please do not use the site.
             </p>
 
-            <h2>2. Nature of Service</h2>
+            <h2>2. Nature of the Service</h2>
             <p>
               theuaecareer.com is a <strong>job information portal</strong>. We are not a
-              recruitment agency, staffing company, or employer. We do not guarantee the accuracy,
-              completeness, or availability of any job listing published on this site.
+              recruitment agency, staffing company, or employer. We publish content and tools to
+              help job seekers make more informed decisions.
             </p>
 
             <h2>3. Job Listing Disclaimer</h2>
             <ul>
               <li>Job listings are published for informational purposes only</li>
-              <li>We do not verify employers or guarantee job offers</li>
-              <li>Walk-in interview dates, times, and venues may change without notice</li>
-              <li>Salary ranges shown are indicative and may vary</li>
-              <li>Users should verify all job details with the employer directly before applying</li>
+              <li>We do not guarantee the accuracy, completeness, or availability of any listing</li>
+              <li>Walk-in dates, times, venues, and salary details may change without notice</li>
+              <li>Users should verify all details directly with the employer before applying</li>
             </ul>
 
             <h2>4. User Responsibilities</h2>
-            <p>When using this site, you agree to:</p>
+            <p>When using the site, you agree to:</p>
             <ul>
-              <li>Provide accurate information when using our tools (CV Maker, contact form)</li>
-              <li>Not misuse the site or attempt to access restricted areas</li>
-              <li>Not scrape, copy, or reproduce content without written permission</li>
+              <li>Provide accurate information when submitting forms or using tools</li>
               <li>Use the site only for lawful purposes</li>
+              <li>Not attempt to access restricted areas without authorization</li>
+              <li>Not scrape or republish our original content without permission</li>
             </ul>
 
             <h2>5. Tools Disclaimer</h2>
             <p>
-              The <strong>AI CV Maker</strong> uses artificial intelligence to assist in CV
-              creation. The generated content is for guidance only — users should review and
-              customise all content before submitting to employers.
-            </p>
-            <p>
-              The <strong>Gratuity Calculator</strong> provides estimates based on UAE Labour Law
-              formulas and is for informational purposes only. It does not constitute legal advice.
-              For specific queries, consult the Ministry of Human Resources and Emiratisation (MOHRE).
+              The CV builder and gratuity calculator are provided for convenience and informational
+              use. Generated content and calculations should always be reviewed by the user before
+              being relied on for employment or legal decisions.
             </p>
 
             <h2>6. Intellectual Property</h2>
             <p>
-              All original content on this site — including articles, guides, design, and code — is
-              the property of theuaecareer.com. You may not reproduce, distribute, or create
-              derivative works without prior written consent.
+              All original content on this site, including articles, branding, design, and code, is
+              the property of theuaecareer.com unless otherwise stated.
             </p>
 
             <h2>7. Limitation of Liability</h2>
             <p>
-              theuaecareer.com shall not be liable for any loss, damage, or expense arising from
-              the use of this site, including but not limited to losses resulting from reliance on
-              job listing information, walk-in interview details, or tool outputs.
+              theuaecareer.com is not liable for losses, damages, or missed opportunities resulting
+              from the use of the site, job listings, tools, or any third-party service linked from
+              the site.
             </p>
 
-            <h2>8. Changes to Terms</h2>
+            <h2>8. Changes to These Terms</h2>
             <p>
-              We reserve the right to update these Terms of Service at any time. Changes will be
-              posted on this page with an updated date. Continued use of the site after changes
-              constitutes acceptance.
+              We may update these Terms of Service from time to time. Continued use of the site
+              after updates are published means you accept the revised terms.
             </p>
 
             <h2>9. Contact</h2>
             <p>
-              For questions about these terms, contact us at{' '}
+              For questions about these terms, contact{' '}
               <a href="mailto:info@theuaecareer.com">info@theuaecareer.com</a>.
             </p>
           </div>

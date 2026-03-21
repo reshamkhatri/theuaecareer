@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import { Types, type SortOrder } from 'mongoose';
 import dbConnect, { isDatabaseConfigured } from '@/lib/mongodb';
 import Article from '@/lib/models/Article';
 import Job from '@/lib/models/Job';
@@ -32,6 +32,7 @@ const launchArticleRecords: ArticleRecord[] = launchArticles.map((article) =>
 const launchJobRecords: JobRecord[] = launchJobs.map((job, index) =>
   normalizeJobRecord(job, `launch-job-${index + 1}`)
 );
+let hasLoggedDatabaseFallback = false;
 
 function normalizeText(value: unknown): string {
   if (typeof value !== 'string') {
@@ -221,76 +222,77 @@ function calculateReadTime(value: string, fallback = 3): number {
   return Math.max(fallback, Math.ceil(wordCount / 200));
 }
 
-function normalizeArticleRecord(
-  source: Record<string, unknown>,
-  fallbackId?: string
-): ArticleRecord {
-  const title = normalizeText(source.title);
-  const content = ensureHtml(normalizeText(source.content));
-  const excerpt = normalizeText(source.excerpt) || stripHtml(content).slice(0, 160);
-  const publishDate = toIsoDate(source.publishDate) || new Date().toISOString();
+function normalizeArticleRecord(source: unknown, fallbackId?: string): ArticleRecord {
+  const record =
+    typeof source === 'object' && source !== null ? (source as Record<string, unknown>) : {};
+  const title = normalizeText(record.title);
+  const content = ensureHtml(normalizeText(record.content));
+  const excerpt = normalizeText(record.excerpt) || stripHtml(content).slice(0, 160);
+  const publishDate = toIsoDate(record.publishDate) || new Date().toISOString();
 
   return {
-    _id: normalizeText(source._id) || fallbackId || new Types.ObjectId().toString(),
+    _id: normalizeText(record._id) || fallbackId || new Types.ObjectId().toString(),
     title,
-    slug: normalizeText(source.slug),
+    slug: normalizeText(record.slug),
     excerpt,
     content,
-    featuredImage: normalizeText(source.featuredImage) || undefined,
-    category: normalizeText(source.category) || 'Career Guides',
-    tags: Array.isArray(source.tags) ? source.tags.map((tag) => normalizeText(tag)).filter(Boolean) : [],
-    status: (normalizeText(source.status) as ArticleRecord['status']) || 'published',
+    featuredImage: normalizeText(record.featuredImage) || undefined,
+    category: normalizeText(record.category) || 'Career Guides',
+    tags: Array.isArray(record.tags) ? record.tags.map((tag) => normalizeText(tag)).filter(Boolean) : [],
+    status: (normalizeText(record.status) as ArticleRecord['status']) || 'published',
     publishDate,
-    lastUpdatedDate: toIsoDate(source.lastUpdatedDate) || publishDate,
+    lastUpdatedDate: toIsoDate(record.lastUpdatedDate) || publishDate,
     readTime:
-      typeof source.readTime === 'number' && source.readTime > 0
-        ? source.readTime
+      typeof record.readTime === 'number' && record.readTime > 0
+        ? record.readTime
         : calculateReadTime(content),
-    author: normalizeText(source.author) || 'Editorial Team',
-    metaTitle: normalizeText(source.metaTitle) || `${title} | theuaecareer.com`,
-    metaDescription: normalizeText(source.metaDescription) || excerpt,
+    author: normalizeText(record.author) || 'Editorial Team',
+    metaTitle: normalizeText(record.metaTitle) || `${title} | theuaecareer.com`,
+    metaDescription: normalizeText(record.metaDescription) || excerpt,
   };
 }
 
-function normalizeJobRecord(source: Record<string, unknown>, fallbackId?: string): JobRecord {
+function normalizeJobRecord(source: unknown, fallbackId?: string): JobRecord {
+  const record =
+    typeof source === 'object' && source !== null ? (source as Record<string, unknown>) : {};
   const locationRecord =
-    typeof source.location === 'object' && source.location !== null
-      ? (source.location as Record<string, unknown>)
+    typeof record.location === 'object' && record.location !== null
+      ? (record.location as Record<string, unknown>)
       : {};
-  const categoryInfo = mapJobCategory(normalizeText(source.category));
-  const description = ensureHtml(normalizeText(source.description));
-  const howToApply = ensureHtml(normalizeText(source.howToApply));
-  const postedDate = toIsoDate(source.postedDate) || new Date().toISOString();
-  const expiryDate = toIsoDate(source.expiryDate);
-  const walkInDetails = parseWalkInDetails(source.walkInDetails);
-  const salaryRange = parseSalaryRange(source.salaryRange);
+  const categoryInfo = mapJobCategory(normalizeText(record.category));
+  const description = ensureHtml(normalizeText(record.description));
+  const howToApply = ensureHtml(normalizeText(record.howToApply));
+  const postedDate = toIsoDate(record.postedDate) || new Date().toISOString();
+  const expiryDate = toIsoDate(record.expiryDate);
+  const walkInDetails = parseWalkInDetails(record.walkInDetails);
+  const salaryRange = parseSalaryRange(record.salaryRange);
   const status =
-    (normalizeText(source.status) as JobRecord['status']) ||
+    (normalizeText(record.status) as JobRecord['status']) ||
     (expiryDate && new Date(expiryDate) < new Date() ? 'expired' : 'active');
 
   return {
-    _id: normalizeText(source._id) || fallbackId || new Types.ObjectId().toString(),
-    title: normalizeText(source.title),
-    companyName: normalizeText(source.companyName) || 'Confidential Company',
+    _id: normalizeText(record._id) || fallbackId || new Types.ObjectId().toString(),
+    title: normalizeText(record.title),
+    companyName: normalizeText(record.companyName) || 'Confidential Company',
     location: {
       city: normalizeText(locationRecord.city) || 'Dubai',
       country: normalizeText(locationRecord.country) || 'UAE',
     },
-    jobType: normalizeText(source.jobType) || 'Full-time',
+    jobType: normalizeText(record.jobType) || 'Full-time',
     salaryRange,
-    experienceRequired: normalizeText(source.experienceRequired) || 'Not specified',
+    experienceRequired: normalizeText(record.experienceRequired) || 'Not specified',
     category: categoryInfo.category,
     categoryLabel: categoryInfo.categoryLabel,
     description,
     howToApply,
     postedDate,
     expiryDate,
-    isWalkIn: Boolean(source.isWalkIn),
+    isWalkIn: Boolean(record.isWalkIn),
     walkInDetails,
-    slug: normalizeText(source.slug),
+    slug: normalizeText(record.slug),
     status,
-    metaTitle: normalizeText(source.metaTitle),
-    metaDescription: normalizeText(source.metaDescription) || stripHtml(description).slice(0, 160),
+    metaTitle: normalizeText(record.metaTitle),
+    metaDescription: normalizeText(record.metaDescription) || stripHtml(description).slice(0, 160),
   };
 }
 
@@ -326,7 +328,10 @@ async function withDatabase<T>(callback: () => Promise<T>): Promise<T | null> {
     await dbConnect();
     return await callback();
   } catch (error) {
-    console.error('Database fallback triggered:', error);
+    if (!hasLoggedDatabaseFallback) {
+      console.error('Database fallback triggered:', error);
+      hasLoggedDatabaseFallback = true;
+    }
     return null;
   }
 }
@@ -426,7 +431,7 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
       query.isWalkIn = true;
     }
 
-    const sortOption =
+    const sortOption: Record<string, SortOrder> =
       sort === 'walk-in'
         ? { 'walkInDetails.date': 1, postedDate: -1 }
         : { postedDate: -1 };
@@ -442,7 +447,7 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
     return {
       collectionCount,
       result: {
-        items: items.map((job) => normalizeJobRecord(job as Record<string, unknown>)),
+        items: items.map((job) => normalizeJobRecord(job)),
         pagination: {
           page,
           limit,
@@ -491,12 +496,12 @@ export async function getJobByIdentifier(identifier: string): Promise<JobRecord 
 
     const bySlug = await Job.findOne({ slug: identifier }).lean();
     if (bySlug) {
-      return normalizeJobRecord(bySlug as Record<string, unknown>);
+      return normalizeJobRecord(bySlug);
     }
     if (Types.ObjectId.isValid(identifier)) {
       const byId = await Job.findById(identifier).lean();
       if (byId) {
-        return normalizeJobRecord(byId as Record<string, unknown>);
+        return normalizeJobRecord(byId);
       }
     }
 
@@ -546,7 +551,7 @@ export async function getArticles(
     return {
       collectionCount,
       result: {
-        items: items.map((article) => normalizeArticleRecord(article as Record<string, unknown>)),
+        items: items.map((article) => normalizeArticleRecord(article)),
         pagination: {
           page,
           limit,
@@ -583,12 +588,12 @@ export async function getArticleByIdentifier(identifier: string): Promise<Articl
   const dbArticle = await withDatabase(async () => {
     const bySlug = await Article.findOne({ slug: identifier }).lean();
     if (bySlug) {
-      return normalizeArticleRecord(bySlug as Record<string, unknown>);
+      return normalizeArticleRecord(bySlug);
     }
     if (Types.ObjectId.isValid(identifier)) {
       const byId = await Article.findById(identifier).lean();
       if (byId) {
-        return normalizeArticleRecord(byId as Record<string, unknown>);
+        return normalizeArticleRecord(byId);
       }
     }
     return null;
