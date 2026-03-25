@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import type { ReactNode, Ref } from 'react';
 import { startTransition, useMemo, useRef, useState } from 'react';
 import { FiCheck, FiCpu, FiDownload, FiPlus, FiTrash2 } from 'react-icons/fi';
 
@@ -159,6 +159,17 @@ export default function CVMakerPage() {
   const previewRef = useRef<HTMLDivElement>(null);
 
   const fullName = [cvData.firstName, cvData.lastName].filter(Boolean).join(' ') || 'Your Name';
+
+  const renderPreviewSheet = (mode: 'live' | 'export', ref: Ref<HTMLDivElement> | null = null) => (
+    <div
+      ref={ref}
+      className={`cv-preview-sheet ${mode === 'live' ? 'cv-preview-sheet-live' : 'cv-preview-sheet-export'}`}
+    >
+      {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
+      {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
+      {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
+    </div>
+  );
 
   const filledSections = useMemo(
     () => [
@@ -347,9 +358,9 @@ export default function CVMakerPage() {
           </div>
         )}
 
-        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px', alignItems: 'start' }}>
+        <div className="cv-maker-layout" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 0.95fr) minmax(0, 1.25fr)', gap: '28px', alignItems: 'start' }}>
           {/* Left: Editor */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="cv-editor-column" style={{ display: 'flex', flexDirection: 'column', gap: '24px', minWidth: 0 }}>
             <div className="card cv-editor-card" style={{ padding: '28px', overflowX: 'hidden' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', gap: '12px', flexWrap: 'wrap' }}>
                 <div>
@@ -410,7 +421,7 @@ export default function CVMakerPage() {
           </div>
 
           {/* Right: Live Preview */}
-          <div className="cv-preview-column" style={{ position: 'sticky', top: '24px' }}>
+          <div className="cv-preview-column" style={{ position: 'sticky', top: '24px', minWidth: 0 }}>
             <div className="card cv-preview-card" style={{ padding: '18px', background: '#e2e8f0' }}>
               <div className="cv-preview-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -426,36 +437,79 @@ export default function CVMakerPage() {
                 </button>
               </div>
 
-              <div style={{ overflowX: 'auto', paddingBottom: '12px', borderRadius: '8px' }}>
-                <div ref={previewRef} className="cv-preview-sheet">
-                  {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
-                  {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
-                  {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
-                </div>
+              <div className="cv-preview-live-shell">
+                {renderPreviewSheet('live')}
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="cv-preview-export-shell" aria-hidden="true">
+        {renderPreviewSheet('export', previewRef)}
+      </div>
       <style jsx>{`
+        .cv-preview-live-shell {
+          overflow: hidden;
+          border-radius: 8px;
+        }
         .cv-preview-sheet {
           background-color: #fff;
-          width: 100%;
-          max-width: 850px;
           margin: 0 auto;
+        }
+        .cv-preview-sheet-live {
+          width: 100%;
+          max-width: 920px;
+          box-shadow: 0 24px 54px rgba(15, 23, 42, 0.12);
+        }
+        .cv-preview-sheet-export {
+          width: 850px;
+          max-width: 850px;
+        }
+        .cv-preview-export-shell {
+          position: fixed;
+          top: 0;
+          left: -10000px;
+          width: 850px;
+          pointer-events: none;
+        }
+        @media (max-width: 1280px) {
+          .cv-maker-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important; }
         }
         @media (max-width: 1024px) {
           .cv-maker-layout { grid-template-columns: 1fr !important; }
           .cv-preview-column { position: static !important; top: auto !important; }
-          .cv-preview-sheet { min-width: 750px; }
+        }
+        @media (max-width: 900px) {
+          .cv-preview-sheet-live :global(.cv-template-executive) { flex-direction: column !important; }
+          .cv-preview-sheet-live :global(.cv-template-executive-sidebar) { width: 100% !important; }
+          .cv-preview-sheet-live :global(.cv-template-modern-body) { flex-direction: column !important; }
+          .cv-preview-sheet-live :global(.cv-template-modern-main) { flex: 1 1 auto !important; }
+          .cv-preview-sheet-live :global(.cv-template-modern-side) {
+            border-left: 0 !important;
+            border-top: 1px solid #e5e7eb !important;
+            padding-left: 0 !important;
+            padding-top: 20px !important;
+          }
         }
         @media (max-width: 720px) {
-          .cv-stepper { justify-content: flex-start !important; }
+          .cv-stepper {
+            justify-content: flex-start !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto;
+            padding-bottom: 6px;
+          }
           .cv-editor-card, .cv-preview-card { padding: 20px !important; }
           :global(.cv-profile-grid), :global(.cv-entry-grid), :global(.cv-template-grid) { grid-template-columns: 1fr !important; }
           :global(.cv-skills-row) { flex-direction: column; }
           :global(.cv-skill-input) { min-width: 0 !important; }
           .cv-preview-toolbar { flex-wrap: wrap; gap: 10px; }
+          .cv-preview-toolbar .btn { width: 100%; }
+          .cv-preview-sheet-live :global(.cv-template-classic) { padding: 24px 18px !important; }
+          .cv-preview-sheet-live :global(.cv-template-executive-sidebar),
+          .cv-preview-sheet-live :global(.cv-template-executive-main) { padding: 24px 18px !important; }
+          .cv-preview-sheet-live :global(.cv-template-modern-header),
+          .cv-preview-sheet-live :global(.cv-template-modern-body) { padding: 24px 18px !important; }
+          .cv-preview-sheet-live :global(.cv-template-modern-body) { gap: 20px !important; }
         }
       `}</style>
     </div>
@@ -474,7 +528,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
   ].filter(Boolean);
 
   return (
-    <div style={{ background: '#fff', padding: '40px 36px', fontFamily: "'Segoe UI', Arial, sans-serif", color: '#1a1a1a', fontSize: '10.5pt', lineHeight: 1.5, borderRadius: '8px' }}>
+    <div className="cv-template-paper cv-template-classic" style={{ background: '#fff', padding: '40px 36px', fontFamily: "'Segoe UI', Arial, sans-serif", color: '#1a1a1a', fontSize: '10.5pt', lineHeight: 1.5, borderRadius: '8px' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '6px' }}>
         <h1 style={{ fontSize: '22pt', fontWeight: 700, letterSpacing: '1px', margin: 0, textTransform: 'uppercase' }}>{fullName}</h1>
@@ -566,9 +620,9 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
-    <div style={{ display: 'flex', background: '#fff', borderRadius: '8px', overflow: 'hidden', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5 }}>
+    <div className="cv-template-paper cv-template-executive" style={{ display: 'flex', background: '#fff', borderRadius: '8px', overflow: 'hidden', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5 }}>
       {/* Sidebar */}
-      <div style={{ width: '35%', background: '#0f172a', color: '#e2e8f0', padding: '32px 22px', flexShrink: 0 }}>
+      <div className="cv-template-executive-sidebar" style={{ width: '35%', background: '#0f172a', color: '#e2e8f0', padding: '32px 22px', flexShrink: 0 }}>
         <h1 style={{ fontSize: '16pt', fontWeight: 700, color: '#ffffff', margin: '0 0 4px', lineHeight: 1.2 }}>{fullName}</h1>
         <div style={{ fontSize: '10pt', color: '#67e8f9', fontWeight: 600, marginBottom: '20px' }}>{cvData.title || 'Professional Title'}</div>
 
@@ -612,7 +666,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
       </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, padding: '32px 28px', color: '#1a1a1a' }}>
+      <div className="cv-template-executive-main" style={{ flex: 1, padding: '32px 28px', color: '#1a1a1a' }}>
         {/* Summary */}
         <SectionHeadingExec title="Professional Profile" />
         <p style={{ margin: '0 0 20px', color: '#444' }}>
@@ -677,9 +731,9 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
   ].filter(Boolean);
 
   return (
-    <div style={{ background: '#fff', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5, borderRadius: '8px', overflow: 'hidden' }}>
+    <div className="cv-template-paper cv-template-modern" style={{ background: '#fff', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5, borderRadius: '8px', overflow: 'hidden' }}>
       {/* Header */}
-      <div style={{ background: '#6366f1', color: '#fff', padding: '28px 32px' }}>
+      <div className="cv-template-modern-header" style={{ background: '#6366f1', color: '#fff', padding: '28px 32px' }}>
         <h1 style={{ fontSize: '20pt', fontWeight: 800, margin: 0, letterSpacing: '0.5px' }}>{fullName}</h1>
         <div style={{ fontSize: '11pt', fontWeight: 500, opacity: 0.9, marginTop: '4px' }}>{cvData.title || 'Professional Title'}</div>
         <div style={{ fontSize: '9pt', marginTop: '10px', opacity: 0.8, display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
@@ -688,9 +742,9 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
       </div>
 
       {/* Body */}
-      <div style={{ display: 'flex', padding: '28px 32px', gap: '28px' }}>
+      <div className="cv-template-modern-body" style={{ display: 'flex', padding: '28px 32px', gap: '28px' }}>
         {/* Left: 65% */}
-        <div style={{ flex: '0 0 62%' }}>
+        <div className="cv-template-modern-main" style={{ flex: '0 0 62%' }}>
           <MinimalHeading title="Profile" />
           <p style={{ color: '#444', margin: '0 0 20px' }}>
             {cvData.summary || 'Write a professional summary.'}
@@ -722,7 +776,7 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
         </div>
 
         {/* Right: 35% */}
-        <div style={{ flex: 1, borderLeft: '1px solid #e5e7eb', paddingLeft: '24px' }}>
+        <div className="cv-template-modern-side" style={{ flex: 1, borderLeft: '1px solid #e5e7eb', paddingLeft: '24px' }}>
           {personal.length > 0 && (
             <>
               <MinimalHeading title="Personal" />
@@ -933,7 +987,7 @@ function StepLanguages({ languages, onAdd, onRemove, onChange }: {
 
 function StepTemplate({ selected, onSelect }: { selected: TemplateId; onSelect: (t: TemplateId) => void }) {
   return (
-    <div className="cv-template-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '14px' }}>
+    <div className="cv-template-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
       {(Object.entries(templateInfo) as [TemplateId, (typeof templateInfo)[TemplateId]][]).map(([id, info]) => (
         <button key={id} className="btn" onClick={() => onSelect(id)} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', textAlign: 'left', padding: '20px', width: '100%', background: selected === id ? '#f0fdfa' : '#fff', border: selected === id ? '2px solid #0f766e' : '1px solid #e2e8f0', borderRadius: '14px' }}>
           <div style={{ width: '80px', height: '100px', borderRadius: '8px', background: id === 'gulf-classic' ? '#fff' : id === 'dubai-executive' ? '#0f172a' : '#6366f1', border: '1px solid #e2e8f0', flexShrink: 0, display: 'flex', overflow: 'hidden' }}>

@@ -9,7 +9,6 @@ import {
   FiMapPin,
   FiTwitter,
 } from 'react-icons/fi';
-import AdPlaceholder from '@/components/AdPlaceholder';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import { formatDisplayDate, getJobByIdentifier, getJobs, stripHtml } from '@/lib/content';
 
@@ -108,10 +107,6 @@ export default async function JobDetailPage({
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
-      <div className="container" style={{ marginTop: 'var(--space-xl)' }}>
-        <AdPlaceholder format="leaderboard" label="Top Job Details Ad" />
-      </div>
 
       <section className="section" style={{ paddingTop: 'var(--space-xl)' }}>
         <div className="container blog-layout">
@@ -269,8 +264,6 @@ export default async function JobDetailPage({
                 style={{ marginBottom: 'var(--space-2xl)' }}
               />
 
-              <AdPlaceholder format="fluid" label="In-feed Ad" />
-
               <div id="how-to-apply" style={{ marginTop: 'var(--space-2xl)' }}>
                 <h2 style={{ fontSize: '1.75rem', marginBottom: 'var(--space-md)' }}>How to Apply</h2>
                 {!isExpired ? (
@@ -313,10 +306,6 @@ export default async function JobDetailPage({
               </div>
             </div>
 
-            <div style={{ marginTop: 'var(--space-2xl)' }}>
-              <AdPlaceholder format="leaderboard" label="Bottom Job Ad" />
-            </div>
-
             {relatedJobs.length > 0 && (
               <>
                 <h2 style={{ fontSize: '1.75rem', marginTop: 'var(--space-3xl)' }}>Similar Jobs</h2>
@@ -340,8 +329,6 @@ export default async function JobDetailPage({
           </main>
 
           <aside className="blog-sidebar">
-            <AdPlaceholder format="rectangle" label="Sidebar Ad" />
-
             {!isExpired && (
               <div className="card" style={{ background: 'var(--primary)', color: 'white', border: 'none' }}>
                 <h3 style={{ fontSize: '1.25rem', marginBottom: 'var(--space-md)', color: 'white' }}>Interested?</h3>
@@ -363,8 +350,6 @@ export default async function JobDetailPage({
                 Create CV Now
               </Link>
             </div>
-
-            <AdPlaceholder format="skyscraper" label="Sticky Sidebar Ad" />
           </aside>
         </div>
       </section>

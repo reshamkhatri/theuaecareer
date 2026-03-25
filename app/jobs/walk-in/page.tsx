@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { FiBriefcase, FiCheckCircle, FiMapPin } from 'react-icons/fi';
-import AdPlaceholder from '@/components/AdPlaceholder';
 import { formatDisplayDate, getJobs } from '@/lib/content';
 
 function renderWalkInSchedule(summary?: string, date?: string, time?: string): string {
@@ -29,7 +28,6 @@ export default async function WalkInJobsPage() {
               Direct hiring events across the UAE, sorted for fast action.
             </p>
           </div>
-          <AdPlaceholder format="leaderboard" label="Walk-in Top Ad" />
         </div>
       </section>
 
@@ -45,7 +43,7 @@ export default async function WalkInJobsPage() {
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-                {jobs.items.map((job, index) => (
+                {jobs.items.map((job) => (
                   <div key={job._id}>
                     <div className="job-card job-card-walkin" style={{ borderLeft: '4px solid var(--success)' }}>
                       <div className="job-card-header">
@@ -97,7 +95,6 @@ export default async function WalkInJobsPage() {
                       </div>
                     </div>
 
-                    {(index + 1) % 3 === 0 && <AdPlaceholder format="fluid" label="In-feed Walk-in Ad" />}
                   </div>
                 ))}
               </div>
@@ -105,8 +102,6 @@ export default async function WalkInJobsPage() {
           </div>
 
           <aside className="blog-sidebar">
-            <AdPlaceholder format="rectangle" label="Sidebar Ad" />
-
             <div className="card" style={{ background: '#F0FDF4', border: '1px solid #BBF7D0' }}>
               <h3
                 style={{
@@ -136,8 +131,6 @@ export default async function WalkInJobsPage() {
                 <li>Carry your Emirates ID or passport copy</li>
               </ul>
             </div>
-
-            <AdPlaceholder format="skyscraper" label="Sticky Sidebar Ad" />
           </aside>
         </div>
       </section>

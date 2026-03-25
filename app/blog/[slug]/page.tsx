@@ -8,7 +8,6 @@ import {
   FiFacebook,
   FiTwitter,
 } from 'react-icons/fi';
-import AdPlaceholder from '@/components/AdPlaceholder';
 import ArticleCover from '@/components/ArticleCover';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import DisqusThread from '@/components/DisqusThread';
@@ -84,10 +83,6 @@ export default async function ArticlePage({
 
   return (
     <>
-      <div className="container" style={{ marginTop: 'var(--space-xl)' }}>
-        <AdPlaceholder format="leaderboard" label="Top Article Ad" />
-      </div>
-
       <section className="section" style={{ paddingTop: 'var(--space-xl)' }}>
         <div className="container blog-layout">
           <main className="blog-main">
@@ -132,9 +127,6 @@ export default async function ArticlePage({
 
               <div className="prose">
                 <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
-                <div style={{ margin: 'var(--space-2xl) 0' }}>
-                  <AdPlaceholder format="fluid" label="In-Article Ad" />
-                </div>
                 {secondHalf && <div dangerouslySetInnerHTML={{ __html: secondHalf }} />}
               </div>
 
@@ -184,10 +176,6 @@ export default async function ArticlePage({
               </div>
             </article>
 
-            <div style={{ marginTop: 'var(--space-2xl)' }}>
-              <AdPlaceholder format="leaderboard" label="Bottom Article Ad" />
-            </div>
-
             {relatedArticles.length > 0 && (
               <>
                 <h2 style={{ fontSize: '1.75rem', marginTop: 'var(--space-3xl)' }}>Related Articles</h2>
@@ -216,8 +204,6 @@ export default async function ArticlePage({
           </main>
 
           <aside className="blog-sidebar">
-            <AdPlaceholder format="rectangle" label="Sidebar Ad" />
-
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-lg)' }}>Popular Categories</h3>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -239,8 +225,6 @@ export default async function ArticlePage({
                 ))}
               </ul>
             </div>
-
-            <AdPlaceholder format="skyscraper" label="Sticky Sidebar Ad" />
 
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Subscribe</h3>

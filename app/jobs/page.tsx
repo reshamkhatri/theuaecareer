@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { FiBriefcase, FiClock, FiFilter, FiMapPin, FiSearch } from 'react-icons/fi';
-import AdPlaceholder from '@/components/AdPlaceholder';
 import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
 import { formatDisplayDate, getJobs } from '@/lib/content';
 
@@ -67,7 +66,6 @@ export default async function JobsPage({
               Browse verified job listings across the Gulf region.
             </p>
           </div>
-          <AdPlaceholder format="leaderboard" label="Top Job Board Ad" />
         </div>
       </section>
 
@@ -160,7 +158,7 @@ export default async function JobsPage({
                   Showing {jobs.items.length} of {jobs.pagination.total} jobs
                 </div>
 
-                {jobs.items.map((job, index) => (
+                {jobs.items.map((job) => (
                   <div key={job._id}>
                     <div className={`job-card ${job.isWalkIn ? 'job-card-walkin' : ''}`}>
                       <div className="job-card-header">
@@ -193,7 +191,6 @@ export default async function JobsPage({
                       </div>
                     </div>
 
-                    {(index + 1) % 5 === 0 && <AdPlaceholder format="fluid" label="In-feed Job Ad" />}
                   </div>
                 ))}
 
@@ -239,8 +236,6 @@ export default async function JobsPage({
           </div>
 
           <aside className="blog-sidebar">
-            <AdPlaceholder format="rectangle" label="Sidebar Ad" />
-
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Browse by Country</h3>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -253,8 +248,6 @@ export default async function JobsPage({
                 ))}
               </ul>
             </div>
-
-            <AdPlaceholder format="skyscraper" label="Sticky Sidebar Ad" />
           </aside>
         </div>
       </section>

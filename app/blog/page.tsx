@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { FiArrowRight, FiClock, FiSearch } from 'react-icons/fi';
-import AdPlaceholder from '@/components/AdPlaceholder';
 import ArticleCover from '@/components/ArticleCover';
 import { ARTICLE_CATEGORIES } from '@/lib/constants';
 import { formatDisplayDate, getArticles } from '@/lib/content';
@@ -151,10 +150,6 @@ export default async function BlogListingPage({
         </div>
       </section>
 
-      <div className="container" style={{ margin: 'var(--space-xl) auto 0' }}>
-        <AdPlaceholder format="leaderboard" label="Top Blog Ad" />
-      </div>
-
       <section className="section" style={{ paddingTop: 'var(--space-xl)' }}>
         <div className="container">
           {articles.items.length === 0 ? (
@@ -258,31 +253,6 @@ export default async function BlogListingPage({
                 );
               })}
 
-              <div
-                className="article-card"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  background: 'var(--bg-alt)',
-                  border: '1px dashed var(--border)',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: 'var(--space-2xl)',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: '0.75rem',
-                    color: 'var(--text-muted)',
-                    textTransform: 'uppercase',
-                    marginBottom: '16px',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Advertisement
-                </span>
-                <AdPlaceholder format="rectangle" label="Native Grid Ad" />
-              </div>
             </div>
           )}
         </div>
