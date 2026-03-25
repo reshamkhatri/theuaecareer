@@ -987,9 +987,27 @@ function StepLanguages({ languages, onAdd, onRemove, onChange }: {
 
 function StepTemplate({ selected, onSelect }: { selected: TemplateId; onSelect: (t: TemplateId) => void }) {
   return (
-    <div className="cv-template-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+    <div className="cv-template-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
       {(Object.entries(templateInfo) as [TemplateId, (typeof templateInfo)[TemplateId]][]).map(([id, info]) => (
-        <button key={id} className="btn" onClick={() => onSelect(id)} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px', textAlign: 'left', padding: '20px', width: '100%', background: selected === id ? '#f0fdfa' : '#fff', border: selected === id ? '2px solid #0f766e' : '1px solid #e2e8f0', borderRadius: '14px' }}>
+        <button
+          key={id}
+          className="btn"
+          onClick={() => onSelect(id)}
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            gap: '16px',
+            textAlign: 'left',
+            padding: '20px',
+            width: '100%',
+            minWidth: 0,
+            whiteSpace: 'normal',
+            background: selected === id ? '#f0fdfa' : '#fff',
+            border: selected === id ? '2px solid #0f766e' : '1px solid #e2e8f0',
+            borderRadius: '14px',
+          }}
+        >
           <div style={{ width: '80px', height: '100px', borderRadius: '8px', background: id === 'gulf-classic' ? '#fff' : id === 'dubai-executive' ? '#0f172a' : '#6366f1', border: '1px solid #e2e8f0', flexShrink: 0, display: 'flex', overflow: 'hidden' }}>
             {id === 'gulf-classic' && (
               <div style={{ width: '100%', padding: '8px' }}>
@@ -1033,12 +1051,12 @@ function StepTemplate({ selected, onSelect }: { selected: TemplateId; onSelect: 
               </div>
             )}
           </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
               <strong style={{ color: '#0f172a', fontSize: '1.05rem' }}>{info.label}</strong>
               <span style={{ fontSize: '0.75rem', background: '#e2e8f0', padding: '2px 8px', borderRadius: '999px', color: '#64748b' }}>{info.layout}</span>
             </div>
-            <span style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5 }}>{info.description}</span>
+            <span style={{ color: '#475569', fontSize: '0.9rem', lineHeight: 1.5, display: 'block', whiteSpace: 'normal', overflowWrap: 'anywhere' }}>{info.description}</span>
           </div>
         </button>
       ))}
