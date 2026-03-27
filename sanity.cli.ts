@@ -1,7 +1,11 @@
 /**
-* This configuration file lets you run `$ sanity [command]` in this folder
-* Go to https://www.sanity.io/docs/cli to learn more.
-**/
+ * This configuration file lets you run `$ sanity [command]` in this folder
+ *
+ * IMPORTANT: Sanity Studio does NOT work with Next.js static export!
+ * Run it separately: npm run sanity:dev → http://localhost:3333
+ *
+ * Go to https://www.sanity.io/docs/cli to learn more.
+ */
 import { defineCliConfig } from 'sanity/cli'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID

@@ -10,6 +10,11 @@
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../sanity.config'
 
+// NOTE: This route does NOT work with static export (output: 'export')
+// To use Sanity Studio with static sites, run it separately:
+// npm run sanity:dev → http://localhost:3333
+// Or deploy to Sanity hosting: npm run sanity:deploy
+
 export const dynamic = 'force-static'
 export const dynamicParams = false
 

@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+// For development: http://localhost:3333 (run: npm run sanity:dev)
+// For production: Deploy to Sanity hosting (run: npm run sanity:deploy)
 const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || '/studio';
 
 export const metadata = {
