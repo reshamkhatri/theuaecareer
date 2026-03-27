@@ -16,7 +16,7 @@ Use this sequence:
 If you deploy this repo on Cloudflare, start with:
 
 - Framework preset: `None` or `Next.js (static export)`
-- Root directory: `frontend`
+- Root directory: leave blank
 - Build command: `npm run build`
 - Build output directory: `out`
 

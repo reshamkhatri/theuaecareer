@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || '';
+const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || '/studio';
 
 export const metadata = {
   title: 'Content Admin | theuaecareer.com',
@@ -53,23 +53,9 @@ export default function AdminPage() {
         </p>
 
         <div style={{ marginTop: '1.5rem', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-          {studioUrl ? (
-            <Link href={studioUrl} className="btn btn-primary" target="_blank">
-              Open Sanity Studio
-            </Link>
-          ) : (
-            <div
-              style={{
-                padding: '0.9rem 1rem',
-                borderRadius: '14px',
-                background: '#f8fafc',
-                border: '1px solid #e2e8f0',
-                color: '#334155',
-              }}
-            >
-              Set `NEXT_PUBLIC_SANITY_STUDIO_URL` after running `npm run sanity:deploy`.
-            </div>
-          )}
+          <Link href={studioUrl} className="btn btn-primary" target={studioUrl.startsWith('http') ? '_blank' : undefined}>
+            Open Sanity Studio
+          </Link>
           <Link href="/" className="btn btn-secondary">
             Back to website
           </Link>
@@ -87,9 +73,9 @@ export default function AdminPage() {
             lineHeight: 1.7,
           }}
         >
-          npm run sanity:deploy
+          Embedded Studio route: /studio
           <br />
-          NEXT_PUBLIC_SANITY_STUDIO_URL=https://your-studio-url
+          Optional external Studio: NEXT_PUBLIC_SANITY_STUDIO_URL=https://your-studio-url
         </div>
       </div>
     </main>

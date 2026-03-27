@@ -24,7 +24,7 @@ Use this in order.
 6. Set:
    - Project name: `theuaecareer`
    - Production branch: `master` or your live branch
-   - Root directory: `frontend`
+   - Root directory: leave blank
    - Build command: `npm run build`
    - Build output directory: `out`
 7. Save the project, but do not deploy until env vars are added.

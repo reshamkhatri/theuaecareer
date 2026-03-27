@@ -25,7 +25,7 @@ Before applying for AdSense, the site should be:
 
 - Create or log in to your Cloudflare account.
 - Create a Pages project from the GitHub repo.
-- Set the root directory to `frontend`.
+- Leave the root directory blank.
 - Use `npm run build` as the build command.
 - Use `out` as the build output directory.
 - Make sure the build succeeds in Cloudflare Pages.

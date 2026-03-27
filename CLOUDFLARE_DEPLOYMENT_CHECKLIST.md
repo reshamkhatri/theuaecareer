@@ -41,7 +41,7 @@ pointing to the correct deployment hostname.
 1. Push the code to GitHub.
 2. Create a Cloudflare Pages project.
 3. Set:
-   - Root directory: `frontend`
+   - Root directory: leave blank
    - Build command: `npm run build`
    - Output directory: `out`
 4. Add the required environment variables.
