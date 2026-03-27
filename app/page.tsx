@@ -9,7 +9,10 @@ import {
   FiTool,
 } from 'react-icons/fi';
 import { COUNTRIES, JOB_TYPES } from '@/lib/constants';
-import { formatDisplayDate, getArticles, getJobs } from '@/lib/content';
+import { formatDisplayDate } from '@/lib/format';
+import { getArticles, getJobs } from '@/lib/content';
+
+export const revalidate = 300;
 
 function getWalkInLabel(summary?: string, date?: string, time?: string): string {
   if (summary) {

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/constants';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+export const dynamic = 'force-static';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -11,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/api'],
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

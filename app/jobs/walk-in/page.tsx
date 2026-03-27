@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { FiBriefcase, FiCheckCircle, FiMapPin } from 'react-icons/fi';
-import { formatDisplayDate, getJobs } from '@/lib/content';
+import { formatDisplayDate } from '@/lib/format';
+import { getJobs } from '@/lib/content';
+
+export const revalidate = 300;
 
 function renderWalkInSchedule(summary?: string, date?: string, time?: string): string {
   if (summary) {

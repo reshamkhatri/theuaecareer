@@ -26,7 +26,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (pathname?.startsWith('/admin')) return null;
+  if (pathname?.startsWith('/admin') || pathname?.startsWith('/studio')) return null;
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>

@@ -3,6 +3,7 @@
 import type { ReactNode, Ref } from 'react';
 import { startTransition, useMemo, useRef, useState } from 'react';
 import { FiCheck, FiCpu, FiDownload, FiPlus, FiTrash2 } from 'react-icons/fi';
+import { buildCvBullets, buildCvSummary } from '@/lib/cv-assist';
 
 /* ─── Types ─── */
 type TemplateId = 'gulf-classic' | 'dubai-executive' | 'modern-minimal';
@@ -217,48 +218,31 @@ export default function CVMakerPage() {
 
   const handleEnhanceExperience = async (experience: ExperienceItem) => {
     if (!experience.notes.trim()) {
-      setStatusMessage('Paste rough notes first, then AI will turn them into polished Gulf-ready CV bullets.');
+      setStatusMessage('Paste rough notes first, then Smart Assist will turn them into polished Gulf-ready CV bullets.');
       return;
     }
     setEnhancingId(experience.id);
     setStatusMessage(null);
     try {
-      const response = await fetch('/api/tools/cv-enhance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          mode: 'experience',
-          title: experience.title || cvData.title,
-          company: experience.company,
-          location: experience.location,
-          startDate: experience.startDate,
-          endDate: experience.endDate,
-          current: experience.current,
-          notes: experience.notes,
-          skills: cvData.skills,
-          experiences: cvData.experiences.map((item) => ({
-            title: item.title, company: item.company, location: item.location,
-            startDate: item.startDate, endDate: item.endDate, current: item.current,
-            notes: item.notes, bullets: item.bullets,
-          })),
-        }),
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const bullets = buildCvBullets(experience.notes, experience.title || cvData.title || 'professional');
+      const summary = buildCvSummary({
+        title: cvData.title,
+        skills: cvData.skills,
+        experiences: cvData.experiences.map((item) =>
+          item.id === experience.id ? { ...item, bullets } : item
+        ),
       });
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error || 'Failed to enhance experience.');
       startTransition(() => {
         setCvData((current) => ({
           ...current,
-          summary: current.summary.trim() || payload.summary,
+          summary: current.summary.trim() || summary,
           experiences: current.experiences.map((item) =>
-            item.id === experience.id ? { ...item, bullets: payload.bullets || item.bullets } : item
+            item.id === experience.id ? { ...item, bullets } : item
           ),
         }));
       });
-      setStatusMessage(
-        payload.provider === 'gemini'
-          ? 'AI turned your notes into stronger Gulf-ready CV bullets. Review and keep only what is accurate.'
-          : payload.warning || 'A basic rewrite was applied. Add a Gemini API key for stronger AI writing.'
-      );
+      setStatusMessage('Smart Assist rewrote your notes locally for static hosting. Review the bullets and keep only what is accurate.');
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : 'Failed to enhance experience.');
     } finally {
@@ -275,26 +259,23 @@ export default function CVMakerPage() {
     setIsSummaryLoading(true);
     setStatusMessage(null);
     try {
-      const response = await fetch('/api/tools/cv-enhance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          mode: 'summary', title: cvData.title, notes, skills: cvData.skills,
-          experiences: cvData.experiences.map((item) => ({
-            title: item.title, company: item.company, location: item.location,
-            startDate: item.startDate, endDate: item.endDate, current: item.current,
-            notes: item.notes, bullets: item.bullets,
-          })),
-        }),
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const summary = buildCvSummary({
+        title: cvData.title,
+        skills: cvData.skills,
+        experiences: cvData.experiences.map((item) => ({
+          title: item.title,
+          company: item.company,
+          location: item.location,
+          startDate: item.startDate,
+          endDate: item.endDate,
+          current: item.current,
+          notes: item.notes || item.bullets.join('. '),
+          bullets: item.bullets,
+        })),
       });
-      const payload = await response.json();
-      if (!response.ok) throw new Error(payload.error || 'Failed to improve summary.');
-      setCvData((current) => ({ ...current, summary: payload.summary || current.summary }));
-      setStatusMessage(
-        payload.provider === 'gemini'
-          ? 'AI wrote a sharper professional summary. Give it a final personal review.'
-          : payload.warning || 'A basic summary rewrite was applied.'
-      );
+      setCvData((current) => ({ ...current, summary: summary || current.summary }));
+      setStatusMessage('Smart Assist drafted a sharper summary locally so the CV tool still works on static hosting.');
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : 'Failed to improve summary.');
     } finally {
@@ -370,7 +351,7 @@ export default function CVMakerPage() {
                   <h2 style={{ fontSize: '1.35rem', color: '#0f172a', marginTop: '6px' }}>{steps[step - 1]}</h2>
                 </div>
                 <button className="btn btn-secondary" onClick={handleEnhanceSummary} disabled={isSummaryLoading}>
-                  {isSummaryLoading ? 'Writing summary...' : 'Write summary with AI'}
+                  {isSummaryLoading ? 'Writing summary...' : 'Write summary with Smart Assist'}
                 </button>
               </div>
 
@@ -894,7 +875,7 @@ function StepExperience({ experiences, onAdd, onRemove, onChange, onEnhance, enh
           </label>
           <textarea className="form-input" rows={5} placeholder="Paste rough notes: responsibilities, wins, numbers, tools, team size, projects." value={item.notes} onChange={(e) => onChange(item.id, { notes: e.target.value })} />
           <p style={{ color: '#64748b', fontSize: '0.88rem', lineHeight: 1.6, margin: '10px 0 0' }}>
-            Write messy notes like &quot;handled 40 calls daily, trained 2 new hires&quot; and AI will turn them into recruiter-ready bullets.
+            Write messy notes like &quot;handled 40 calls daily, trained 2 new hires&quot; and Smart Assist will turn them into recruiter-ready bullets.
           </p>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '14px', gap: '12px', flexWrap: 'wrap' }}>
             <span style={{ color: '#64748b', fontSize: '0.92rem' }}>{item.bullets.length} bullet points ready</span>

@@ -37,7 +37,7 @@ export const ARTICLE_CATEGORIES = [
   'Company Hiring',
   'Career Guides',
   'Salary Insights',
-  'Visa Guides',
+  'Visa & PRO Guides',
   'Industry Roundups',
 ] as const;
 
@@ -49,3 +49,11 @@ export const SITE_NAME = 'theuaecareer.com';
 export const SITE_TAGLINE = 'Your Gateway to Gulf Careers';
 export const SITE_DESCRIPTION =
   'Find the latest jobs in UAE, Dubai, Abu Dhabi, and the Gulf region. Walk-in interviews, career guides, salary insights, and free tools for UAE job seekers.';
+
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+const isLocalSiteUrl =
+  !configuredSiteUrl ||
+  configuredSiteUrl.includes('localhost') ||
+  configuredSiteUrl.includes('127.0.0.1');
+
+export const SITE_URL = isLocalSiteUrl ? 'https://theuaecareer.com' : configuredSiteUrl;

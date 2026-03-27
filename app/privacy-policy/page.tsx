@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
-    'Privacy Policy for theuaecareer.com - how we handle contact submissions, newsletter signups, cookies, and optional third-party services.',
+    'Privacy Policy for theuaecareer.com - how we handle messages, newsletter requests, CV builder inputs, cookies, and optional third-party services.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -32,11 +32,12 @@ export default function PrivacyPolicyPage() {
             <h3>Information you provide</h3>
             <ul>
               <li>
-                <strong>Contact form submissions</strong> - name, email address, subject, and
-                message content
+                <strong>Contact messages</strong> - name, email address, subject, and message
+                content when you email us directly or submit a connected contact form
               </li>
               <li>
-                <strong>Newsletter signups</strong> - email address and signup source
+                <strong>Newsletter requests</strong> - email address and signup source when you use
+                a connected newsletter form or email us to subscribe
               </li>
               <li>
                 <strong>CV builder inputs</strong> - information you enter into the tool to build
@@ -47,12 +48,12 @@ export default function PrivacyPolicyPage() {
             <h3>Information collected automatically</h3>
             <ul>
               <li>
-                <strong>Basic technical logs</strong> - limited request and error information may
-                be recorded by our hosting or server environment
+                <strong>Basic technical logs</strong> - limited request, caching, and error
+                information may be recorded by our hosting, CDN, or connected service providers
               </li>
               <li>
-                <strong>Cookies</strong> - we may use cookies for admin authentication and, when
-                enabled, analytics or advertising
+                <strong>Cookies</strong> - when enabled by connected third-party services such as
+                comments, analytics, or advertising
               </li>
             </ul>
 
@@ -66,21 +67,23 @@ export default function PrivacyPolicyPage() {
 
             <h2>4. Storage and Security</h2>
             <p>
-              Contact submissions and newsletter signups are stored in our database so they can be
-              reviewed and managed by the site administrator. We use reasonable measures to protect
-              this information, but no online system can guarantee absolute security.
+              theuaecareer.com is published as a static website. Contact messages and newsletter
+              requests may be sent through your own email app or through connected third-party form
+              providers, depending on how the site is configured at the time. We do not rely on a
+              public user account system for normal access to the site.
             </p>
             <p>
-              CV-builder content is not published publicly. It is used only to generate the
-              on-screen preview or export requested by the user.
+              CV-builder content is not published publicly. It stays in your browser during normal
+              use and is used only to generate the on-screen preview or export requested by the
+              user.
             </p>
 
             <h2>5. Cookies</h2>
             <p>We may use the following categories of cookies:</p>
             <ul>
               <li>
-                <strong>Essential cookies</strong> - required for features like admin
-                authentication
+                <strong>Essential cookies</strong> - required by hosting, security, or embedded
+                service providers
               </li>
               <li>
                 <strong>Analytics cookies</strong> - only if analytics is enabled on the site
@@ -115,7 +118,7 @@ export default function PrivacyPolicyPage() {
             <h2>7. Your Rights</h2>
             <p>You may contact us to:</p>
             <ul>
-              <li>Request deletion of your stored contact or newsletter data</li>
+              <li>Request deletion of personal data processed through our connected contact or newsletter services</li>
               <li>Unsubscribe from newsletter emails at any time</li>
               <li>Ask questions about how your information is being used</li>
             </ul>

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { SITE_URL } from '@/lib/constants';
 
 export const viewport: Viewport = {
   themeColor: '#6366f1',
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'theuaecareer.com' }],
   creator: 'theuaecareer.com',
   publisher: 'theuaecareer.com',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: 'website',
     locale: 'en_US',

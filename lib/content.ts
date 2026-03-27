@@ -2,7 +2,15 @@ import { Types, type SortOrder } from 'mongoose';
 import dbConnect, { isDatabaseConfigured } from '@/lib/mongodb';
 import Article from '@/lib/models/Article';
 import Job from '@/lib/models/Job';
+import { formatDisplayDate } from '@/lib/format';
+import { sanitizeArticleRecord, sanitizeJobRecord } from '@/lib/content-sanitizer';
 import { articles as launchArticles, jobs as launchJobs } from '@/lib/launch-content';
+import {
+  getSanityArticleByIdentifier,
+  getSanityArticles,
+  getSanityJobByIdentifier,
+  getSanityJobs,
+} from '@/sanity/lib/content';
 import type {
   ArticleQueryOptions,
   ArticleRecord,
@@ -27,12 +35,15 @@ const textReplacements: Array<[string, string]> = [
 ];
 
 const launchArticleRecords: ArticleRecord[] = launchArticles.map((article) =>
-  normalizeArticleRecord(article)
+  sanitizeArticleRecord(normalizeArticleRecord(article))
 );
 const launchJobRecords: JobRecord[] = launchJobs.map((job, index) =>
-  normalizeJobRecord(job, `launch-job-${index + 1}`)
+  sanitizeJobRecord(normalizeJobRecord(job, `launch-job-${index + 1}`))
 );
 let hasLoggedDatabaseFallback = false;
+const isRuntimeDatabaseFallbackEnabled = process.env.ENABLE_DATABASE_FALLBACK === 'true';
+
+export { formatDisplayDate };
 
 function normalizeText(value: unknown): string {
   if (typeof value !== 'string') {
@@ -75,22 +86,6 @@ export function ensureHtml(value: string): string {
     .map((chunk) => `<p>${escapeHtml(chunk)}</p>`);
 
   return paragraphs.join('');
-}
-
-export function formatDisplayDate(
-  value?: string | Date,
-  options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' }
-): string {
-  if (!value) {
-    return '';
-  }
-
-  const date = value instanceof Date ? value : new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return normalizeText(String(value));
-  }
-
-  return new Intl.DateTimeFormat('en-US', options).format(date);
 }
 
 function toIsoDate(value: unknown): string | undefined {
@@ -320,6 +315,10 @@ function matchesArticleSearch(article: ArticleRecord, search: string): boolean {
 }
 
 async function withDatabase<T>(callback: () => Promise<T>): Promise<T | null> {
+  if (!isRuntimeDatabaseFallbackEnabled) {
+    return null;
+  }
+
   if (!isDatabaseConfigured()) {
     return null;
   }
@@ -406,6 +405,11 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
     sort = walkIn ? 'walk-in' : 'recent',
   } = options;
 
+  const sanityResult = await getSanityJobs(options);
+  if (sanityResult && (sanityResult.result.pagination.total > 0 || sanityResult.collectionCount > 0)) {
+    return sanityResult.result;
+  }
+
   const dbResult = await withDatabase(async () => {
     await refreshExpiredJobs();
 
@@ -447,7 +451,7 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
     return {
       collectionCount,
       result: {
-        items: items.map((job) => normalizeJobRecord(job)),
+        items: items.map((job) => sanitizeJobRecord(normalizeJobRecord(job))),
         pagination: {
           page,
           limit,
@@ -491,17 +495,22 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
 }
 
 export async function getJobByIdentifier(identifier: string): Promise<JobRecord | null> {
+  const sanityJob = await getSanityJobByIdentifier(identifier);
+  if (sanityJob && sanityJob.collectionCount > 0) {
+    return sanityJob.item;
+  }
+
   const dbJob = await withDatabase(async () => {
     await refreshExpiredJobs();
 
     const bySlug = await Job.findOne({ slug: identifier }).lean();
     if (bySlug) {
-      return normalizeJobRecord(bySlug);
+      return sanitizeJobRecord(normalizeJobRecord(bySlug));
     }
     if (Types.ObjectId.isValid(identifier)) {
       const byId = await Job.findById(identifier).lean();
       if (byId) {
-        return normalizeJobRecord(byId);
+        return sanitizeJobRecord(normalizeJobRecord(byId));
       }
     }
 
@@ -525,6 +534,11 @@ export async function getArticles(
     search = '',
     status = 'published',
   } = options;
+
+  const sanityResult = await getSanityArticles(options);
+  if (sanityResult && (sanityResult.result.pagination.total > 0 || sanityResult.collectionCount > 0)) {
+    return sanityResult.result;
+  }
 
   const dbResult = await withDatabase(async () => {
     const query: Record<string, unknown> = { status };
@@ -551,7 +565,7 @@ export async function getArticles(
     return {
       collectionCount,
       result: {
-        items: items.map((article) => normalizeArticleRecord(article)),
+        items: items.map((article) => sanitizeArticleRecord(normalizeArticleRecord(article))),
         pagination: {
           page,
           limit,
@@ -585,15 +599,20 @@ export async function getArticles(
 }
 
 export async function getArticleByIdentifier(identifier: string): Promise<ArticleRecord | null> {
+  const sanityArticle = await getSanityArticleByIdentifier(identifier);
+  if (sanityArticle && sanityArticle.collectionCount > 0) {
+    return sanityArticle.item;
+  }
+
   const dbArticle = await withDatabase(async () => {
     const bySlug = await Article.findOne({ slug: identifier }).lean();
     if (bySlug) {
-      return normalizeArticleRecord(bySlug);
+      return sanitizeArticleRecord(normalizeArticleRecord(bySlug));
     }
     if (Types.ObjectId.isValid(identifier)) {
       const byId = await Article.findById(identifier).lean();
       if (byId) {
-        return normalizeArticleRecord(byId);
+        return sanitizeArticleRecord(normalizeArticleRecord(byId));
       }
     }
     return null;

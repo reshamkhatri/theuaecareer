@@ -3,6 +3,12 @@
 import { useState } from 'react';
 import { FiCheckCircle, FiMail } from 'react-icons/fi';
 
+const newsletterEndpoint = process.env.NEXT_PUBLIC_NEWSLETTER_FORM_ENDPOINT?.trim() || '';
+const newsletterEmail =
+  process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL?.trim() ||
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ||
+  'hello@theuaecareer.com';
+
 export default function NewsletterForm({
   source,
   buttonLabel = 'Subscribe',
@@ -29,22 +35,33 @@ export default function NewsletterForm({
     setMessage('');
 
     try {
-      const response = await fetch('/api/newsletter', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, source }),
-      });
+      if (newsletterEndpoint) {
+        const response = await fetch(newsletterEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({ email, source }),
+        });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to subscribe');
+        if (!response.ok) {
+          throw new Error('Failed to subscribe');
+        }
+      } else {
+        const subject = `Newsletter signup from ${source}`;
+        const body = `Please add this email to the newsletter list:\n\n${email}`;
+        window.location.href = `mailto:${encodeURIComponent(newsletterEmail)}?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(body)}`;
       }
 
       setStatus('success');
-      setMessage(data.message || 'You are subscribed.');
+      setMessage(
+        newsletterEndpoint
+          ? 'You are subscribed.'
+          : 'Your email app was opened so you can complete the signup request.'
+      );
       setEmail('');
     } catch (error) {
       setStatus('error');
@@ -95,6 +112,11 @@ export default function NewsletterForm({
         >
           {status === 'success' && <FiCheckCircle />}
           <span>{message}</span>
+        </div>
+      )}
+      {!newsletterEndpoint && (
+        <div style={{ color: 'var(--text-muted)', fontSize: '0.8125rem' }}>
+          This opens your email app so you can request newsletter signup directly at {newsletterEmail}.
         </div>
       )}
     </form>

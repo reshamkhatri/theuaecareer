@@ -49,6 +49,7 @@ export default function TermsPage() {
               <li>Use the site only for lawful purposes</li>
               <li>Not attempt to access restricted areas without authorization</li>
               <li>Not scrape or republish our original content without permission</li>
+              <li>Post respectful, lawful comments if a third-party comment system is enabled</li>
             </ul>
 
             <h2>5. Tools Disclaimer</h2>

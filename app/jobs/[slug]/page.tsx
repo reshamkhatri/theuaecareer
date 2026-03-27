@@ -10,9 +10,16 @@ import {
   FiTwitter,
 } from 'react-icons/fi';
 import CopyLinkButton from '@/components/CopyLinkButton';
-import { formatDisplayDate, getJobByIdentifier, getJobs, stripHtml } from '@/lib/content';
+import { SITE_URL } from '@/lib/constants';
+import { formatDisplayDate } from '@/lib/format';
+import {
+  getAllPublicJobs,
+  getJobByIdentifier,
+  getJobs,
+  stripHtml,
+} from '@/lib/content';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+export const revalidate = 300;
 
 export async function generateMetadata({
   params,
@@ -43,6 +50,13 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const jobs = await getAllPublicJobs();
+  return jobs.map((job) => ({
+    slug: job.slug,
+  }));
+}
+
 export default async function JobDetailPage({
   params,
 }: {
@@ -64,7 +78,7 @@ export default async function JobDetailPage({
     .filter((item) => item.slug !== job.slug)
     .slice(0, 2);
 
-  const shareUrl = new URL(`/jobs/${job.slug}`, siteUrl).toString();
+  const shareUrl = new URL(`/jobs/${job.slug}`, SITE_URL).toString();
   const isExpired =
     job.status === 'expired' || (job.expiryDate ? new Date(job.expiryDate) < new Date() : false);
 

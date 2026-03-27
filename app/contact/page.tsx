@@ -3,6 +3,9 @@
 import { useState } from 'react';
 import { FiCheckCircle, FiMail, FiMessageSquare, FiSend, FiUser } from 'react-icons/fi';
 
+const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT?.trim() || '';
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'hello@theuaecareer.com';
+
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -14,15 +17,30 @@ export default function ContactPage() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
+      if (contactEndpoint) {
+        const response = await fetch(contactEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(form),
+        });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        if (!response.ok) {
+          throw new Error('Failed to send message');
+        }
+      } else {
+        const body = [
+          `Name: ${form.name}`,
+          `Email: ${form.email}`,
+          '',
+          form.message,
+        ].join('\n');
+
+        window.location.href = `mailto:${encodeURIComponent(contactEmail)}?subject=${encodeURIComponent(
+          form.subject || 'Contact from theuaecareer.com'
+        )}&body=${encodeURIComponent(body)}`;
       }
 
       setStatus('success');
@@ -129,6 +147,11 @@ export default function ContactPage() {
                 <button type="submit" className="btn btn-primary btn-lg" disabled={status === 'loading'}>
                   <FiSend /> {status === 'loading' ? 'Sending...' : 'Send Message'}
                 </button>
+                {!contactEndpoint && (
+                  <p style={{ marginTop: '12px', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
+                    This form opens your email app so your message is sent directly to {contactEmail}.
+                  </p>
+                )}
               </form>
             </div>
           )}

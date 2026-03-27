@@ -1,0 +1,333 @@
+'use client';
+
+import { Suspense } from 'react';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { FiBriefcase, FiClock, FiFilter, FiMapPin, FiSearch } from 'react-icons/fi';
+import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
+import { formatDisplayDate } from '@/lib/format';
+import type { JobRecord } from '@/lib/types';
+
+const PAGE_SIZE = 20;
+
+function buildJobsHref(
+  current: Record<string, string>,
+  overrides: Record<string, string | number | undefined>
+): string {
+  const params = new URLSearchParams();
+
+  Object.entries({ ...current, ...overrides }).forEach(([key, value]) => {
+    if (value !== undefined && String(value).trim()) {
+      params.set(key, String(value));
+    }
+  });
+
+  const query = params.toString();
+  return query ? `/jobs?${query}` : '/jobs';
+}
+
+function matchesSearch(job: JobRecord, search: string): boolean {
+  const haystack = [
+    job.title,
+    job.companyName,
+    job.description,
+    job.location.city,
+    job.location.country,
+    job.categoryLabel || job.category,
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  return haystack.includes(search.toLowerCase());
+}
+
+export default function JobsListingClient({
+  initialJobs,
+}: {
+  initialJobs: JobRecord[];
+}) {
+  return (
+    <Suspense
+      fallback={
+        <JobsListingView
+          initialJobs={initialJobs}
+          currentSearch=""
+          currentCountry=""
+          currentCategory=""
+          currentJobType=""
+          requestedPage={1}
+        />
+      }
+    >
+      <JobsListingSearchParams initialJobs={initialJobs} />
+    </Suspense>
+  );
+}
+
+function JobsListingSearchParams({
+  initialJobs,
+}: {
+  initialJobs: JobRecord[];
+}) {
+  const searchParams = useSearchParams();
+  const currentSearch = searchParams.get('search')?.trim() || '';
+  const currentCountry = searchParams.get('country')?.trim() || '';
+  const currentCategory = searchParams.get('category')?.trim() || '';
+  const currentJobType =
+    searchParams.get('jobType')?.trim() || searchParams.get('type')?.trim() || '';
+  const requestedPage = Number(searchParams.get('page') || '1') || 1;
+
+  return (
+    <JobsListingView
+      initialJobs={initialJobs}
+      currentSearch={currentSearch}
+      currentCountry={currentCountry}
+      currentCategory={currentCategory}
+      currentJobType={currentJobType}
+      requestedPage={requestedPage}
+    />
+  );
+}
+
+function JobsListingView({
+  initialJobs,
+  currentSearch,
+  currentCountry,
+  currentCategory,
+  currentJobType,
+  requestedPage,
+}: {
+  initialJobs: JobRecord[];
+  currentSearch: string;
+  currentCountry: string;
+  currentCategory: string;
+  currentJobType: string;
+  requestedPage: number;
+}) {
+  const filteredJobs = initialJobs.filter((job) => {
+    if (currentCountry && job.location.country !== currentCountry) {
+      return false;
+    }
+    if (currentCategory && job.category !== currentCategory) {
+      return false;
+    }
+    if (currentJobType && job.jobType !== currentJobType) {
+      return false;
+    }
+    if (currentSearch && !matchesSearch(job, currentSearch)) {
+      return false;
+    }
+
+    return true;
+  });
+
+  const totalPages = Math.max(1, Math.ceil(filteredJobs.length / PAGE_SIZE));
+  const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
+  const paginatedJobs = filteredJobs.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
+  const currentFilters = {
+    search: currentSearch,
+    country: currentCountry,
+    category: currentCategory,
+    jobType: currentJobType,
+  };
+
+  return (
+    <>
+      <section className="section" style={{ paddingBottom: '1rem' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: 'var(--space-xl)' }}>
+            <h1>
+              Find <span style={{ color: 'var(--accent)' }}>Jobs</span>
+            </h1>
+            <p style={{ fontSize: '1.125rem', marginTop: 'var(--space-sm)' }}>
+              Browse verified job listings across the Gulf region.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: '1rem' }}>
+        <div className="container blog-layout">
+          <div className="blog-main">
+            <div className="card" style={{ marginBottom: 'var(--space-xl)', padding: 'var(--space-lg)' }}>
+              <form action="/jobs" method="get" style={{ display: 'grid', gap: 'var(--space-md)' }}>
+                <div style={{ display: 'flex', gap: 'var(--space-sm)', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <div
+                    style={{
+                      flex: 1,
+                      minWidth: '260px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      background: 'var(--bg-alt)',
+                      borderRadius: 'var(--radius-md)',
+                      padding: '0 16px',
+                    }}
+                  >
+                    <FiSearch style={{ color: 'var(--text-muted)' }} />
+                    <input
+                      type="text"
+                      name="search"
+                      defaultValue={currentSearch}
+                      placeholder="Job title, keywords, or company"
+                      style={{
+                        width: '100%',
+                        border: 'none',
+                        background: 'transparent',
+                        padding: '12px',
+                        fontSize: '1rem',
+                        outline: 'none',
+                      }}
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary" style={{ padding: '12px 24px' }}>
+                    <FiFilter /> Apply Filters
+                  </button>
+                  <Link href="/jobs" className="btn btn-secondary" style={{ padding: '12px 16px' }}>
+                    Reset
+                  </Link>
+                </div>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                    gap: 'var(--space-md)',
+                  }}
+                >
+                  <select name="country" defaultValue={currentCountry} className="form-select">
+                    <option value="">All Countries</option>
+                    {COUNTRIES.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                  <select name="category" defaultValue={currentCategory} className="form-select">
+                    <option value="">All Categories</option>
+                    {JOB_CATEGORIES.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                  <select name="jobType" defaultValue={currentJobType} className="form-select">
+                    <option value="">All Types</option>
+                    {JOB_TYPES.map((jobType) => (
+                      <option key={jobType} value={jobType}>
+                        {jobType}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </form>
+            </div>
+
+            {paginatedJobs.length === 0 ? (
+              <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
+                <p>No jobs found matching your criteria.</p>
+                <Link href="/jobs" className="btn btn-primary mt-md">
+                  Clear Filters
+                </Link>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+                <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '-8px' }}>
+                  Showing {paginatedJobs.length} of {filteredJobs.length} jobs
+                </div>
+
+                {paginatedJobs.map((job) => (
+                  <div key={job._id}>
+                    <div className={`job-card ${job.isWalkIn ? 'job-card-walkin' : ''}`}>
+                      <div className="job-card-header">
+                        <div>
+                          <h3 className="job-card-title">
+                            <Link href={`/jobs/${job.slug}`}>{job.title}</Link>
+                          </h3>
+                          <div className="job-card-company">{job.companyName}</div>
+                        </div>
+                        {job.isWalkIn && <span className="badge badge-walkin">Walk-in</span>}
+                      </div>
+
+                      <div className="job-card-meta">
+                        <div className="job-card-meta-item">
+                          <FiMapPin /> {job.location.city}, {job.location.country}
+                        </div>
+                        <div className="job-card-meta-item">
+                          <FiBriefcase /> {job.jobType}
+                        </div>
+                        <div className="job-card-meta-item">
+                          <FiClock /> {job.experienceRequired}
+                        </div>
+                      </div>
+
+                      <div className="job-card-footer">
+                        <div className="job-card-date">Posted {formatDisplayDate(job.postedDate)}</div>
+                        <Link href={`/jobs/${job.slug}`} className="btn btn-sm btn-primary">
+                          View Details
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {totalPages > 1 && (
+                  <div
+                    className="card"
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      flexWrap: 'wrap',
+                      gap: 'var(--space-md)',
+                    }}
+                  >
+                    <Link
+                      href={buildJobsHref(currentFilters, { page: currentPage > 1 ? currentPage - 1 : undefined })}
+                      className="btn btn-secondary"
+                      aria-disabled={currentPage <= 1}
+                      style={{ pointerEvents: currentPage <= 1 ? 'none' : 'auto', opacity: currentPage <= 1 ? 0.5 : 1 }}
+                    >
+                      Previous
+                    </Link>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
+                      Page {currentPage} of {totalPages}
+                    </span>
+                    <Link
+                      href={buildJobsHref(currentFilters, {
+                        page: currentPage < totalPages ? currentPage + 1 : undefined,
+                      })}
+                      className="btn btn-secondary"
+                      aria-disabled={currentPage >= totalPages}
+                      style={{
+                        pointerEvents: currentPage >= totalPages ? 'none' : 'auto',
+                        opacity: currentPage >= totalPages ? 0.5 : 1,
+                      }}
+                    >
+                      Next
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          <aside className="blog-sidebar">
+            <div className="card">
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Browse by Country</h3>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {COUNTRIES.map((country) => (
+                  <li key={country}>
+                    <Link href={buildJobsHref(currentFilters, { country, page: 1 })} style={{ color: 'var(--text-secondary)' }}>
+                      Jobs in {country}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}

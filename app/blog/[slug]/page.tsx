@@ -12,14 +12,15 @@ import ArticleCover from '@/components/ArticleCover';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import DisqusThread from '@/components/DisqusThread';
 import NewsletterForm from '@/components/NewsletterForm';
-import { ARTICLE_CATEGORIES } from '@/lib/constants';
+import { ARTICLE_CATEGORIES, SITE_URL } from '@/lib/constants';
+import { formatDisplayDate } from '@/lib/format';
 import {
-  formatDisplayDate,
+  getAllPublicArticles,
   getArticleByIdentifier,
   getRelatedArticles,
 } from '@/lib/content';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+export const revalidate = 300;
 
 function splitArticleHtml(html: string): { firstHalf: string; secondHalf: string } {
   const splitIndex = Math.floor(html.length / 2);
@@ -64,6 +65,13 @@ export async function generateMetadata({
   };
 }
 
+export async function generateStaticParams() {
+  const articles = await getAllPublicArticles();
+  return articles.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
 export default async function ArticlePage({
   params,
 }: {
@@ -77,7 +85,7 @@ export default async function ArticlePage({
   }
 
   const relatedArticles = await getRelatedArticles(article, 2);
-  const shareUrl = new URL(`/blog/${article.slug}`, siteUrl).toString();
+  const shareUrl = new URL(`/blog/${article.slug}`, SITE_URL).toString();
   const { firstHalf, secondHalf } = splitArticleHtml(article.content);
   const hasDisqus = Boolean(process.env.NEXT_PUBLIC_DISQUS_SHORTNAME);
 
@@ -195,12 +203,17 @@ export default async function ArticlePage({
               </>
             )}
 
-            {hasDisqus && (
-              <div className="card mt-2xl" id="comments">
-                <h3 style={{ marginBottom: 'var(--space-md)' }}>Comments</h3>
+            <div className="card mt-2xl" id="comments">
+              <h3 style={{ marginBottom: 'var(--space-md)' }}>Comments</h3>
+              {hasDisqus ? (
                 <DisqusThread identifier={article.slug} title={article.title} url={shareUrl} />
-              </div>
-            )}
+              ) : (
+                <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
+                  Reader comments can appear here once the site connects its Disqus shortname. In
+                  the meantime, you can share feedback through <Link href="/contact">the contact page</Link>.
+                </p>
+              )}
+            </div>
           </main>
 
           <aside className="blog-sidebar">

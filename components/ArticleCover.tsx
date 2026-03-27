@@ -7,7 +7,7 @@ import {
   FiMapPin,
   FiShield,
 } from 'react-icons/fi';
-import { formatDisplayDate } from '@/lib/content';
+import { formatDisplayDate } from '@/lib/format';
 import type { ArticleRecord } from '@/lib/types';
 
 type ArticleCoverVariant = 'card' | 'feature' | 'hero' | 'compact';
