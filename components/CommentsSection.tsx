@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { CommentRecord } from '@/lib/types';
 
 interface CommentApiResponse {
   comments?: CommentRecord[];
   message?: string;
+  comment?: CommentRecord;
 }
 
 const dateFormatter = new Intl.DateTimeFormat('en', {
@@ -32,45 +33,45 @@ export default function CommentsSection({
   const [feedback, setFeedback] = useState('');
   const endpoint = useMemo(() => `/api/comments?slug=${encodeURIComponent(articleSlug)}`, [articleSlug]);
 
+  const loadComments = useCallback(async (signal?: AbortSignal) => {
+    setLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+        cache: 'no-store',
+        signal,
+      });
+
+      if (!response.ok) {
+        throw new Error('Comments are temporarily unavailable.');
+      }
+
+      const data = (await response.json()) as CommentApiResponse;
+      setComments(Array.isArray(data.comments) ? data.comments : []);
+    } catch (fetchError) {
+      if (signal?.aborted) {
+        return;
+      }
+
+      setError(fetchError instanceof Error ? fetchError.message : 'Comments are temporarily unavailable.');
+    } finally {
+      if (!signal?.aborted) {
+        setLoading(false);
+      }
+    }
+  }, [endpoint]);
+
   useEffect(() => {
     const controller = new AbortController();
-
-    const loadComments = async () => {
-      setLoading(true);
-      setError('');
-
-      try {
-        const response = await fetch(endpoint, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-          },
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error('Comments are temporarily unavailable.');
-        }
-
-        const data = (await response.json()) as CommentApiResponse;
-        setComments(Array.isArray(data.comments) ? data.comments : []);
-      } catch (fetchError) {
-        if (controller.signal.aborted) {
-          return;
-        }
-
-        setError(fetchError instanceof Error ? fetchError.message : 'Comments are temporarily unavailable.');
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    void loadComments();
+    void loadComments(controller.signal);
 
     return () => controller.abort();
-  }, [endpoint]);
+  }, [loadComments]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -106,6 +107,12 @@ export default function CommentsSection({
         data.message || 'Thanks. Your comment was submitted and will appear after moderation.'
       );
       setForm({ name: '', email: '', message: '', website: '' });
+
+      if (data.comment) {
+        setComments((current) => [...current, data.comment as CommentRecord]);
+      } else {
+        await loadComments();
+      }
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : 'Failed to submit your comment.');
     } finally {
@@ -117,7 +124,7 @@ export default function CommentsSection({
     <div className="card mt-2xl" id="comments">
       <h3 style={{ marginBottom: 'var(--space-sm)' }}>Comments</h3>
       <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-lg)' }}>
-        Join the discussion without creating an account. Comments are reviewed before they go live.
+        Join the discussion without creating an account. Share your thoughts with just your name and comment.
       </p>
 
       <form
@@ -226,7 +233,7 @@ export default function CommentsSection({
           <p style={{ color: 'var(--text-secondary)', margin: 0 }}>Loading comments...</p>
         ) : comments.length === 0 ? (
           <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-            No approved comments yet. Be the first to add one.
+            No comments yet. Be the first to add one.
           </p>
         ) : (
           comments.map((comment) => (

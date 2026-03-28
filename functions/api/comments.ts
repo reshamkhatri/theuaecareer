@@ -158,7 +158,7 @@ export async function onRequestGet(context: { request: Request; env: Env }) {
       {
         headers: {
           ...jsonHeaders,
-          'Cache-Control': 'public, max-age=60, s-maxage=300',
+          'Cache-Control': 'no-store',
         },
       }
     );
@@ -202,6 +202,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
     }
 
     const status = context.env.COMMENTS_AUTO_APPROVE === 'true' ? 'approved' : 'pending';
+    const submittedAt = new Date().toISOString();
 
     await createComment(context.env, {
       _type: 'comment',
@@ -211,7 +212,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       authorName,
       message,
       status,
-      submittedAt: new Date().toISOString(),
+      submittedAt,
       ...(sourceUrl ? { sourceUrl } : {}),
     });
 
@@ -221,6 +222,18 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
           status === 'approved'
             ? 'Thanks. Your comment is live now.'
             : 'Thanks. Your comment was submitted and will appear after moderation.',
+        comment:
+          status === 'approved'
+            ? {
+                _id: `temp-${articleSlug}-${Date.now()}`,
+                articleSlug,
+                articleTitle,
+                authorName,
+                message,
+                submittedAt,
+                status,
+              }
+            : undefined,
       },
       { status: 201 }
     );
