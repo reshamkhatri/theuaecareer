@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import Image from 'next/image';
 import type { IconType } from 'react-icons';
 import {
   FiBookOpen,
@@ -91,27 +92,42 @@ export default function ArticleCover({
 }) {
   const theme = getArticleTheme(article.category);
   const Icon = theme.icon;
-  const hasImage = Boolean(article.featuredImage);
+  const featuredImage = article.featuredImage;
+  const hasImage = Boolean(featuredImage);
   const coverStyle = {
     '--article-cover-accent': theme.accent,
     '--article-cover-secondary': theme.secondary,
     '--article-cover-deep': theme.deep,
     '--article-cover-soft': theme.soft,
-    ...(hasImage
-      ? {
-          backgroundImage: `linear-gradient(135deg, rgba(15,23,42,0.42), rgba(15,23,42,0.62)), url(${article.featuredImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }
-      : {}),
     ...style,
   } as CSSProperties;
+  const imageLoading = variant === 'hero' ? 'eager' : 'lazy';
 
   return (
     <div
       className={`article-cover article-cover-${variant} ${hasImage ? 'article-cover-image' : 'article-cover-fallback'} ${className}`.trim()}
       style={coverStyle}
     >
+      {hasImage && (
+        <>
+          <Image
+            src={featuredImage || ''}
+            alt={article.title}
+            fill
+            className="article-cover-media"
+            loading={imageLoading}
+            priority={variant === 'hero'}
+            sizes={
+              variant === 'hero'
+                ? '(max-width: 768px) 100vw, 800px'
+                : variant === 'feature'
+                  ? '(max-width: 900px) 100vw, 50vw'
+                  : '(max-width: 768px) 100vw, 360px'
+            }
+          />
+          <div className="article-cover-image-overlay" />
+        </>
+      )}
       <div className="article-cover-glow article-cover-glow-a" />
       <div className="article-cover-glow article-cover-glow-b" />
       <div className="article-cover-grid" />

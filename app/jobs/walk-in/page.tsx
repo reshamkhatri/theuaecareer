@@ -1,9 +1,25 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FiBriefcase, FiCheckCircle, FiMapPin } from 'react-icons/fi';
 import { formatDisplayDate } from '@/lib/format';
 import { getJobs } from '@/lib/content';
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',
+  description:
+    'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE. Get direct hiring event details and quick-apply guidance.',
+  alternates: {
+    canonical: '/jobs/walk-in',
+  },
+  openGraph: {
+    title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',
+    description:
+      'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE.',
+    url: '/jobs/walk-in',
+  },
+};
 
 function renderWalkInSchedule(summary?: string, date?: string, time?: string): string {
   if (summary) {

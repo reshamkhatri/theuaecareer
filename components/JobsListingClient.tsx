@@ -4,11 +4,13 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { FiBriefcase, FiClock, FiFilter, FiMapPin, FiSearch } from 'react-icons/fi';
+import AdSlot from '@/components/AdSlot';
 import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import type { JobRecord } from '@/lib/types';
 
 const PAGE_SIZE = 20;
+const jobListAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_LIST_SLOT?.trim();
 
 function buildJobsHref(
   current: Record<string, string>,
@@ -236,39 +238,8 @@ function JobsListingView({
                   Showing {paginatedJobs.length} of {filteredJobs.length} jobs
                 </div>
 
-                {paginatedJobs.map((job) => (
-                  <div key={job._id}>
-                    <div className={`job-card ${job.isWalkIn ? 'job-card-walkin' : ''}`}>
-                      <div className="job-card-header">
-                        <div>
-                          <h3 className="job-card-title">
-                            <Link href={`/jobs/${job.slug}`}>{job.title}</Link>
-                          </h3>
-                          <div className="job-card-company">{job.companyName}</div>
-                        </div>
-                        {job.isWalkIn && <span className="badge badge-walkin">Walk-in</span>}
-                      </div>
-
-                      <div className="job-card-meta">
-                        <div className="job-card-meta-item">
-                          <FiMapPin /> {job.location.city}, {job.location.country}
-                        </div>
-                        <div className="job-card-meta-item">
-                          <FiBriefcase /> {job.jobType}
-                        </div>
-                        <div className="job-card-meta-item">
-                          <FiClock /> {job.experienceRequired}
-                        </div>
-                      </div>
-
-                      <div className="job-card-footer">
-                        <div className="job-card-date">Posted {formatDisplayDate(job.postedDate)}</div>
-                        <Link href={`/jobs/${job.slug}`} className="btn btn-sm btn-primary">
-                          View Details
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+                {paginatedJobs.map((job, index) => (
+                  <JobListItem key={job._id} job={job} index={index} />
                 ))}
 
                 {totalPages > 1 && (
@@ -328,6 +299,59 @@ function JobsListingView({
           </aside>
         </div>
       </section>
+    </>
+  );
+}
+
+function JobListItem({
+  job,
+  index,
+}: {
+  job: JobRecord;
+  index: number;
+}) {
+  const shouldRenderAd = Boolean(jobListAdSlot && (index + 1) % 8 === 0);
+
+  return (
+    <>
+      <div>
+        <div className={`job-card ${job.isWalkIn ? 'job-card-walkin' : ''}`}>
+          <div className="job-card-header">
+            <div>
+              <h3 className="job-card-title">
+                <Link href={`/jobs/${job.slug}`}>{job.title}</Link>
+              </h3>
+              <div className="job-card-company">{job.companyName}</div>
+            </div>
+            {job.isWalkIn && <span className="badge badge-walkin">Walk-in</span>}
+          </div>
+
+          <div className="job-card-meta">
+            <div className="job-card-meta-item">
+              <FiMapPin /> {job.location.city}, {job.location.country}
+            </div>
+            <div className="job-card-meta-item">
+              <FiBriefcase /> {job.jobType}
+            </div>
+            <div className="job-card-meta-item">
+              <FiClock /> {job.experienceRequired}
+            </div>
+          </div>
+
+          <div className="job-card-footer">
+            <div className="job-card-date">Posted {formatDisplayDate(job.postedDate)}</div>
+            <Link href={`/jobs/${job.slug}`} className="btn btn-sm btn-primary">
+              View Details
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {shouldRenderAd && (
+        <div className="card" style={{ padding: 'var(--space-lg)' }}>
+          <AdSlot slot={jobListAdSlot} minHeight={250} />
+        </div>
+      )}
     </>
   );
 }

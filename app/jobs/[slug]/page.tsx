@@ -9,6 +9,7 @@ import {
   FiMapPin,
   FiTwitter,
 } from 'react-icons/fi';
+import AdSlot from '@/components/AdSlot';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import { SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
@@ -20,6 +21,8 @@ import {
 } from '@/lib/content';
 
 export const revalidate = 300;
+const jobInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_INLINE_SLOT?.trim();
+const jobSidebarAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_SIDEBAR_SLOT?.trim();
 
 export async function generateMetadata({
   params,
@@ -35,6 +38,8 @@ export async function generateMetadata({
     };
   }
 
+  const ogImage = `${SITE_URL}/og-default.png`;
+
   return {
     title: job.metaTitle || `${job.title} in ${job.location.city} | theuaecareer.com`,
     description: job.metaDescription || stripHtml(job.description).slice(0, 160),
@@ -46,6 +51,20 @@ export async function generateMetadata({
       description: job.metaDescription || stripHtml(job.description).slice(0, 160),
       url: `/jobs/${job.slug}`,
       type: 'article',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${job.title} at ${job.companyName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: job.metaTitle || job.title,
+      description: job.metaDescription || stripHtml(job.description).slice(0, 160),
+      images: [ogImage],
     },
   };
 }
@@ -117,10 +136,38 @@ export default async function JobDetailPage({
         }
       : {}),
   };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Jobs',
+        item: `${SITE_URL}/jobs`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: job.title,
+        item: shareUrl,
+      },
+    ],
+  };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       <section className="section" style={{ paddingTop: 'var(--space-xl)' }}>
         <div className="container blog-layout">
@@ -128,7 +175,7 @@ export default async function JobDetailPage({
             <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: 'var(--space-lg)' }}>
               <Link href="/">Home</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
               <Link href="/jobs">Jobs</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
-              {job.location.city}
+              {job.title}
             </div>
 
             <div className="card job-detail-card" style={{ padding: 'var(--space-2xl)', position: 'relative' }}>
@@ -278,6 +325,8 @@ export default async function JobDetailPage({
                 style={{ marginBottom: 'var(--space-2xl)' }}
               />
 
+              <AdSlot slot={jobInlineAdSlot} minHeight={280} className="mb-xl" />
+
               <div id="how-to-apply" style={{ marginTop: 'var(--space-2xl)' }}>
                 <h2 style={{ fontSize: '1.75rem', marginBottom: 'var(--space-md)' }}>How to Apply</h2>
                 {!isExpired ? (
@@ -363,6 +412,10 @@ export default async function JobDetailPage({
               <Link href="/tools/cv-maker" className="btn btn-secondary btn-full">
                 Create CV Now
               </Link>
+            </div>
+
+            <div className="card">
+              <AdSlot slot={jobSidebarAdSlot} minHeight={320} />
             </div>
           </aside>
         </div>

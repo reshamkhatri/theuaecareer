@@ -30,6 +30,9 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <div className="container navbar-inner">
         <Link href="/" className="navbar-logo">
           the<span>uae</span>career

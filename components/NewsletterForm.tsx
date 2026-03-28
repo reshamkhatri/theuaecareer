@@ -85,6 +85,7 @@ export default function NewsletterForm({
         <FiMail style={{ color: 'var(--text-muted)' }} />
         <input
           type="email"
+          aria-label="Email address"
           placeholder="Enter your email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}

@@ -55,6 +55,17 @@ export interface ArticleRecord {
   metaDescription?: string;
 }
 
+export interface CommentRecord {
+  _id: string;
+  articleSlug: string;
+  articleTitle?: string;
+  authorName: string;
+  authorEmail?: string;
+  message: string;
+  submittedAt: string;
+  status: 'pending' | 'approved' | 'rejected';
+}
+
 export interface PaginationMeta {
   page: number;
   limit: number;

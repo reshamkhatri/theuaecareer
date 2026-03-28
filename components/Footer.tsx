@@ -140,6 +140,11 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
+                    <Link href="/disclaimer" className="footer-link-new">
+                      Disclaimer
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="/sitemap.xml" className="footer-link-new">
                       Sitemap
                     </Link>

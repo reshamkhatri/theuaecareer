@@ -8,9 +8,10 @@ import {
   FiFacebook,
   FiTwitter,
 } from 'react-icons/fi';
+import AdSlot from '@/components/AdSlot';
 import ArticleCover from '@/components/ArticleCover';
+import CommentsSection from '@/components/CommentsSection';
 import CopyLinkButton from '@/components/CopyLinkButton';
-import DisqusThread from '@/components/DisqusThread';
 import NewsletterForm from '@/components/NewsletterForm';
 import { ARTICLE_CATEGORIES, SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
@@ -21,6 +22,8 @@ import {
 } from '@/lib/content';
 
 export const revalidate = 300;
+const articleInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_INLINE_SLOT?.trim();
+const articleSidebarAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_SIDEBAR_SLOT?.trim();
 
 function splitArticleHtml(html: string): { firstHalf: string; secondHalf: string } {
   const splitIndex = Math.floor(html.length / 2);
@@ -50,6 +53,8 @@ export async function generateMetadata({
     };
   }
 
+  const ogImage = article.featuredImage || `${SITE_URL}/og-default.png`;
+
   return {
     title: article.metaTitle || `${article.title} | theuaecareer.com`,
     description: article.metaDescription || article.excerpt,
@@ -61,6 +66,23 @@ export async function generateMetadata({
       description: article.metaDescription || article.excerpt,
       url: `/blog/${article.slug}`,
       type: 'article',
+      publishedTime: article.publishDate,
+      modifiedTime: article.lastUpdatedDate || article.publishDate,
+      authors: [article.author],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.metaTitle || article.title,
+      description: article.metaDescription || article.excerpt,
+      images: [ogImage],
     },
   };
 }
@@ -87,17 +109,74 @@ export default async function ArticlePage({
   const relatedArticles = await getRelatedArticles(article, 2);
   const shareUrl = new URL(`/blog/${article.slug}`, SITE_URL).toString();
   const { firstHalf, secondHalf } = splitArticleHtml(article.content);
-  const hasDisqus = Boolean(process.env.NEXT_PUBLIC_DISQUS_SHORTNAME);
+  const articleImage = article.featuredImage || `${SITE_URL}/og-default.png`;
+  const blogPostingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.metaDescription || article.excerpt,
+    image: [articleImage],
+    author: {
+      '@type': 'Person',
+      name: article.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'theuaecareer.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/icon-512x512.png`,
+      },
+    },
+    datePublished: article.publishDate,
+    dateModified: article.lastUpdatedDate || article.publishDate,
+    mainEntityOfPage: shareUrl,
+    articleSection: article.category,
+    keywords: article.tags,
+    url: shareUrl,
+  };
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${SITE_URL}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: article.title,
+        item: shareUrl,
+      },
+    ],
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section className="section" style={{ paddingTop: 'var(--space-xl)' }}>
         <div className="container blog-layout">
           <main className="blog-main">
             <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: 'var(--space-lg)' }}>
               <Link href="/">Home</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
               <Link href="/blog">Blog</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
-              {article.category}
+              {article.title}
             </div>
 
             <article className="card article-detail-card" style={{ padding: 'var(--space-2xl)' }}>
@@ -135,6 +214,7 @@ export default async function ArticlePage({
 
               <div className="prose">
                 <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
+                {secondHalf && <AdSlot slot={articleInlineAdSlot} className="mt-xl" minHeight={280} />}
                 {secondHalf && <div dangerouslySetInnerHTML={{ __html: secondHalf }} />}
               </div>
 
@@ -203,20 +283,13 @@ export default async function ArticlePage({
               </>
             )}
 
-            <div className="card mt-2xl" id="comments">
-              <h3 style={{ marginBottom: 'var(--space-md)' }}>Comments</h3>
-              {hasDisqus ? (
-                <DisqusThread identifier={article.slug} title={article.title} url={shareUrl} />
-              ) : (
-                <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-                  Reader comments can appear here once the site connects its Disqus shortname. In
-                  the meantime, you can share feedback through <Link href="/contact">the contact page</Link>.
-                </p>
-              )}
-            </div>
+            <CommentsSection articleSlug={article.slug} articleTitle={article.title} />
           </main>
 
           <aside className="blog-sidebar">
+            <div className="card">
+              <AdSlot slot={articleSidebarAdSlot} minHeight={320} />
+            </div>
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-lg)' }}>Popular Categories</h3>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

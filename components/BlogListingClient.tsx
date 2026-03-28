@@ -4,10 +4,13 @@ import { Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { FiArrowRight, FiClock, FiSearch } from 'react-icons/fi';
+import AdSlot from '@/components/AdSlot';
 import ArticleCover from '@/components/ArticleCover';
 import { ARTICLE_CATEGORIES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import type { ArticleRecord } from '@/lib/types';
+
+const blogListAdSlot = process.env.NEXT_PUBLIC_ADSENSE_BLOG_LIST_SLOT?.trim();
 
 function buildBlogHref(
   current: Record<string, string>,
@@ -215,91 +218,145 @@ function BlogListingView({
                 const isFeatured = index === 0;
 
                 return (
-                  <div
+                  <FragmentWithAd
                     key={article._id}
-                    className={`article-card ${isFeatured ? 'blog-featured-card' : ''}`}
-                    style={{
-                      gridColumn: isFeatured ? '1 / span 2' : 'auto',
-                      display: 'flex',
-                      flexDirection: isFeatured ? 'row' : 'column',
-                      minHeight: isFeatured ? '360px' : 'auto',
-                    }}
-                  >
-                    <ArticleCover
-                      article={article}
-                      variant={isFeatured ? 'feature' : 'card'}
-                      className={isFeatured ? 'blog-featured-media' : ''}
-                      style={{
-                        width: isFeatured ? '50%' : '100%',
-                        height: isFeatured ? '100%' : '220px',
-                        flexShrink: 0,
-                      }}
-                    />
-
-                    <div className="article-card-body" style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 'var(--space-xl)' }}>
-                      {!isFeatured && (
-                        <span style={{ fontSize: '0.75rem', color: 'var(--accent)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
-                          {article.category}
-                        </span>
-                      )}
-
-                      {isFeatured && (
-                        <div
-                          style={{
-                            fontSize: '0.75rem',
-                            color: 'var(--text-muted)',
-                            fontWeight: 700,
-                            textTransform: 'uppercase',
-                            marginBottom: '8px',
-                            display: 'flex',
-                            gap: '8px',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <span style={{ color: 'var(--accent)' }}>Updated</span> {formatDisplayDate(article.publishDate)}
-                        </div>
-                      )}
-
-                      <h3 style={{ fontSize: isFeatured ? '2rem' : '1.25rem', marginBottom: 'var(--space-md)', lineHeight: 1.3, flex: 1 }}>
-                        <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text)' }}>
-                          {article.title}
-                        </Link>
-                      </h3>
-
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          borderTop: isFeatured ? 'none' : '1px solid var(--border-light)',
-                          paddingTop: isFeatured ? '0' : '16px',
-                          marginTop: 'auto',
-                        }}
-                      >
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                          <FiClock /> {article.readTime} min read
-                        </span>
-
-                        {!isFeatured && (
-                          <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-                            {formatDisplayDate(article.publishDate)}
-                          </div>
-                        )}
-
-                        {isFeatured && (
-                          <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text)', fontSize: '1.25rem' }}>
-                            <FiArrowRight />
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                    article={article}
+                    index={index}
+                    isFeatured={isFeatured}
+                  />
                 );
               })}
             </div>
           )}
         </div>
       </section>
+    </>
+  );
+}
+
+function FragmentWithAd({
+  article,
+  index,
+  isFeatured,
+}: {
+  article: ArticleRecord;
+  index: number;
+  isFeatured: boolean;
+}) {
+  const shouldRenderAd = Boolean(blogListAdSlot && (index + 1) % 6 === 0);
+
+  return (
+    <>
+      <div
+        className={`article-card ${isFeatured ? 'blog-featured-card' : ''}`}
+        style={{
+          gridColumn: isFeatured ? '1 / span 2' : 'auto',
+          display: 'flex',
+          flexDirection: isFeatured ? 'row' : 'column',
+          minHeight: isFeatured ? '360px' : 'auto',
+        }}
+      >
+        <ArticleCover
+          article={article}
+          variant={isFeatured ? 'feature' : 'card'}
+          className={isFeatured ? 'blog-featured-media' : ''}
+          style={{
+            width: isFeatured ? '50%' : '100%',
+            height: isFeatured ? '100%' : '220px',
+            flexShrink: 0,
+          }}
+        />
+
+        <div
+          className="article-card-body"
+          style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 'var(--space-xl)' }}
+        >
+          {!isFeatured && (
+            <span
+              style={{
+                fontSize: '0.75rem',
+                color: 'var(--accent)',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                marginBottom: '8px',
+              }}
+            >
+              {article.category}
+            </span>
+          )}
+
+          {isFeatured && (
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: 'var(--text-muted)',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                marginBottom: '8px',
+                display: 'flex',
+                gap: '8px',
+                alignItems: 'center',
+              }}
+            >
+              <span style={{ color: 'var(--accent)' }}>Updated</span> {formatDisplayDate(article.publishDate)}
+            </div>
+          )}
+
+          <h3
+            style={{
+              fontSize: isFeatured ? '2rem' : '1.25rem',
+              marginBottom: 'var(--space-md)',
+              lineHeight: 1.3,
+              flex: 1,
+            }}
+          >
+            <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text)' }}>
+              {article.title}
+            </Link>
+          </h3>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              borderTop: isFeatured ? 'none' : '1px solid var(--border-light)',
+              paddingTop: isFeatured ? '0' : '16px',
+              marginTop: 'auto',
+            }}
+          >
+            <span
+              style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8125rem', color: 'var(--text-muted)' }}
+            >
+              <FiClock /> {article.readTime} min read
+            </span>
+
+            {!isFeatured && (
+              <div style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
+                {formatDisplayDate(article.publishDate)}
+              </div>
+            )}
+
+            {isFeatured && (
+              <Link href={`/blog/${article.slug}`} style={{ color: 'var(--text)', fontSize: '1.25rem' }}>
+                <FiArrowRight />
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {shouldRenderAd && (
+        <div
+          className="card"
+          style={{
+            gridColumn: '1 / -1',
+            padding: 'var(--space-lg)',
+          }}
+        >
+          <AdSlot slot={blogListAdSlot} minHeight={250} />
+        </div>
+      )}
     </>
   );
 }
