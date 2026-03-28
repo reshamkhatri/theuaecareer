@@ -1,3 +1,5 @@
+import { articles as launchArticles } from '../../lib/launch-content';
+
 interface Env {
   NEXT_PUBLIC_SANITY_PROJECT_ID?: string;
   NEXT_PUBLIC_SANITY_DATASET?: string;
@@ -6,11 +8,12 @@ interface Env {
   COMMENTS_AUTO_APPROVE?: string;
 }
 
-import { articles as launchArticles } from '../../lib/launch-content';
-
 interface CommentPayload {
+  action?: unknown;
   articleSlug?: unknown;
   articleTitle?: unknown;
+  commentId?: unknown;
+  parentCommentId?: unknown;
   authorName?: unknown;
   authorEmail?: unknown;
   message?: unknown;
@@ -60,7 +63,7 @@ function getSanityConfig(env: Env) {
   return { projectId, dataset, apiVersion };
 }
 
-function buildQueryUrl(env: Env, query: string, params: Record<string, string>) {
+function buildQueryUrl(env: Env, query: string, params: Record<string, string> = {}) {
   const { projectId, dataset, apiVersion } = getSanityConfig(env);
   const url = new URL(`https://${projectId}.apicdn.sanity.io/v${apiVersion}/data/query/${dataset}`);
   url.searchParams.set('query', query);
@@ -72,6 +75,17 @@ function buildQueryUrl(env: Env, query: string, params: Record<string, string>) 
   return url.toString();
 }
 
+async function runQuery<T>(env: Env, query: string, params: Record<string, string> = {}) {
+  const response = await fetch(buildQueryUrl(env, query, params));
+
+  if (!response.ok) {
+    throw new Error('Failed to query comments.');
+  }
+
+  const data = (await response.json()) as { result?: T };
+  return data.result;
+}
+
 async function fetchApprovedComments(env: Env, slug: string) {
   const query = `*[_type == "comment" && articleSlug == $slug && status == "approved"] | order(submittedAt asc) {
     _id,
@@ -80,20 +94,13 @@ async function fetchApprovedComments(env: Env, slug: string) {
     authorName,
     message,
     submittedAt,
+    parentCommentId,
+    likeCount,
     status
   }`;
 
-  const response = await fetch(buildQueryUrl(env, query, { slug }));
-
-  if (!response.ok) {
-    throw new Error('Failed to load comments.');
-  }
-
-  const data = (await response.json()) as {
-    result?: unknown[];
-  };
-
-  return Array.isArray(data.result) ? data.result : [];
+  const result = await runQuery<unknown[]>(env, query, { slug });
+  return Array.isArray(result) ? result : [];
 }
 
 async function articleExists(env: Env, slug: string) {
@@ -101,18 +108,36 @@ async function articleExists(env: Env, slug: string) {
     return true;
   }
 
-  const query = `count(*[_type == "article" && slug.current == $slug])`;
-  const response = await fetch(buildQueryUrl(env, query, { slug }));
+  const result = await runQuery<number>(
+    env,
+    `count(*[_type == "article" && slug.current == $slug])`,
+    { slug }
+  );
 
-  if (!response.ok) {
-    throw new Error('Failed to verify the article.');
-  }
-
-  const data = (await response.json()) as { result?: number };
-  return typeof data.result === 'number' && data.result > 0;
+  return typeof result === 'number' && result > 0;
 }
 
-async function createComment(env: Env, document: Record<string, unknown>) {
+async function commentExists(env: Env, commentId: string, articleSlug: string) {
+  const result = await runQuery<number>(
+    env,
+    `count(*[_type == "comment" && _id == $commentId && articleSlug == $articleSlug])`,
+    { commentId, articleSlug }
+  );
+
+  return typeof result === 'number' && result > 0;
+}
+
+async function getCommentLikeCount(env: Env, commentId: string) {
+  const result = await runQuery<number>(
+    env,
+    `coalesce(*[_type == "comment" && _id == $commentId][0].likeCount, 0)`,
+    { commentId }
+  );
+
+  return typeof result === 'number' ? result : 0;
+}
+
+async function mutateSanity(env: Env, mutations: unknown[]) {
   const token = env.SANITY_API_WRITE_TOKEN?.trim();
 
   if (!token) {
@@ -128,19 +153,36 @@ async function createComment(env: Env, document: Record<string, unknown>) {
         ...jsonHeaders,
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({
-        mutations: [
-          {
-            create: document,
-          },
-        ],
-      }),
+      body: JSON.stringify({ mutations }),
     }
   );
 
   if (!response.ok) {
     throw new Error('Failed to save the comment.');
   }
+
+  return (await response.json()) as {
+    results?: Array<{ id?: string }>;
+  };
+}
+
+async function createComment(env: Env, document: Record<string, unknown>) {
+  const result = await mutateSanity(env, [{ create: document }]);
+  return result.results?.[0]?.id || `temp-${Date.now()}`;
+}
+
+async function incrementLike(env: Env, commentId: string) {
+  await mutateSanity(env, [
+    {
+      patch: {
+        id: commentId,
+        setIfMissing: { likeCount: 0 },
+        inc: { likeCount: 1 },
+      },
+    },
+  ]);
+
+  return getCommentLikeCount(env, commentId);
 }
 
 export async function onRequestGet(context: { request: Request; env: Env }) {
@@ -173,8 +215,22 @@ export async function onRequestGet(context: { request: Request; env: Env }) {
 export async function onRequestPost(context: { request: Request; env: Env }) {
   try {
     const payload = (await context.request.json()) as CommentPayload;
+    const action = cleanString(payload.action, 20);
+
+    if (action === 'like') {
+      const commentId = cleanString(payload.commentId, 128);
+
+      if (!commentId) {
+        return jsonResponse({ message: 'Missing comment ID.' }, { status: 400 });
+      }
+
+      const likeCount = await incrementLike(context.env, commentId);
+      return jsonResponse({ message: 'Thanks for the feedback.', likeCount }, { status: 200 });
+    }
+
     const articleSlug = cleanString(payload.articleSlug, 120);
     const articleTitle = cleanString(payload.articleTitle, 160);
+    const parentCommentId = cleanString(payload.parentCommentId, 128);
     const authorName = cleanString(payload.authorName, 80);
     const authorEmail = cleanString(payload.authorEmail, 120);
     const message = cleanMessage(payload.message);
@@ -201,16 +257,25 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       return jsonResponse({ message: 'That article could not be verified.' }, { status: 400 });
     }
 
+    if (parentCommentId) {
+      const parentExists = await commentExists(context.env, parentCommentId, articleSlug);
+
+      if (!parentExists) {
+        return jsonResponse({ message: 'That reply target could not be verified.' }, { status: 400 });
+      }
+    }
+
     const status = context.env.COMMENTS_AUTO_APPROVE === 'true' ? 'approved' : 'pending';
     const submittedAt = new Date().toISOString();
-
-    await createComment(context.env, {
+    const commentId = await createComment(context.env, {
       _type: 'comment',
       articleSlug,
       articleTitle,
       articlePath: `/blog/${articleSlug}`,
       authorName,
       message,
+      parentCommentId: parentCommentId || undefined,
+      likeCount: 0,
       status,
       submittedAt,
       ...(sourceUrl ? { sourceUrl } : {}),
@@ -220,17 +285,23 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       {
         message:
           status === 'approved'
-            ? 'Thanks. Your comment is live now.'
-            : 'Thanks. Your comment was submitted and will appear after moderation.',
+            ? parentCommentId
+              ? 'Thanks. Your reply is live now.'
+              : 'Thanks. Your comment is live now.'
+            : parentCommentId
+              ? 'Thanks. Your reply was submitted and will appear after moderation.'
+              : 'Thanks. Your comment was submitted and will appear after moderation.',
         comment:
           status === 'approved'
             ? {
-                _id: `temp-${articleSlug}-${Date.now()}`,
+                _id: commentId,
                 articleSlug,
                 articleTitle,
                 authorName,
                 message,
                 submittedAt,
+                parentCommentId: parentCommentId || undefined,
+                likeCount: 0,
                 status,
               }
             : undefined,

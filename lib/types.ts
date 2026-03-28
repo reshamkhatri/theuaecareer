@@ -60,9 +60,10 @@ export interface CommentRecord {
   articleSlug: string;
   articleTitle?: string;
   authorName: string;
-  authorEmail?: string;
   message: string;
   submittedAt: string;
+  parentCommentId?: string;
+  likeCount?: number;
   status: 'pending' | 'approved' | 'rejected';
 }
 

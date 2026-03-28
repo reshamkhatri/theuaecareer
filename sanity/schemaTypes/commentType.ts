@@ -44,6 +44,20 @@ export const commentType = defineType({
       validation: (rule) => rule.required().min(8).max(2000),
     }),
     defineField({
+      name: 'parentCommentId',
+      title: 'Parent Comment ID',
+      type: 'string',
+      readOnly: true,
+      validation: (rule) => rule.max(128),
+    }),
+    defineField({
+      name: 'likeCount',
+      title: 'Like Count',
+      type: 'number',
+      initialValue: 0,
+      validation: (rule) => rule.min(0).integer(),
+    }),
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
@@ -92,15 +106,18 @@ export const commentType = defineType({
       articleTitle: 'articleTitle',
       status: 'status',
       submittedAt: 'submittedAt',
+      parentCommentId: 'parentCommentId',
     },
     prepare(selection) {
-      const { title, articleTitle, status, submittedAt } = selection;
+      const { title, articleTitle, status, submittedAt, parentCommentId } = selection;
       const statusLabel = status ? String(status).toUpperCase() : 'PENDING';
       const submittedLabel = submittedAt ? new Date(String(submittedAt)).toLocaleDateString() : '';
 
       return {
         title: title || 'Anonymous',
-        subtitle: [statusLabel, articleTitle, submittedLabel].filter(Boolean).join(' · '),
+        subtitle: [statusLabel, parentCommentId ? 'Reply' : 'Comment', articleTitle, submittedLabel]
+          .filter(Boolean)
+          .join(' · '),
       };
     },
   },
