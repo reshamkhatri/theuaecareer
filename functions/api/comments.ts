@@ -64,7 +64,7 @@ function buildQueryUrl(env: Env, query: string, params: Record<string, string>) 
   url.searchParams.set('query', query);
 
   Object.entries(params).forEach(([key, value]) => {
-    url.searchParams.set(`$${key}`, value);
+    url.searchParams.set(`$${key}`, JSON.stringify(value));
   });
 
   return url.toString();
