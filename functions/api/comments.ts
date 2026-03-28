@@ -6,6 +6,8 @@ interface Env {
   COMMENTS_AUTO_APPROVE?: string;
 }
 
+import { articles as launchArticles } from '../../lib/launch-content';
+
 interface CommentPayload {
   articleSlug?: unknown;
   articleTitle?: unknown;
@@ -95,6 +97,10 @@ async function fetchApprovedComments(env: Env, slug: string) {
 }
 
 async function articleExists(env: Env, slug: string) {
+  if (launchArticles.some((article) => cleanString(article.slug, 120) === slug)) {
+    return true;
+  }
+
   const query = `count(*[_type == "article" && slug.current == $slug])`;
   const response = await fetch(buildQueryUrl(env, query, { slug }));
 
