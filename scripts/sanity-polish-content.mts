@@ -87,10 +87,13 @@ function applyReplacements(value: string, replacements: Replacement[]): string {
 function normalizeRichTextHtml(value: string): string {
   return value
     .replace(
-      /<h([1-6])>\s*•\s*([\s\S]*?)<\/h\1>/gi,
+      /<h([1-6])>\s*(?:•|â€¢)\s*([\s\S]*?)<\/h\1>/gi,
       (_match, _level, text) => `<p>${String(text).trim()}</p>`
     )
-    .replace(/<p>\s*•\s*([\s\S]*?)<\/p>/gi, (_match, text) => `<p>${String(text).trim()}</p>`)
+    .replace(
+      /<p>\s*(?:•|â€¢)\s*([\s\S]*?)<\/p>/gi,
+      (_match, text) => `<p>${String(text).trim()}</p>`
+    )
     .replace(
       /Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception\.\s*Bring your CV and passport copy\./gi,
       'Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception.'
