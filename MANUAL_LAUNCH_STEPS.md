@@ -143,36 +143,31 @@ NEXT_PUBLIC_SANITY_STUDIO_URL=https://studio.theuaecareer.com
 
 ---
 
-## 7. Test Sanity Content Publishing
+## 7. Automate Sanity Publishing
 
-1. Open Sanity Studio.
-2. Edit one article title or job title slightly.
-3. Publish the change.
-4. Trigger a new Cloudflare Pages deploy if needed.
-5. Confirm the live site reflects the updated content.
+Use the guide in [SANITY_AUTODEPLOY_SETUP.md](D:/theuaecareer/frontend/SANITY_AUTODEPLOY_SETUP.md).
 
-Do this before launch so you know your publishing workflow works.
+Goal:
+
+1. publish in Sanity
+2. Sanity webhook calls `/api/redeploy`
+3. Cloudflare Pages rebuilds automatically
+4. live site updates without manual redeploy
 
 ---
 
 ## 8. Set Up Comments
 
-Comments are already supported on article pages.
+Comments are already built into article pages with the custom guest comment system.
 
-If you want live comments:
-
-1. Create a Disqus site for `theuaecareer.com`.
-2. Copy the Disqus shortname.
-3. Add it in Cloudflare Pages:
+Required Cloudflare env vars:
 
 ```env
-NEXT_PUBLIC_DISQUS_SHORTNAME=your_shortname
+SANITY_API_WRITE_TOKEN=your_project_editor_token
+COMMENTS_AUTO_APPROVE=true
 ```
 
-4. Redeploy the site.
-5. Open an article page and confirm the comments widget loads.
-
-If you skip this for now, the article page will still show a clean fallback message instead of a broken section.
+Visitors do not need to sign up.
 
 ---
 
