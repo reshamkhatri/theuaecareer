@@ -9,7 +9,7 @@ export const sanityClient = createClient({
   dataset,
   apiVersion,
   token: readToken || undefined,
-  useCdn: !readToken,
+  useCdn: false,
 });
 
 export const client = sanityClient;
