@@ -244,8 +244,12 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       );
     }
 
-    if (!articleSlug || !articleTitle || !authorName || message.length < 8) {
+    if (!articleSlug || !articleTitle || !authorName) {
       return jsonResponse({ message: 'Please complete the required comment fields.' }, { status: 400 });
+    }
+
+    if (message.length < 2) {
+      return jsonResponse({ message: 'Write at least 2 characters in your comment or reply.' }, { status: 400 });
     }
 
     if (authorEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(authorEmail)) {

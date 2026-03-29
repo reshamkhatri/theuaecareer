@@ -41,7 +41,7 @@ export const commentType = defineType({
       type: 'text',
       rows: 6,
       readOnly: true,
-      validation: (rule) => rule.required().min(8).max(2000),
+      validation: (rule) => rule.required().min(2).max(2000),
     }),
     defineField({
       name: 'parentCommentId',

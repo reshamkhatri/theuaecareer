@@ -306,6 +306,7 @@ export default function CommentsSection({
             type="button"
             onClick={() => handleLike(comment._id)}
             disabled={Boolean(likedComments[comment._id])}
+            aria-label={likedComments[comment._id] ? `Liked comment. ${likeCount} likes.` : `Like comment. ${likeCount} likes.`}
             style={{
               border: 'none',
               background: 'transparent',
@@ -313,9 +314,16 @@ export default function CommentsSection({
               cursor: likedComments[comment._id] ? 'default' : 'pointer',
               padding: 0,
               fontWeight: 600,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
             }}
           >
-            {likedComments[comment._id] ? 'Liked' : 'Like'}{likeCount > 0 ? ` (${likeCount})` : ''}
+            <span aria-hidden="true" style={{ fontSize: '1rem', lineHeight: 1 }}>
+              👍
+            </span>
+            <span>{likedComments[comment._id] ? 'Liked' : 'Like'}</span>
+            <span style={{ color: 'var(--text-muted)' }}>{likeCount > 0 ? `(${likeCount})` : ''}</span>
           </button>
 
           <button
