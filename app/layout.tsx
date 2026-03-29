@@ -19,6 +19,7 @@ const defaultOgImage = {
 };
 
 const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || '';
+const iconVersion = '20260329';
 
 const websiteJsonLd = {
   '@context': 'https://schema.org',
@@ -49,6 +50,11 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   manifest: '/manifest.webmanifest',
+  icons: {
+    icon: `/favicon.ico?v=${iconVersion}`,
+    shortcut: `/favicon.ico?v=${iconVersion}`,
+    apple: `/apple-icon.png?v=${iconVersion}`,
+  },
   title: {
     default: 'Jobs in UAE 2026 - Dubai, Abu Dhabi, Gulf Careers | theuaecareer.com',
     template: '%s | theuaecareer.com',
