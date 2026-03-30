@@ -91,6 +91,11 @@ export default function Footer() {
                       Articles
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/resources/interview-question-bank" className="footer-link-new">
+                      Interview Bank
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -105,6 +110,11 @@ export default function Footer() {
                   <li>
                     <Link href="/tools/gratuity-calculator" className="footer-link-new">
                       Gratuity Calc
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/tools/currency-converter" className="footer-link-new">
+                      Currency Converter
                     </Link>
                   </li>
                 </ul>

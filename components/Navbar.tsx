@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -13,10 +13,17 @@ const navLinks = [
   { href: '/tools/gratuity-calculator', label: 'Gratuity Calc' },
 ];
 
+const resourceLinks = [
+  { href: '/resources', label: 'Resources Home' },
+  { href: '/resources/interview-question-bank', label: 'Interview Question Bank' },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
   const pathname = usePathname();
+  const isResourcesActive = pathname?.startsWith('/resources');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +41,14 @@ export default function Navbar() {
         Skip to main content
       </a>
       <div className="container navbar-inner">
-        <Link href="/" className="navbar-logo">
+        <Link
+          href="/"
+          className="navbar-logo"
+          onClick={() => {
+            setIsOpen(false);
+            setResourcesOpen(false);
+          }}
+        >
           the<span>uae</span>career
         </Link>
 
@@ -50,8 +64,43 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <div
+            className={`navbar-resource ${resourcesOpen ? 'open' : ''}`}
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
+          >
+            <button
+              type="button"
+              className={`navbar-dropdown-trigger ${isResourcesActive ? 'active' : ''}`}
+              onClick={() => setResourcesOpen((current) => !current)}
+              aria-expanded={resourcesOpen}
+            >
+              Resources <FiChevronDown className="navbar-dropdown-icon" />
+            </button>
+            <div className="navbar-dropdown-menu">
+              {resourceLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`navbar-dropdown-link ${pathname === link.href ? 'active' : ''}`}
+                  onClick={() => {
+                    setResourcesOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
           {/* Mobile only buttons */}
           <div className="navbar-mobile-actions">
+            <div className="navbar-mobile-section-label">Resources</div>
+            {resourceLinks.map((link) => (
+              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
+                {link.label}
+              </Link>
+            ))}
             <Link href="/tools/cv-maker" className="btn btn-secondary btn-full mb-sm">CV Maker</Link>
           </div>
         </div>

@@ -5,6 +5,7 @@ import {
   FiClock,
   FiFileText,
   FiMapPin,
+  FiRepeat,
   FiSearch,
   FiTool,
 } from 'react-icons/fi';
@@ -49,6 +50,17 @@ export default async function HomePage() {
       cta: 'Create My CV',
       accent: '#818cf8',
       glow: 'radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 38%)',
+    },
+    {
+      href: '/tools/currency-converter',
+      icon: <FiRepeat />,
+      label: 'Remittance Planner',
+      title: 'Currency Converter',
+      description:
+        'Check the latest market reference for popular Gulf remittance corridors like AED to INR, SAR to PHP, and QAR to NPR.',
+      cta: 'Check Rates',
+      accent: '#2dd4bf',
+      glow: 'radial-gradient(circle at top right, rgba(45,212,191,0.24), transparent 38%)',
     },
   ];
 

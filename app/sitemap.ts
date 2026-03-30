@@ -15,8 +15,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/jobs',
     '/jobs/walk-in',
     '/privacy-policy',
+    '/resources',
+    '/resources/interview-question-bank',
     '/terms-of-service',
+    '/disclaimer',
     '/tools/cv-maker',
+    '/tools/currency-converter',
     '/tools/gratuity-calculator',
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
