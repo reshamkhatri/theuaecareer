@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FiArrowRight, FiRepeat, FiShield, FiTrendingUp } from 'react-icons/fi';
+import { FiArrowRight, FiRepeat, FiShield } from 'react-icons/fi';
 import CurrencyConverterTool from '@/components/CurrencyConverterTool';
-import { corridorPresets } from '@/lib/currency-converter';
 
 export const metadata: Metadata = {
   title: 'Currency Converter | AED, SAR, QAR to INR, NPR, PHP and more',
@@ -29,98 +28,33 @@ export default function CurrencyConverterPage() {
       }}
     >
       <div className="container" style={{ display: 'grid', gap: '2.5rem' }}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1.1fr 0.9fr',
-            gap: '1.5rem',
-            alignItems: 'end',
-          }}
-          className="currency-hero-grid"
-        >
-          <div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                borderRadius: '999px',
-                padding: '6px 14px',
-                background: 'rgba(99,102,241,0.1)',
-                color: '#4338ca',
-                fontWeight: 800,
-                fontSize: '0.8rem',
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                marginBottom: '14px',
-              }}
-            >
-              <FiRepeat />
-              Remittance planning
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.8rem)', marginBottom: '14px', lineHeight: 1.05 }}>
-              Currency Converter for Gulf salary corridors
-            </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.12rem', lineHeight: 1.8, maxWidth: '62ch' }}>
-              Built for UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman salary earners who need a fast reference for
-              popular remittance routes like AED to INR, SAR to PHP, and QAR to NPR.
-            </p>
-          </div>
-
+        <div style={{ maxWidth: '820px' }}>
           <div
-            className="card"
             style={{
-              padding: '1.5rem',
-              borderRadius: '28px',
-              border: '1px solid rgba(15,23,42,0.08)',
-              background: 'rgba(255,255,255,0.86)',
-              boxShadow: '0 16px 32px rgba(15,23,42,0.06)',
-              display: 'grid',
-              gap: '14px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              borderRadius: '999px',
+              padding: '6px 14px',
+              background: 'rgba(99,102,241,0.1)',
+              color: '#4338ca',
+              fontWeight: 800,
+              fontSize: '0.8rem',
+              textTransform: 'uppercase',
+              letterSpacing: '1px',
+              marginBottom: '14px',
             }}
           >
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '18px',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'rgba(45,212,191,0.14)',
-                  color: '#0f766e',
-                  fontSize: '1.2rem',
-                }}
-              >
-                <FiTrendingUp />
-              </div>
-              <div>
-                <strong style={{ display: 'block', fontSize: '1.05rem' }}>Latest market reference</strong>
-                <span style={{ color: 'var(--text-secondary)' }}>
-                  Helpful for salary planning, family budgets, and comparing payout offers.
-                </span>
-              </div>
-            </div>
-
-            <div style={{ display: 'grid', gap: '10px' }}>
-              {corridorPresets.slice(0, 4).map((preset) => (
-                <div
-                  key={preset.label}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    gap: '12px',
-                    paddingBottom: '10px',
-                    borderBottom: '1px solid rgba(148,163,184,0.16)',
-                  }}
-                >
-                  <span style={{ fontWeight: 700 }}>{preset.label}</span>
-                  <span style={{ color: 'var(--text-muted)', textAlign: 'right' }}>{preset.helper}</span>
-                </div>
-              ))}
-            </div>
+            <FiRepeat />
+            Remittance planning
           </div>
+          <h1 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.8rem)', marginBottom: '14px', lineHeight: 1.05 }}>
+            Currency Converter for Gulf salary corridors
+          </h1>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.12rem', lineHeight: 1.8, maxWidth: '62ch' }}>
+            Built for UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman salary earners who need a fast reference for
+            popular remittance routes like AED to INR, SAR to PHP, and QAR to NPR.
+          </p>
         </div>
 
         <CurrencyConverterTool />
@@ -229,7 +163,6 @@ export default function CurrencyConverterPage() {
           dangerouslySetInnerHTML={{
             __html: `
               @media (max-width: 980px) {
-                .currency-hero-grid,
                 .currency-converter-grid,
                 .currency-insight-grid {
                   grid-template-columns: 1fr !important;
