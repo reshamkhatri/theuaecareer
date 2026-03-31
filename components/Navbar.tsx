@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
@@ -10,7 +10,6 @@ const navLinks = [
   { href: '/jobs', label: 'Find Jobs' },
   { href: '/jobs/walk-in', label: 'Walk-ins' },
   { href: '/blog', label: 'Blog' },
-  { href: '/tools/gratuity-calculator', label: 'Gratuity Calc' },
 ];
 
 const resourceLinks = [
@@ -18,12 +17,20 @@ const resourceLinks = [
   { href: '/resources/interview-question-bank', label: 'Interview Question Bank' },
 ];
 
+const toolLinks = [
+  { href: '/tools/currency-converter', label: 'Currency Converter' },
+  { href: '/tools/gratuity-calculator', label: 'Gratuity Calculator' },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [toolsOpen, setToolsOpen] = useState(false);
   const pathname = usePathname();
   const isResourcesActive = pathname?.startsWith('/resources');
+  const isToolsActive = pathname?.startsWith('/tools');
+  const navWrapperRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +40,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handlePointerDown = (event: MouseEvent) => {
+      if (!navWrapperRef.current?.contains(event.target as Node)) {
+        setResourcesOpen(false);
+        setToolsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    return () => document.removeEventListener('mousedown', handlePointerDown);
+  }, []);
+
   if (pathname?.startsWith('/admin') || pathname?.startsWith('/studio')) return null;
 
   return (
@@ -40,13 +59,14 @@ export default function Navbar() {
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <div className="container navbar-inner">
+      <div className="container navbar-inner" ref={navWrapperRef}>
         <Link
           href="/"
           className="navbar-logo"
           onClick={() => {
             setIsOpen(false);
             setResourcesOpen(false);
+            setToolsOpen(false);
           }}
         >
           the<span>uae</span>career
@@ -59,20 +79,25 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               className={pathname === link.href ? 'active' : ''}
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                setResourcesOpen(false);
+                setToolsOpen(false);
+              }}
             >
               {link.label}
             </Link>
           ))}
           <div
-            className={`navbar-resource ${resourcesOpen ? 'open' : ''}`}
-            onMouseEnter={() => setResourcesOpen(true)}
-            onMouseLeave={() => setResourcesOpen(false)}
+            className={`navbar-dropdown ${resourcesOpen ? 'open' : ''}`}
           >
             <button
               type="button"
               className={`navbar-dropdown-trigger ${isResourcesActive ? 'active' : ''}`}
-              onClick={() => setResourcesOpen((current) => !current)}
+              onClick={() => {
+                setResourcesOpen((current) => !current);
+                setToolsOpen(false);
+              }}
               aria-expanded={resourcesOpen}
             >
               Resources <FiChevronDown className="navbar-dropdown-icon" />
@@ -85,6 +110,38 @@ export default function Navbar() {
                   className={`navbar-dropdown-link ${pathname === link.href ? 'active' : ''}`}
                   onClick={() => {
                     setResourcesOpen(false);
+                    setToolsOpen(false);
+                    setIsOpen(false);
+                  }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div
+            className={`navbar-dropdown ${toolsOpen ? 'open' : ''}`}
+          >
+            <button
+              type="button"
+              className={`navbar-dropdown-trigger ${isToolsActive ? 'active' : ''}`}
+              onClick={() => {
+                setToolsOpen((current) => !current);
+                setResourcesOpen(false);
+              }}
+              aria-expanded={toolsOpen}
+            >
+              Tools <FiChevronDown className="navbar-dropdown-icon" />
+            </button>
+            <div className="navbar-dropdown-menu">
+              {toolLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`navbar-dropdown-link ${pathname === link.href ? 'active' : ''}`}
+                  onClick={() => {
+                    setResourcesOpen(false);
+                    setToolsOpen(false);
                     setIsOpen(false);
                   }}
                 >
@@ -97,7 +154,29 @@ export default function Navbar() {
           <div className="navbar-mobile-actions">
             <div className="navbar-mobile-section-label">Resources</div>
             {resourceLinks.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)}>
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                  setResourcesOpen(false);
+                  setToolsOpen(false);
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="navbar-mobile-section-label">Tools</div>
+            {toolLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                  setResourcesOpen(false);
+                  setToolsOpen(false);
+                }}
+              >
                 {link.label}
               </Link>
             ))}
@@ -112,7 +191,11 @@ export default function Navbar() {
           </Link>
           <button
             className="navbar-mobile-btn"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => {
+              setIsOpen(!isOpen);
+              setResourcesOpen(false);
+              setToolsOpen(false);
+            }}
             aria-label="Toggle menu"
           >
             {isOpen ? <FiX /> : <FiMenu />}

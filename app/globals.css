@@ -258,7 +258,7 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
   color: var(--text);
 }
 
-.navbar-resource {
+.navbar-dropdown {
   position: relative;
 }
 
@@ -287,13 +287,13 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
 
 .navbar-dropdown-trigger:hover,
 .navbar-dropdown-trigger.active,
-.navbar-resource.open .navbar-dropdown-trigger {
+.navbar-dropdown.open .navbar-dropdown-trigger {
   color: var(--text);
 }
 
 .navbar-dropdown-trigger:hover::after,
 .navbar-dropdown-trigger.active::after,
-.navbar-resource.open .navbar-dropdown-trigger::after {
+.navbar-dropdown.open .navbar-dropdown-trigger::after {
   width: 100%;
 }
 
@@ -301,13 +301,13 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
   transition: transform 0.2s ease;
 }
 
-.navbar-resource.open .navbar-dropdown-icon {
+.navbar-dropdown.open .navbar-dropdown-icon {
   transform: rotate(180deg);
 }
 
 .navbar-dropdown-menu {
   position: absolute;
-  top: calc(100% + 16px);
+  top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   min-width: 240px;
@@ -321,7 +321,7 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
 }
 
-.navbar-resource.open .navbar-dropdown-menu {
+.navbar-dropdown.open .navbar-dropdown-menu {
   display: flex;
 }
 
@@ -400,7 +400,7 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
     margin-bottom: 1rem;
   }
 
-  .navbar-resource {
+  .navbar-dropdown {
     width: 100%;
   }
 
@@ -427,6 +427,15 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
     display: block;
     width: 100%;
     margin-top: 2rem;
+  }
+
+  .navbar-mobile-actions a {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 1rem;
   }
 
   .navbar-mobile-section-label {
@@ -476,6 +485,11 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
   }
 
   .navbar-dropdown-link {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .navbar-mobile-actions a {
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
   }
