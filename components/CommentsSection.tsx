@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FiCornerDownRight, FiHeart, FiMessageCircle, FiSend } from 'react-icons/fi';
 import type { CommentRecord } from '@/lib/types';
 
 interface CommentApiResponse {
@@ -32,6 +33,25 @@ function buildLikeStorageKey(commentId: string) {
   return `theuaecareer-comment-liked:${commentId}`;
 }
 
+function getInitials(name: string) {
+  return name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+const avatarColors = ['#6366f1', '#0f766e', '#b45309', '#be185d', '#1d4ed8', '#7c3aed', '#059669'];
+
+function getAvatarColor(name: string) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return avatarColors[Math.abs(hash) % avatarColors.length];
+}
+
 export default function CommentsSection({
   articleSlug,
   articleTitle,
@@ -49,6 +69,7 @@ export default function CommentsSection({
   const [replyForm, setReplyForm] = useState<CommentFormState>(initialFormState);
   const [replySubmitting, setReplySubmitting] = useState(false);
   const [likedComments, setLikedComments] = useState<Record<string, boolean>>({});
+  const [apiAvailable, setApiAvailable] = useState(true);
   const endpoint = useMemo(() => `/api/comments?slug=${encodeURIComponent(articleSlug)}`, [articleSlug]);
 
   const loadComments = useCallback(
@@ -59,29 +80,31 @@ export default function CommentsSection({
       try {
         const response = await fetch(endpoint, {
           method: 'GET',
-          headers: {
-            Accept: 'application/json',
-          },
+          headers: { Accept: 'application/json' },
           cache: 'no-store',
           signal,
         });
 
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          // API not available (local dev or static export)
+          setApiAvailable(false);
+          setComments([]);
+          return;
+        }
+
         if (!response.ok) {
-          throw new Error('Comments are temporarily unavailable.');
+          throw new Error('Could not load comments.');
         }
 
         const data = (await response.json()) as CommentApiResponse;
         setComments(Array.isArray(data.comments) ? data.comments : []);
       } catch (fetchError) {
-        if (signal?.aborted) {
-          return;
-        }
-
-        setError(fetchError instanceof Error ? fetchError.message : 'Comments are temporarily unavailable.');
+        if (signal?.aborted) return;
+        setApiAvailable(false);
+        setComments([]);
       } finally {
-        if (!signal?.aborted) {
-          setLoading(false);
-        }
+        if (!signal?.aborted) setLoading(false);
       }
     },
     [endpoint]
@@ -90,7 +113,6 @@ export default function CommentsSection({
   useEffect(() => {
     const controller = new AbortController();
     void loadComments(controller.signal);
-
     return () => controller.abort();
   }, [loadComments]);
 
@@ -99,10 +121,8 @@ export default function CommentsSection({
       if (typeof window !== 'undefined' && window.localStorage.getItem(buildLikeStorageKey(comment._id)) === '1') {
         accumulator[comment._id] = true;
       }
-
       return accumulator;
     }, {});
-
     setLikedComments(likedState);
   }, [comments]);
 
@@ -116,10 +136,7 @@ export default function CommentsSection({
     }) => {
       const response = await fetch('/api/comments', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           articleSlug,
           articleTitle,
@@ -133,13 +150,9 @@ export default function CommentsSection({
       });
 
       const data = (await response.json()) as CommentApiResponse;
+      if (!response.ok) throw new Error(data.message || 'Failed to submit your comment.');
 
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit your comment.');
-      }
-
-      setFeedback(data.message || 'Thanks. Your comment is live now.');
-
+      setFeedback(data.message || 'Thanks! Your comment is live.');
       if (data.comment) {
         setComments((current) => [...current, data.comment as CommentRecord]);
       } else {
@@ -154,14 +167,8 @@ export default function CommentsSection({
     setSubmitting(true);
     setFeedback('');
     setError('');
-
     try {
-      await submitComment({
-        authorName: form.name,
-        authorEmail: form.email,
-        message: form.message,
-        website: form.website,
-      });
+      await submitComment({ authorName: form.name, authorEmail: form.email, message: form.message, website: form.website });
       setForm(initialFormState);
     } catch (submitError) {
       setError(submitError instanceof Error ? submitError.message : 'Failed to submit your comment.');
@@ -172,15 +179,10 @@ export default function CommentsSection({
 
   const handleReplySubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!replyingToId) {
-      return;
-    }
-
+    if (!replyingToId) return;
     setReplySubmitting(true);
     setFeedback('');
     setError('');
-
     try {
       await submitComment({
         parentCommentId: replyingToId,
@@ -199,56 +201,34 @@ export default function CommentsSection({
   };
 
   const handleLike = async (commentId: string) => {
-    if (likedComments[commentId]) {
-      return;
-    }
-
+    if (likedComments[commentId]) return;
     setError('');
-
     try {
       const response = await fetch('/api/comments', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          action: 'like',
-          commentId,
-        }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ action: 'like', commentId }),
       });
-
       const data = (await response.json()) as CommentApiResponse;
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to like this comment.');
-      }
-
-      if (typeof window !== 'undefined') {
-        window.localStorage.setItem(buildLikeStorageKey(commentId), '1');
-      }
-
+      if (!response.ok) throw new Error(data.message || 'Failed to like.');
+      if (typeof window !== 'undefined') window.localStorage.setItem(buildLikeStorageKey(commentId), '1');
       setLikedComments((current) => ({ ...current, [commentId]: true }));
       setComments((current) =>
-        current.map((comment) =>
-          comment._id === commentId
-            ? { ...comment, likeCount: typeof data.likeCount === 'number' ? data.likeCount : (comment.likeCount || 0) + 1 }
-            : comment
+        current.map((c) =>
+          c._id === commentId ? { ...c, likeCount: typeof data.likeCount === 'number' ? data.likeCount : (c.likeCount || 0) + 1 } : c
         )
       );
     } catch (likeError) {
-      setError(likeError instanceof Error ? likeError.message : 'Failed to like this comment.');
+      setError(likeError instanceof Error ? likeError.message : 'Failed to like.');
     }
   };
 
   const commentsByParent = useMemo(() => {
-    return comments.reduce<Record<string, CommentRecord[]>>((accumulator, comment) => {
+    return comments.reduce<Record<string, CommentRecord[]>>((acc, comment) => {
       const key = comment.parentCommentId || 'root';
-      if (!accumulator[key]) {
-        accumulator[key] = [];
-      }
-      accumulator[key].push(comment);
-      return accumulator;
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(comment);
+      return acc;
     }, {});
   }, [comments]);
 
@@ -258,311 +238,512 @@ export default function CommentsSection({
     const replies = commentsByParent[comment._id] || [];
     const isReplyingHere = replyingToId === comment._id;
     const likeCount = comment.likeCount || 0;
+    const color = getAvatarColor(comment.authorName);
 
     return (
-      <article
-        key={comment._id}
-        style={{
-          borderTop: depth === 0 ? '1px solid var(--border)' : '1px solid rgba(148, 163, 184, 0.2)',
-          paddingTop: 'var(--space-lg)',
-          marginLeft: depth > 0 ? 'clamp(1rem, 3vw, 2rem)' : 0,
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'baseline',
-            gap: '12px',
-            flexWrap: 'wrap',
-            marginBottom: '10px',
-          }}
-        >
-          <strong style={{ color: 'var(--text)' }}>
-            {comment.authorName}
-            {depth > 0 && (
-              <span style={{ color: 'var(--text-muted)', fontWeight: 500, marginLeft: '8px', fontSize: '0.875rem' }}>
-                replied
-              </span>
-            )}
-          </strong>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.8125rem' }}>
-            {dateFormatter.format(new Date(comment.submittedAt))}
-          </span>
-        </div>
+      <div key={comment._id} className={`cmt-thread ${depth > 0 ? 'cmt-reply' : ''}`}>
+        <div className="cmt-item">
+          <div className="cmt-avatar" style={{ background: color }}>
+            {getInitials(comment.authorName)}
+          </div>
+          <div className="cmt-body">
+            <div className="cmt-header">
+              <span className="cmt-author">{comment.authorName}</span>
+              {depth > 0 && <span className="cmt-reply-badge"><FiCornerDownRight /> replied</span>}
+              <span className="cmt-date">{dateFormatter.format(new Date(comment.submittedAt))}</span>
+            </div>
+            <p className="cmt-text">{comment.message}</p>
+            <div className="cmt-actions">
+              <button
+                type="button"
+                className={`cmt-action-btn ${likedComments[comment._id] ? 'cmt-liked' : ''}`}
+                onClick={() => handleLike(comment._id)}
+                disabled={Boolean(likedComments[comment._id])}
+              >
+                <FiHeart />
+                {likedComments[comment._id] ? 'Liked' : 'Like'}
+                {likeCount > 0 && <span className="cmt-like-count">{likeCount}</span>}
+              </button>
+              <button
+                type="button"
+                className="cmt-action-btn"
+                onClick={() => {
+                  setFeedback('');
+                  setError('');
+                  setReplyingToId(isReplyingHere ? '' : comment._id);
+                  setReplyForm(initialFormState);
+                }}
+              >
+                <FiMessageCircle />
+                {isReplyingHere ? 'Cancel' : 'Reply'}
+              </button>
+            </div>
 
-        <p style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{comment.message}</p>
-
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '14px',
-            flexWrap: 'wrap',
-            marginTop: '12px',
-          }}
-        >
-          <button
-            type="button"
-            onClick={() => handleLike(comment._id)}
-            disabled={Boolean(likedComments[comment._id])}
-            aria-label={likedComments[comment._id] ? `Liked comment. ${likeCount} likes.` : `Like comment. ${likeCount} likes.`}
-            style={{
-              border: 'none',
-              background: 'transparent',
-              color: likedComments[comment._id] ? 'var(--accent-dark)' : 'var(--text-secondary)',
-              cursor: likedComments[comment._id] ? 'default' : 'pointer',
-              padding: 0,
-              fontWeight: 600,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}
-          >
-            <span aria-hidden="true" style={{ fontSize: '1rem', lineHeight: 1 }}>
-              👍
-            </span>
-            <span>{likedComments[comment._id] ? 'Liked' : 'Like'}</span>
-            <span style={{ color: 'var(--text-muted)' }}>{likeCount > 0 ? `(${likeCount})` : ''}</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              setFeedback('');
-              setError('');
-              setReplyingToId(isReplyingHere ? '' : comment._id);
-              setReplyForm(initialFormState);
-            }}
-            style={{
-              border: 'none',
-              background: 'transparent',
-              color: 'var(--text-secondary)',
-              cursor: 'pointer',
-              padding: 0,
-              fontWeight: 600,
-            }}
-          >
-            {isReplyingHere ? 'Cancel reply' : 'Reply'}
-          </button>
-        </div>
-
-        {isReplyingHere && (
-          <form
-            onSubmit={handleReplySubmit}
-            style={{
-              marginTop: 'var(--space-md)',
-              display: 'grid',
-              gap: '12px',
-              padding: '1rem',
-              borderRadius: 'var(--radius-md)',
-              background: 'var(--surface-alt)',
-              border: '1px solid var(--border)',
-            }}
-          >
-            <div className="form-row">
-              <div className="form-group">
-                <label className="form-label" htmlFor={`reply-name-${comment._id}`}>
-                  Name *
-                </label>
-                <input
-                  id={`reply-name-${comment._id}`}
-                  className="form-input"
-                  value={replyForm.name}
-                  onChange={(event) => setReplyForm((current) => ({ ...current, name: event.target.value }))}
-                  placeholder="Your name"
+            {isReplyingHere && (
+              <form onSubmit={handleReplySubmit} className="cmt-reply-form">
+                <div className="cmt-form-row">
+                  <input
+                    className="cmt-input"
+                    value={replyForm.name}
+                    onChange={(e) => setReplyForm((c) => ({ ...c, name: e.target.value }))}
+                    placeholder="Your name *"
+                    required
+                  />
+                  <input
+                    type="email"
+                    className="cmt-input"
+                    value={replyForm.email}
+                    onChange={(e) => setReplyForm((c) => ({ ...c, email: e.target.value }))}
+                    placeholder="Email (optional)"
+                  />
+                </div>
+                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                  <input tabIndex={-1} autoComplete="off" value={replyForm.website} onChange={(e) => setReplyForm((c) => ({ ...c, website: e.target.value }))} />
+                </div>
+                <textarea
+                  className="cmt-textarea"
+                  rows={3}
+                  value={replyForm.message}
+                  onChange={(e) => setReplyForm((c) => ({ ...c, message: e.target.value }))}
+                  placeholder={`Reply to ${comment.authorName}...`}
                   required
                 />
-              </div>
-              <div className="form-group">
-                <label className="form-label" htmlFor={`reply-email-${comment._id}`}>
-                  Email
-                </label>
-                <input
-                  id={`reply-email-${comment._id}`}
-                  type="email"
-                  className="form-input"
-                  value={replyForm.email}
-                  onChange={(event) => setReplyForm((current) => ({ ...current, email: event.target.value }))}
-                  placeholder="you@example.com"
-                />
-              </div>
-            </div>
-
-            <div
-              aria-hidden="true"
-              style={{
-                position: 'absolute',
-                left: '-9999px',
-                width: '1px',
-                height: '1px',
-                overflow: 'hidden',
-              }}
-            >
-              <label htmlFor={`reply-website-${comment._id}`}>Website</label>
-              <input
-                id={`reply-website-${comment._id}`}
-                tabIndex={-1}
-                autoComplete="off"
-                value={replyForm.website}
-                onChange={(event) => setReplyForm((current) => ({ ...current, website: event.target.value }))}
-              />
-            </div>
-
-            <div className="form-group" style={{ marginBottom: 0 }}>
-              <label className="form-label" htmlFor={`reply-message-${comment._id}`}>
-                Reply *
-              </label>
-              <textarea
-                id={`reply-message-${comment._id}`}
-                className="form-textarea"
-                rows={4}
-                value={replyForm.message}
-                onChange={(event) => setReplyForm((current) => ({ ...current, message: event.target.value }))}
-                placeholder={`Reply to ${comment.authorName}`}
-                required
-              />
-            </div>
-
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-              <button type="submit" className="btn btn-primary" disabled={replySubmitting}>
-                {replySubmitting ? 'Replying...' : 'Post Reply'}
-              </button>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-                No signup required.
-              </span>
-            </div>
-          </form>
-        )}
+                <button type="submit" className="cmt-submit-btn" disabled={replySubmitting}>
+                  <FiSend /> {replySubmitting ? 'Sending...' : 'Post Reply'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
 
         {replies.length > 0 && (
-          <div style={{ display: 'grid', gap: 'var(--space-lg)', marginTop: 'var(--space-md)' }}>
+          <div className="cmt-replies">
             {replies.map((reply) => renderCommentThread(reply, depth + 1))}
           </div>
         )}
-      </article>
+      </div>
     );
   };
 
   return (
-    <div className="card mt-2xl" id="comments">
-      <h3 style={{ marginBottom: 'var(--space-sm)' }}>Comments</h3>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--space-lg)' }}>
-        Join the discussion without creating an account. Readers can leave comments, reply to each other, and like helpful posts.
-      </p>
+    <>
+      <div className="cmt-section" id="comments">
+        <div className="cmt-section-header">
+          <div className="cmt-section-icon"><FiMessageCircle /></div>
+          <div>
+            <h3 className="cmt-section-title">Discussion</h3>
+            <p className="cmt-section-subtitle">
+              Share your experience or ask a question. No account needed.
+            </p>
+          </div>
+        </div>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          display: 'grid',
-          gap: 'var(--space-md)',
-          marginBottom: 'var(--space-xl)',
-        }}
-      >
-        <div className="form-row">
-          <div className="form-group">
-            <label className="form-label" htmlFor={`comment-name-${articleSlug}`}>
-              Name *
-            </label>
+        {/* Comment form */}
+        <form onSubmit={handleSubmit} className="cmt-form">
+          <div className="cmt-form-row">
             <input
-              id={`comment-name-${articleSlug}`}
-              className="form-input"
+              className="cmt-input"
               value={form.name}
-              onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-              placeholder="Your name"
+              onChange={(e) => setForm((c) => ({ ...c, name: e.target.value }))}
+              placeholder="Your name *"
               required
             />
-          </div>
-          <div className="form-group">
-            <label className="form-label" htmlFor={`comment-email-${articleSlug}`}>
-              Email
-            </label>
             <input
-              id={`comment-email-${articleSlug}`}
               type="email"
-              className="form-input"
+              className="cmt-input"
               value={form.email}
-              onChange={(event) => setForm((current) => ({ ...current, email: event.target.value }))}
-              placeholder="you@example.com"
+              onChange={(e) => setForm((c) => ({ ...c, email: e.target.value }))}
+              placeholder="Email (optional, not shown)"
             />
-            <div style={{ color: 'var(--text-muted)', fontSize: '0.8125rem', marginTop: '8px' }}>
-              Optional. It is not shown publicly.
-            </div>
           </div>
-        </div>
-
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            left: '-9999px',
-            width: '1px',
-            height: '1px',
-            overflow: 'hidden',
-          }}
-        >
-          <label htmlFor={`comment-website-${articleSlug}`}>Website</label>
-          <input
-            id={`comment-website-${articleSlug}`}
-            tabIndex={-1}
-            autoComplete="off"
-            value={form.website}
-            onChange={(event) => setForm((current) => ({ ...current, website: event.target.value }))}
-          />
-        </div>
-
-        <div className="form-group" style={{ marginBottom: 0 }}>
-          <label className="form-label" htmlFor={`comment-message-${articleSlug}`}>
-            Comment *
-          </label>
+          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+            <input tabIndex={-1} autoComplete="off" value={form.website} onChange={(e) => setForm((c) => ({ ...c, website: e.target.value }))} />
+          </div>
           <textarea
-            id={`comment-message-${articleSlug}`}
-            className="form-textarea"
-            rows={5}
+            className="cmt-textarea"
+            rows={4}
             value={form.message}
-            onChange={(event) => setForm((current) => ({ ...current, message: event.target.value }))}
-            placeholder="Share your thoughts, tips, or follow-up questions."
+            onChange={(e) => setForm((c) => ({ ...c, message: e.target.value }))}
+            placeholder="Share your thoughts, tips, or questions..."
             required
           />
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <button type="submit" className="btn btn-primary" disabled={submitting}>
-            {submitting ? 'Submitting...' : 'Post Comment'}
-          </button>
-          <span style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            No signup required.
-          </span>
-        </div>
-
-        {(feedback || error) && (
-          <div
-            aria-live="polite"
-            style={{
-              color: feedback ? '#166534' : 'var(--danger)',
-              background: feedback ? 'var(--success-light)' : 'var(--danger-light)',
-              border: `1px solid ${feedback ? 'rgba(22, 101, 52, 0.18)' : 'rgba(239, 68, 68, 0.18)'}`,
-              borderRadius: 'var(--radius-md)',
-              padding: '0.9rem 1rem',
-              fontSize: '0.875rem',
-            }}
-          >
-            {feedback || error}
+          <div className="cmt-form-footer">
+            <button type="submit" className="cmt-submit-btn" disabled={submitting || !apiAvailable}>
+              <FiSend /> {submitting ? 'Posting...' : 'Post Comment'}
+            </button>
           </div>
-        )}
-      </form>
+        </form>
 
-      <div style={{ display: 'grid', gap: 'var(--space-lg)' }}>
-        {loading ? (
-          <p style={{ color: 'var(--text-secondary)', margin: 0 }}>Loading comments...</p>
-        ) : rootComments.length === 0 ? (
-          <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
-            No comments yet. Be the first to add one.
-          </p>
-        ) : (
-          rootComments.map((comment) => renderCommentThread(comment))
+        {/* Feedback / Error */}
+        {feedback && (
+          <div className="cmt-feedback cmt-feedback-success">{feedback}</div>
         )}
+        {error && (
+          <div className="cmt-feedback cmt-feedback-error">{error}</div>
+        )}
+
+        {/* Comments list */}
+        <div className="cmt-list">
+          {loading ? (
+            <div className="cmt-empty">Loading comments...</div>
+          ) : !apiAvailable && rootComments.length === 0 ? (
+            <div className="cmt-empty">
+              <FiMessageCircle className="cmt-empty-icon" />
+              <p>Comments will be available once the site is deployed.</p>
+              <p className="cmt-empty-hint">The comment system requires the production API to load and post comments.</p>
+            </div>
+          ) : rootComments.length === 0 ? (
+            <div className="cmt-empty">
+              <FiMessageCircle className="cmt-empty-icon" />
+              <p>No comments yet. Be the first to share your thoughts.</p>
+            </div>
+          ) : (
+            rootComments.map((comment) => renderCommentThread(comment))
+          )}
+        </div>
       </div>
-    </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .cmt-section {
+              background: #fff;
+              border: 1px solid rgba(0, 0, 0, 0.06);
+              border-radius: 20px;
+              padding: 28px;
+              margin-top: 2rem;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            }
+
+            .cmt-section-header {
+              display: flex;
+              align-items: flex-start;
+              gap: 14px;
+              margin-bottom: 24px;
+              padding-bottom: 20px;
+              border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .cmt-section-icon {
+              width: 42px;
+              height: 42px;
+              border-radius: 12px;
+              background: var(--accent-light, #eef2ff);
+              color: var(--accent-dark, #4f46e5);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            }
+
+            .cmt-section-title {
+              font-size: 1.2rem;
+              font-weight: 800;
+              margin: 0 0 2px;
+            }
+
+            .cmt-section-subtitle {
+              font-size: 0.88rem;
+              color: var(--text-muted);
+              margin: 0;
+            }
+
+            /* Form */
+            .cmt-form {
+              display: grid;
+              gap: 12px;
+              margin-bottom: 24px;
+            }
+
+            .cmt-form-row {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 12px;
+            }
+
+            .cmt-input {
+              width: 100%;
+              padding: 12px 16px;
+              border: 1.5px solid rgba(0, 0, 0, 0.08);
+              border-radius: 12px;
+              font-size: 0.9rem;
+              background: #f8fafc;
+              color: var(--text);
+              outline: none;
+              transition: border-color 0.15s, box-shadow 0.15s;
+              font-family: inherit;
+            }
+
+            .cmt-input:focus {
+              border-color: var(--accent, #6366f1);
+              box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+              background: #fff;
+            }
+
+            .cmt-textarea {
+              width: 100%;
+              padding: 14px 16px;
+              border: 1.5px solid rgba(0, 0, 0, 0.08);
+              border-radius: 14px;
+              font-size: 0.9rem;
+              background: #f8fafc;
+              color: var(--text);
+              outline: none;
+              resize: vertical;
+              min-height: 100px;
+              transition: border-color 0.15s, box-shadow 0.15s;
+              font-family: inherit;
+              line-height: 1.6;
+            }
+
+            .cmt-textarea:focus {
+              border-color: var(--accent, #6366f1);
+              box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+              background: #fff;
+            }
+
+            .cmt-form-footer {
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+
+            .cmt-submit-btn {
+              display: inline-flex;
+              align-items: center;
+              gap: 6px;
+              padding: 10px 20px;
+              border-radius: 10px;
+              border: none;
+              background: var(--primary, #0f172a);
+              color: #fff;
+              font-size: 0.88rem;
+              font-weight: 600;
+              cursor: pointer;
+              transition: opacity 0.15s, transform 0.15s;
+              font-family: inherit;
+            }
+
+            .cmt-submit-btn:hover {
+              opacity: 0.9;
+              transform: translateY(-1px);
+            }
+
+            .cmt-submit-btn:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+              transform: none;
+            }
+
+            /* Feedback */
+            .cmt-feedback {
+              padding: 12px 16px;
+              border-radius: 12px;
+              font-size: 0.88rem;
+              margin-bottom: 20px;
+            }
+
+            .cmt-feedback-success {
+              background: #ecfdf5;
+              color: #166534;
+              border: 1px solid rgba(22, 101, 52, 0.12);
+            }
+
+            .cmt-feedback-error {
+              background: #fef2f2;
+              color: #dc2626;
+              border: 1px solid rgba(220, 38, 38, 0.12);
+            }
+
+            /* Comments list */
+            .cmt-list {
+              display: grid;
+              gap: 0;
+            }
+
+            .cmt-empty {
+              text-align: center;
+              padding: 32px 16px;
+              color: var(--text-muted);
+              font-size: 0.92rem;
+            }
+
+            .cmt-empty p {
+              margin: 0 0 4px;
+            }
+
+            .cmt-empty-icon {
+              font-size: 1.8rem;
+              margin-bottom: 12px;
+              opacity: 0.3;
+            }
+
+            .cmt-empty-hint {
+              font-size: 0.82rem;
+              opacity: 0.7;
+            }
+
+            /* Comment thread */
+            .cmt-thread {
+              padding-top: 20px;
+              border-top: 1px solid rgba(0, 0, 0, 0.06);
+            }
+
+            .cmt-thread:first-child {
+              border-top: none;
+              padding-top: 0;
+            }
+
+            .cmt-reply {
+              margin-left: clamp(16px, 4vw, 40px);
+              border-top: none;
+              padding-top: 16px;
+              border-left: 2px solid rgba(0, 0, 0, 0.04);
+              padding-left: 16px;
+            }
+
+            .cmt-item {
+              display: flex;
+              gap: 14px;
+            }
+
+            .cmt-avatar {
+              width: 38px;
+              height: 38px;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              font-size: 0.72rem;
+              font-weight: 800;
+              letter-spacing: 0.5px;
+              flex-shrink: 0;
+            }
+
+            .cmt-body {
+              flex: 1;
+              min-width: 0;
+            }
+
+            .cmt-header {
+              display: flex;
+              align-items: baseline;
+              gap: 8px;
+              flex-wrap: wrap;
+              margin-bottom: 6px;
+            }
+
+            .cmt-author {
+              font-weight: 700;
+              font-size: 0.92rem;
+              color: var(--text);
+            }
+
+            .cmt-reply-badge {
+              display: inline-flex;
+              align-items: center;
+              gap: 4px;
+              font-size: 0.78rem;
+              color: var(--text-muted);
+              font-weight: 500;
+            }
+
+            .cmt-date {
+              font-size: 0.78rem;
+              color: var(--text-muted);
+              margin-left: auto;
+            }
+
+            .cmt-text {
+              margin: 0;
+              font-size: 0.92rem;
+              line-height: 1.65;
+              color: var(--text-secondary);
+              white-space: pre-wrap;
+            }
+
+            .cmt-actions {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              margin-top: 8px;
+            }
+
+            .cmt-action-btn {
+              display: inline-flex;
+              align-items: center;
+              gap: 5px;
+              padding: 5px 10px;
+              border: none;
+              background: transparent;
+              color: var(--text-muted);
+              font-size: 0.8rem;
+              font-weight: 600;
+              cursor: pointer;
+              border-radius: 8px;
+              transition: background 0.12s, color 0.12s;
+              font-family: inherit;
+            }
+
+            .cmt-action-btn:hover {
+              background: rgba(0, 0, 0, 0.04);
+              color: var(--text-secondary);
+            }
+
+            .cmt-action-btn.cmt-liked {
+              color: #e11d48;
+            }
+
+            .cmt-action-btn.cmt-liked:hover {
+              background: rgba(225, 29, 72, 0.06);
+            }
+
+            .cmt-like-count {
+              color: var(--text-muted);
+              font-weight: 500;
+            }
+
+            /* Reply form inline */
+            .cmt-reply-form {
+              display: grid;
+              gap: 10px;
+              margin-top: 14px;
+              padding: 16px;
+              background: #f8fafc;
+              border-radius: 14px;
+              border: 1px solid rgba(0, 0, 0, 0.04);
+            }
+
+            .cmt-replies {
+              display: grid;
+              gap: 0;
+            }
+
+            @media (max-width: 640px) {
+              .cmt-section {
+                padding: 20px;
+              }
+
+              .cmt-form-row {
+                grid-template-columns: 1fr;
+              }
+
+              .cmt-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.65rem;
+              }
+
+              .cmt-reply {
+                margin-left: 12px;
+                padding-left: 12px;
+              }
+            }
+          `,
+        }}
+      />
+    </>
   );
 }
