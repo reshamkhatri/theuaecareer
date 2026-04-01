@@ -32,35 +32,26 @@ export default async function HomePage() {
     {
       href: '/tools/gratuity-calculator',
       icon: <FiTool />,
-      label: 'Legal Toolkit',
       title: 'Gratuity Calculator',
       description:
         'Instantly estimate your end-of-service gratuity using a UAE-focused calculator with a downloadable breakdown.',
       cta: 'Calculate Now',
-      accent: '#2dd4bf',
-      glow: 'radial-gradient(circle at top right, rgba(45,212,191,0.22), transparent 38%)',
     },
     {
       href: '/tools/cv-maker',
       icon: <FiFileText />,
-      label: 'Smart Builder',
       title: 'CV Builder',
       description:
         'Build a Gulf-ready resume, enhance your experience bullets, choose a template, and export it as a polished PDF.',
       cta: 'Create My CV',
-      accent: '#818cf8',
-      glow: 'radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 38%)',
     },
     {
       href: '/tools/currency-converter',
       icon: <FiRepeat />,
-      label: 'Remittance Planner',
       title: 'Currency Converter',
       description:
         'Check the latest market reference for popular Gulf remittance corridors like AED to INR, SAR to PHP, and QAR to NPR.',
       cta: 'Check Rates',
-      accent: '#2dd4bf',
-      glow: 'radial-gradient(circle at top right, rgba(45,212,191,0.24), transparent 38%)',
     },
   ];
 
@@ -201,305 +192,98 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(180deg, #faf5ff 0%, #f5f3ff 100%)',
-          borderTop: '1px solid #e9d5ff',
-          borderBottom: '1px solid #e9d5ff',
-        }}
-      >
+      {/* Walk-in Interviews */}
+      <section className="section hp-walkin">
         <div className="container">
-          <div
-            className="home-section-header"
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-              flexWrap: 'wrap',
-              gap: '16px',
-              marginBottom: 'var(--space-2xl)',
-            }}
-          >
+          <div className="hp-section-head">
             <div>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: '#D97706',
-                  fontSize: '0.875rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  marginBottom: '8px',
-                  background: '#FEF3C7',
-                  padding: '4px 12px',
-                  borderRadius: '100px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    background: '#EF4444',
-                    borderRadius: '50%',
-                    animation: 'pulse 2s infinite',
-                  }}
-                ></div>
-                Happening This Week
-              </div>
-              <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', letterSpacing: '-0.5px' }}>
-                Urgent Walk-in Interviews
-              </h2>
+              <span className="hp-label hp-label--live">
+                <span className="hp-pulse" /> This Week
+              </span>
+              <h2 className="hp-heading">Walk-in Interviews</h2>
             </div>
-            <Link
-              href="/jobs/walk-in"
-              className="btn"
-              style={{ border: '2px solid var(--primary)', color: 'var(--primary)', background: 'transparent' }}
-            >
-              View All Walk-ins <FiArrowRight />
+            <Link href="/jobs/walk-in" className="hp-link">
+              All walk-ins <FiArrowRight />
             </Link>
           </div>
 
-          <div className="home-walkin-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-xl)' }}>
+          <div className="hp-grid hp-grid--2">
             {walkInJobs.items.map((job) => (
-              <div
-                key={job._id}
-                className="card"
-                style={{ borderTop: '4px solid #EF4444', padding: 'var(--space-xl)', position: 'relative', overflow: 'hidden' }}
-              >
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '8px' }}>{job.title}</h3>
-                <div style={{ color: 'var(--text-secondary)', fontWeight: 600, marginBottom: '20px' }}>
-                  {job.companyName} • {job.location.city}
+              <Link href={`/jobs/${job.slug}`} key={job._id} className="hp-walkin-card">
+                <div className="hp-walkin-card__top">
+                  <h3 className="hp-walkin-card__title">{job.title}</h3>
+                  <p className="hp-walkin-card__company">{job.companyName} &middot; {job.location.city}</p>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px', marginBottom: '24px' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      gap: '8px',
-                      alignItems: 'flex-start',
-                      fontSize: '0.9375rem',
-                      color: 'var(--text)',
-                    }}
-                  >
-                    <FiCalendar style={{ color: '#EF4444', marginTop: '2px' }} />
-                    {getWalkInLabel(job.walkInDetails?.summary, job.walkInDetails?.date, job.walkInDetails?.time)}
-                  </div>
-                  {job.walkInDetails?.venue && (
-                    <div
-                      style={{
-                        display: 'flex',
-                        gap: '8px',
-                        alignItems: 'flex-start',
-                        fontSize: '0.9375rem',
-                        color: 'var(--text)',
-                      }}
-                    >
-                      <FiMapPin style={{ color: '#EF4444', marginTop: '2px' }} />
-                      {job.walkInDetails.venue}
-                    </div>
-                  )}
+                <div className="hp-walkin-card__details">
+                  <span><FiCalendar /> {getWalkInLabel(job.walkInDetails?.summary, job.walkInDetails?.date, job.walkInDetails?.time)}</span>
+                  {job.walkInDetails?.venue && <span><FiMapPin /> {job.walkInDetails.venue}</span>}
                 </div>
-                <Link
-                  href={`/jobs/${job.slug}`}
-                  className="btn"
-                  style={{
-                    width: '100%',
-                    background: '#FEF2F2',
-                    color: '#EF4444',
-                    border: '1px solid #FECACA',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    textDecoration: 'none',
-                  }}
-                >
-                  See Details
-                </Link>
-              </div>
+                <span className="hp-walkin-card__cta">View details <FiArrowRight /></span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section" style={{ background: 'linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%)' }}>
+      {/* Latest Jobs */}
+      <section className="section hp-jobs">
         <div className="container">
-          <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', textAlign: 'center', marginBottom: '16px', letterSpacing: '-0.5px' }}>
-            Latest Opportunities
-          </h2>
-          <p
-            style={{
-              textAlign: 'center',
-              color: 'var(--text-secondary)',
-              fontSize: '1.125rem',
-              marginBottom: 'var(--space-3xl)',
-              maxWidth: '600px',
-              margin: '0 auto var(--space-3xl)',
-            }}
-          >
-            Fresh listings from employers across the UAE, Saudi Arabia, and Qatar.
-          </p>
-
-          <div className="home-jobs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-lg)', marginBottom: 'var(--space-2xl)' }}>
-            {latestJobs.items.map((job) => (
-              <div key={job._id} className="card job-card">
-                {job.isWalkIn && (
-                  <span className="badge badge-success" style={{ position: 'absolute', top: '24px', right: '24px' }}>
-                    WALK-IN
-                  </span>
-                )}
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: 'var(--primary)',
-                    color: 'white',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '1.25rem',
-                    fontWeight: 800,
-                    marginBottom: '16px',
-                  }}
-                >
-                  {job.companyName.charAt(0)}
-                </div>
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '4px' }}>{job.title}</h3>
-                <div style={{ color: 'var(--text-secondary)', marginBottom: '16px', fontWeight: 500 }}>
-                  {job.companyName} • {job.jobType}
-                </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    gap: '16px',
-                    color: 'var(--text-muted)',
-                    fontSize: '0.875rem',
-                    marginBottom: '24px',
-                    borderBottom: '1px solid var(--border)',
-                    paddingBottom: '16px',
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <FiMapPin /> {job.location.city}, {job.location.country}
-                  </span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <FiClock /> {formatDisplayDate(job.postedDate)}
-                  </span>
-                </div>
-                <Link
-                  href={`/jobs/${job.slug}`}
-                  className="btn"
-                  style={{
-                    width: '100%',
-                    background: 'transparent',
-                    border: '1px solid var(--border)',
-                    color: 'var(--primary)',
-                    display: 'flex',
-                    textDecoration: 'none',
-                  }}
-                >
-                  View Details
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            <Link
-              href="/jobs"
-              className="btn btn-primary home-primary-cta"
-              style={{ padding: '16px 32px', fontSize: '1.125rem', borderRadius: '100px' }}
-            >
-              Explore All {latestJobs.pagination.total}+ Jobs <FiArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="section"
-        style={{
-          background: 'linear-gradient(180deg, #fff7ed 0%, #fef2f2 50%, #fdf2f8 100%)',
-          borderTop: '1px solid #fce7f3',
-        }}
-      >
-        <div className="container">
-          <div
-            className="home-section-header"
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-end',
-              flexWrap: 'wrap',
-              gap: '16px',
-              marginBottom: 'var(--space-2xl)',
-            }}
-          >
+          <div className="hp-section-head">
             <div>
-              <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', letterSpacing: '-0.5px' }}>
-                Career Insights & Guides
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', marginTop: '8px' }}>
-                Practical advice for navigating the UAE job market.
-              </p>
+              <h2 className="hp-heading">Latest Opportunities</h2>
+              <p className="hp-subtext">Fresh listings from employers across the Gulf.</p>
             </div>
-            <Link href="/blog" className="btn btn-secondary">
-              Read All Articles <FiArrowRight />
+            <Link href="/jobs" className="hp-link">
+              Browse all jobs <FiArrowRight />
             </Link>
           </div>
 
-          <div className="home-articles-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-lg)' }}>
+          <div className="hp-grid hp-grid--3">
+            {latestJobs.items.map((job) => (
+              <Link href={`/jobs/${job.slug}`} key={job._id} className="hp-job-card">
+                <div className="hp-job-card__icon">{job.companyName.charAt(0)}</div>
+                <div className="hp-job-card__body">
+                  <h3 className="hp-job-card__title">{job.title}</h3>
+                  <p className="hp-job-card__meta">{job.companyName} &middot; {job.jobType}</p>
+                  <div className="hp-job-card__tags">
+                    <span><FiMapPin /> {job.location.city}, {job.location.country}</span>
+                    <span><FiClock /> {formatDisplayDate(job.postedDate)}</span>
+                    {job.isWalkIn && <span className="hp-tag--walkin">Walk-in</span>}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="hp-center">
+            <Link href="/jobs" className="hp-btn-primary">
+              Explore all {latestJobs.pagination.total}+ jobs <FiArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Career Insights */}
+      <section className="section hp-articles">
+        <div className="container">
+          <div className="hp-section-head">
+            <div>
+              <h2 className="hp-heading">Career Insights</h2>
+              <p className="hp-subtext">Practical advice for navigating the UAE job market.</p>
+            </div>
+            <Link href="/blog" className="hp-link">
+              All articles <FiArrowRight />
+            </Link>
+          </div>
+
+          <div className="hp-grid hp-grid--3">
             {latestArticles.items.map((article) => (
-              <Link
-                href={`/blog/${article.slug}`}
-                key={article._id}
-                className="card"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: '0',
-                  overflow: 'hidden',
-                  textDecoration: 'none',
-                  transition: 'transform 0.3s',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <div style={{ height: '8px', background: 'var(--accent)' }}></div>
-                <div style={{ padding: 'var(--space-xl)', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                  <span
-                    style={{
-                      fontSize: '0.75rem',
-                      color: 'var(--accent)',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      marginBottom: '12px',
-                    }}
-                  >
-                    {article.category}
-                  </span>
-                  <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '12px', lineHeight: 1.4, flex: 1 }}>
-                    {article.title}
-                  </h3>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      color: 'var(--text-muted)',
-                      fontSize: '0.8125rem',
-                      borderTop: '1px solid var(--border-light)',
-                      paddingTop: '16px',
-                    }}
-                  >
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                      <FiClock /> {article.readTime} min read
-                    </span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--accent)', fontWeight: 600 }}>
-                      Read Article <FiArrowRight />
-                    </span>
-                  </div>
+              <Link href={`/blog/${article.slug}`} key={article._id} className="hp-article-card">
+                <span className="hp-article-card__cat">{article.category}</span>
+                <h3 className="hp-article-card__title">{article.title}</h3>
+                <div className="hp-article-card__foot">
+                  <span><FiClock /> {article.readTime} min read</span>
+                  <span className="hp-article-card__read">Read <FiArrowRight /></span>
                 </div>
               </Link>
             ))}
@@ -507,118 +291,326 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section" style={{ background: 'white', position: 'relative', overflow: 'hidden' }}>
-        <div
-          style={{
-            position: 'absolute',
-            top: '-10%',
-            left: '-5%',
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(8,145,178,0.05) 0%, rgba(255,255,255,0) 70%)',
-            zIndex: 0,
-          }}
-        ></div>
-
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: 'var(--space-3xl)' }}>
-            <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '16px', letterSpacing: '-0.5px' }}>
-              Free Gulf Career Tools
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto' }}>
-              Stand out to employers and know your rights with tools built specifically for the UAE market.
-            </p>
+      {/* Career Tools */}
+      <section className="section hp-tools">
+        <div className="container">
+          <div className="hp-section-head hp-section-head--center">
+            <h2 className="hp-heading">Free Career Tools</h2>
+            <p className="hp-subtext">Built for Gulf job seekers &mdash; gratuity calculator, CV builder, and currency converter.</p>
           </div>
 
-          <div className="home-tools-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-xl)' }}>
+          <div className="hp-grid hp-grid--3">
             {toolCards.map((tool) => (
-              <Link key={tool.href} href={tool.href} style={{ textDecoration: 'none' }}>
-                <div
-                  className="card home-tool-card"
-                  style={{
-                    padding: '40px',
-                    background: `${tool.glow}, linear-gradient(160deg, #0f172a 0%, #13233a 55%, #18314d 100%)`,
-                    color: 'white',
-                    borderRadius: '28px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%',
-                    border: '1px solid rgba(148,163,184,0.18)',
-                    boxShadow: '0 24px 48px rgba(15,23,42,0.12)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <div
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      background: 'rgba(255,255,255,0.08)',
-                      color: tool.accent,
-                      padding: '6px 14px',
-                      borderRadius: '999px',
-                      fontSize: '0.72rem',
-                      fontWeight: 800,
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                      marginBottom: '18px',
-                      alignSelf: 'flex-start',
-                      border: '1px solid rgba(255,255,255,0.08)',
-                    }}
-                  >
-                    {tool.label}
-                  </div>
-                  <div
-                    style={{
-                      width: '68px',
-                      height: '68px',
-                      background: 'rgba(255,255,255,0.08)',
-                      borderRadius: '20px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '2rem',
-                      marginBottom: '26px',
-                      color: tool.accent,
-                      boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08)',
-                    }}
-                  >
-                    {tool.icon}
-                  </div>
-                  <h3 className="home-tool-card-title" style={{ fontSize: '1.85rem', marginBottom: '12px', fontWeight: 800, color: 'white' }}>{tool.title}</h3>
-                  <p
-                    className="home-tool-card-copy"
-                    style={{
-                      color: 'rgba(226,232,240,0.82)',
-                      fontSize: '1.0625rem',
-                      marginBottom: '32px',
-                      flex: 1,
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {tool.description}
-                  </p>
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      color: tool.accent,
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '1px',
-                      fontSize: '0.875rem',
-                    }}
-                  >
-                    {tool.cta} <FiArrowRight />
-                  </div>
-                </div>
+              <Link key={tool.href} href={tool.href} className="hp-tool-card">
+                <div className="hp-tool-card__icon">{tool.icon}</div>
+                <h3 className="hp-tool-card__title">{tool.title}</h3>
+                <p className="hp-tool-card__desc">{tool.description}</p>
+                <span className="hp-tool-card__cta">{tool.cta} <FiArrowRight /></span>
               </Link>
             ))}
           </div>
         </div>
       </section>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        /* ===== Homepage sections ===== */
+        .hp-walkin { background: #fff; }
+        .hp-jobs { background: #f9fafb; }
+        .hp-articles { background: #fff; }
+        .hp-tools { background: #f9fafb; }
+
+        .hp-section-head {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 2.5rem;
+        }
+        .hp-section-head--center {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .hp-heading {
+          font-size: 2rem;
+          font-weight: 800;
+          color: var(--primary);
+          letter-spacing: -0.5px;
+          line-height: 1.2;
+        }
+        .hp-subtext {
+          color: var(--text-secondary);
+          font-size: 1rem;
+          margin-top: 6px;
+          margin-bottom: 0;
+        }
+
+        .hp-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 8px;
+          color: var(--text-muted);
+        }
+        .hp-label--live { color: #dc2626; }
+        .hp-pulse {
+          width: 7px; height: 7px;
+          background: #dc2626;
+          border-radius: 50%;
+          animation: pulse 2s infinite;
+        }
+
+        .hp-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          text-decoration: none;
+          transition: color 0.15s;
+        }
+        .hp-link:hover { color: var(--primary); }
+
+        .hp-center { text-align: center; margin-top: 2.5rem; }
+
+        .hp-btn-primary {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 14px 32px;
+          background: var(--primary);
+          color: #fff;
+          font-weight: 600;
+          font-size: 0.9375rem;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: background 0.15s, transform 0.15s;
+        }
+        .hp-btn-primary:hover { background: #1e293b; transform: translateY(-1px); color: #fff; }
+
+        /* Grids */
+        .hp-grid { display: grid; gap: 20px; }
+        .hp-grid--2 { grid-template-columns: repeat(2, 1fr); }
+        .hp-grid--3 { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 900px) {
+          .hp-grid--3 { grid-template-columns: 1fr; }
+          .hp-grid--2 { grid-template-columns: 1fr; }
+        }
+
+        /* Walk-in cards */
+        .hp-walkin-card {
+          display: flex;
+          flex-direction: column;
+          padding: 28px;
+          background: #fff;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          text-decoration: none;
+          color: inherit;
+          transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .hp-walkin-card:hover {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+          border-color: rgba(0,0,0,0.14);
+        }
+        .hp-walkin-card__top { margin-bottom: 16px; }
+        .hp-walkin-card__title {
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 4px;
+          line-height: 1.35;
+        }
+        .hp-walkin-card__company {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          margin: 0;
+        }
+        .hp-walkin-card__details {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          margin-bottom: 20px;
+          flex: 1;
+        }
+        .hp-walkin-card__details span {
+          display: flex;
+          align-items: flex-start;
+          gap: 6px;
+        }
+        .hp-walkin-card__details svg { flex-shrink: 0; margin-top: 2px; color: var(--text-muted); }
+        .hp-walkin-card__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: var(--accent);
+        }
+
+        /* Job cards */
+        .hp-job-card {
+          display: flex;
+          gap: 16px;
+          padding: 24px;
+          background: #fff;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          text-decoration: none;
+          color: inherit;
+          transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .hp-job-card:hover {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+          border-color: rgba(0,0,0,0.14);
+        }
+        .hp-job-card__icon {
+          width: 44px; height: 44px;
+          background: var(--primary);
+          color: #fff;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.125rem;
+          font-weight: 800;
+          flex-shrink: 0;
+        }
+        .hp-job-card__body { min-width: 0; }
+        .hp-job-card__title {
+          font-size: 1rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 2px;
+          line-height: 1.35;
+        }
+        .hp-job-card__meta {
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+          margin: 0 0 12px;
+        }
+        .hp-job-card__tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          font-size: 0.75rem;
+          color: var(--text-muted);
+        }
+        .hp-job-card__tags span {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .hp-tag--walkin {
+          background: #ecfdf5;
+          color: #059669;
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-weight: 600;
+        }
+
+        /* Article cards */
+        .hp-article-card {
+          display: flex;
+          flex-direction: column;
+          padding: 28px;
+          background: #fff;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          text-decoration: none;
+          color: inherit;
+          transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .hp-article-card:hover {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+          border-color: rgba(0,0,0,0.14);
+        }
+        .hp-article-card__cat {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: var(--accent);
+          margin-bottom: 12px;
+        }
+        .hp-article-card__title {
+          font-size: 1.0625rem;
+          font-weight: 700;
+          color: var(--primary);
+          line-height: 1.45;
+          flex: 1;
+          margin-bottom: 20px;
+        }
+        .hp-article-card__foot {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 0.75rem;
+          color: var(--text-muted);
+          border-top: 1px solid var(--border);
+          padding-top: 14px;
+        }
+        .hp-article-card__foot span { display: inline-flex; align-items: center; gap: 4px; }
+        .hp-article-card__read { font-weight: 600; color: var(--accent); }
+
+        /* Tool cards */
+        .hp-tool-card {
+          display: flex;
+          flex-direction: column;
+          padding: 32px;
+          background: #fff;
+          border: 1px solid var(--border);
+          border-radius: 12px;
+          text-decoration: none;
+          color: inherit;
+          transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .hp-tool-card:hover {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+          border-color: rgba(0,0,0,0.14);
+        }
+        .hp-tool-card__icon {
+          width: 48px; height: 48px;
+          background: var(--accent-light);
+          color: var(--accent);
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.25rem;
+          margin-bottom: 20px;
+        }
+        .hp-tool-card__title {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: var(--primary);
+          margin-bottom: 8px;
+        }
+        .hp-tool-card__desc {
+          font-size: 0.875rem;
+          color: var(--text-secondary);
+          line-height: 1.65;
+          flex: 1;
+          margin-bottom: 20px;
+        }
+        .hp-tool-card__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          color: var(--accent);
+        }
+      `}} />
     </>
   );
 }
