@@ -283,7 +283,6 @@ export default async function ArticlePage({
               </>
             )}
 
-            <CommentsSection articleSlug={article.slug} articleTitle={article.title} />
           </main>
 
           <aside className="blog-sidebar">
@@ -320,6 +319,10 @@ export default async function ArticlePage({
               <NewsletterForm source={`article:${article.slug}`} compact />
             </div>
           </aside>
+        </div>
+
+        <div className="container" style={{ marginTop: 'var(--space-xl)' }}>
+          <CommentsSection articleSlug={article.slug} articleTitle={article.title} />
         </div>
       </section>
     </>
