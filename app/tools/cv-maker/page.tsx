@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode, Ref } from 'react';
-import { startTransition, useMemo, useRef, useState } from 'react';
+import { startTransition, useEffect, useMemo, useRef, useState } from 'react';
 import { FiCheck, FiCpu, FiDownload, FiMail, FiPlus, FiTrash2, FiX } from 'react-icons/fi';
 import { buildCvBullets, buildCvSummary } from '@/lib/cv-assist';
 
@@ -151,7 +151,15 @@ const initialData: CVData = {
 /* ─── Main Component ─── */
 export default function CVMakerPage() {
   const [step, setStep] = useState(1);
-  const [cvData, setCvData] = useState<CVData>(initialData);
+  const [cvData, setCvData] = useState<CVData>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('theuaecareer-cv-data');
+        if (saved) return JSON.parse(saved) as CVData;
+      } catch { /* ignore */ }
+    }
+    return initialData;
+  });
   const [skillInput, setSkillInput] = useState('');
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   const [enhancingId, setEnhancingId] = useState<string | null>(null);
@@ -162,6 +170,13 @@ export default function CVMakerPage() {
   const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [emailStatus, setEmailStatus] = useState<{ ok: boolean; msg: string } | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+
+  // Persist CV data to localStorage so work isn't lost on reload
+  useEffect(() => {
+    try {
+      localStorage.setItem('theuaecareer-cv-data', JSON.stringify(cvData));
+    } catch { /* ignore quota errors */ }
+  }, [cvData]);
 
   const fullName = [cvData.firstName, cvData.lastName].filter(Boolean).join(' ') || 'Your Name';
 
@@ -215,7 +230,7 @@ export default function CVMakerPage() {
 
   const addSkill = () => {
     const value = skillInput.trim();
-    if (!value || cvData.skills.includes(value)) return;
+    if (!value || cvData.skills.some((s) => s.toLowerCase() === value.toLowerCase())) return;
     setCvData((current) => ({ ...current, skills: [...current.skills, value] }));
     setSkillInput('');
   };
@@ -289,6 +304,10 @@ export default function CVMakerPage() {
 
   const handleDownload = async () => {
     if (!previewRef.current || typeof window === 'undefined') return;
+    if (!cvData.firstName.trim() && !cvData.lastName.trim()) {
+      setStatusMessage('Please enter at least your name before exporting.');
+      return;
+    }
     setIsDownloading(true);
     setStatusMessage(null);
     try {
@@ -312,6 +331,10 @@ export default function CVMakerPage() {
 
   const handleEmailCV = async () => {
     if (!previewRef.current || typeof window === 'undefined') return;
+    if (!cvData.firstName.trim() && !cvData.lastName.trim()) {
+      setEmailStatus({ ok: false, msg: 'Please enter at least your name before sending.' });
+      return;
+    }
     const email = emailInput.trim();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailStatus({ ok: false, msg: 'Please enter a valid email address.' });
@@ -333,7 +356,13 @@ export default function CVMakerPage() {
 
       const reader = new FileReader();
       const pdfBase64: string = await new Promise((resolve, reject) => {
-        reader.onload = () => resolve((reader.result as string).split(',')[1]);
+        reader.onload = () => {
+          if (typeof reader.result === 'string') {
+            resolve(reader.result.split(',')[1]);
+          } else {
+            reject(new Error('Unexpected PDF read result.'));
+          }
+        };
         reader.onerror = reject;
         reader.readAsDataURL(blob);
       });
@@ -358,6 +387,7 @@ export default function CVMakerPage() {
       if (res.ok) {
         setEmailStatus({ ok: true, msg: data.message || 'CV sent successfully!' });
         setEmailInput('');
+        setTimeout(() => setShowEmailModal(false), 1800);
       } else {
         setEmailStatus({ ok: false, msg: data.message || 'Failed to send email.' });
       }
@@ -378,9 +408,21 @@ export default function CVMakerPage() {
           <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', lineHeight: 1.05, marginBottom: '14px', color: '#0f172a' }}>
             Build a CV that lands Gulf jobs.
           </h1>
-          <p style={{ maxWidth: '760px', margin: '0 auto', color: '#475569', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ maxWidth: '760px', margin: '0 auto 16px', color: '#475569', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Includes nationality, visa status, and languages — the fields Gulf recruiters actually look for. Choose from 3 distinct professional layouts and export a polished PDF.
           </p>
+          <button
+            className="btn"
+            style={{ background: 'transparent', color: '#94a3b8', fontSize: '0.8125rem', border: '1px solid #e2e8f0', padding: '6px 14px' }}
+            onClick={() => {
+              if (confirm('Clear all CV data and start fresh?')) {
+                setCvData(initialData);
+                localStorage.removeItem('theuaecareer-cv-data');
+              }
+            }}
+          >
+            Clear &amp; start fresh
+          </button>
         </div>
 
         {/* Stepper */}
@@ -553,7 +595,7 @@ export default function CVMakerPage() {
           :global(.cv-skills-row) { flex-direction: column; }
           :global(.cv-skill-input) { min-width: 0 !important; }
           .cv-preview-toolbar { flex-wrap: wrap; gap: 10px; }
-          .cv-preview-toolbar .btn { width: 100%; }
+          .cv-preview-toolbar .btn { flex: 1 1 calc(50% - 5px); min-width: 0; }
           .cv-preview-sheet-live :global(.cv-template-classic) { padding: 24px 18px !important; }
           .cv-preview-sheet-live :global(.cv-template-executive-sidebar),
           .cv-preview-sheet-live :global(.cv-template-executive-main) { padding: 24px 18px !important; }
@@ -566,6 +608,9 @@ export default function CVMakerPage() {
       {/* Email CV Modal */}
       {showEmailModal && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="email-modal-title"
           style={{
             position: 'fixed', inset: 0, zIndex: 9999,
             background: 'rgba(0,0,0,0.45)',
@@ -573,6 +618,7 @@ export default function CVMakerPage() {
             padding: '20px',
           }}
           onClick={(e) => { if (e.target === e.currentTarget) setShowEmailModal(false); }}
+          onKeyDown={(e) => { if (e.key === 'Escape') setShowEmailModal(false); }}
         >
           <div style={{
             background: '#fff', borderRadius: '16px', padding: '36px',
@@ -581,24 +627,28 @@ export default function CVMakerPage() {
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
               <div>
-                <h3 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '4px' }}>Email my CV</h3>
+                <h3 id="email-modal-title" style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '4px' }}>Email my CV</h3>
                 <p style={{ fontSize: '0.875rem', color: '#64748b', margin: 0 }}>We&apos;ll send your CV as a PDF attachment.</p>
               </div>
-              <button onClick={() => setShowEmailModal(false)} style={{ color: '#94a3b8', fontSize: '1.25rem', lineHeight: 1 }}>
+              <button onClick={() => setShowEmailModal(false)} aria-label="Close modal" style={{ color: '#94a3b8', fontSize: '1.25rem', lineHeight: 1 }}>
                 <FiX />
               </button>
             </div>
 
             <input
               type="email"
+              autoComplete="email"
               value={emailInput}
               onChange={(e) => setEmailInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleEmailCV(); }}
               placeholder="your@email.com"
+              disabled={isSendingEmail}
               style={{
                 width: '100%', padding: '12px 14px', borderRadius: '10px',
-                border: '1px solid #e2e8f0', fontSize: '0.9375rem',
+                border: `1px solid ${emailStatus && !emailStatus.ok ? '#ef4444' : '#e2e8f0'}`,
+                fontSize: '0.9375rem',
                 marginBottom: '12px', outline: 'none',
+                opacity: isSendingEmail ? 0.6 : 1,
               }}
             />
 
