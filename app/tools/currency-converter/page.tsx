@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { FiArrowRight, FiRepeat, FiShield } from 'react-icons/fi';
+import { FiArrowRight, FiRepeat, FiShield, FiZap } from 'react-icons/fi';
 import CurrencyConverterTool from '@/components/CurrencyConverterTool';
 
 export const metadata: Metadata = {
@@ -22,163 +22,189 @@ export default function CurrencyConverterPage() {
   return (
     <section
       className="section"
-      style={{
-        background:
-          'radial-gradient(circle at top left, rgba(99,102,241,0.16), transparent 34%), radial-gradient(circle at top right, rgba(45,212,191,0.14), transparent 28%), linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
-      }}
+      style={{ background: '#f8fafc' }}
     >
-      <div className="container" style={{ display: 'grid', gap: '2.5rem' }}>
-        <div style={{ maxWidth: '820px' }}>
+      <div className="container" style={{ display: 'grid', gap: '3rem' }}>
+        {/* Header */}
+        <div style={{ maxWidth: '720px' }}>
           <div
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '8px',
-              borderRadius: '999px',
-              padding: '6px 14px',
-              background: 'rgba(99,102,241,0.1)',
-              color: '#4338ca',
-              fontWeight: 800,
-              fontSize: '0.8rem',
+              gap: '6px',
+              borderRadius: '100px',
+              padding: '5px 14px',
+              background: 'var(--accent-light)',
+              color: 'var(--accent-dark)',
+              fontWeight: 700,
+              fontSize: '0.78rem',
               textTransform: 'uppercase',
-              letterSpacing: '1px',
-              marginBottom: '14px',
+              letterSpacing: '0.5px',
+              marginBottom: '16px',
             }}
           >
-            <FiRepeat />
+            <FiRepeat style={{ fontSize: '0.85rem' }} />
             Remittance planning
           </div>
-          <h1 style={{ fontSize: 'clamp(2.2rem, 7vw, 3.8rem)', marginBottom: '14px', lineHeight: 1.05 }}>
-            Currency Converter for Gulf salary corridors
+          <h1
+            style={{
+              fontSize: 'clamp(2rem, 5vw, 3.2rem)',
+              lineHeight: 1.1,
+              marginBottom: '16px',
+              letterSpacing: '-0.025em',
+            }}
+          >
+            Gulf Currency Converter
           </h1>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1.12rem', lineHeight: 1.8, maxWidth: '62ch' }}>
-            Built for UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, and Oman salary earners who need a fast reference for
-            popular remittance routes like AED to INR, SAR to PHP, and QAR to NPR.
+          <p
+            style={{
+              color: 'var(--text-secondary)',
+              fontSize: '1.05rem',
+              lineHeight: 1.7,
+              maxWidth: '58ch',
+              margin: 0,
+            }}
+          >
+            Check the latest market reference rate for popular remittance corridors
+            like AED to INR, SAR to PHP, and QAR to NPR before you send money home.
           </p>
         </div>
 
+        {/* Converter tool */}
         <CurrencyConverterTool />
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-            gap: '18px',
-          }}
-          className="currency-insight-grid"
-        >
-          <div className="card" style={{ padding: '1.5rem', borderRadius: '24px', display: 'grid', gap: '10px' }}>
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '16px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(99,102,241,0.12)',
-                color: '#4338ca',
-                fontSize: '1.15rem',
-              }}
-            >
+        {/* Info cards */}
+        <div className="converter-info-grid">
+          <div className="converter-info-card">
+            <div className="converter-info-icon" style={{ background: 'var(--accent-light)', color: 'var(--accent-dark)' }}>
               <FiShield />
             </div>
-            <h2 style={{ fontSize: '1.2rem', margin: 0 }}>Why this tool matters</h2>
-            <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.8 }}>
+            <h2 className="converter-info-heading">Why this matters</h2>
+            <p className="converter-info-text">
               A quick rate check helps you compare offers from banks, exchange houses, and salary apps before you send money.
             </p>
           </div>
 
-          <div className="card" style={{ padding: '1.5rem', borderRadius: '24px', display: 'grid', gap: '10px' }}>
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '16px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(45,212,191,0.14)',
-                color: '#0f766e',
-                fontSize: '1.15rem',
-              }}
-            >
+          <div className="converter-info-card">
+            <div className="converter-info-icon" style={{ background: '#ecfdf5', color: '#0f766e' }}>
               <FiRepeat />
             </div>
-            <h2 style={{ fontSize: '1.2rem', margin: 0 }}>What it is not</h2>
-            <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-              This is a market reference tool, not a bank quote. Final payout usually changes after provider margin, fees, or delivery method.
+            <h2 className="converter-info-heading">What it is not</h2>
+            <p className="converter-info-text">
+              This is a market reference, not a bank quote. Final payout changes after provider margin, fees, and delivery method.
             </p>
           </div>
 
-          <div className="card" style={{ padding: '1.5rem', borderRadius: '24px', display: 'grid', gap: '10px' }}>
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '16px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: 'rgba(244,114,182,0.14)',
-                color: '#be185d',
-                fontSize: '1.15rem',
-              }}
-            >
-              <FiArrowRight />
+          <div className="converter-info-card">
+            <div className="converter-info-icon" style={{ background: '#fef3c7', color: '#92400e' }}>
+              <FiZap />
             </div>
-            <h2 style={{ fontSize: '1.2rem', margin: 0 }}>Next step</h2>
-            <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.8 }}>
-              Once you know the reference rate, compare the final payout with your chosen transfer provider before you confirm the transfer.
+            <h2 className="converter-info-heading">Next step</h2>
+            <p className="converter-info-text">
+              Once you know the reference rate, compare the final payout with your chosen transfer provider before confirming.
             </p>
           </div>
         </div>
 
-        <div
-          className="card"
-          style={{
-            padding: '1.5rem',
-            borderRadius: '28px',
-            background: 'linear-gradient(135deg, #0f172a 0%, #172554 100%)',
-            color: 'white',
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '18px',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
+        {/* CTA banner */}
+        <div className="converter-cta-banner">
           <div>
-            <h2 style={{ fontSize: '1.5rem', marginBottom: '8px', color: 'white' }}>Need interview prep too?</h2>
-            <p style={{ margin: 0, color: 'rgba(226,232,240,0.8)', maxWidth: '56ch', lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: '1.3rem', marginBottom: '6px', color: '#fff' }}>
+              Need interview prep too?
+            </h2>
+            <p style={{ margin: 0, color: 'rgba(226, 232, 240, 0.75)', lineHeight: 1.6, maxWidth: '50ch' }}>
               Move from salary planning to interview preparation with our sector-specific Gulf Interview Question Bank.
             </p>
           </div>
-          <Link href="/resources/interview-question-bank" className="btn" style={{ textDecoration: 'none' }}>
+          <Link
+            href="/resources/interview-question-bank"
+            className="btn"
+            style={{
+              textDecoration: 'none',
+              background: '#fff',
+              color: 'var(--primary)',
+              fontWeight: 700,
+              whiteSpace: 'nowrap',
+            }}
+          >
             Open Interview Bank <FiArrowRight />
           </Link>
         </div>
-
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `
-              @media (max-width: 980px) {
-                .currency-converter-grid,
-                .currency-insight-grid {
-                  grid-template-columns: 1fr !important;
-                }
-              }
-
-              @media (max-width: 720px) {
-                .currency-input-grid,
-                .currency-select-grid {
-                  grid-template-columns: 1fr !important;
-                }
-              }
-            `,
-          }}
-        />
       </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .converter-info-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 20px;
+            }
+
+            .converter-info-card {
+              background: #fff;
+              border-radius: 16px;
+              border: 1px solid rgba(0, 0, 0, 0.06);
+              padding: 24px;
+              display: grid;
+              gap: 12px;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+              transition: box-shadow 0.2s ease, transform 0.2s ease;
+            }
+
+            .converter-info-card:hover {
+              box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+              transform: translateY(-2px);
+            }
+
+            .converter-info-icon {
+              width: 42px;
+              height: 42px;
+              border-radius: 12px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 1.1rem;
+            }
+
+            .converter-info-heading {
+              font-size: 1.05rem;
+              font-weight: 700;
+              margin: 0;
+            }
+
+            .converter-info-text {
+              margin: 0;
+              color: var(--text-secondary);
+              font-size: 0.92rem;
+              line-height: 1.65;
+            }
+
+            .converter-cta-banner {
+              background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+              border-radius: 18px;
+              padding: 28px 32px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 20px;
+              flex-wrap: wrap;
+            }
+
+            @media (max-width: 980px) {
+              .converter-info-grid {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            @media (max-width: 640px) {
+              .converter-cta-banner {
+                padding: 24px;
+              }
+            }
+          `,
+        }}
+      />
     </section>
   );
 }
