@@ -2,7 +2,7 @@
 
 import type { ReactNode, Ref } from 'react';
 import { startTransition, useMemo, useRef, useState } from 'react';
-import { FiCheck, FiCpu, FiDownload, FiPlus, FiTrash2 } from 'react-icons/fi';
+import { FiCheck, FiCpu, FiDownload, FiMail, FiPlus, FiTrash2, FiX } from 'react-icons/fi';
 import { buildCvBullets, buildCvSummary } from '@/lib/cv-assist';
 
 /* ─── Types ─── */
@@ -157,6 +157,10 @@ export default function CVMakerPage() {
   const [enhancingId, setEnhancingId] = useState<string | null>(null);
   const [isSummaryLoading, setIsSummaryLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [emailInput, setEmailInput] = useState('');
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
+  const [emailStatus, setEmailStatus] = useState<{ ok: boolean; msg: string } | null>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
   const fullName = [cvData.firstName, cvData.lastName].filter(Boolean).join(' ') || 'Your Name';
@@ -306,6 +310,64 @@ export default function CVMakerPage() {
     }
   };
 
+  const handleEmailCV = async () => {
+    if (!previewRef.current || typeof window === 'undefined') return;
+    const email = emailInput.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailStatus({ ok: false, msg: 'Please enter a valid email address.' });
+      return;
+    }
+    setIsSendingEmail(true);
+    setEmailStatus(null);
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      const blob: Blob = await html2pdf()
+        .set({
+          margin: 0,
+          image: { type: 'jpeg', quality: 0.95 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+        })
+        .from(previewRef.current)
+        .outputPdf('blob');
+
+      const reader = new FileReader();
+      const pdfBase64: string = await new Promise((resolve, reject) => {
+        reader.onload = () => resolve((reader.result as string).split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+
+      const res = await fetch('/api/send-cv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          pdfBase64,
+          fileName: `${fullName.replace(/\s+/g, '_') || 'CV'}.pdf`,
+        }),
+      });
+
+      const contentType = res.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        setEmailStatus({ ok: false, msg: 'Email sending is only available after deployment.' });
+        return;
+      }
+
+      const data = (await res.json()) as { message?: string };
+      if (res.ok) {
+        setEmailStatus({ ok: true, msg: data.message || 'CV sent successfully!' });
+        setEmailInput('');
+      } else {
+        setEmailStatus({ ok: false, msg: data.message || 'Failed to send email.' });
+      }
+    } catch (error) {
+      setEmailStatus({ ok: false, msg: error instanceof Error ? error.message : 'Failed to send email.' });
+    } finally {
+      setIsSendingEmail(false);
+    }
+  };
+
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '40px 0 72px' }}>
       <div className="container" style={{ maxWidth: '1600px' }}>
@@ -416,6 +478,13 @@ export default function CVMakerPage() {
                 <button className="btn btn-primary" onClick={handleDownload} disabled={isDownloading}>
                   <FiDownload /> {isDownloading ? 'Exporting...' : 'Export PDF'}
                 </button>
+                <button
+                  className="btn"
+                  style={{ background: '#eef2ff', color: '#4f46e5', border: '1px solid #c7d2fe' }}
+                  onClick={() => { setShowEmailModal(true); setEmailStatus(null); }}
+                >
+                  <FiMail /> Email CV
+                </button>
               </div>
 
               <div className="cv-preview-live-shell">
@@ -493,6 +562,72 @@ export default function CVMakerPage() {
           .cv-preview-sheet-live :global(.cv-template-modern-body) { gap: 20px !important; }
         }
       `}</style>
+
+      {/* Email CV Modal */}
+      {showEmailModal && (
+        <div
+          style={{
+            position: 'fixed', inset: 0, zIndex: 9999,
+            background: 'rgba(0,0,0,0.45)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: '20px',
+          }}
+          onClick={(e) => { if (e.target === e.currentTarget) setShowEmailModal(false); }}
+        >
+          <div style={{
+            background: '#fff', borderRadius: '16px', padding: '36px',
+            maxWidth: '440px', width: '100%',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.18)',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
+              <div>
+                <h3 style={{ fontSize: '1.25rem', color: '#0f172a', marginBottom: '4px' }}>Email my CV</h3>
+                <p style={{ fontSize: '0.875rem', color: '#64748b', margin: 0 }}>We&apos;ll send your CV as a PDF attachment.</p>
+              </div>
+              <button onClick={() => setShowEmailModal(false)} style={{ color: '#94a3b8', fontSize: '1.25rem', lineHeight: 1 }}>
+                <FiX />
+              </button>
+            </div>
+
+            <input
+              type="email"
+              value={emailInput}
+              onChange={(e) => setEmailInput(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') handleEmailCV(); }}
+              placeholder="your@email.com"
+              style={{
+                width: '100%', padding: '12px 14px', borderRadius: '10px',
+                border: '1px solid #e2e8f0', fontSize: '0.9375rem',
+                marginBottom: '12px', outline: 'none',
+              }}
+            />
+
+            {emailStatus && (
+              <div style={{
+                padding: '10px 14px', borderRadius: '8px', marginBottom: '12px',
+                fontSize: '0.875rem', fontWeight: 500,
+                background: emailStatus.ok ? '#ecfdf5' : '#fef2f2',
+                color: emailStatus.ok ? '#065f46' : '#991b1b',
+              }}>
+                {emailStatus.msg}
+              </div>
+            )}
+
+            <button
+              className="btn btn-primary"
+              onClick={handleEmailCV}
+              disabled={isSendingEmail}
+              style={{ width: '100%', justifyContent: 'center', padding: '14px' }}
+            >
+              <FiMail /> {isSendingEmail ? 'Sending...' : 'Send CV'}
+            </button>
+
+            <p style={{ fontSize: '0.75rem', color: '#94a3b8', textAlign: 'center', marginTop: '12px', marginBottom: 0 }}>
+              Your email is only used to deliver this CV and is not stored.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
