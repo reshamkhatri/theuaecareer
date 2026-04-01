@@ -34,6 +34,96 @@ const textReplacements: Array<[string, string]> = [
   ['â€ƒ', ''],
 ];
 
+// Stock images keyed by category keyword — used when articles have no inline images
+const stockImagesByCategory: Record<string, string[]> = {
+  'walk-in': [
+    'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1280&q=80',
+    'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1280&q=80',
+    'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1280&q=80',
+  ],
+  career: [
+    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1280&q=80',
+    'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1280&q=80',
+    'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1280&q=80',
+  ],
+  salary: [
+    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1280&q=80',
+    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1280&q=80',
+    'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1280&q=80',
+  ],
+  visa: [
+    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1280&q=80',
+    'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=1280&q=80',
+    'https://images.unsplash.com/photo-1577415124269-fc1140815ced?w=1280&q=80',
+  ],
+  default: [
+    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1280&q=80',
+    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1280&q=80',
+    'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1280&q=80',
+  ],
+};
+
+const stockFeaturedImages: Record<string, string> = {
+  'walk-in': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
+  career: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80',
+  salary: 'https://images.unsplash.com/photo-1449965408869-ebd3fee1f2f3?w=1600&q=80',
+  visa: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1600&q=80',
+  default: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
+};
+
+function getCategoryKey(category: string): string {
+  const lower = category.toLowerCase();
+  if (lower.includes('walk-in')) return 'walk-in';
+  if (lower.includes('career') || lower.includes('hiring') || lower.includes('company')) return 'career';
+  if (lower.includes('salary')) return 'salary';
+  if (lower.includes('visa') || lower.includes('pro')) return 'visa';
+  return 'default';
+}
+
+function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
+  const hasInlineImages = article.content.includes('<img');
+  const key = getCategoryKey(article.category);
+
+  // Add featured image if missing
+  if (!article.featuredImage) {
+    article = { ...article, featuredImage: stockFeaturedImages[key] || stockFeaturedImages.default };
+  }
+
+  // Inject inline images if none exist in content
+  if (!hasInlineImages && article.content.length > 200) {
+    const images = stockImagesByCategory[key] || stockImagesByCategory.default;
+    const paragraphs = article.content.split('</p>');
+
+    if (paragraphs.length > 4) {
+      const insertPoints = [
+        Math.floor(paragraphs.length * 0.2),
+        Math.floor(paragraphs.length * 0.5),
+        Math.floor(paragraphs.length * 0.78),
+      ];
+
+      const altTexts = [
+        `Professional workplace scene related to ${article.category.toLowerCase()} in the UAE`,
+        `Career and employment in the Gulf region`,
+        `Working professionals in Dubai and the UAE`,
+      ];
+
+      let offset = 0;
+      for (let i = 0; i < Math.min(images.length, insertPoints.length); i++) {
+        const idx = insertPoints[i] + offset;
+        if (idx < paragraphs.length) {
+          const imgHtml = `</p><figure><img src="${images[i]}" alt="${altTexts[i]}" loading="lazy" /></figure>`;
+          paragraphs[idx] = paragraphs[idx] + imgHtml;
+          offset++;
+        }
+      }
+
+      article = { ...article, content: paragraphs.join('</p>') };
+    }
+  }
+
+  return article;
+}
+
 const launchArticleRecords: ArticleRecord[] = launchArticles.map((article) =>
   sanitizeArticleRecord(normalizeArticleRecord(article))
 );
@@ -537,7 +627,8 @@ export async function getArticles(
 
   const sanityResult = await getSanityArticles(options);
   if (sanityResult && (sanityResult.result.pagination.total > 0 || sanityResult.collectionCount > 0)) {
-    return sanityResult.result;
+    const enriched = { ...sanityResult.result, items: sanityResult.result.items.map(enrichArticleWithImages) };
+    return enriched;
   }
 
   const dbResult = await withDatabase(async () => {
@@ -565,7 +656,7 @@ export async function getArticles(
     return {
       collectionCount,
       result: {
-        items: items.map((article) => sanitizeArticleRecord(normalizeArticleRecord(article))),
+        items: items.map((article) => enrichArticleWithImages(sanitizeArticleRecord(normalizeArticleRecord(article)))),
         pagination: {
           page,
           limit,
@@ -595,13 +686,14 @@ export async function getArticles(
     })
   );
 
-  return paginate(filtered, page, limit);
+  const result = paginate(filtered, page, limit);
+  return { ...result, items: result.items.map(enrichArticleWithImages) };
 }
 
 export async function getArticleByIdentifier(identifier: string): Promise<ArticleRecord | null> {
   const sanityArticle = await getSanityArticleByIdentifier(identifier);
-  if (sanityArticle && sanityArticle.collectionCount > 0) {
-    return sanityArticle.item;
+  if (sanityArticle && sanityArticle.collectionCount > 0 && sanityArticle.item) {
+    return enrichArticleWithImages(sanityArticle.item);
   }
 
   const dbArticle = await withDatabase(async () => {
@@ -619,10 +711,11 @@ export async function getArticleByIdentifier(identifier: string): Promise<Articl
   });
 
   if (dbArticle) {
-    return dbArticle;
+    return enrichArticleWithImages(dbArticle);
   }
 
-  return launchArticleRecords.find((article) => article.slug === identifier || article._id === identifier) || null;
+  const launch = launchArticleRecords.find((article) => article.slug === identifier || article._id === identifier);
+  return launch ? enrichArticleWithImages(launch) : null;
 }
 
 export async function getRelatedArticles(
