@@ -63,13 +63,50 @@ const stockImagesByCategory: Record<string, string[]> = {
   ],
 };
 
-const stockFeaturedImages: Record<string, string> = {
-  'walk-in': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
-  career: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80',
-  salary: 'https://images.unsplash.com/photo-1449965408869-ebd3fee1f2f3?w=1600&q=80',
-  visa: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1600&q=80',
-  default: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
+// Per-slug featured images — every article gets a unique image
+const slugFeaturedImages: Record<string, string> = {
+  'walk-in-interviews-dubai-this-week':       'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1600&q=80',
+  'hospitality-jobs-in-dubai':                'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80',
+  'how-to-apply-dubai-hotel-jobs':            'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1600&q=80',
+  'verified-dubai-jobs-direct-employer':      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80',
+  'how-to-find-a-job-in-dubai-as-a-fresher':  'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80',
+  'top-10-in-demand-jobs-uae-2026':           'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80',
+  'cost-of-living-dubai-2026':                'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80',
+  'how-to-write-cv-for-gulf-jobs':            'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1600&q=80',
+  'uae-golden-visa-2026-guide':               'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1600&q=80',
+  'best-free-zones-dubai-2026':               'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
+  'salary-guide-uae-2026':                    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80',
+  'uae-interview-questions-and-answers':      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80',
+  'abu-dhabi-vs-dubai-working-living':        'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1600&q=80',
+  'best-remittance-options-uae-2026':         'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=1600&q=80',
+  'how-to-get-uae-driving-licence':           'https://images.unsplash.com/photo-1449965408869-ebd3fee1f2f3?w=1600&q=80',
+  'how-to-renew-uae-work-visa':               'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80',
+  'uae-labour-law-guide-for-expats':          'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80',
+  'driver-salary-in-uae-2026':               'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1600&q=80',
 };
+
+// Fallback pool — unique images used when slug doesn't match above
+const fallbackFeaturedImages = [
+  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80',
+  'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=1600&q=80',
+  'https://images.unsplash.com/photo-1577415124269-fc1140815ced?w=1600&q=80',
+  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80',
+];
+
+function getStockFeaturedImage(slug: string): string {
+  // Try exact slug match first (handles both dot and hyphen variants)
+  const normalizedSlug = slug.replace(/^article\./, '');
+  for (const [key, url] of Object.entries(slugFeaturedImages)) {
+    if (normalizedSlug.includes(key) || key.includes(normalizedSlug.split('-').slice(0, 4).join('-'))) {
+      return url;
+    }
+  }
+  // Deterministic fallback based on slug hash
+  let hash = 0;
+  for (let i = 0; i < slug.length; i++) hash = (hash * 31 + slug.charCodeAt(i)) >>> 0;
+  return fallbackFeaturedImages[hash % fallbackFeaturedImages.length];
+}
 
 function getCategoryKey(category: string): string {
   const lower = category.toLowerCase();
@@ -84,9 +121,9 @@ function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
   const hasInlineImages = article.content.includes('<img');
   const key = getCategoryKey(article.category);
 
-  // Add featured image if missing
+  // Add featured image if missing — use slug-based unique image
   if (!article.featuredImage) {
-    article = { ...article, featuredImage: stockFeaturedImages[key] || stockFeaturedImages.default };
+    article = { ...article, featuredImage: getStockFeaturedImage(article.slug) };
   }
 
   // Inject inline images if none exist in content
