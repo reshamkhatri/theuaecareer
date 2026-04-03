@@ -1,5 +1,13 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
+
+const JOB_CATEGORIES = [
+  'Hospitality', 'IT', 'Construction', 'Healthcare', 'Sales',
+  'Logistics', 'Admin', 'Finance', 'Education', 'Engineering', 'Retail', 'Other',
+] as const;
+
+const COUNTRIES = ['UAE', 'Saudi Arabia', 'Qatar'] as const;
+
+const JOB_TYPES = ['Full-time', 'Part-time', 'Walk-in', 'Contract'] as const;
 
 export const jobType = defineType({
   name: 'job',

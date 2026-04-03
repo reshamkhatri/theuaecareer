@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/jobs', label: 'Find Jobs' },
   { href: '/jobs/walk-in', label: 'Walk-ins' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/blog/', label: 'Blog' },
 ];
 
 const resourceLinks = [

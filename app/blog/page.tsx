@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Read expert articles on UAE salaries, visa processes, walk-in interviews, and career advice for Gulf job seekers.',
   alternates: {
-    canonical: '/blog',
+    canonical: '/blog/',
   },
   openGraph: {
     title: 'Career Blog | UAE Job Market Insights & Guides',

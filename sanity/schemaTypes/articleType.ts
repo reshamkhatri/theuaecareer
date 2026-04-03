@@ -1,5 +1,13 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { ARTICLE_CATEGORIES } from '@/lib/constants';
+
+const ARTICLE_CATEGORIES = [
+  'Walk-In Interviews',
+  'Company Hiring',
+  'Career Guides',
+  'Salary Insights',
+  'Visa & PRO Guides',
+  'Industry Roundups',
+] as const;
 
 export const articleType = defineType({
   name: 'article',

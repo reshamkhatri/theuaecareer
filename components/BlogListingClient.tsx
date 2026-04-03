@@ -25,7 +25,7 @@ function buildBlogHref(
   });
 
   const query = params.toString();
-  return query ? `/blog?${query}` : '/blog';
+  return query ? `/blog/?${query}` : '/blog/';
 }
 
 function matchesSearch(article: ArticleRecord, search: string): boolean {
@@ -126,7 +126,7 @@ function BlogListingView({
 
           <form
             className="blog-search-form"
-            action="/blog"
+            action="/blog/"
             method="get"
             style={{
               background: 'white',
@@ -202,7 +202,7 @@ function BlogListingView({
           {filteredArticles.length === 0 ? (
             <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
               <p>No articles found.</p>
-              <Link href="/blog" className="btn btn-primary mt-md">
+              <Link href="/blog/" className="btn btn-primary mt-md">
                 View All
               </Link>
             </div>
