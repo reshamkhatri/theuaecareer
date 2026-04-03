@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE. Get direct hiring event details and quick-apply guidance.',
   alternates: {
-    canonical: '/jobs/walk-in',
+    canonical: '/jobs/walk-in/',
   },
   openGraph: {
     title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',

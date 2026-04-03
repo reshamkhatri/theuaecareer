@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Read theuaecareer.com disclaimer about job listings, third-party employers, and informational content.',
   alternates: {
-    canonical: '/disclaimer',
+    canonical: '/disclaimer/',
   },
 };
 

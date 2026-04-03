@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Browse the latest job openings in UAE, Dubai, Abu Dhabi, Sharjah, Saudi Arabia and Qatar. Filter by country, job type, and industry.',
   alternates: {
-    canonical: '/jobs',
+    canonical: '/jobs/',
   },
   openGraph: {
     title: 'Latest Jobs in UAE 2026 - Dubai, Abu Dhabi, Gulf Careers',

@@ -59,12 +59,12 @@ export async function generateMetadata({
     title: article.metaTitle || `${article.title} | theuaecareer.com`,
     description: article.metaDescription || article.excerpt,
     alternates: {
-      canonical: `/blog/${article.slug}`,
+      canonical: `/blog/${article.slug}/`,
     },
     openGraph: {
       title: article.metaTitle || article.title,
       description: article.metaDescription || article.excerpt,
-      url: `/blog/${article.slug}`,
+      url: `/blog/${article.slug}/`,
       type: 'article',
       publishedTime: article.publishDate,
       modifiedTime: article.lastUpdatedDate || article.publishDate,

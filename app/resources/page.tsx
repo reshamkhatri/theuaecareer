@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Explore practical resources for Gulf job seekers, including the Interview Question Bank, career guides, and free planning tools.',
   alternates: {
-    canonical: '/resources',
+    canonical: '/resources/',
   },
   openGraph: {
     title: 'Resources | Interview prep, guides and job-seeker tools',

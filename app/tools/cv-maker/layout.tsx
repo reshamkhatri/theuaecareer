@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     'Dubai resume format',
   ],
   alternates: {
-    canonical: `${SITE_URL}/tools/cv-maker`,
+    canonical: `${SITE_URL}/tools/cv-maker/`,
   },
   openGraph: {
     title: 'Free UAE CV Maker 2026 — Gulf-Ready Templates with Photo',
     description:
       'Build a UAE-standard CV free online. Includes photo, nationality, visa status, and languages. 3 professional templates. Export PDF instantly.',
-    url: `${SITE_URL}/tools/cv-maker`,
+    url: `${SITE_URL}/tools/cv-maker/`,
     type: 'website',
   },
   twitter: {

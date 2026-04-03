@@ -44,7 +44,7 @@ export async function generateMetadata({
     title: job.metaTitle || `${job.title} in ${job.location.city} | theuaecareer.com`,
     description: job.metaDescription || stripHtml(job.description).slice(0, 160),
     alternates: {
-      canonical: `/jobs/${job.slug}`,
+      canonical: `/jobs/${job.slug}/`,
     },
     openGraph: {
       title: job.metaTitle || job.title,

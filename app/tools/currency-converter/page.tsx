@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     'dirham to rupee today',
   ],
   alternates: {
-    canonical: '/tools/currency-converter',
+    canonical: '/tools/currency-converter/',
   },
   openGraph: {
     title: 'AED to INR Currency Converter — Live UAE Exchange Rate Today',

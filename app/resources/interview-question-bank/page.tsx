@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Prepare for Gulf-facing interviews with a researched question bank covering Construction, Hospitality, Retail, and Oil & Gas, now with practical sample answers.',
   alternates: {
-    canonical: '/resources/interview-question-bank',
+    canonical: '/resources/interview-question-bank/',
   },
   openGraph: {
     title: 'Interview Question Bank | Gulf sector interview prep',

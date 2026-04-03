@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     'Contact theuaecareer.com for support, job portal feedback, partnerships, and content queries.',
   alternates: {
-    canonical: '/contact',
+    canonical: '/contact/',
   },
   openGraph: {
     title: 'Contact Us',

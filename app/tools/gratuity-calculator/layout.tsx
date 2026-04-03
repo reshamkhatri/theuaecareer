@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     'gratuity calculation UAE',
   ],
   alternates: {
-    canonical: `${SITE_URL}/tools/gratuity-calculator`,
+    canonical: `${SITE_URL}/tools/gratuity-calculator/`,
   },
   openGraph: {
     title: 'UAE Gratuity Calculator 2026 — Free End of Service Calculator',
     description:
       'Calculate your UAE end-of-service gratuity instantly. Based on UAE Labour Law Federal Decree No. 33 of 2021. Free PDF download.',
-    url: `${SITE_URL}/tools/gratuity-calculator`,
+    url: `${SITE_URL}/tools/gratuity-calculator/`,
     type: 'website',
   },
   twitter: {
