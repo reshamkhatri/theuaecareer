@@ -238,7 +238,7 @@ export default function GratuityCalculatorPage() {
                <div>
                   <div style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', color: '#10B981', letterSpacing: '1px', marginBottom: '8px' }}>Read Expert Guide</div>
                   <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '8px', lineHeight: 1.3 }}>What is UAE Gratuity? A Complete Guide 2024</h4>
-                  <Link href="/blog/uae-gratuity-calculation-guide" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Link href="/blog/uae-labour-law-guide-for-expats" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                     Read Article <FiArrowRight />
                   </Link>
                </div>
@@ -250,18 +250,84 @@ export default function GratuityCalculatorPage() {
 
       {/* FAQ Section */}
       <div className="container" style={{ marginTop: '80px', maxWidth: '1000px' }}>
-         <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary)', marginBottom: '40px' }}>Frequently Asked Questions</h2>
+         <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary)', marginBottom: '8px' }}>Frequently Asked Questions</h2>
+         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '40px' }}>Everything you need to know about UAE end-of-service gratuity</p>
          <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
             <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Am I eligible for gratuity if I resign?</h4>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>Yes, under the new 2024 law, employees are eligible for gratuity even if they resign, provided they have completed at least one year of continuous service.</p>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Am I eligible for gratuity if I resign?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Yes. Under UAE Labour Law (Federal Decree No. 33 of 2021), employees are eligible for gratuity even if they resign — as long as they have completed at least 1 year of continuous service.</p>
             </div>
             <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>How is the daily wage calculated?</h4>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>The daily wage is usually calculated by dividing the basic monthly salary by 30 days. Allowances like housing and transport are generally excluded.</p>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>How is the daily wage calculated for gratuity?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>The daily wage is your basic monthly salary divided by 30 days. Housing, transport, and other allowances are excluded. Only your basic salary is used.</p>
+            </div>
+            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>What is the UAE gratuity formula?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>For the first 5 years: 21 days of basic salary per year. Beyond 5 years: 30 days of basic salary per year. Total gratuity is capped at 2 years of basic salary.</p>
+            </div>
+            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>When is gratuity paid in UAE?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Gratuity must be paid within 14 days of your last working day. If your employer delays payment, you can file a complaint with MOHRE at 800-60.</p>
+            </div>
+            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Does gratuity apply to free zone employees?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Most free zones follow UAE Labour Law for gratuity. However, some zones (like DIFC) have their own regulations. Check your employment contract to confirm which law applies.</p>
+            </div>
+            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
+               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Is gratuity taxed in UAE?</h3>
+               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>No. There is no income tax in the UAE, so your gratuity payment is tax-free in the UAE. You may need to declare it in your home country depending on local tax laws.</p>
+            </div>
+         </div>
+
+         {/* Internal links */}
+         <div style={{ marginTop: '40px', padding: '28px', background: '#fff', border: '1px solid var(--border)', borderRadius: '12px' }}>
+            <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '16px' }}>Related Guides</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+               <Link href="/blog/uae-labour-law-guide-for-expats" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Labour Law Guide for Expats</Link>
+               <Link href="/blog/salary-guide-uae-2026" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Salary Guide 2026</Link>
+               <Link href="/blog/how-to-renew-uae-work-visa" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Work Visa Renewal Guide</Link>
+               <Link href="/blog/abu-dhabi-vs-dubai-working-expats" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Abu Dhabi vs Dubai for Expats</Link>
+               <Link href="/tools/currency-converter" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>AED Currency Converter</Link>
             </div>
          </div>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Am I eligible for gratuity if I resign in UAE?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Yes. Under UAE Labour Law (Federal Decree No. 33 of 2021), employees are eligible for gratuity even if they resign, as long as they have completed at least 1 year of continuous service.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'What is the UAE gratuity formula?',
+                acceptedAnswer: { '@type': 'Answer', text: 'For the first 5 years: 21 days of basic salary per year. Beyond 5 years: 30 days of basic salary per year. Total gratuity is capped at 2 years of basic salary.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'How is the daily wage calculated for UAE gratuity?',
+                acceptedAnswer: { '@type': 'Answer', text: 'The daily wage is your basic monthly salary divided by 30 days. Housing, transport, and other allowances are excluded.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'When is gratuity paid in UAE?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Gratuity must be paid within 14 days of your last working day. If delayed, you can file a complaint with MOHRE at 800-60.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'Is gratuity taxed in UAE?',
+                acceptedAnswer: { '@type': 'Answer', text: 'No. There is no income tax in the UAE, so your gratuity payment is tax-free in the UAE.' },
+              },
+            ],
+          }),
+        }}
+      />
 
       <style jsx>{`
         @media (max-width: 1024px) {
