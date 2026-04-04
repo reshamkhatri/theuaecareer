@@ -184,7 +184,7 @@ function BlogListingView({
                         <Link key={article._id} href={`/blog/${article.slug}`} className="blg-secondary-card">
                           <ArticleCover
                             article={article}
-                            variant="compact"
+                            variant="card"
                             className="blg-secondary-cover"
                           />
                           <div className="blg-secondary-body">
@@ -510,10 +510,11 @@ const blogStyles = `
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   }
   .blg-secondary-cover {
-    width: 160px !important;
-    height: auto !important;
-    min-height: 100%;
+    width: 150px !important;
+    height: 130px !important;
+    min-height: 130px !important;
     flex-shrink: 0;
+    border-radius: 0 !important;
   }
   .blg-secondary-body {
     padding: 20px 20px 20px 0;
