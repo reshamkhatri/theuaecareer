@@ -496,5 +496,268 @@ export const jobs = [
     "isWalkIn": false,
     "status": "active",
     "slug": "it-support-technician-9"
+  },
+  {
+    "title": "Facility Management Technicians & Cleaners",
+    "companyName": "Al Ghurair Facilities Solutions",
+    "location": {
+      "city": "Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 1800,
+      "max": 3500,
+      "currency": "AED",
+      "label": "Market rates based on role"
+    },
+    "experienceRequired": "2–5 years UAE experience",
+    "category": "Construction / General Labor",
+    "description": "<p>Al Ghurair Facilities Solutions is recruiting for multiple ongoing facility management projects across Dubai. We have immediate openings for AC Technicians, Electricians, Plumbers, Multi-Technicians, and Cleaners (Male/Female).</p><h3>Requirements</h3><p>•\t2–5 years of UAE experience preferred for technical roles.</p><p>•\tCandidates must be ready to join immediately.</p><p>•\tRelevant ITI or Technical certificates for Technician roles.</p>",
+    "howToApply": "<p>Walk in with your updated CV, Passport copy, Visa copy, and personal photos.</p>",
+    "postedDate": "2026-04-03T10:00:00.000Z",
+    "expiryDate": "2026-04-26T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturdays in April (9:00 AM – 12:00 PM) at Sobha One (Dining Area – 1), Ras Al Khor",
+      "time": "9:00 AM – 12:00 PM (Doors close at 11:00 AM)",
+      "venue": "Sobha One (Dining Area – 1), 112 Ras Al Khor Street, Ras Al Khor Industrial Area 1, Dubai"
+    },
+    "status": "active",
+    "slug": "facility-management-al-ghurair-walkin"
+  },
+  {
+    "title": "Security Guards & MEP Technicians",
+    "companyName": "Transguard Group",
+    "location": {
+      "city": "Jebel Ali",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Competitive market standard"
+    },
+    "experienceRequired": "SIRA License or MEP Certification",
+    "category": "Logistics & Transport / Admin",
+    "description": "<p>Transguard Group is recruiting for various security and technical roles to support new contract wins. We are looking for Security Guards (SIRA Certified), MEP Technicians, HVAC Technicians, and BMS Operators.</p><h3>Requirements</h3><p>•\tSecurity roles: valid SIRA license is mandatory.</p><p>•\tMEP roles: relevant technical certification and experience.</p><p>•\tImmediate joiners required.</p>",
+    "howToApply": "<p>Attend the walk-in interviews at our Jebel Ali accommodation.</p>",
+    "postedDate": "2026-04-03T10:00:00.000Z",
+    "expiryDate": "2026-04-10T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Security: Mon-Thu (8am-1pm) | MEP: 6th-9th April at Transguard Accommodation 6",
+      "time": "8:00 AM – 1:00 PM",
+      "venue": "Transguard Accommodation 6, Jebel Ali, Dubai"
+    },
+    "status": "active",
+    "slug": "security-mep-transguard-group-walkin"
+  },
+  {
+    "title": "Sales Executive & Business Setup Advisor",
+    "companyName": "First Key Business Services",
+    "location": {
+      "city": "Al Qusais",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Commission-based incentives included"
+    },
+    "experienceRequired": "1-2+ years",
+    "category": "Sales",
+    "description": "<p>First Key Business Services is expanding its team to handle increased demand for business licensing and advisory services. We are hiring Sales Executives, Business Setup Advisors, and Sales Managers.</p><h3>Requirements</h3><p>•\t2+ years of experience for Manager roles; sales background preferred for Executives.</p><p>•\tExcellent communication skills and a sales-driven mindset.</p><p>•\tConsulting or business setup background is a strong advantage.</p>",
+    "howToApply": "<p>Walk-in directly to our office for an interview. Contact 04 66 58 588 / careers.firstkey@gmail.com for verification.</p>",
+    "postedDate": "2026-04-03T10:00:00.000Z",
+    "expiryDate": "2026-04-11T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Ongoing daily until 10 April 2026 at Arzoo Building, Next to Qusais Metro",
+      "time": "Ongoing daily during office hours",
+      "venue": "Office 205, Arzoo Building, Next to Qusais Metro Station, Qusais 2, Dubai"
+    },
+    "status": "active",
+    "slug": "sales-business-setup-advisor-first-key-walkin"
+  },
+  {
+    "title": "Construction Technical Roles — Survey & Façade",
+    "companyName": "Sobha Construction",
+    "location": {
+      "city": "Ras Al Khor, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Competitive company standard"
+    },
+    "experienceRequired": "Role-specific construction experience mandatory",
+    "category": "Construction / General Labor",
+    "description": "<p>Sobha Construction is holding walk-in interviews for various technical roles in the Façade and Survey departments. We are looking for Survey Chainmen, Assistant Surveyors (Façade), Chargehands, Junior Foremen, and Access Technicians.</p><h3>Roles Available</h3><ul><li>Survey — Chainman</li><li>Assistant Surveyor — Façade</li><li>Chargehand Façade</li><li>Junior Foreman Façade — Access (Cradle)</li><li>Access Technician — Cradle</li><li>Semi Fitter</li></ul>",
+    "howToApply": "<p>Walk in with your updated CV and relevant documents (Passport and Visa copies). Must be below 45 years of age.</p>",
+    "postedDate": "2026-04-04T08:00:00.000Z",
+    "expiryDate": "2026-04-26T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturdays in April (9:00 AM – 12:00 PM) at Sobha One, Ras Al Khor",
+      "time": "9:00 AM – 12:00 PM",
+      "venue": "Sobha One, 112 Ras Al Khor Street, Dubai (Dining Area – 1)"
+    },
+    "status": "active",
+    "slug": "sobha-construction-survey-facade-walkin"
+  },
+  {
+    "title": "Civil & Construction Tradesmen",
+    "companyName": "Gulf Precast Concrete Company LLC",
+    "location": {
+      "city": "DIP 1, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Market competitive + benefits"
+    },
+    "experienceRequired": "Precast construction experience mandatory",
+    "category": "Construction / General Labor",
+    "description": "<p>Gulf Precast Concrete Company is hiring for various trades in both Dubai and Abu Dhabi locations. We are looking for Masons, Foremen, Chargehands, Carpenters, Steel Fixers, Erectors, Mobile Crane Operators, and Industrial Mechanics.</p><h3>Requirements</h3><ul><li>Mandatory experience in precast construction.</li><li>Ready to work in either Dubai or Abu Dhabi as required.</li></ul>",
+    "howToApply": "<p>Walk in to our head office in DIP 1 between 9 AM and 3 PM.</p>",
+    "postedDate": "2026-04-03T08:00:00.000Z",
+    "expiryDate": "2026-04-10T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Daily until 10 April (9:00 AM – 3:00 PM) at DIP 1",
+      "time": "9:00 AM – 3:00 PM",
+      "venue": "Gulf Precast Concrete Company LLC – S.P.C, Dubai Investment Park First (DIP 1), Dubai"
+    },
+    "status": "active",
+    "slug": "civil-construction-gulf-precast-walkin"
+  },
+  {
+    "title": "Civil Construction Workers — Mason, Painter, Carpenter",
+    "companyName": "Venco Imtiaz Contracting Company (VICC)",
+    "location": {
+      "city": "Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Salary + Overtime + Accommodation"
+    },
+    "experienceRequired": "UAE construction experience required",
+    "category": "Construction / General Labor",
+    "description": "<p>Venco Imtiaz Contracting is hiring skilled civil workers for ongoing projects in Dubai. We provide medical insurance and accommodation as part of the package.</p><h3>Roles Available</h3><ul><li>Block Mason</li><li>Shuttering Carpenter</li><li>Painter</li><li>Tile Mason</li><li>Steel Fixer</li></ul>",
+    "howToApply": "<p>Attend the walk-in interview near UAE Exchange Metro. Contact +971 56 682 8733 for directions.</p>",
+    "postedDate": "2026-04-04T08:00:00.000Z",
+    "expiryDate": "2026-04-05T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturday 4 April (9:00 AM – 4:00 PM) near UAE Exchange Metro",
+      "time": "9:00 AM – 4:00 PM",
+      "venue": "Near UAE Exchange Metro Station, Dubai"
+    },
+    "status": "active",
+    "slug": "civil-workers-vicc-walkin"
+  },
+  {
+    "title": "HVAC Technician & Assistant Technician",
+    "companyName": "Injaaz Facilities Management",
+    "location": {
+      "city": "Al Quoz 4, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Based on experience"
+    },
+    "experienceRequired": "3-5 years UAE experience required",
+    "category": "Construction / General Labor",
+    "description": "<p>Injaaz Facilities Management is hiring HVAC technical staff for maintenance projects. Candidates must have strong knowledge of water supply, heating, and ventilation systems.</p><h3>Requirements</h3><ul><li>3 to 5 years of verifiable experience in the UAE.</li><li>Sound knowledge of maintenance protocols.</li></ul>",
+    "howToApply": "<p>Walk in to our Al Quoz Industrial Area 4 office for an immediate interview.</p>",
+    "postedDate": "2026-04-04T08:00:00.000Z",
+    "expiryDate": "2026-04-05T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturday 4 April (9:00 AM – 1:00 PM) in Al Quoz 4",
+      "time": "9:00 AM – 1:00 PM",
+      "venue": "Al Quoz Industrial Area 4, Dubai"
+    },
+    "status": "active",
+    "slug": "hvac-technicians-injaaz-fm-walkin"
+  },
+  {
+    "title": "MEP Technicians — Electricians, Plumbers, HVAC",
+    "companyName": "Al Ghurair Infrastructure Facilities Solutions",
+    "location": {
+      "city": "Deira, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Market standard + benefits"
+    },
+    "experienceRequired": "Technical FM experience required",
+    "category": "Construction / General Labor",
+    "description": "<p>Al Ghurair Infrastructure is recruiting technical staff for its Facilities Management division. We have immediate openings for multiple MEP roles.</p><h3>Roles Available</h3><ul><li>Electricians</li><li>Plumbers</li><li>MEP Technicians</li><li>Multi Technicians</li><li>HVAC Technicians</li></ul>",
+    "howToApply": "<p>Walk in to AG House in Hor Al Anz. Preference for immediate joiners on Visit or Cancelled visas.</p>",
+    "postedDate": "2026-04-03T08:00:00.000Z",
+    "expiryDate": "2026-04-30T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Mon–Fri in April (9:00 AM – 1:00 PM) at AG House, Deira",
+      "time": "9:00 AM – 1:00 PM",
+      "venue": "AG House, 1st Floor, Hor Al Anz, Deira, Dubai"
+    },
+    "status": "active",
+    "slug": "mep-technicians-al-ghurair-infra-walkin"
+  },
+  {
+    "title": "Plant & Machinery (P&M) Trades — Drivers & Operators",
+    "companyName": "SOBHA Constructions",
+    "location": {
+      "city": "Ras Al Khor, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Standard company benefits"
+    },
+    "experienceRequired": "UAE experience + valid license",
+    "category": "Logistics & Transport",
+    "description": "<p>Sobha Construction's P&M division is hiring for various specialized operator and driver roles. Valid UAE license (minimum 1 year old) is mandatory for all driving positions.</p><h3>Roles Available</h3><ul><li>Heavy Truck Driver</li><li>Mobile Crane Operator</li><li>Forklift Operator</li><li>Bobcat Operator</li><li>Cradle Technician</li><li>Boom Loader</li><li>Tower Crane Erector</li></ul>",
+    "howToApply": "<p>Walk in to Sobha One with your license and CV.</p>",
+    "postedDate": "2026-04-04T08:00:00.000Z",
+    "expiryDate": "2026-04-05T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturday 4 April (9:00 AM – 12:00 PM) at Sobha One",
+      "time": "9:00 AM – 12:00 PM",
+      "venue": "Sobha One, 112 Ras Al Khor St, Dubai (Dining Area – 1)"
+    },
+    "status": "active",
+    "slug": "plant-machinery-operators-sobha-walkin"
+  },
+  {
+    "title": "Industrial MEP & Construction Workers",
+    "companyName": "Autolink Contracting LLC",
+    "location": {
+      "city": "Bur Dubai, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "label": "Company standard"
+    },
+    "experienceRequired": "2–5 years relevant experience",
+    "category": "Construction / General Labor",
+    "description": "<p>Autolink Contracting is hiring a large volume of skilled workers and foremen for engineering and construction projects in Bur Dubai.</p><h3>Roles Available</h3><ul><li>Tower Crane Rigger / Welders</li><li>AC Technicians / Electricians / Plumbers</li><li>Ductman / Pipe Fitters / Insulators</li><li>Scaffolders / Foremen</li></ul>",
+    "howToApply": "<p>Walk in to our office in Al Khaleej Center with your CV and experience proofs.</p>",
+    "postedDate": "2026-04-04T08:00:00.000Z",
+    "expiryDate": "2026-04-05T10:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturday 4 April (9:00 AM – 1:00 PM) at Al Khaleej Center",
+      "time": "9:00 AM – 1:00 PM",
+      "venue": "Office #304, 3rd Floor, Al Khaleej Center, Al Mankhool Road, Bur Dubai"
+    },
+    "status": "active",
+    "slug": "mep-industrial-autolink-contracting-walkin"
   }
 ];
