@@ -21,7 +21,7 @@ const defaultOgImage = {
 };
 
 const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || '';
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-DW0X5Q5MWS';
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-C9Y178ND5Q';
 const iconVersion = '20260329';
 
 const websiteJsonLd = {
