@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Learn about theuaecareer.com, a practical job and career resource for UAE and Gulf job seekers.',
+  alternates: {
+    canonical: '/about/',
+  },
 };
 
 export default function AboutPage() {

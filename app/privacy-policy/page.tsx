@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'Privacy Policy for theuaecareer.com - how we handle messages, newsletter requests, CV builder inputs, cookies, and optional third-party services.',
+  alternates: {
+    canonical: '/privacy-policy/',
+  },
 };
 
 export default function PrivacyPolicyPage() {

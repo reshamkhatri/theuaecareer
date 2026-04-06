@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
     'Terms of Service for theuaecareer.com - user agreements, disclaimers, and usage terms.',
+  alternates: {
+    canonical: '/terms-of-service/',
+  },
 };
 
 export default function TermsPage() {
