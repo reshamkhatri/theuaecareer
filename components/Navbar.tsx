@@ -7,19 +7,19 @@ import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/jobs', label: 'Find Jobs' },
-  { href: '/jobs/walk-in', label: 'Walk-ins' },
+  { href: '/jobs/', label: 'Find Jobs' },
+  { href: '/jobs/walk-in/', label: 'Walk-ins' },
   { href: '/blog/', label: 'Blog' },
 ];
 
 const resourceLinks = [
-  { href: '/resources', label: 'Resources Home' },
-  { href: '/resources/interview-question-bank', label: 'Interview Question Bank' },
+  { href: '/resources/', label: 'Resources Home' },
+  { href: '/resources/interview-question-bank/', label: 'Interview Question Bank' },
 ];
 
 const toolLinks = [
-  { href: '/tools/currency-converter', label: 'Currency Converter' },
-  { href: '/tools/gratuity-calculator', label: 'Gratuity Calculator' },
+  { href: '/tools/currency-converter/', label: 'Currency Converter' },
+  { href: '/tools/gratuity-calculator/', label: 'Gratuity Calculator' },
 ];
 
 export default function Navbar() {
@@ -180,13 +180,13 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/tools/cv-maker" className="btn btn-secondary btn-full mb-sm">CV Maker</Link>
+            <Link href="/tools/cv-maker/" className="btn btn-secondary btn-full mb-sm">CV Maker</Link>
           </div>
         </div>
 
         {/* Right side actions - "Get Started" style */}
         <div className="navbar-actions">
-          <Link href="/tools/cv-maker" className="btn btn-outline-pill">
+          <Link href="/tools/cv-maker/" className="btn btn-outline-pill">
             CV Maker
           </Link>
           <button

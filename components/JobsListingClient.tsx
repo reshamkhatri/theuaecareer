@@ -25,7 +25,7 @@ function buildJobsHref(
   });
 
   const query = params.toString();
-  return query ? `/jobs?${query}` : '/jobs';
+  return query ? `/jobs/?${query}` : '/jobs/';
 }
 
 function matchesSearch(job: JobRecord, search: string): boolean {
@@ -153,7 +153,7 @@ function JobsListingView({
         <div className="container blog-layout">
           <div className="blog-main">
             <div className="card" style={{ marginBottom: 'var(--space-xl)', padding: 'var(--space-lg)' }}>
-              <form action="/jobs" method="get" style={{ display: 'grid', gap: 'var(--space-md)' }}>
+              <form action="/jobs/" method="get" style={{ display: 'grid', gap: 'var(--space-md)' }}>
                 <div style={{ display: 'flex', gap: 'var(--space-sm)', alignItems: 'center', flexWrap: 'wrap' }}>
                   <div
                     style={{
@@ -185,7 +185,7 @@ function JobsListingView({
                   <button type="submit" className="btn btn-primary" style={{ padding: '12px 24px' }}>
                     <FiFilter /> Apply Filters
                   </button>
-                  <Link href="/jobs" className="btn btn-secondary" style={{ padding: '12px 16px' }}>
+                  <Link href="/jobs/" className="btn btn-secondary" style={{ padding: '12px 16px' }}>
                     Reset
                   </Link>
                 </div>
@@ -228,7 +228,7 @@ function JobsListingView({
             {paginatedJobs.length === 0 ? (
               <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
                 <p>No jobs found matching your criteria.</p>
-                <Link href="/jobs" className="btn btn-primary mt-md">
+                <Link href="/jobs/" className="btn btn-primary mt-md">
                   Clear Filters
                 </Link>
               </div>
@@ -319,7 +319,7 @@ function JobListItem({
           <div className="job-card-header">
             <div>
               <h3 className="job-card-title">
-                <Link href={`/jobs/${job.slug}`}>{job.title}</Link>
+                <Link href={`/jobs/${job.slug}/`}>{job.title}</Link>
               </h3>
               <div className="job-card-company">{job.companyName}</div>
             </div>
@@ -340,7 +340,7 @@ function JobListItem({
 
           <div className="job-card-footer">
             <div className="job-card-date">Posted {formatDisplayDate(job.postedDate)}</div>
-            <Link href={`/jobs/${job.slug}`} className="btn btn-sm btn-primary">
+            <Link href={`/jobs/${job.slug}/`} className="btn btn-sm btn-primary">
               View Details
             </Link>
           </div>

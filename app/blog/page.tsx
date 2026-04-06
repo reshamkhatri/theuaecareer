@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Career Blog | UAE Job Market Insights & Guides',
     description:
       'Read expert articles on UAE salaries, visa processes, walk-in interviews, and career advice for Gulf job seekers.',
-    url: '/blog',
+    url: '/blog/',
   },
 };
 

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Contact Us',
     description:
       'Contact theuaecareer.com for support, job portal feedback, partnerships, and content queries.',
-    url: '/contact',
+    url: '/contact/',
   },
 };
 

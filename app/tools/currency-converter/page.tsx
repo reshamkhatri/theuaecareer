@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: 'AED to INR Currency Converter — Live UAE Exchange Rate Today',
     description:
       'Check live AED to INR, AED to PHP, AED to NPR and all Gulf remittance corridors. Free currency converter for UAE expats.',
-    url: '/tools/currency-converter',
+    url: '/tools/currency-converter/',
     type: 'website',
   },
   twitter: {
@@ -135,7 +135,7 @@ export default function CurrencyConverterPage() {
             </p>
           </div>
           <Link
-            href="/resources/interview-question-bank"
+            href="/resources/interview-question-bank/"
             className="btn"
             style={{
               textDecoration: 'none',
@@ -174,10 +174,10 @@ export default function CurrencyConverterPage() {
         <div style={{ padding: '24px', background: '#fff', border: '1px solid var(--border)', borderRadius: '10px', marginBottom: '32px' }}>
           <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '12px' }}>Related guides</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <Link href="/blog/best-remittance-options-uae-2026" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Best Remittance Options from UAE 2026</Link>
-            <Link href="/blog/cost-of-living-dubai-2026" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Cost of Living in Dubai 2026</Link>
-            <Link href="/blog/salary-guide-uae-2026" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Salary Guide 2026</Link>
-            <Link href="/tools/gratuity-calculator" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Gratuity Calculator</Link>
+            <Link href="/blog/best-remittance-options-uae-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Best Remittance Options from UAE 2026</Link>
+            <Link href="/blog/cost-of-living-dubai-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Cost of Living in Dubai 2026</Link>
+            <Link href="/blog/salary-guide-uae-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Salary Guide 2026</Link>
+            <Link href="/tools/gratuity-calculator/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Gratuity Calculator</Link>
           </div>
         </div>
       </div>

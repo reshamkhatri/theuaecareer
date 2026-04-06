@@ -77,22 +77,22 @@ export default function Footer() {
                 <h4 className="footer-col-title">Quick Links</h4>
                 <ul className="footer-col-list">
                   <li>
-                    <Link href="/jobs" className="footer-link-new">
+                    <Link href="/jobs/" className="footer-link-new">
                       Search Jobs
                     </Link>
                   </li>
                   <li>
-                    <Link href="/jobs/walk-in" className="footer-link-new">
+                    <Link href="/jobs/walk-in/" className="footer-link-new">
                       Walk-Ins
                     </Link>
                   </li>
                   <li>
-                    <Link href="/blog" className="footer-link-new">
+                    <Link href="/blog/" className="footer-link-new">
                       Articles
                     </Link>
                   </li>
                   <li>
-                    <Link href="/resources/interview-question-bank" className="footer-link-new">
+                    <Link href="/resources/interview-question-bank/" className="footer-link-new">
                       Interview Bank
                     </Link>
                   </li>
@@ -103,17 +103,17 @@ export default function Footer() {
                 <h4 className="footer-col-title">Tools</h4>
                 <ul className="footer-col-list">
                   <li>
-                    <Link href="/tools/cv-maker" className="footer-link-new">
+                    <Link href="/tools/cv-maker/" className="footer-link-new">
                       CV Builder
                     </Link>
                   </li>
                   <li>
-                    <Link href="/tools/gratuity-calculator" className="footer-link-new">
+                    <Link href="/tools/gratuity-calculator/" className="footer-link-new">
                       Gratuity Calc
                     </Link>
                   </li>
                   <li>
-                    <Link href="/tools/currency-converter" className="footer-link-new">
+                    <Link href="/tools/currency-converter/" className="footer-link-new">
                       Currency Converter
                     </Link>
                   </li>
@@ -124,12 +124,12 @@ export default function Footer() {
                 <h4 className="footer-col-title">Company</h4>
                 <ul className="footer-col-list">
                   <li>
-                    <Link href="/about" className="footer-link-new">
+                    <Link href="/about/" className="footer-link-new">
                       About Us
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" className="footer-link-new">
+                    <Link href="/contact/" className="footer-link-new">
                       Contact Us
                     </Link>
                   </li>
@@ -140,17 +140,17 @@ export default function Footer() {
                 <h4 className="footer-col-title">Legal</h4>
                 <ul className="footer-col-list">
                   <li>
-                    <Link href="/privacy-policy" className="footer-link-new">
+                    <Link href="/privacy-policy/" className="footer-link-new">
                       Privacy Policy
                     </Link>
                   </li>
                   <li>
-                    <Link href="/terms-of-service" className="footer-link-new">
+                    <Link href="/terms-of-service/" className="footer-link-new">
                       Terms &amp; Conditions
                     </Link>
                   </li>
                   <li>
-                    <Link href="/disclaimer" className="footer-link-new">
+                    <Link href="/disclaimer/" className="footer-link-new">
                       Disclaimer
                     </Link>
                   </li>

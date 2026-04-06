@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     title: 'Resources | Interview prep, guides and job-seeker tools',
     description:
       'Explore practical resources for Gulf job seekers, including the Interview Question Bank, career guides, and free planning tools.',
-    url: '/resources',
+    url: '/resources/',
   },
 };
 
 const resourceCards = [
   {
-    href: '/resources/interview-question-bank',
+    href: '/resources/interview-question-bank/',
     icon: <FiBookOpen />,
     eyebrow: 'Interview prep',
     title: 'Interview Question Bank',
@@ -30,7 +30,7 @@ const resourceCards = [
     accentBg: '#eef2ff',
   },
   {
-    href: '/blog',
+    href: '/blog/',
     icon: <FiFileText />,
     eyebrow: 'Career guides',
     title: 'Articles and explainers',
@@ -41,7 +41,7 @@ const resourceCards = [
     accentBg: '#ecfdf5',
   },
   {
-    href: '/tools/currency-converter',
+    href: '/tools/currency-converter/',
     icon: <FiTool />,
     eyebrow: 'Planning tools',
     title: 'Currency Converter',

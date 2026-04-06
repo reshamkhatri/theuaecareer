@@ -160,7 +160,7 @@ function BlogListingView({
               {featured && (
                 <div className="blg-top-row">
                   {/* Main featured card */}
-                  <Link href={`/blog/${featured.slug}`} className="blg-featured">
+                  <Link href={`/blog/${featured.slug}/`} className="blg-featured">
                     <ArticleCover
                       article={featured}
                       variant="feature"
@@ -181,7 +181,7 @@ function BlogListingView({
                   {secondary.length > 0 && (
                     <div className="blg-secondary-col">
                       {secondary.map((article) => (
-                        <Link key={article._id} href={`/blog/${article.slug}`} className="blg-secondary-card">
+                        <Link key={article._id} href={`/blog/${article.slug}/`} className="blg-secondary-card">
                           <ArticleCover
                             article={article}
                             variant="card"
@@ -237,7 +237,7 @@ function ArticleGridCard({ article, index }: { article: ArticleRecord; index: nu
 
   return (
     <>
-      <Link href={`/blog/${article.slug}`} className="blg-card">
+      <Link href={`/blog/${article.slug}/`} className="blg-card">
         <ArticleCover
           article={article}
           variant="card"

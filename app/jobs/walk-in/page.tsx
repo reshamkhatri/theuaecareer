@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',
     description:
       'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE.',
-    url: '/jobs/walk-in',
+    url: '/jobs/walk-in/',
   },
 };
 

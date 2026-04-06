@@ -50,20 +50,34 @@ function applyReplacements(value: string, replacements: Replacement[]): string {
   return replacements.reduce((output, [pattern, replacement]) => output.replace(pattern, replacement), value).trim();
 }
 
+function normalizeInternalHrefs(value: string): string {
+  return value.replace(
+    /href=(["'])(\/[^"'?#]*)(\?[^"']*)?(#[^"']*)?\1/gi,
+    (_match, quote, path, query = '', hash = '') => {
+      const normalizedPath =
+        path === '/' || path.endsWith('/') || /\.[a-z0-9]+$/i.test(path) ? path : `${path}/`;
+
+      return `href=${quote}${normalizedPath}${query}${hash}${quote}`;
+    }
+  );
+}
+
 function normalizeRichTextHtml(value: string): string {
-  return value
-    .replace(
-      /<h([1-6])>\s*(?:•|â€¢)\s*([\s\S]*?)<\/h\1>/gi,
-      (_match, _level, text) => `<p>${String(text).trim()}</p>`
-    )
-    .replace(
-      /<p>\s*(?:•|â€¢)\s*([\s\S]*?)<\/p>/gi,
-      (_match, text) => `<p>${String(text).trim()}</p>`
-    )
-    .replace(
-      /Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception\.\s*Bring your CV and passport copy\./gi,
-      'Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception.'
-    );
+  return normalizeInternalHrefs(
+    value
+      .replace(
+        /<h([1-6])>\s*(?:•|â€¢|Ã¢â‚¬Â¢)\s*([\s\S]*?)<\/h\1>/gi,
+        (_match, _level, text) => `<p>${String(text).trim()}</p>`
+      )
+      .replace(
+        /<p>\s*(?:•|â€¢|Ã¢â‚¬Â¢)\s*([\s\S]*?)<\/p>/gi,
+        (_match, text) => `<p>${String(text).trim()}</p>`
+      )
+      .replace(
+        /Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception\.\s*Bring your CV and passport copy\./gi,
+        'Bring your CV and passport copy and ask for the hiring desk at the Business Bay office reception.'
+      )
+  );
 }
 
 function sanitizeWalkInDetails(details?: WalkInDetails): WalkInDetails | undefined {

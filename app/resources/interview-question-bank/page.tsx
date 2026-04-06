@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Interview Question Bank | Gulf sector interview prep',
     description:
       'Research-backed interview prep with common question patterns and sample answers for Construction, Hospitality, Retail, and Oil & Gas roles.',
-    url: '/resources/interview-question-bank',
+    url: '/resources/interview-question-bank/',
   },
 };
 

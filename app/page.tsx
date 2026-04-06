@@ -77,7 +77,7 @@ export default async function HomePage() {
             Curated jobs, walk-in interviews, and practical career tools built for UAE job seekers.
           </p>
 
-          <form className="search-pill-modern" action="/jobs" method="get">
+          <form className="search-pill-modern" action="/jobs/" method="get">
             <div className="search-input-wrapper">
               <FiSearch
                 style={{
@@ -137,7 +137,7 @@ export default async function HomePage() {
               Quick Filters:
             </span>
             <Link
-              href="/jobs?country=UAE"
+              href="/jobs/?country=UAE"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -150,7 +150,7 @@ export default async function HomePage() {
               UAE
             </Link>
             <Link
-              href="/jobs?country=Saudi%20Arabia"
+              href="/jobs/?country=Saudi%20Arabia"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -163,7 +163,7 @@ export default async function HomePage() {
               SAUDI
             </Link>
             <Link
-              href="/jobs/walk-in"
+              href="/jobs/walk-in/"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -176,7 +176,7 @@ export default async function HomePage() {
               WALK-IN
             </Link>
             <Link
-              href="/jobs?jobType=Full-time"
+              href="/jobs/?jobType=Full-time"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -202,14 +202,14 @@ export default async function HomePage() {
               </span>
               <h2 className="hp-heading">Walk-in Interviews</h2>
             </div>
-            <Link href="/jobs/walk-in" className="hp-link">
+            <Link href="/jobs/walk-in/" className="hp-link">
               All walk-ins <FiArrowRight />
             </Link>
           </div>
 
           <div className="hp-grid hp-grid--2">
             {walkInJobs.items.map((job) => (
-              <Link href={`/jobs/${job.slug}`} key={job._id} className="hp-walkin-card">
+              <Link href={`/jobs/${job.slug}/`} key={job._id} className="hp-walkin-card">
                 <div className="hp-walkin-card__top">
                   <h3 className="hp-walkin-card__title">{job.title}</h3>
                   <p className="hp-walkin-card__company">{job.companyName} &middot; {job.location.city}</p>
@@ -233,14 +233,14 @@ export default async function HomePage() {
               <h2 className="hp-heading">Latest Opportunities</h2>
               <p className="hp-subtext">Fresh listings from employers across the Gulf.</p>
             </div>
-            <Link href="/jobs" className="hp-link">
+            <Link href="/jobs/" className="hp-link">
               Browse all jobs <FiArrowRight />
             </Link>
           </div>
 
           <div className="hp-grid hp-grid--3">
             {latestJobs.items.map((job) => (
-              <Link href={`/jobs/${job.slug}`} key={job._id} className="hp-job-card">
+              <Link href={`/jobs/${job.slug}/`} key={job._id} className="hp-job-card">
                 <div className="hp-job-card__icon">{job.companyName.charAt(0)}</div>
                 <div className="hp-job-card__body">
                   <h3 className="hp-job-card__title">{job.title}</h3>
@@ -256,7 +256,7 @@ export default async function HomePage() {
           </div>
 
           <div className="hp-center">
-            <Link href="/jobs" className="hp-btn-primary">
+            <Link href="/jobs/" className="hp-btn-primary">
               Explore all {latestJobs.pagination.total}+ jobs <FiArrowRight />
             </Link>
           </div>
@@ -271,14 +271,14 @@ export default async function HomePage() {
               <h2 className="hp-heading">Career Insights</h2>
               <p className="hp-subtext">Practical advice for navigating the UAE job market.</p>
             </div>
-            <Link href="/blog" className="hp-link">
+            <Link href="/blog/" className="hp-link">
               All articles <FiArrowRight />
             </Link>
           </div>
 
           <div className="hp-grid hp-grid--3">
             {latestArticles.items.map((article) => (
-              <Link href={`/blog/${article.slug}`} key={article._id} className="hp-article-card">
+              <Link href={`/blog/${article.slug}/`} key={article._id} className="hp-article-card">
                 <span className="hp-article-card__cat">{article.category}</span>
                 <h3 className="hp-article-card__title">{article.title}</h3>
                 <div className="hp-article-card__foot">
