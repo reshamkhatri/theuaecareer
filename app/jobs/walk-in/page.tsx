@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FiBriefcase, FiCheckCircle, FiMapPin } from 'react-icons/fi';
+import { SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import { getJobs } from '@/lib/content';
 
@@ -34,9 +35,30 @@ export default async function WalkInJobsPage() {
     sort: 'walk-in',
     limit: 100,
   });
+  const walkInJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Walk-in Interviews in UAE',
+    description:
+      'Direct hiring events and walk-in interviews across Dubai, Abu Dhabi, Sharjah, and the wider UAE.',
+    url: `${SITE_URL}/jobs/walk-in/`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: jobs.items.slice(0, 12).map((job, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${SITE_URL}/jobs/${job.slug}/`,
+        name: job.title,
+      })),
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(walkInJsonLd) }}
+      />
       <section className="section" style={{ paddingBottom: '1rem' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-xl)' }}>
@@ -68,7 +90,7 @@ export default async function WalkInJobsPage() {
                       <div className="job-card-header">
                         <div>
                           <h3 className="job-card-title">
-                            <Link href={`/jobs/${job.slug}`}>{job.title}</Link>
+                            <Link href={`/jobs/${job.slug}/`}>{job.title}</Link>
                           </h3>
                           <div className="job-card-company">{job.companyName}</div>
                         </div>
@@ -108,7 +130,7 @@ export default async function WalkInJobsPage() {
                       )}
 
                       <div className="job-card-footer">
-                        <Link href={`/jobs/${job.slug}`} className="btn btn-sm btn-dark">
+                        <Link href={`/jobs/${job.slug}/`} className="btn btn-sm btn-dark">
                           View Details
                         </Link>
                       </div>
@@ -149,6 +171,46 @@ export default async function WalkInJobsPage() {
                 <li>Bring multiple CV copies</li>
                 <li>Carry your Emirates ID or passport copy</li>
               </ul>
+            </div>
+
+            <div className="card">
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Useful Next Steps</h3>
+              <div style={{ display: 'grid', gap: '14px' }}>
+                {[
+                  {
+                    href: '/tools/cv-maker/',
+                    title: 'Update your CV first',
+                    description: 'Prepare a cleaner, role-ready resume before you arrive at the venue.',
+                  },
+                  {
+                    href: '/resources/interview-question-bank/',
+                    title: 'Practice short interview answers',
+                    description: 'Review common Gulf-sector questions for quick walk-in screening rounds.',
+                  },
+                  {
+                    href: '/jobs/',
+                    title: 'Compare other live jobs',
+                    description: 'If the walk-in timing does not fit, switch to the broader jobs listing.',
+                  },
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      display: 'grid',
+                      gap: '4px',
+                      paddingBottom: '14px',
+                      borderBottom: '1px solid var(--border)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                      {link.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </aside>
         </div>

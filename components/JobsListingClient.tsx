@@ -296,6 +296,51 @@ function JobsListingView({
                 ))}
               </ul>
             </div>
+
+            <div className="card">
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Useful Before You Apply</h3>
+              <div style={{ display: 'grid', gap: '14px' }}>
+                {[
+                  {
+                    href: '/tools/cv-maker/',
+                    title: 'Build a Gulf-ready CV',
+                    description: 'Tighten your resume before you start sending applications.',
+                  },
+                  {
+                    href: '/resources/interview-question-bank/',
+                    title: 'Practice interview answers',
+                    description: 'Prepare examples for construction, hospitality, retail, and oil and gas roles.',
+                  },
+                  {
+                    href: '/tools/currency-converter/',
+                    title: 'Compare salary value',
+                    description: 'Use the currency converter when you need a quick remittance reference.',
+                  },
+                  {
+                    href: '/blog/',
+                    title: 'Read career guides',
+                    description: 'Open salary, visa, and application explainers while you shortlist roles.',
+                  },
+                ].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      display: 'grid',
+                      gap: '4px',
+                      paddingBottom: '14px',
+                      borderBottom: '1px solid var(--border)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                      {link.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </aside>
         </div>
       </section>

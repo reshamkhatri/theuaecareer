@@ -768,6 +768,166 @@ export async function getRelatedArticles(
   return result.items.filter((item) => item.slug !== article.slug).slice(0, limit);
 }
 
+function getMeaningfulTokens(value: string, limit = 6): string[] {
+  return Array.from(
+    new Set(
+      normalizeText(value)
+        .toLowerCase()
+        .split(/[^a-z0-9]+/)
+        .filter((token) => token.length >= 4)
+    )
+  ).slice(0, limit);
+}
+
+function scoreJobAgainstArticle(job: JobRecord, article: ArticleRecord): number {
+  const articleHaystack = [
+    article.title,
+    article.excerpt,
+    article.category,
+    article.tags.join(' '),
+    stripHtml(article.content).slice(0, 600),
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  let score = 0;
+
+  if (articleHaystack.includes(job.category.toLowerCase())) {
+    score += 5;
+  }
+  if (job.categoryLabel && articleHaystack.includes(job.categoryLabel.toLowerCase())) {
+    score += 4;
+  }
+  if (job.isWalkIn && articleHaystack.includes('walk-in')) {
+    score += 6;
+  }
+  if (articleHaystack.includes(job.location.country.toLowerCase())) {
+    score += 2;
+  }
+  if (articleHaystack.includes(job.location.city.toLowerCase())) {
+    score += 1;
+  }
+
+  getMeaningfulTokens(job.title).forEach((token) => {
+    if (articleHaystack.includes(token)) {
+      score += 1;
+    }
+  });
+
+  return score;
+}
+
+function scoreArticleAgainstJob(article: ArticleRecord, job: JobRecord): number {
+  const jobHaystack = [
+    job.title,
+    job.companyName,
+    job.category,
+    job.categoryLabel || '',
+    job.location.city,
+    job.location.country,
+    stripHtml(job.description).slice(0, 600),
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  let score = 0;
+
+  if (jobHaystack.includes(article.category.toLowerCase())) {
+    score += 5;
+  }
+  if (job.isWalkIn && article.category.toLowerCase().includes('walk-in')) {
+    score += 6;
+  }
+  if (jobHaystack.includes(job.location.country.toLowerCase())) {
+    score += 1;
+  }
+
+  article.tags.forEach((tag) => {
+    const normalizedTag = tag.toLowerCase();
+    if (normalizedTag && jobHaystack.includes(normalizedTag)) {
+      score += 2;
+    }
+  });
+
+  getMeaningfulTokens(article.title).forEach((token) => {
+    if (jobHaystack.includes(token)) {
+      score += 1;
+    }
+  });
+
+  return score;
+}
+
+export async function getHelpfulJobsForArticle(
+  article: ArticleRecord,
+  limit = 3
+): Promise<JobRecord[]> {
+  const jobs = await getAllPublicJobs();
+
+  return jobs
+    .map((job) => ({
+      job,
+      score: scoreJobAgainstArticle(job, article),
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+      return new Date(right.job.postedDate).getTime() - new Date(left.job.postedDate).getTime();
+    })
+    .slice(0, limit)
+    .map(({ job }) => job);
+}
+
+export async function getRelatedJobs(job: JobRecord, limit = 3): Promise<JobRecord[]> {
+  const jobs = await getAllPublicJobs();
+
+  return jobs
+    .filter((item) => item.slug !== job.slug)
+    .sort((left, right) => {
+      const leftScore =
+        Number(left.category === job.category) * 3 +
+        Number(left.location.country === job.location.country) +
+        Number(left.location.city === job.location.city) +
+        Number(left.isWalkIn === job.isWalkIn);
+      const rightScore =
+        Number(right.category === job.category) * 3 +
+        Number(right.location.country === job.location.country) +
+        Number(right.location.city === job.location.city) +
+        Number(right.isWalkIn === job.isWalkIn);
+
+      if (rightScore !== leftScore) {
+        return rightScore - leftScore;
+      }
+
+      return new Date(right.postedDate).getTime() - new Date(left.postedDate).getTime();
+    })
+    .slice(0, limit);
+}
+
+export async function getHelpfulArticlesForJob(
+  job: JobRecord,
+  limit = 3
+): Promise<ArticleRecord[]> {
+  const articles = await getAllPublicArticles();
+
+  return articles
+    .map((article) => ({
+      article,
+      score: scoreArticleAgainstJob(article, job),
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+      return new Date(right.article.publishDate).getTime() - new Date(left.article.publishDate).getTime();
+    })
+    .slice(0, limit)
+    .map(({ article }) => article);
+}
+
 export async function getAllPublicArticles(): Promise<ArticleRecord[]> {
   const result = await getArticles({
     page: 1,

@@ -15,8 +15,9 @@ import { SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import {
   getAllPublicJobs,
+  getHelpfulArticlesForJob,
   getJobByIdentifier,
-  getJobs,
+  getRelatedJobs,
   stripHtml,
 } from '@/lib/content';
 
@@ -49,7 +50,7 @@ export async function generateMetadata({
     openGraph: {
       title: job.metaTitle || job.title,
       description: job.metaDescription || stripHtml(job.description).slice(0, 160),
-      url: `/jobs/${job.slug}`,
+      url: `/jobs/${job.slug}/`,
       type: 'article',
       images: [
         {
@@ -88,18 +89,37 @@ export default async function JobDetailPage({
     notFound();
   }
 
-  const relatedJobs = (
-    await getJobs({
-      category: job.category,
-      limit: 6,
-    })
-  ).items
-    .filter((item) => item.slug !== job.slug)
-    .slice(0, 2);
+  const [relatedJobs, helpfulArticles] = await Promise.all([
+    getRelatedJobs(job, 3),
+    getHelpfulArticlesForJob(job, 3),
+  ]);
 
-  const shareUrl = new URL(`/jobs/${job.slug}`, SITE_URL).toString();
+  const shareUrl = new URL(`/jobs/${job.slug}/`, SITE_URL).toString();
   const isExpired =
     job.status === 'expired' || (job.expiryDate ? new Date(job.expiryDate) < new Date() : false);
+  const jobResourceLinks = [
+    {
+      href: '/tools/cv-maker/',
+      title: 'Tailor your CV before applying',
+      description: 'Build a clearer, Gulf-ready CV before you send this application.',
+    },
+    {
+      href: '/resources/interview-question-bank/',
+      title: 'Practice interview answers',
+      description: 'Review common Gulf interview questions so you are ready if the employer calls quickly.',
+    },
+    job.isWalkIn
+      ? {
+          href: '/jobs/walk-in/',
+          title: 'Browse more walk-in interviews',
+          description: 'Compare other active hiring events if you want more options this week.',
+        }
+      : {
+          href: '/jobs/',
+          title: 'Compare similar live jobs',
+          description: 'Check more openings in this category before you decide where to apply first.',
+        },
+  ];
 
   const jsonLd = {
     '@context': 'https://schema.org/',
@@ -150,7 +170,7 @@ export default async function JobDetailPage({
         '@type': 'ListItem',
         position: 2,
         name: 'Jobs',
-        item: `${SITE_URL}/jobs`,
+        item: `${SITE_URL}/jobs/`,
       },
       {
         '@type': 'ListItem',
@@ -174,7 +194,7 @@ export default async function JobDetailPage({
           <main className="blog-main">
             <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: 'var(--space-lg)' }}>
               <Link href="/">Home</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
-              <Link href="/jobs">Jobs</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
+              <Link href="/jobs/">Jobs</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
               {job.title}
             </div>
 
@@ -376,13 +396,37 @@ export default async function JobDetailPage({
                   {relatedJobs.map((relatedJob) => (
                     <div key={relatedJob._id} className="card">
                       <h3 style={{ fontSize: '1.125rem', marginBottom: '8px' }}>
-                        <Link href={`/jobs/${relatedJob.slug}`}>{relatedJob.title}</Link>
+                        <Link href={`/jobs/${relatedJob.slug}/`}>{relatedJob.title}</Link>
                       </h3>
                       <p style={{ color: 'var(--text-secondary)', marginBottom: '12px' }}>
                         {relatedJob.companyName} • {relatedJob.location.city}
                       </p>
-                      <Link href={`/jobs/${relatedJob.slug}`} className="btn btn-secondary btn-sm">
+                      <Link href={`/jobs/${relatedJob.slug}/`} className="btn btn-secondary btn-sm">
                         View Job
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {helpfulArticles.length > 0 && (
+              <>
+                <h2 style={{ fontSize: '1.75rem', marginTop: 'var(--space-3xl)' }}>Helpful Career Guides</h2>
+                <div className="grid-2 mt-xl">
+                  {helpfulArticles.map((article) => (
+                    <div key={article._id} className="card">
+                      <span className="badge badge-secondary" style={{ marginBottom: '12px' }}>
+                        {article.category}
+                      </span>
+                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px', lineHeight: 1.4 }}>
+                        <Link href={`/blog/${article.slug}/`}>{article.title}</Link>
+                      </h3>
+                      <p style={{ color: 'var(--text-secondary)', marginBottom: '12px', lineHeight: 1.6 }}>
+                        {article.excerpt}
+                      </p>
+                      <Link href={`/blog/${article.slug}/`} className="btn btn-secondary btn-sm">
+                        Read Guide
                       </Link>
                     </div>
                   ))}
@@ -409,9 +453,33 @@ export default async function JobDetailPage({
               <p style={{ fontSize: '0.875rem', marginBottom: 'var(--space-md)' }}>
                 Build a professional Gulf-ready resume before you apply.
               </p>
-              <Link href="/tools/cv-maker" className="btn btn-secondary btn-full">
+              <Link href="/tools/cv-maker/" className="btn btn-secondary btn-full">
                 Create CV Now
               </Link>
+            </div>
+
+            <div className="card">
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Before You Apply</h3>
+              <div style={{ display: 'grid', gap: '14px' }}>
+                {jobResourceLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      display: 'grid',
+                      gap: '4px',
+                      paddingBottom: '14px',
+                      borderBottom: '1px solid var(--border)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                      {link.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="card">

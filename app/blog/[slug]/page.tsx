@@ -18,6 +18,7 @@ import { formatDisplayDate } from '@/lib/format';
 import {
   getAllPublicArticles,
   getArticleByIdentifier,
+  getHelpfulJobsForArticle,
   getRelatedArticles,
 } from '@/lib/content';
 
@@ -107,9 +108,34 @@ export default async function ArticlePage({
   }
 
   const relatedArticles = await getRelatedArticles(article, 2);
-  const shareUrl = new URL(`/blog/${article.slug}`, SITE_URL).toString();
+  const helpfulJobs = await getHelpfulJobsForArticle(article, 3);
+  const shareUrl = new URL(`/blog/${article.slug}/`, SITE_URL).toString();
   const { firstHalf, secondHalf } = splitArticleHtml(article.content);
   const articleImage = article.featuredImage || `${SITE_URL}/og-default.png`;
+  const articleCategoryLower = article.category.toLowerCase();
+  const articleHubLinks = [
+    {
+      href: '/jobs/',
+      title: 'Browse latest Gulf jobs',
+      description: 'Move from reading to applying with current UAE and Gulf job listings.',
+    },
+    {
+      href: '/resources/interview-question-bank/',
+      title: 'Practice interview answers',
+      description: 'Use the Interview Question Bank to prepare stronger examples before your next screening.',
+    },
+    articleCategoryLower.includes('salary')
+      ? {
+          href: '/tools/currency-converter/',
+          title: 'Compare remittance rates',
+          description: 'Check live reference exchange rates before you send money home or compare offers.',
+        }
+      : {
+          href: '/tools/cv-maker/',
+          title: 'Improve your CV',
+          description: 'Build a cleaner, Gulf-ready CV before you send your next application.',
+        },
+  ];
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -149,7 +175,7 @@ export default async function ArticlePage({
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: `${SITE_URL}/blog`,
+        item: `${SITE_URL}/blog/`,
       },
       {
         '@type': 'ListItem',
@@ -175,7 +201,7 @@ export default async function ArticlePage({
           <main className="blog-main">
             <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: 'var(--space-lg)' }}>
               <Link href="/">Home</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
-              <Link href="/blog">Blog</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
+              <Link href="/blog/">Blog</Link> <FiChevronRight style={{ display: 'inline', margin: '0 4px' }} />
               {article.title}
             </div>
 
@@ -274,9 +300,33 @@ export default async function ArticlePage({
                       <div className="article-card-body">
                         <span className="article-card-category">{relatedArticle.category}</span>
                         <h3 className="article-card-title">
-                          <Link href={`/blog/${relatedArticle.slug}`}>{relatedArticle.title}</Link>
+                          <Link href={`/blog/${relatedArticle.slug}/`}>{relatedArticle.title}</Link>
                         </h3>
                       </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {helpfulJobs.length > 0 && (
+              <>
+                <h2 style={{ fontSize: '1.75rem', marginTop: 'var(--space-3xl)' }}>Jobs Related To This Topic</h2>
+                <div className="grid-2 mt-xl">
+                  {helpfulJobs.map((job) => (
+                    <div key={job._id} className="card">
+                      <span className="badge badge-secondary" style={{ marginBottom: '12px' }}>
+                        {job.categoryLabel || job.category}
+                      </span>
+                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px', lineHeight: 1.4 }}>
+                        <Link href={`/jobs/${job.slug}/`}>{job.title}</Link>
+                      </h3>
+                      <p style={{ color: 'var(--text-secondary)', marginBottom: '12px' }}>
+                        {job.companyName} | {job.location.city}, {job.location.country}
+                      </p>
+                      <Link href={`/jobs/${job.slug}/`} className="btn btn-secondary btn-sm">
+                        View Job
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -301,7 +351,7 @@ export default async function ArticlePage({
                     }}
                   >
                     <Link
-                      href={`/blog?category=${encodeURIComponent(category)}`}
+                      href={`/blog/?category=${encodeURIComponent(category)}`}
                       style={{ color: 'var(--text)', fontWeight: 500, display: 'flex', justifyContent: 'space-between' }}
                     >
                       {category} <FiChevronRight style={{ color: 'var(--text-muted)' }} />
@@ -317,6 +367,30 @@ export default async function ArticlePage({
                 Get the latest Gulf career tips and hiring updates by email.
               </p>
               <NewsletterForm source={`article:${article.slug}`} compact />
+            </div>
+
+            <div className="card">
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Keep Exploring</h3>
+              <div style={{ display: 'grid', gap: '14px' }}>
+                {articleHubLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    style={{
+                      display: 'grid',
+                      gap: '4px',
+                      paddingBottom: '14px',
+                      borderBottom: '1px solid var(--border)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                      {link.description}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </aside>
         </div>

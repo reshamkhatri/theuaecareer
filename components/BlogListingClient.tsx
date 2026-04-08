@@ -222,6 +222,72 @@ function BlogListingView({
                   ))}
                 </div>
               )}
+
+              <div
+                className="card"
+                style={{
+                  marginTop: 'var(--space-2xl)',
+                  padding: 'var(--space-xl)',
+                  display: 'grid',
+                  gap: '16px',
+                }}
+              >
+                <div>
+                  <p
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--accent)',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    Next Step
+                  </p>
+                  <h2 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>Use these pages after you finish reading</h2>
+                  <p style={{ color: 'var(--text-secondary)', margin: 0, lineHeight: 1.7 }}>
+                    Jump from guides into live jobs, interview prep, or practical tools built for Gulf job seekers.
+                  </p>
+                </div>
+
+                <div className="grid-2">
+                  {[
+                    {
+                      href: '/jobs/',
+                      title: 'Browse latest jobs',
+                      description: 'Move from advice into active UAE and Gulf openings.',
+                    },
+                    {
+                      href: '/jobs/walk-in/',
+                      title: 'See walk-in interviews',
+                      description: 'Check fast-moving hiring events if you want quicker interview access.',
+                    },
+                    {
+                      href: '/resources/interview-question-bank/',
+                      title: 'Practice interview answers',
+                      description: 'Use the Interview Question Bank before your next screening call.',
+                    },
+                    {
+                      href: '/tools/cv-maker/',
+                      title: 'Improve your CV',
+                      description: 'Turn what you learned into a stronger, more targeted application.',
+                    },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="card"
+                      style={{ textDecoration: 'none', display: 'grid', gap: '6px' }}
+                    >
+                      <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                        {link.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </>
           )}
         </div>
