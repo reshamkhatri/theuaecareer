@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     apple: `/apple-icon.png?v=${iconVersion}`,
   },
   title: {
-    default: 'Jobs in UAE 2026 - Dubai, Abu Dhabi, Gulf Careers | theuaecareer.com',
+    default: 'UAE Jobs 2026 | Walk-ins, Careers & Tools',
     template: '%s | theuaecareer.com',
   },
   description:
@@ -83,14 +83,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: '/',
     siteName: SITE_NAME,
-    title: 'Jobs in UAE 2026 - Dubai, Abu Dhabi, Gulf Careers',
+    title: 'UAE Jobs 2026 | Walk-ins, Careers & Tools',
     description:
       'Find the latest jobs in UAE, Dubai, Abu Dhabi, Sharjah, and the Gulf region. Walk-in interviews, career guides, salary insights, and free tools.',
     images: [defaultOgImage],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jobs in UAE 2026 - theuaecareer.com',
+    title: 'UAE Jobs 2026 | theuaecareer.com',
     description: 'Find the latest jobs in UAE, Dubai, Abu Dhabi, and the Gulf region.',
     images: [defaultOgImage.url],
   },
