@@ -20,6 +20,7 @@ import {
   getRelatedJobs,
   stripHtml,
 } from '@/lib/content';
+import { deriveJobTargeting, getSeoPathwaysForTargeting } from '@/lib/seo-targeting';
 
 export const revalidate = 300;
 const jobInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_INLINE_SLOT?.trim();
@@ -97,29 +98,11 @@ export default async function JobDetailPage({
   const shareUrl = new URL(`/jobs/${job.slug}/`, SITE_URL).toString();
   const isExpired =
     job.status === 'expired' || (job.expiryDate ? new Date(job.expiryDate) < new Date() : false);
-  const jobResourceLinks = [
-    {
-      href: '/tools/cv-maker/',
-      title: 'Tailor your CV before applying',
-      description: 'Build a clearer, Gulf-ready CV before you send this application.',
-    },
-    {
-      href: '/resources/interview-question-bank/',
-      title: 'Practice interview answers',
-      description: 'Review common Gulf interview questions so you are ready if the employer calls quickly.',
-    },
-    job.isWalkIn
-      ? {
-          href: '/jobs/walk-in/',
-          title: 'Browse more walk-in interviews',
-          description: 'Compare other active hiring events if you want more options this week.',
-        }
-      : {
-          href: '/jobs/',
-          title: 'Compare similar live jobs',
-          description: 'Check more openings in this category before you decide where to apply first.',
-        },
-  ];
+  const jobTargeting = deriveJobTargeting(job);
+  const jobResourceLinks = getSeoPathwaysForTargeting(jobTargeting, {
+    surface: 'jobs',
+    limit: 4,
+  });
 
   const jsonLd = {
     '@context': 'https://schema.org/',
@@ -338,6 +321,49 @@ export default async function JobDetailPage({
                   </div>
                 </div>
               )}
+
+              <div
+                style={{
+                  background: '#F8FAFC',
+                  border: '1px solid var(--border)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: 'var(--space-xl)',
+                  marginBottom: 'var(--space-2xl)',
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--accent)',
+                    marginBottom: '10px',
+                  }}
+                >
+                  Before you apply
+                </p>
+                <div className="grid-2">
+                  {jobResourceLinks.slice(0, 4).map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="card"
+                      style={{
+                        textDecoration: 'none',
+                        display: 'grid',
+                        gap: '6px',
+                        padding: '16px',
+                      }}
+                    >
+                      <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                        {link.description}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
 
               <div
                 className="prose article-prose"

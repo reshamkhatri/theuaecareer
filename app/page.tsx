@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   FiArrowRight,
@@ -9,17 +10,41 @@ import {
   FiSearch,
   FiTool,
 } from 'react-icons/fi';
-import { COUNTRIES, JOB_TYPES } from '@/lib/constants';
+import { COUNTRIES, JOB_TYPES, SITE_NAME, SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import { getArticles, getJobs } from '@/lib/content';
+import { getSeoPathwaysForTargeting, mergeContentBySlug, type SeoPathwayLink } from '@/lib/seo-targeting';
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: 'Jobs in UAE 2026, Walk-In Interviews and Career Tools',
+  description:
+    'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical guides for Gulf job seekers.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Jobs in UAE 2026, Walk-In Interviews and Career Tools',
+    description:
+      'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical guides for Gulf job seekers.',
+    url: '/',
+  },
+};
 
 function getWalkInLabel(summary?: string, date?: string, time?: string): string {
   if (summary) {
     return summary;
   }
   return [date ? formatDisplayDate(date) : '', time].filter(Boolean).join(' | ') || 'Walk-in details available on the listing page';
+}
+
+function getHomepagePathwayEyebrow(link: SeoPathwayLink): string {
+  if (link.href.includes('saudi')) return 'Saudi route';
+  if (link.href.includes('qatar')) return 'Qatar prep';
+  if (link.href.includes('walk-in')) return 'UAE fast track';
+  if (link.href.includes('cv-maker')) return 'Application help';
+  return 'Gulf pathway';
 }
 
 export default async function HomePage() {
@@ -54,9 +79,94 @@ export default async function HomePage() {
       cta: 'Check Rates',
     },
   ];
+  const pathwayCards = mergeContentBySlug(
+    [
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'UAE',
+          roleFamily: 'walk-in',
+          intentCluster: 'walk-in-prep',
+          searchStage: 'prepare',
+        },
+        { surface: 'homepage', limit: 2 }
+      ),
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'Saudi Arabia',
+          roleFamily: 'warehouse-logistics',
+          intentCluster: 'application-workflow',
+          searchStage: 'apply',
+        },
+        { surface: 'homepage', limit: 2 }
+      ),
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'Qatar',
+          roleFamily: 'hotel-hospitality',
+          intentCluster: 'role-interview-prep',
+          searchStage: 'prepare',
+        },
+        { surface: 'homepage', limit: 2 }
+      ),
+    ],
+    (item) => item.href
+  )
+    .slice(0, 6)
+    .map((link) => ({
+      href: link.href,
+      eyebrow: getHomepagePathwayEyebrow(link),
+      title: link.title,
+      description: link.description,
+    }));
+  const homepageJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Jobs in UAE 2026, Walk-In Interviews and Career Tools',
+      url: SITE_URL,
+      description:
+        'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical guides for Gulf job seekers.',
+      isPartOf: {
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+      about: [
+        { '@type': 'Thing', name: 'UAE jobs' },
+        { '@type': 'Thing', name: 'Walk-in interviews' },
+        { '@type': 'Thing', name: 'Gulf career tools' },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Latest UAE and Gulf jobs',
+      itemListElement: latestJobs.items.map((job, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: job.title,
+        url: `${SITE_URL}/jobs/${job.slug}/`,
+      })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Latest career articles',
+      itemListElement: latestArticles.items.map((article, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: article.title,
+        url: `${SITE_URL}/blog/${article.slug}/`,
+      })),
+    },
+  ];
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
       <section className="hero-modern">
         <div className="hero-gradient-blob"></div>
         <div className="hero-gradient-blob-2"></div>
@@ -77,8 +187,11 @@ export default async function HomePage() {
             Curated jobs, walk-in interviews, and practical career tools built for UAE job seekers.
           </p>
 
-          <form className="search-pill-modern" action="/jobs/" method="get">
+          <form className="search-pill-modern" action="/jobs/" method="get" aria-label="Search Gulf jobs">
             <div className="search-input-wrapper">
+              <label htmlFor="home-search" className="visually-hidden">
+                Search by job title, keyword, or company
+              </label>
               <FiSearch
                 style={{
                   color: 'var(--text-muted)',
@@ -86,10 +199,14 @@ export default async function HomePage() {
                   fontSize: '1.25rem',
                 }}
               />
-              <input type="text" name="search" placeholder="Job title, keywords, or company..." />
+              <input id="home-search" type="text" name="search" placeholder="Job title, keywords, or company..." />
             </div>
 
+            <label htmlFor="home-country" className="visually-hidden">
+              Filter jobs by country
+            </label>
             <select
+              id="home-country"
               name="country"
               className="form-select"
               style={{
@@ -108,7 +225,11 @@ export default async function HomePage() {
               ))}
             </select>
 
+            <label htmlFor="home-job-type" className="visually-hidden">
+              Filter jobs by job type
+            </label>
             <select
+              id="home-job-type"
               name="jobType"
               className="form-select"
               style={{
@@ -188,6 +309,29 @@ export default async function HomePage() {
             >
               FULL-TIME
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section hp-pathways">
+        <div className="container">
+          <div className="hp-section-head">
+            <div>
+              <span className="hp-label">Start Here</span>
+              <h2 className="hp-heading">Best pathways for Gulf job seekers</h2>
+              <p className="hp-subtext">Start with practical low-difficulty routes for UAE, Saudi Arabia, and Qatar instead of broad head-term pages.</p>
+            </div>
+          </div>
+
+          <div className="hp-grid hp-grid--4">
+            {pathwayCards.map((card) => (
+              <Link key={card.href} href={card.href} className="hp-pathway-card">
+                <span className="hp-pathway-card__eyebrow">{card.eyebrow}</span>
+                <h3 className="hp-pathway-card__title">{card.title}</h3>
+                <p className="hp-pathway-card__desc">{card.description}</p>
+                <span className="hp-pathway-card__cta">Open page <FiArrowRight /></span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -399,9 +543,57 @@ export default async function HomePage() {
         .hp-grid { display: grid; gap: 20px; }
         .hp-grid--2 { grid-template-columns: repeat(2, 1fr); }
         .hp-grid--3 { grid-template-columns: repeat(3, 1fr); }
+        .hp-grid--4 { grid-template-columns: repeat(4, 1fr); }
         @media (max-width: 900px) {
           .hp-grid--3 { grid-template-columns: 1fr; }
           .hp-grid--2 { grid-template-columns: 1fr; }
+          .hp-grid--4 { grid-template-columns: 1fr; }
+        }
+
+        .hp-pathways { background: linear-gradient(180deg, #ffffff 0%, #f8fafb 100%); }
+        .hp-pathway-card {
+          display: grid;
+          gap: 12px;
+          padding: 24px;
+          background: #fff;
+          border: 1px solid var(--border);
+          border-radius: 14px;
+          text-decoration: none;
+          color: inherit;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .hp-pathway-card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+          border-color: rgba(99, 102, 241, 0.2);
+        }
+        .hp-pathway-card__eyebrow {
+          font-size: 0.72rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--accent);
+        }
+        .hp-pathway-card__title {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: var(--primary);
+          line-height: 1.35;
+          margin: 0;
+        }
+        .hp-pathway-card__desc {
+          margin: 0;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.65;
+        }
+        .hp-pathway-card__cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: var(--accent);
+          font-size: 0.85rem;
+          font-weight: 700;
         }
 
         /* Walk-in cards */

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FiArrowRight, FiBookOpen, FiFileText, FiTool } from 'react-icons/fi';
+import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 
 export const metadata: Metadata = {
   title: 'Resources | Interview prep, guides and job-seeker tools',
@@ -52,6 +53,39 @@ const resourceCards = [
     accentBg: '#fef3c7',
   },
 ];
+
+const clusterCards = mergeContentBySlug(
+  [
+    ...getSeoPathwaysForTargeting(
+      {
+        country: 'UAE',
+        roleFamily: 'walk-in',
+        intentCluster: 'walk-in-prep',
+        searchStage: 'prepare',
+      },
+      { surface: 'resources', limit: 2 }
+    ),
+    ...getSeoPathwaysForTargeting(
+      {
+        country: 'Saudi Arabia',
+        roleFamily: 'warehouse-logistics',
+        intentCluster: 'application-workflow',
+        searchStage: 'apply',
+      },
+      { surface: 'resources', limit: 2 }
+    ),
+    ...getSeoPathwaysForTargeting(
+      {
+        country: 'Qatar',
+        roleFamily: 'hotel-hospitality',
+        intentCluster: 'role-interview-prep',
+        searchStage: 'prepare',
+      },
+      { surface: 'resources', limit: 2 }
+    ),
+  ],
+  (item) => item.href
+).slice(0, 4);
 
 export default function ResourcesPage() {
   return (
@@ -141,6 +175,23 @@ export default function ResourcesPage() {
 
               <span className="resources-card-link">
                 Explore <FiArrowRight />
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="resources-card-grid">
+          {clusterCards.map((card) => (
+            <Link key={card.href} href={card.href} className="resources-card">
+              <span className="resources-card-eyebrow" style={{ color: '#0f766e' }}>
+                Low-difficulty pathway
+              </span>
+              <div>
+                <h2 className="resources-card-title">{card.title}</h2>
+                <p className="resources-card-desc">{card.description}</p>
+              </div>
+              <span className="resources-card-link">
+                Open page <FiArrowRight />
               </span>
             </Link>
           ))}

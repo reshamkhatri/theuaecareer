@@ -7,6 +7,7 @@ import { FiBriefcase, FiClock, FiFilter, FiMapPin, FiSearch } from 'react-icons/
 import AdSlot from '@/components/AdSlot';
 import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
+import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 import type { JobRecord } from '@/lib/types';
 
 const PAGE_SIZE = 20;
@@ -126,6 +127,29 @@ function JobsListingView({
   const totalPages = Math.max(1, Math.ceil(filteredJobs.length / PAGE_SIZE));
   const currentPage = Math.min(Math.max(1, requestedPage), totalPages);
   const paginatedJobs = filteredJobs.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const helperLinks = mergeContentBySlug(
+    [
+      ...getSeoPathwaysForTargeting(
+        {
+          country: currentCountry === 'Saudi Arabia' ? 'Saudi Arabia' : 'UAE',
+          roleFamily: currentCategory === 'Logistics' ? 'warehouse-logistics' : 'cv-application',
+          intentCluster: currentCategory === 'Logistics' ? 'application-workflow' : 'walk-in-prep',
+          searchStage: 'apply',
+        },
+        { surface: 'jobs', limit: 2 }
+      ),
+      ...getSeoPathwaysForTargeting(
+        {
+          country: currentCountry === 'Qatar' ? 'Qatar' : 'Gulf',
+          roleFamily: currentCategory === 'Hospitality' ? 'hotel-hospitality' : 'general',
+          intentCluster: 'role-interview-prep',
+          searchStage: 'prepare',
+        },
+        { surface: 'jobs', limit: 2 }
+      ),
+    ],
+    (item) => item.href
+  ).slice(0, 4);
 
   const currentFilters = {
     search: currentSearch,
@@ -153,7 +177,7 @@ function JobsListingView({
         <div className="container blog-layout">
           <div className="blog-main">
             <div className="card" style={{ marginBottom: 'var(--space-xl)', padding: 'var(--space-lg)' }}>
-              <form action="/jobs/" method="get" style={{ display: 'grid', gap: 'var(--space-md)' }}>
+              <form action="/jobs/" method="get" style={{ display: 'grid', gap: 'var(--space-md)' }} aria-label="Filter job listings">
                 <div style={{ display: 'flex', gap: 'var(--space-sm)', alignItems: 'center', flexWrap: 'wrap' }}>
                   <div
                     style={{
@@ -167,7 +191,11 @@ function JobsListingView({
                     }}
                   >
                     <FiSearch style={{ color: 'var(--text-muted)' }} />
+                    <label htmlFor="jobs-search" className="visually-hidden">
+                      Search jobs by title, keyword, or company
+                    </label>
                     <input
+                      id="jobs-search"
                       type="text"
                       name="search"
                       defaultValue={currentSearch}
@@ -197,36 +225,45 @@ function JobsListingView({
                     gap: 'var(--space-md)',
                   }}
                 >
-                  <select name="country" defaultValue={currentCountry} className="form-select">
-                    <option value="">All Countries</option>
-                    {COUNTRIES.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
-                      </option>
-                    ))}
-                  </select>
-                  <select name="category" defaultValue={currentCategory} className="form-select">
-                    <option value="">All Categories</option>
-                    {JOB_CATEGORIES.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                  <select name="jobType" defaultValue={currentJobType} className="form-select">
-                    <option value="">All Types</option>
-                    {JOB_TYPES.map((jobType) => (
-                      <option key={jobType} value={jobType}>
-                        {jobType}
-                      </option>
-                    ))}
-                  </select>
+                  <div>
+                    <label htmlFor="jobs-country" className="form-label">Country</label>
+                    <select id="jobs-country" name="country" defaultValue={currentCountry} className="form-select">
+                      <option value="">All Countries</option>
+                      {COUNTRIES.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="jobs-category" className="form-label">Category</label>
+                    <select id="jobs-category" name="category" defaultValue={currentCategory} className="form-select">
+                      <option value="">All Categories</option>
+                      {JOB_CATEGORIES.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="jobs-type" className="form-label">Job type</label>
+                    <select id="jobs-type" name="jobType" defaultValue={currentJobType} className="form-select">
+                      <option value="">All Types</option>
+                      {JOB_TYPES.map((jobType) => (
+                        <option key={jobType} value={jobType}>
+                          {jobType}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </form>
             </div>
 
             {paginatedJobs.length === 0 ? (
-              <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
+              <div className="card" style={{ textAlign: 'center', padding: '3rem' }} role="status" aria-live="polite">
                 <p>No jobs found matching your criteria.</p>
                 <Link href="/jobs/" className="btn btn-primary mt-md">
                   Clear Filters
@@ -234,7 +271,11 @@ function JobsListingView({
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
-                <div style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '-8px' }}>
+                <div
+                  style={{ fontSize: '0.875rem', color: 'var(--text-muted)', marginBottom: '-8px' }}
+                  role="status"
+                  aria-live="polite"
+                >
                   Showing {paginatedJobs.length} of {filteredJobs.length} jobs
                 </div>
 
@@ -300,28 +341,7 @@ function JobsListingView({
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Useful Before You Apply</h3>
               <div style={{ display: 'grid', gap: '14px' }}>
-                {[
-                  {
-                    href: '/tools/cv-maker/',
-                    title: 'Build a Gulf-ready CV',
-                    description: 'Tighten your resume before you start sending applications.',
-                  },
-                  {
-                    href: '/resources/interview-question-bank/',
-                    title: 'Practice interview answers',
-                    description: 'Prepare examples for construction, hospitality, retail, and oil and gas roles.',
-                  },
-                  {
-                    href: '/tools/currency-converter/',
-                    title: 'Compare salary value',
-                    description: 'Use the currency converter when you need a quick remittance reference.',
-                  },
-                  {
-                    href: '/blog/',
-                    title: 'Read career guides',
-                    description: 'Open salary, visa, and application explainers while you shortlist roles.',
-                  },
-                ].map((link) => (
+                {helperLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

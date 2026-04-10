@@ -21,6 +21,12 @@ import {
   getHelpfulJobsForArticle,
   getRelatedArticles,
 } from '@/lib/content';
+import {
+  buildArticleTakeaways,
+  decorateArticleHtml,
+  deriveArticleTargeting,
+  getSeoPathwaysForTargeting,
+} from '@/lib/seo-targeting';
 
 export const revalidate = 300;
 const articleInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_INLINE_SLOT?.trim();
@@ -110,32 +116,16 @@ export default async function ArticlePage({
   const relatedArticles = await getRelatedArticles(article, 2);
   const helpfulJobs = await getHelpfulJobsForArticle(article, 3);
   const shareUrl = new URL(`/blog/${article.slug}/`, SITE_URL).toString();
-  const { firstHalf, secondHalf } = splitArticleHtml(article.content);
+  const articleTargeting = deriveArticleTargeting(article);
+  const articleTakeaways = buildArticleTakeaways(article);
+  const decoratedArticle = decorateArticleHtml(article.content);
+  const { firstHalf, secondHalf } = splitArticleHtml(decoratedArticle.html);
   const articleImage = article.featuredImage || `${SITE_URL}/og-default.png`;
-  const articleCategoryLower = article.category.toLowerCase();
-  const articleHubLinks = [
-    {
-      href: '/jobs/',
-      title: 'Browse latest Gulf jobs',
-      description: 'Move from reading to applying with current UAE and Gulf job listings.',
-    },
-    {
-      href: '/resources/interview-question-bank/',
-      title: 'Practice interview answers',
-      description: 'Use the Interview Question Bank to prepare stronger examples before your next screening.',
-    },
-    articleCategoryLower.includes('salary')
-      ? {
-          href: '/tools/currency-converter/',
-          title: 'Compare remittance rates',
-          description: 'Check live reference exchange rates before you send money home or compare offers.',
-        }
-      : {
-          href: '/tools/cv-maker/',
-          title: 'Improve your CV',
-          description: 'Build a cleaner, Gulf-ready CV before you send your next application.',
-        },
-  ];
+  const articlePathways = getSeoPathwaysForTargeting(articleTargeting, {
+    surface: 'blog',
+    limit: 4,
+    excludeHrefs: [`/blog/${article.slug}/`],
+  });
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -237,6 +227,85 @@ export default async function ArticlePage({
               </div>
 
               <ArticleCover article={article} variant="hero" style={{ marginBottom: 'var(--space-2xl)' }} />
+
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns:
+                    decoratedArticle.headings.length > 1 ? '1.2fr 0.8fr' : '1fr',
+                  gap: '16px',
+                  marginBottom: 'var(--space-2xl)',
+                }}
+              >
+                <div
+                  style={{
+                    background: '#F8FAFC',
+                    border: '1px solid var(--border)',
+                    borderRadius: 'var(--radius-lg)',
+                    padding: 'var(--space-xl)',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.08em',
+                      color: 'var(--accent)',
+                      marginBottom: '10px',
+                    }}
+                  >
+                    Key takeaways
+                  </p>
+                  <ul style={{ display: 'grid', gap: '10px', paddingLeft: '18px', margin: 0 }}>
+                    {articleTakeaways.map((takeaway) => (
+                      <li key={takeaway} style={{ color: 'var(--text-secondary)', lineHeight: 1.65 }}>
+                        {takeaway}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {decoratedArticle.headings.length > 1 && (
+                  <div
+                    style={{
+                      background: '#FFFFFF',
+                      border: '1px solid var(--border)',
+                      borderRadius: 'var(--radius-lg)',
+                      padding: 'var(--space-xl)',
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        color: 'var(--accent)',
+                        marginBottom: '10px',
+                      }}
+                    >
+                      Jump to sections
+                    </p>
+                    <div style={{ display: 'grid', gap: '10px' }}>
+                      {decoratedArticle.headings.map((heading) => (
+                        <a
+                          key={heading.id}
+                          href={`#${heading.id}`}
+                          style={{
+                            color: 'var(--text)',
+                            textDecoration: 'none',
+                            fontWeight: heading.level === 2 ? 700 : 500,
+                            paddingLeft: heading.level === 2 ? '0' : '12px',
+                          }}
+                        >
+                          {heading.title}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="prose">
                 <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
@@ -370,9 +439,9 @@ export default async function ArticlePage({
             </div>
 
             <div className="card">
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Keep Exploring</h3>
+              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Next best pages</h3>
               <div style={{ display: 'grid', gap: '14px' }}>
-                {articleHubLinks.map((link) => (
+                {articlePathways.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}

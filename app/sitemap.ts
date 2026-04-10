@@ -6,6 +6,7 @@ export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, jobs] = await Promise.all([getAllPublicArticles(), getAllPublicJobs()]);
+  const staticLastModified = new Date('2026-04-09T00:00:00.000Z');
 
   const staticRoutes: MetadataRoute.Sitemap = [
     '/',
@@ -24,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tools/gratuity-calculator/',
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: new Date(),
+    lastModified: staticLastModified,
     changeFrequency: path === '/' ? 'daily' : 'weekly',
     priority: path === '/' ? 1 : 0.7,
   }));

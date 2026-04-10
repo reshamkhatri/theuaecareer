@@ -5,6 +5,13 @@ import Job from '@/lib/models/Job';
 import { formatDisplayDate } from '@/lib/format';
 import { sanitizeArticleRecord, sanitizeJobRecord } from '@/lib/content-sanitizer';
 import { articles as launchArticles, jobs as launchJobs } from '@/lib/launch-content';
+import { seoSeedArticles } from '@/lib/seo-seed-content';
+import {
+  mergeContentBySlug,
+  scoreArticleForJobTargeting,
+  scoreJobForArticleTargeting,
+  scoreRelatedArticlePair,
+} from '@/lib/seo-targeting';
 import {
   getSanityArticleByIdentifier,
   getSanityArticles,
@@ -51,6 +58,21 @@ const stockImagesByCategory: Record<string, string[]> = {
     'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1280&q=80',
     'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1280&q=80',
   ],
+  interview: [
+    'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1280&q=80',
+    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1280&q=80',
+    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1280&q=80',
+  ],
+  retail: [
+    'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1280&q=80',
+    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1280&q=80',
+    'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=1280&q=80',
+  ],
+  construction: [
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1280&q=80',
+    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1280&q=80',
+    'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=1280&q=80',
+  ],
   visa: [
     'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1280&q=80',
     'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=1280&q=80',
@@ -83,6 +105,10 @@ const slugFeaturedImages: Record<string, string> = {
   'how-to-renew-uae-work-visa':               'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80',
   'uae-labour-law-guide-for-expats':          'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80',
   'driver-salary-in-uae-2026':               'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1600&q=80',
+  'what-to-carry-for-walk-in-interview-uae': 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80',
+  'walk-in-interview-self-introduction-sample-uae': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80',
+  'retail-sales-associate-interview-questions-uae': 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1600&q=80',
+  'construction-helper-interview-questions-uae':    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80',
 };
 
 // Fallback pool — unique images used when slug doesn't match above
@@ -111,6 +137,9 @@ function getStockFeaturedImage(slug: string): string {
 function getCategoryKey(category: string): string {
   const lower = category.toLowerCase();
   if (lower.includes('walk-in')) return 'walk-in';
+  if (lower.includes('interview')) return 'interview';
+  if (lower.includes('retail')) return 'retail';
+  if (lower.includes('construction')) return 'construction';
   if (lower.includes('career') || lower.includes('hiring') || lower.includes('company')) return 'career';
   if (lower.includes('salary')) return 'salary';
   if (lower.includes('visa') || lower.includes('pro')) return 'visa';
@@ -164,8 +193,15 @@ function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
 const launchArticleRecords: ArticleRecord[] = launchArticles.map((article) =>
   sanitizeArticleRecord(normalizeArticleRecord(article))
 );
+const seedArticleRecords: ArticleRecord[] = seoSeedArticles.map((article) =>
+  sanitizeArticleRecord(normalizeArticleRecord(article))
+);
 const launchJobRecords: JobRecord[] = launchJobs.map((job, index) =>
   sanitizeJobRecord(normalizeJobRecord(job, `launch-job-${index + 1}`))
+);
+const staticArticleRecords = mergeContentBySlug(
+  [...launchArticleRecords, ...seedArticleRecords],
+  (article) => article.slug
 );
 let hasLoggedDatabaseFallback = false;
 const isRuntimeDatabaseFallbackEnabled = process.env.ENABLE_DATABASE_FALLBACK === 'true';
@@ -519,6 +555,34 @@ function sortArticles(items: ArticleRecord[]): ArticleRecord[] {
   );
 }
 
+function filterArticleCollection(
+  items: ArticleRecord[],
+  options: ArticleQueryOptions = {}
+): ArticleRecord[] {
+  const { category = '', search = '', status = 'published' } = options;
+
+  return sortArticles(
+    items.filter((article) => {
+      if (status && article.status !== status) {
+        return false;
+      }
+      if (category && article.category !== category) {
+        return false;
+      }
+      if (search && !matchesArticleSearch(article, search)) {
+        return false;
+      }
+      return true;
+    })
+  );
+}
+
+function buildMergedArticleCollection(sanityItems: ArticleRecord[] = []): ArticleRecord[] {
+  return mergeContentBySlug([...staticArticleRecords, ...sanityItems], (article) => article.slug).map(
+    enrichArticleWithImages
+  );
+}
+
 export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedResult<JobRecord>> {
   const {
     page = 1,
@@ -623,7 +687,7 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
 
 export async function getJobByIdentifier(identifier: string): Promise<JobRecord | null> {
   const sanityJob = await getSanityJobByIdentifier(identifier);
-  if (sanityJob && sanityJob.collectionCount > 0) {
+  if (sanityJob?.item) {
     return sanityJob.item;
   }
 
@@ -662,10 +726,20 @@ export async function getArticles(
     status = 'published',
   } = options;
 
-  const sanityResult = await getSanityArticles(options);
+  const sanityResult = await getSanityArticles({
+    page: 1,
+    limit: 500,
+    category,
+    search,
+    status,
+  });
   if (sanityResult && (sanityResult.result.pagination.total > 0 || sanityResult.collectionCount > 0)) {
-    const enriched = { ...sanityResult.result, items: sanityResult.result.items.map(enrichArticleWithImages) };
-    return enriched;
+    const mergedItems = filterArticleCollection(buildMergedArticleCollection(sanityResult.result.items), {
+      category,
+      search,
+      status,
+    });
+    return paginate(mergedItems, page, limit);
   }
 
   const dbResult = await withDatabase(async () => {
@@ -705,31 +779,25 @@ export async function getArticles(
   });
 
   if (dbResult && (dbResult.result.pagination.total > 0 || dbResult.collectionCount > 0)) {
-    return dbResult.result;
+    const mergedItems = filterArticleCollection(buildMergedArticleCollection(dbResult.result.items), {
+      category,
+      search,
+      status,
+    });
+    return paginate(mergedItems, page, limit);
   }
 
-  const filtered = sortArticles(
-    launchArticleRecords.filter((article) => {
-      if (status && article.status !== status) {
-        return false;
-      }
-      if (category && article.category !== category) {
-        return false;
-      }
-      if (search && !matchesArticleSearch(article, search)) {
-        return false;
-      }
-      return true;
-    })
-  );
-
-  const result = paginate(filtered, page, limit);
-  return { ...result, items: result.items.map(enrichArticleWithImages) };
+  const filtered = filterArticleCollection(buildMergedArticleCollection(), {
+    category,
+    search,
+    status,
+  });
+  return paginate(filtered, page, limit);
 }
 
 export async function getArticleByIdentifier(identifier: string): Promise<ArticleRecord | null> {
   const sanityArticle = await getSanityArticleByIdentifier(identifier);
-  if (sanityArticle && sanityArticle.collectionCount > 0 && sanityArticle.item) {
+  if (sanityArticle?.item) {
     return enrichArticleWithImages(sanityArticle.item);
   }
 
@@ -751,111 +819,33 @@ export async function getArticleByIdentifier(identifier: string): Promise<Articl
     return enrichArticleWithImages(dbArticle);
   }
 
-  const launch = launchArticleRecords.find((article) => article.slug === identifier || article._id === identifier);
-  return launch ? enrichArticleWithImages(launch) : null;
+  const staticArticle = staticArticleRecords.find(
+    (article) => article.slug === identifier || article._id === identifier
+  );
+  return staticArticle ? enrichArticleWithImages(staticArticle) : null;
 }
 
 export async function getRelatedArticles(
   article: ArticleRecord,
   limit = 2
 ): Promise<ArticleRecord[]> {
-  const result = await getArticles({
-    category: article.category,
-    status: 'published',
-    limit: 50,
-  });
+  const articles = await getAllPublicArticles();
 
-  return result.items.filter((item) => item.slug !== article.slug).slice(0, limit);
-}
-
-function getMeaningfulTokens(value: string, limit = 6): string[] {
-  return Array.from(
-    new Set(
-      normalizeText(value)
-        .toLowerCase()
-        .split(/[^a-z0-9]+/)
-        .filter((token) => token.length >= 4)
-    )
-  ).slice(0, limit);
-}
-
-function scoreJobAgainstArticle(job: JobRecord, article: ArticleRecord): number {
-  const articleHaystack = [
-    article.title,
-    article.excerpt,
-    article.category,
-    article.tags.join(' '),
-    stripHtml(article.content).slice(0, 600),
-  ]
-    .join(' ')
-    .toLowerCase();
-
-  let score = 0;
-
-  if (articleHaystack.includes(job.category.toLowerCase())) {
-    score += 5;
-  }
-  if (job.categoryLabel && articleHaystack.includes(job.categoryLabel.toLowerCase())) {
-    score += 4;
-  }
-  if (job.isWalkIn && articleHaystack.includes('walk-in')) {
-    score += 6;
-  }
-  if (articleHaystack.includes(job.location.country.toLowerCase())) {
-    score += 2;
-  }
-  if (articleHaystack.includes(job.location.city.toLowerCase())) {
-    score += 1;
-  }
-
-  getMeaningfulTokens(job.title).forEach((token) => {
-    if (articleHaystack.includes(token)) {
-      score += 1;
-    }
-  });
-
-  return score;
-}
-
-function scoreArticleAgainstJob(article: ArticleRecord, job: JobRecord): number {
-  const jobHaystack = [
-    job.title,
-    job.companyName,
-    job.category,
-    job.categoryLabel || '',
-    job.location.city,
-    job.location.country,
-    stripHtml(job.description).slice(0, 600),
-  ]
-    .join(' ')
-    .toLowerCase();
-
-  let score = 0;
-
-  if (jobHaystack.includes(article.category.toLowerCase())) {
-    score += 5;
-  }
-  if (job.isWalkIn && article.category.toLowerCase().includes('walk-in')) {
-    score += 6;
-  }
-  if (jobHaystack.includes(job.location.country.toLowerCase())) {
-    score += 1;
-  }
-
-  article.tags.forEach((tag) => {
-    const normalizedTag = tag.toLowerCase();
-    if (normalizedTag && jobHaystack.includes(normalizedTag)) {
-      score += 2;
-    }
-  });
-
-  getMeaningfulTokens(article.title).forEach((token) => {
-    if (jobHaystack.includes(token)) {
-      score += 1;
-    }
-  });
-
-  return score;
+  return articles
+    .filter((item) => item.slug !== article.slug)
+    .map((item) => ({
+      article: item,
+      score: scoreRelatedArticlePair(article, item),
+    }))
+    .filter(({ score }) => Number.isFinite(score) && score > 0)
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+      return new Date(right.article.publishDate).getTime() - new Date(left.article.publishDate).getTime();
+    })
+    .slice(0, limit)
+    .map(({ article: item }) => item);
 }
 
 export async function getHelpfulJobsForArticle(
@@ -867,7 +857,7 @@ export async function getHelpfulJobsForArticle(
   return jobs
     .map((job) => ({
       job,
-      score: scoreJobAgainstArticle(job, article),
+      score: scoreJobForArticleTargeting(article, job),
     }))
     .filter(({ score }) => score > 0)
     .sort((left, right) => {
@@ -915,7 +905,7 @@ export async function getHelpfulArticlesForJob(
   return articles
     .map((article) => ({
       article,
-      score: scoreArticleAgainstJob(article, job),
+      score: scoreArticleForJobTargeting(job, article),
     }))
     .filter(({ score }) => score > 0)
     .sort((left, right) => {

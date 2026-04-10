@@ -8,6 +8,7 @@ import AdSlot from '@/components/AdSlot';
 import ArticleCover from '@/components/ArticleCover';
 import { ARTICLE_CATEGORIES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
+import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 import type { ArticleRecord } from '@/lib/types';
 
 const blogListAdSlot = process.env.NEXT_PUBLIC_ADSENSE_BLOG_LIST_SLOT?.trim();
@@ -89,6 +90,39 @@ function BlogListingView({
   const featured = filteredArticles[0];
   const secondary = filteredArticles.slice(1, 3);
   const rest = filteredArticles.slice(3);
+  const activeFilterLabel = currentCategory || 'All categories';
+  const helperLinks = mergeContentBySlug(
+    [
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'UAE',
+          roleFamily: 'walk-in',
+          intentCluster: 'walk-in-prep',
+          searchStage: 'prepare',
+        },
+        { surface: 'blog', limit: 2 }
+      ),
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'Saudi Arabia',
+          roleFamily: 'warehouse-logistics',
+          intentCluster: 'application-workflow',
+          searchStage: 'apply',
+        },
+        { surface: 'blog', limit: 2 }
+      ),
+      ...getSeoPathwaysForTargeting(
+        {
+          country: 'Qatar',
+          roleFamily: 'hotel-hospitality',
+          intentCluster: 'role-interview-prep',
+          searchStage: 'prepare',
+        },
+        { surface: 'blog', limit: 2 }
+      ),
+    ],
+    (item) => item.href
+  ).slice(0, 4);
 
   return (
     <>
@@ -106,9 +140,14 @@ function BlogListingView({
             className="blg-search"
             action="/blog/"
             method="get"
+            aria-label="Search career articles"
           >
             <FiSearch className="blg-search-icon" />
+            <label htmlFor="blog-search" className="visually-hidden">
+              Search blog articles
+            </label>
             <input
+              id="blog-search"
               type="text"
               name="search"
               defaultValue={currentSearch}
@@ -149,8 +188,15 @@ function BlogListingView({
       {/* Articles */}
       <section className="blg-content">
         <div className="container">
+          <p
+            className="blg-results-summary"
+            role="status"
+            aria-live="polite"
+          >
+            Showing {filteredArticles.length} article{filteredArticles.length === 1 ? '' : 's'} in {activeFilterLabel}.
+          </p>
           {filteredArticles.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '4rem 0' }}>
+            <div style={{ textAlign: 'center', padding: '4rem 0' }} role="status" aria-live="polite">
               <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', marginBottom: '16px' }}>No articles match your search.</p>
               <Link href="/blog/" className="btn btn-primary">View All Articles</Link>
             </div>
@@ -252,28 +298,7 @@ function BlogListingView({
                 </div>
 
                 <div className="grid-2">
-                  {[
-                    {
-                      href: '/jobs/',
-                      title: 'Browse latest jobs',
-                      description: 'Move from advice into active UAE and Gulf openings.',
-                    },
-                    {
-                      href: '/jobs/walk-in/',
-                      title: 'See walk-in interviews',
-                      description: 'Check fast-moving hiring events if you want quicker interview access.',
-                    },
-                    {
-                      href: '/resources/interview-question-bank/',
-                      title: 'Practice interview answers',
-                      description: 'Use the Interview Question Bank before your next screening call.',
-                    },
-                    {
-                      href: '/tools/cv-maker/',
-                      title: 'Improve your CV',
-                      description: 'Turn what you learned into a stronger, more targeted application.',
-                    },
-                  ].map((link) => (
+                  {helperLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -461,6 +486,12 @@ const blogStyles = `
   .blg-content {
     padding: 40px 0 64px;
     background: #f8fafc;
+  }
+  .blg-results-summary {
+    margin-bottom: 20px;
+    color: #64748b;
+    font-size: 0.88rem;
+    font-weight: 600;
   }
 
   /* ── Top row: featured + secondary ── */
