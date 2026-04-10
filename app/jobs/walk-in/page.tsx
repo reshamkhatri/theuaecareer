@@ -8,14 +8,14 @@ import { getJobs } from '@/lib/content';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',
+  title: 'UAE Walk-In Interviews 2026',
   description:
     'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE. Get direct hiring event details and quick-apply guidance.',
   alternates: {
     canonical: '/jobs/walk-in/',
   },
   openGraph: {
-    title: 'Walk-in Interviews in UAE 2026 - Dubai & Abu Dhabi Hiring Events',
+    title: 'UAE Walk-In Interviews 2026',
     description:
       'Explore the latest walk-in interview opportunities in Dubai, Abu Dhabi, Sharjah, and across the UAE.',
     url: '/jobs/walk-in/',
@@ -193,22 +193,23 @@ export default async function WalkInJobsPage() {
                     description: 'If the walk-in timing does not fit, switch to the broader jobs listing.',
                   },
                 ].map((link) => (
-                  <Link
+                  <div
                     key={link.href}
-                    href={link.href}
                     style={{
                       display: 'grid',
                       gap: '4px',
                       paddingBottom: '14px',
                       borderBottom: '1px solid var(--border)',
-                      textDecoration: 'none',
                     }}
                   >
                     <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55, margin: 0 }}>
                       {link.description}
-                    </span>
-                  </Link>
+                    </p>
+                    <Link href={link.href} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                      Open {link.title}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

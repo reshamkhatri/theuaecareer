@@ -20,6 +20,7 @@ import {
   getRelatedJobs,
   stripHtml,
 } from '@/lib/content';
+import { buildSeoDescription, buildSeoTitle, stripBrandSuffix } from '@/lib/seo-metadata';
 import { deriveJobTargeting, getSeoPathwaysForTargeting } from '@/lib/seo-targeting';
 
 export const revalidate = 300;
@@ -41,16 +42,24 @@ export async function generateMetadata({
   }
 
   const ogImage = `${SITE_URL}/og-default.png`;
+  const seoTitle = buildSeoTitle(
+    stripBrandSuffix(job.metaTitle || `${job.title} in ${job.location.city}`),
+    60
+  );
+  const seoDescription = buildSeoDescription(
+    job.metaDescription || stripHtml(job.description).slice(0, 220),
+    'Review Gulf job details, employer requirements, salary notes, and application steps before you apply through the official company channel.'
+  );
 
   return {
-    title: job.metaTitle || `${job.title} in ${job.location.city} | theuaecareer.com`,
-    description: job.metaDescription || stripHtml(job.description).slice(0, 160),
+    title: { absolute: seoTitle },
+    description: seoDescription,
     alternates: {
       canonical: `/jobs/${job.slug}/`,
     },
     openGraph: {
-      title: job.metaTitle || job.title,
-      description: job.metaDescription || stripHtml(job.description).slice(0, 160),
+      title: seoTitle,
+      description: seoDescription,
       url: `/jobs/${job.slug}/`,
       type: 'article',
       images: [
@@ -64,8 +73,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: job.metaTitle || job.title,
-      description: job.metaDescription || stripHtml(job.description).slice(0, 160),
+      title: seoTitle,
+      description: seoDescription,
       images: [ogImage],
     },
   };
@@ -345,22 +354,23 @@ export default async function JobDetailPage({
                 </p>
                 <div className="grid-2">
                   {jobResourceLinks.slice(0, 4).map((link) => (
-                    <Link
+                    <div
                       key={link.href}
-                      href={link.href}
                       className="card"
                       style={{
-                        textDecoration: 'none',
                         display: 'grid',
                         gap: '6px',
                         padding: '16px',
                       }}
                     >
                       <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                      <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
                         {link.description}
-                      </span>
-                    </Link>
+                      </p>
+                      <Link href={link.href} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                        Open {buildSeoTitle(link.title, 38)}
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -421,14 +431,12 @@ export default async function JobDetailPage({
                 <div className="grid-2 mt-xl">
                   {relatedJobs.map((relatedJob) => (
                     <div key={relatedJob._id} className="card">
-                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px' }}>
-                        <Link href={`/jobs/${relatedJob.slug}/`}>{relatedJob.title}</Link>
-                      </h3>
+                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px' }}>{relatedJob.title}</h3>
                       <p style={{ color: 'var(--text-secondary)', marginBottom: '12px' }}>
                         {relatedJob.companyName} • {relatedJob.location.city}
                       </p>
                       <Link href={`/jobs/${relatedJob.slug}/`} className="btn btn-secondary btn-sm">
-                        View Job
+                        Open {buildSeoTitle(relatedJob.title, 36)}
                       </Link>
                     </div>
                   ))}
@@ -445,14 +453,12 @@ export default async function JobDetailPage({
                       <span className="badge badge-secondary" style={{ marginBottom: '12px' }}>
                         {article.category}
                       </span>
-                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px', lineHeight: 1.4 }}>
-                        <Link href={`/blog/${article.slug}/`}>{article.title}</Link>
-                      </h3>
+                      <h3 style={{ fontSize: '1.125rem', marginBottom: '8px', lineHeight: 1.4 }}>{article.title}</h3>
                       <p style={{ color: 'var(--text-secondary)', marginBottom: '12px', lineHeight: 1.6 }}>
                         {article.excerpt}
                       </p>
                       <Link href={`/blog/${article.slug}/`} className="btn btn-secondary btn-sm">
-                        Read Guide
+                        Read {buildSeoTitle(article.title, 36)}
                       </Link>
                     </div>
                   ))}
@@ -488,22 +494,23 @@ export default async function JobDetailPage({
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Before You Apply</h3>
               <div style={{ display: 'grid', gap: '14px' }}>
                 {jobResourceLinks.map((link) => (
-                  <Link
+                  <div
                     key={link.href}
-                    href={link.href}
                     style={{
                       display: 'grid',
                       gap: '4px',
                       paddingBottom: '14px',
                       borderBottom: '1px solid var(--border)',
-                      textDecoration: 'none',
                     }}
                   >
                     <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55, margin: 0 }}>
                       {link.description}
-                    </span>
-                  </Link>
+                    </p>
+                    <Link href={link.href} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                      Open {buildSeoTitle(link.title, 38)}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

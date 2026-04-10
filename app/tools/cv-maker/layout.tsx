@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'Free UAE CV Maker 2026 — Gulf-Ready CV Builder with Photo',
+  title: 'Free UAE CV Builder',
   description:
-    'Build a professional UAE CV online for free. Gulf-ready templates with photo, nationality, visa status, and languages — the fields UAE recruiters actually look for. Export as PDF.',
+    'Build a professional UAE CV online for free. Gulf-ready templates with photo, nationality, visa status, and languages - the fields UAE recruiters actually look for. Export as PDF.',
   keywords: [
     'UAE CV maker',
     'free CV builder Dubai',
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tools/cv-maker/`,
   },
   openGraph: {
-    title: 'Free UAE CV Maker 2026 — Gulf-Ready Templates with Photo',
+    title: 'Free UAE CV Builder',
     description:
       'Build a UAE-standard CV free online. Includes photo, nationality, visa status, and languages. 3 professional templates. Export PDF instantly.',
     url: `${SITE_URL}/tools/cv-maker/`,
@@ -30,18 +30,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free UAE CV Maker 2026',
+    title: 'Free UAE CV Builder',
     description: 'Build a Gulf-ready CV free online with photo, nationality, and visa status fields.',
   },
 };
 
 const faqs = [
   { q: 'Should a UAE CV include a photo?', a: 'Yes. Unlike Western markets, a professional headshot is standard and expected on CVs in the UAE and GCC. Place it in the top-right corner. Our CV builder includes the photo field automatically.' },
-  { q: 'How long should a UAE CV be?', a: 'One page if you have under 5 years of experience. Two pages maximum if you have more. UAE recruiters skim — keep it tight and focused.' },
-  { q: 'Do I need to include nationality on a UAE CV?', a: 'Yes. UAE employers look for nationality information immediately — it affects visa costs and processing. Always include it clearly near the top of your CV.' },
+  { q: 'How long should a UAE CV be?', a: 'One page if you have under 5 years of experience. Two pages maximum if you have more. UAE recruiters skim - keep it tight and focused.' },
+  { q: 'Do I need to include nationality on a UAE CV?', a: 'Yes. UAE employers look for nationality information immediately - it affects visa costs and processing. Always include it clearly near the top of your CV.' },
   { q: 'What is a Gulf-ready CV format?', a: 'A Gulf-ready CV includes a professional photo, nationality, visa status, date of birth, and languages spoken. It uses a clean layout compatible with ATS systems used by UAE companies.' },
   { q: 'Should I include my visa status on a UAE CV?', a: 'Yes. State whether you\'re on an employment visa, visit visa, or outside the UAE. Employers need to know your availability and visa processing requirements.' },
-  { q: 'Is this CV builder really free?', a: 'Yes, completely free. Build your CV, choose a template, and download it as a PDF — no account required, no watermark, no payment.' },
+  { q: 'Is this CV builder really free?', a: 'Yes, completely free. Build your CV, choose a template, and download it as a PDF - no account required, no watermark, no payment.' },
 ];
 
 const faqJsonLd = {
@@ -59,7 +59,6 @@ export default function CvMakerLayout({ children }: { children: React.ReactNode 
     <>
       {children}
 
-      {/* FAQ + Internal links — server-rendered for SEO */}
       <div style={{ background: '#f8fafc', paddingBottom: '80px' }}>
         <div className="container" style={{ maxWidth: '1000px' }}>
           <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a', marginBottom: '8px', textAlign: 'center' }}>

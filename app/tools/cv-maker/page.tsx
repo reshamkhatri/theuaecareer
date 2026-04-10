@@ -185,9 +185,15 @@ export default function CVMakerPage() {
       ref={ref}
       className={`cv-preview-sheet ${mode === 'live' ? 'cv-preview-sheet-live' : 'cv-preview-sheet-export'}`}
     >
-      {cvData.template === 'gulf-classic' && <GulfClassicPreview cvData={cvData} fullName={fullName} />}
-      {cvData.template === 'dubai-executive' && <DubaiExecutivePreview cvData={cvData} fullName={fullName} />}
-      {cvData.template === 'modern-minimal' && <ModernMinimalPreview cvData={cvData} fullName={fullName} />}
+      {cvData.template === 'gulf-classic' && (
+        <GulfClassicPreview cvData={cvData} fullName={fullName} useSemanticHeadings={mode === 'live'} />
+      )}
+      {cvData.template === 'dubai-executive' && (
+        <DubaiExecutivePreview cvData={cvData} fullName={fullName} useSemanticHeadings={mode === 'live'} />
+      )}
+      {cvData.template === 'modern-minimal' && (
+        <ModernMinimalPreview cvData={cvData} fullName={fullName} useSemanticHeadings={mode === 'live'} />
+      )}
     </div>
   );
 
@@ -685,7 +691,15 @@ export default function CVMakerPage() {
 /* ═══════════════════════════════════════════════════
    TEMPLATE A: GULF CLASSIC — Single Column, ATS-Friendly
    ═══════════════════════════════════════════════════ */
-function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: string }) {
+function GulfClassicPreview({
+  cvData,
+  fullName,
+  useSemanticHeadings,
+}: {
+  cvData: CVData;
+  fullName: string;
+  useSemanticHeadings: boolean;
+}) {
   const contact = [cvData.email, cvData.phone, cvData.location, cvData.linkedin].filter(Boolean);
   const personal = [
     cvData.nationality && `Nationality: ${cvData.nationality}`,
@@ -697,7 +711,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
     <div className="cv-template-paper cv-template-classic" style={{ background: '#fff', padding: '40px 36px', fontFamily: "'Segoe UI', Arial, sans-serif", color: '#1a1a1a', fontSize: '10.5pt', lineHeight: 1.5, borderRadius: '8px' }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '6px' }}>
-        <h1 style={{ fontSize: '22pt', fontWeight: 700, letterSpacing: '1px', margin: 0, textTransform: 'uppercase' }}>{fullName}</h1>
+        <div style={{ fontSize: '22pt', fontWeight: 700, letterSpacing: '1px', margin: 0, textTransform: 'uppercase' }}>{fullName}</div>
         <div style={{ fontSize: '12pt', color: '#0f766e', fontWeight: 600, marginTop: '4px' }}>{cvData.title || 'Professional Title'}</div>
       </div>
       <div style={{ textAlign: 'center', fontSize: '9.5pt', color: '#555', marginBottom: '4px' }}>
@@ -711,13 +725,13 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
       <hr style={{ border: 'none', borderTop: '2px solid #0f766e', margin: '14px 0' }} />
 
       {/* Professional Summary */}
-      <SectionHeadingClassic title="Professional Summary" />
+      <SectionHeadingClassic title="Professional Summary" asHeading={useSemanticHeadings} />
       <p style={{ margin: '0 0 16px', color: '#333' }}>
         {cvData.summary || 'Write a 3-4 sentence summary highlighting your key achievements, skills, and value.'}
       </p>
 
       {/* Experience */}
-      <SectionHeadingClassic title="Work Experience" />
+      <SectionHeadingClassic title="Work Experience" asHeading={useSemanticHeadings} />
       {cvData.experiences.map((exp) => (
         <div key={exp.id} style={{ marginBottom: '14px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap' }}>
@@ -734,7 +748,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
       ))}
 
       {/* Education */}
-      <SectionHeadingClassic title="Education" />
+      <SectionHeadingClassic title="Education" asHeading={useSemanticHeadings} />
       {cvData.education.map((edu) => (
         <div key={edu.id} style={{ marginBottom: '10px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -747,7 +761,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
       ))}
 
       {/* Skills */}
-      <SectionHeadingClassic title="Key Skills" />
+      <SectionHeadingClassic title="Key Skills" asHeading={useSemanticHeadings} />
       <p style={{ margin: '0 0 16px', color: '#333' }}>
         {cvData.skills.length > 0 ? cvData.skills.join('  •  ') : 'Add your key skills'}
       </p>
@@ -755,7 +769,7 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
       {/* Languages */}
       {cvData.languages.length > 0 && (
         <>
-          <SectionHeadingClassic title="Languages" />
+          <SectionHeadingClassic title="Languages" asHeading={useSemanticHeadings} />
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', color: '#333' }}>
             {cvData.languages.map((lang) => (
               <span key={lang.id}>{lang.name || 'Language'} — <em>{lang.level}</em></span>
@@ -767,10 +781,21 @@ function GulfClassicPreview({ cvData, fullName }: { cvData: CVData; fullName: st
   );
 }
 
-function SectionHeadingClassic({ title }: { title: string }) {
+function SectionHeadingClassic({ title, asHeading = true }: { title: string; asHeading?: boolean }) {
+  const style = {
+    fontSize: '11pt',
+    fontWeight: 700,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1.2px',
+    color: '#0f766e',
+    margin: 0,
+    paddingBottom: '4px',
+    borderBottom: '1px solid #d1d5db',
+  };
+
   return (
     <div style={{ marginBottom: '8px', marginTop: '18px' }}>
-      <h3 style={{ fontSize: '11pt', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.2px', color: '#0f766e', margin: 0, paddingBottom: '4px', borderBottom: '1px solid #d1d5db' }}>{title}</h3>
+      {asHeading ? <h3 style={style}>{title}</h3> : <div style={style}>{title}</div>}
     </div>
   );
 }
@@ -778,7 +803,15 @@ function SectionHeadingClassic({ title }: { title: string }) {
 /* ═══════════════════════════════════════════════════
    TEMPLATE B: DUBAI EXECUTIVE — Two-Column Sidebar
    ═══════════════════════════════════════════════════ */
-function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName: string }) {
+function DubaiExecutivePreview({
+  cvData,
+  fullName,
+  useSemanticHeadings,
+}: {
+  cvData: CVData;
+  fullName: string;
+  useSemanticHeadings: boolean;
+}) {
   const personal = [
     cvData.nationality && { label: 'Nationality', value: cvData.nationality },
     cvData.visaStatus && { label: 'Visa Status', value: cvData.visaStatus },
@@ -789,10 +822,10 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
     <div className="cv-template-paper cv-template-executive" style={{ display: 'flex', background: '#fff', borderRadius: '8px', overflow: 'hidden', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5 }}>
       {/* Sidebar */}
       <div className="cv-template-executive-sidebar" style={{ width: '35%', background: '#0f172a', color: '#e2e8f0', padding: '32px 22px', flexShrink: 0 }}>
-        <h1 style={{ fontSize: '16pt', fontWeight: 700, color: '#ffffff', margin: '0 0 4px', lineHeight: 1.2 }}>{fullName}</h1>
+        <div style={{ fontSize: '16pt', fontWeight: 700, color: '#ffffff', margin: '0 0 4px', lineHeight: 1.2 }}>{fullName}</div>
         <div style={{ fontSize: '10pt', color: '#67e8f9', fontWeight: 600, marginBottom: '20px' }}>{cvData.title || 'Professional Title'}</div>
 
-        <SidebarSection title="Contact">
+        <SidebarSection title="Contact" asHeading={useSemanticHeadings}>
           {cvData.email && <div style={{ wordBreak: 'break-all' }}>{cvData.email}</div>}
           {cvData.phone && <div>{cvData.phone}</div>}
           {cvData.location && <div>{cvData.location}</div>}
@@ -800,7 +833,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
         </SidebarSection>
 
         {personal.length > 0 && (
-          <SidebarSection title="Personal Details">
+          <SidebarSection title="Personal Details" asHeading={useSemanticHeadings}>
             {personal.map((item) => (
               <div key={item.label} style={{ marginBottom: '4px' }}>
                 <span style={{ color: '#94a3b8', fontSize: '8.5pt', display: 'block' }}>{item.label}</span>
@@ -810,7 +843,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
           </SidebarSection>
         )}
 
-        <SidebarSection title="Skills">
+        <SidebarSection title="Skills" asHeading={useSemanticHeadings}>
           {cvData.skills.length > 0
             ? cvData.skills.map((skill) => (
                 <div key={skill} style={{ padding: '3px 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>{skill}</div>
@@ -820,7 +853,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
         </SidebarSection>
 
         {cvData.languages.length > 0 && (
-          <SidebarSection title="Languages">
+          <SidebarSection title="Languages" asHeading={useSemanticHeadings}>
             {cvData.languages.map((lang) => (
               <div key={lang.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '3px 0' }}>
                 <span>{lang.name || 'Language'}</span>
@@ -834,13 +867,13 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
       {/* Main Content */}
       <div className="cv-template-executive-main" style={{ flex: 1, padding: '32px 28px', color: '#1a1a1a' }}>
         {/* Summary */}
-        <SectionHeadingExec title="Professional Profile" />
+        <SectionHeadingExec title="Professional Profile" asHeading={useSemanticHeadings} />
         <p style={{ margin: '0 0 20px', color: '#444' }}>
           {cvData.summary || 'Write a compelling summary of your career.'}
         </p>
 
         {/* Experience */}
-        <SectionHeadingExec title="Career History" />
+        <SectionHeadingExec title="Career History" asHeading={useSemanticHeadings} />
         {cvData.experiences.map((exp) => (
           <div key={exp.id} style={{ marginBottom: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -857,7 +890,7 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
         ))}
 
         {/* Education */}
-        <SectionHeadingExec title="Education & Qualifications" />
+        <SectionHeadingExec title="Education & Qualifications" asHeading={useSemanticHeadings} />
         {cvData.education.map((edu) => (
           <div key={edu.id} style={{ marginBottom: '10px' }}>
             <strong>{edu.degree || 'Degree'}</strong>
@@ -870,25 +903,62 @@ function DubaiExecutivePreview({ cvData, fullName }: { cvData: CVData; fullName:
   );
 }
 
-function SidebarSection({ title, children }: { title: string; children: ReactNode }) {
+function SidebarSection({
+  title,
+  children,
+  asHeading = true,
+}: {
+  title: string;
+  children: ReactNode;
+  asHeading?: boolean;
+}) {
+  const style = {
+    fontSize: '8.5pt',
+    fontWeight: 700,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1.5px',
+    color: '#67e8f9',
+    marginBottom: '8px',
+    paddingBottom: '4px',
+    borderBottom: '1px solid rgba(255,255,255,0.12)',
+  };
+
   return (
     <div style={{ marginBottom: '18px' }}>
-      <h4 style={{ fontSize: '8.5pt', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', color: '#67e8f9', marginBottom: '8px', paddingBottom: '4px', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>{title}</h4>
+      {asHeading ? <h4 style={style}>{title}</h4> : <div style={style}>{title}</div>}
       <div style={{ fontSize: '9.5pt' }}>{children}</div>
     </div>
   );
 }
 
-function SectionHeadingExec({ title }: { title: string }) {
-  return (
-    <h3 style={{ fontSize: '11pt', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#0f172a', marginBottom: '10px', marginTop: '20px', paddingBottom: '5px', borderBottom: '2px solid #6366f1' }}>{title}</h3>
-  );
+function SectionHeadingExec({ title, asHeading = true }: { title: string; asHeading?: boolean }) {
+  const style = {
+    fontSize: '11pt',
+    fontWeight: 700,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '0.8px',
+    color: '#0f172a',
+    marginBottom: '10px',
+    marginTop: '20px',
+    paddingBottom: '5px',
+    borderBottom: '2px solid #6366f1',
+  };
+
+  return asHeading ? <h3 style={style}>{title}</h3> : <div style={style}>{title}</div>;
 }
 
 /* ═══════════════════════════════════════════════════
    TEMPLATE C: MODERN MINIMAL — Bold Header + Split Body
    ═══════════════════════════════════════════════════ */
-function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: string }) {
+function ModernMinimalPreview({
+  cvData,
+  fullName,
+  useSemanticHeadings,
+}: {
+  cvData: CVData;
+  fullName: string;
+  useSemanticHeadings: boolean;
+}) {
   const contact = [cvData.email, cvData.phone, cvData.location, cvData.linkedin].filter(Boolean);
   const personal = [
     cvData.nationality && `${cvData.nationality}`,
@@ -900,7 +970,7 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
     <div className="cv-template-paper cv-template-modern" style={{ background: '#fff', fontFamily: "'Segoe UI', Arial, sans-serif", fontSize: '10pt', lineHeight: 1.5, borderRadius: '8px', overflow: 'hidden' }}>
       {/* Header */}
       <div className="cv-template-modern-header" style={{ background: '#6366f1', color: '#fff', padding: '28px 32px' }}>
-        <h1 style={{ fontSize: '20pt', fontWeight: 800, margin: 0, letterSpacing: '0.5px' }}>{fullName}</h1>
+        <div style={{ fontSize: '20pt', fontWeight: 800, margin: 0, letterSpacing: '0.5px' }}>{fullName}</div>
         <div style={{ fontSize: '11pt', fontWeight: 500, opacity: 0.9, marginTop: '4px' }}>{cvData.title || 'Professional Title'}</div>
         <div style={{ fontSize: '9pt', marginTop: '10px', opacity: 0.8, display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
           {contact.map((item) => <span key={item}>{item}</span>)}
@@ -911,12 +981,12 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
       <div className="cv-template-modern-body" style={{ display: 'flex', padding: '28px 32px', gap: '28px' }}>
         {/* Left: 65% */}
         <div className="cv-template-modern-main" style={{ flex: '0 0 62%' }}>
-          <MinimalHeading title="Profile" />
+          <MinimalHeading title="Profile" asHeading={useSemanticHeadings} />
           <p style={{ color: '#444', margin: '0 0 20px' }}>
             {cvData.summary || 'Write a professional summary.'}
           </p>
 
-          <MinimalHeading title="Experience" />
+          <MinimalHeading title="Experience" asHeading={useSemanticHeadings} />
           {cvData.experiences.map((exp) => (
             <div key={exp.id} style={{ marginBottom: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
@@ -932,7 +1002,7 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
             </div>
           ))}
 
-          <MinimalHeading title="Education" />
+          <MinimalHeading title="Education" asHeading={useSemanticHeadings} />
           {cvData.education.map((edu) => (
             <div key={edu.id} style={{ marginBottom: '10px' }}>
               <strong>{edu.degree}</strong>
@@ -945,14 +1015,14 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
         <div className="cv-template-modern-side" style={{ flex: 1, borderLeft: '1px solid #e5e7eb', paddingLeft: '24px' }}>
           {personal.length > 0 && (
             <>
-              <MinimalHeading title="Personal" />
+              <MinimalHeading title="Personal" asHeading={useSemanticHeadings} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '18px', color: '#444' }}>
                 {personal.map((item) => <span key={item as string}>{item}</span>)}
               </div>
             </>
           )}
 
-          <MinimalHeading title="Skills" />
+          <MinimalHeading title="Skills" asHeading={useSemanticHeadings} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '18px', color: '#333' }}>
             {(cvData.skills.length > 0 ? cvData.skills : ['Add your skills']).map((skill) => (
               <span key={skill} style={{ padding: '3px 0', borderBottom: '1px solid #f3f4f6' }}>{skill}</span>
@@ -961,7 +1031,7 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
 
           {cvData.languages.length > 0 && (
             <>
-              <MinimalHeading title="Languages" />
+              <MinimalHeading title="Languages" asHeading={useSemanticHeadings} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', color: '#444' }}>
                 {cvData.languages.map((lang) => (
                   <div key={lang.id} style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -978,8 +1048,18 @@ function ModernMinimalPreview({ cvData, fullName }: { cvData: CVData; fullName: 
   );
 }
 
-function MinimalHeading({ title }: { title: string }) {
-  return <h3 style={{ fontSize: '9.5pt', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1.5px', color: '#6366f1', marginBottom: '8px', marginTop: '16px' }}>{title}</h3>;
+function MinimalHeading({ title, asHeading = true }: { title: string; asHeading?: boolean }) {
+  const style = {
+    fontSize: '9.5pt',
+    fontWeight: 700,
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1.5px',
+    color: '#6366f1',
+    marginBottom: '8px',
+    marginTop: '16px',
+  };
+
+  return asHeading ? <h3 style={style}>{title}</h3> : <div style={style}>{title}</div>;
 }
 
 /* ═══════════════════════════════════════════════════

@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Terms of Service',
   description:
-    'Terms of Service for theuaecareer.com - user agreements, disclaimers, and usage terms.',
+    'Read theuaecareer.com terms covering site use, listing disclaimers, user responsibilities, tool limitations, and intellectual-property rules.',
   alternates: {
     canonical: '/terms-of-service/',
   },

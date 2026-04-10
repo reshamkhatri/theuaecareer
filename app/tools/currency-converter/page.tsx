@@ -4,7 +4,7 @@ import { FiArrowRight, FiRepeat, FiShield, FiZap } from 'react-icons/fi';
 import CurrencyConverterTool from '@/components/CurrencyConverterTool';
 
 export const metadata: Metadata = {
-  title: 'AED to INR Currency Converter 2026 — UAE Dirham Exchange Rate Today',
+  title: 'Gulf Currency Converter',
   description:
     'Free AED to INR currency converter with live rates. Also convert AED to PHP, AED to NPR, SAR to INR and all Gulf remittance corridors. Check exchange rate before sending money home.',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: '/tools/currency-converter/',
   },
   openGraph: {
-    title: 'AED to INR Currency Converter — Live UAE Exchange Rate Today',
+    title: 'Gulf Currency Converter',
     description:
       'Check live AED to INR, AED to PHP, AED to NPR and all Gulf remittance corridors. Free currency converter for UAE expats.',
     url: '/tools/currency-converter/',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AED to INR Converter — UAE Exchange Rate Today',
+    title: 'Gulf Currency Converter',
     description: 'Free AED to INR, PHP, NPR currency converter for Gulf expats.',
   },
 };

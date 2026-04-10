@@ -13,6 +13,7 @@ import {
 import { COUNTRIES, JOB_TYPES, SITE_NAME, SITE_URL } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
 import { getArticles, getJobs } from '@/lib/content';
+import { buildSeoTitle } from '@/lib/seo-metadata';
 import { getSeoPathwaysForTargeting, mergeContentBySlug, type SeoPathwayLink } from '@/lib/seo-targeting';
 
 export const revalidate = 300;
@@ -20,14 +21,14 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: 'Jobs in UAE 2026, Walk-In Interviews and Career Tools',
   description:
-    'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical guides for Gulf job seekers.',
+    'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical career guides built for Gulf job seekers.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Jobs in UAE 2026, Walk-In Interviews and Career Tools',
     description:
-      'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical guides for Gulf job seekers.',
+      'Explore verified UAE jobs, walk-in interviews, salary planning tools, interview prep, and practical career guides built for Gulf job seekers.',
     url: '/',
   },
 };
@@ -253,12 +254,14 @@ export default async function HomePage() {
             </button>
           </form>
 
-          <div className="popular-jobs-modern" style={{ gap: '0.75rem' }}>
+          <form className="popular-jobs-modern" action="/jobs/" method="get" style={{ gap: '0.75rem' }}>
             <span className="label" style={{ fontWeight: 600, marginRight: '8px' }}>
               Quick Filters:
             </span>
-            <Link
-              href="/jobs/?country=UAE"
+            <button
+              type="submit"
+              name="country"
+              value="UAE"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -266,12 +269,15 @@ export default async function HomePage() {
                 padding: '6px 16px',
                 color: 'var(--text-secondary)',
                 fontSize: '0.8125rem',
+                cursor: 'pointer',
               }}
             >
               UAE
-            </Link>
-            <Link
-              href="/jobs/?country=Saudi%20Arabia"
+            </button>
+            <button
+              type="submit"
+              name="country"
+              value="Saudi Arabia"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -279,10 +285,11 @@ export default async function HomePage() {
                 padding: '6px 16px',
                 color: 'var(--text-secondary)',
                 fontSize: '0.8125rem',
+                cursor: 'pointer',
               }}
             >
               SAUDI
-            </Link>
+            </button>
             <Link
               href="/jobs/walk-in/"
               className="badge"
@@ -296,8 +303,10 @@ export default async function HomePage() {
             >
               WALK-IN
             </Link>
-            <Link
-              href="/jobs/?jobType=Full-time"
+            <button
+              type="submit"
+              name="jobType"
+              value="Full-time"
               className="badge"
               style={{
                 background: 'var(--bg-alt)',
@@ -305,11 +314,12 @@ export default async function HomePage() {
                 padding: '6px 16px',
                 color: 'var(--text-secondary)',
                 fontSize: '0.8125rem',
+                cursor: 'pointer',
               }}
             >
               FULL-TIME
-            </Link>
-          </div>
+            </button>
+          </form>
         </div>
       </section>
 
@@ -325,12 +335,18 @@ export default async function HomePage() {
 
           <div className="hp-grid hp-grid--4">
             {pathwayCards.map((card) => (
-              <Link key={card.href} href={card.href} className="hp-pathway-card">
+              <article key={card.href} className="hp-pathway-card">
                 <span className="hp-pathway-card__eyebrow">{card.eyebrow}</span>
-                <h3 className="hp-pathway-card__title">{card.title}</h3>
+                <h3 className="hp-pathway-card__title">
+                  <Link href={card.href} className="hp-pathway-card__title-link">
+                    {card.title}
+                  </Link>
+                </h3>
                 <p className="hp-pathway-card__desc">{card.description}</p>
-                <span className="hp-pathway-card__cta">Open page <FiArrowRight /></span>
-              </Link>
+                <Link href={card.href} className="hp-pathway-card__cta">
+                  Open page <FiArrowRight />
+                </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -384,7 +400,7 @@ export default async function HomePage() {
 
           <div className="hp-grid hp-grid--3">
             {latestJobs.items.map((job) => (
-              <Link href={`/jobs/${job.slug}/`} key={job._id} className="hp-job-card">
+              <article key={job._id} className="hp-job-card">
                 <div className="hp-job-card__icon">{job.companyName.charAt(0)}</div>
                 <div className="hp-job-card__body">
                   <h3 className="hp-job-card__title">{job.title}</h3>
@@ -394,8 +410,11 @@ export default async function HomePage() {
                     <span><FiClock /> {formatDisplayDate(job.postedDate)}</span>
                     {job.isWalkIn && <span className="hp-tag--walkin">Walk-in</span>}
                   </div>
+                  <Link href={`/jobs/${job.slug}/`} className="hp-job-card__link">
+                    Open {buildSeoTitle(job.title, 42)} <FiArrowRight />
+                  </Link>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
 
@@ -422,14 +441,16 @@ export default async function HomePage() {
 
           <div className="hp-grid hp-grid--3">
             {latestArticles.items.map((article) => (
-              <Link href={`/blog/${article.slug}/`} key={article._id} className="hp-article-card">
+              <article key={article._id} className="hp-article-card">
                 <span className="hp-article-card__cat">{article.category}</span>
                 <h3 className="hp-article-card__title">{article.title}</h3>
                 <div className="hp-article-card__foot">
                   <span><FiClock /> {article.readTime} min read</span>
-                  <span className="hp-article-card__read">Read <FiArrowRight /></span>
+                  <Link href={`/blog/${article.slug}/`} className="hp-article-card__read">
+                    Read {buildSeoTitle(article.title, 42)} <FiArrowRight />
+                  </Link>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -445,12 +466,14 @@ export default async function HomePage() {
 
           <div className="hp-grid hp-grid--3">
             {toolCards.map((tool) => (
-              <Link key={tool.href} href={tool.href} className="hp-tool-card">
+              <article key={tool.href} className="hp-tool-card">
                 <div className="hp-tool-card__icon">{tool.icon}</div>
                 <h3 className="hp-tool-card__title">{tool.title}</h3>
                 <p className="hp-tool-card__desc">{tool.description}</p>
-                <span className="hp-tool-card__cta">{tool.cta} <FiArrowRight /></span>
-              </Link>
+                <Link href={tool.href} className="hp-tool-card__cta">
+                  {tool.cta} <FiArrowRight />
+                </Link>
+              </article>
             ))}
           </div>
         </div>
@@ -581,6 +604,13 @@ export default async function HomePage() {
           line-height: 1.35;
           margin: 0;
         }
+        .hp-pathway-card__title-link {
+          color: inherit;
+          text-decoration: none;
+        }
+        .hp-pathway-card__title-link:hover {
+          color: var(--accent);
+        }
         .hp-pathway-card__desc {
           margin: 0;
           color: var(--text-secondary);
@@ -594,6 +624,7 @@ export default async function HomePage() {
           color: var(--accent);
           font-size: 0.85rem;
           font-weight: 700;
+          text-decoration: none;
         }
 
         /* Walk-in cards */
@@ -657,7 +688,6 @@ export default async function HomePage() {
           background: #fff;
           border: 1px solid var(--border);
           border-radius: 12px;
-          text-decoration: none;
           color: inherit;
           transition: box-shadow 0.2s, border-color 0.2s;
         }
@@ -677,7 +707,7 @@ export default async function HomePage() {
           font-weight: 800;
           flex-shrink: 0;
         }
-        .hp-job-card__body { min-width: 0; }
+        .hp-job-card__body { min-width: 0; display: flex; flex-direction: column; }
         .hp-job-card__title {
           font-size: 1rem;
           font-weight: 700;
@@ -702,6 +732,17 @@ export default async function HomePage() {
           align-items: center;
           gap: 4px;
         }
+        .hp-job-card__link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-top: 14px;
+          color: var(--accent);
+          font-size: 0.85rem;
+          font-weight: 700;
+          text-decoration: none;
+          width: fit-content;
+        }
         .hp-tag--walkin {
           background: #ecfdf5;
           color: #059669;
@@ -718,7 +759,6 @@ export default async function HomePage() {
           background: #fff;
           border: 1px solid var(--border);
           border-radius: 12px;
-          text-decoration: none;
           color: inherit;
           transition: box-shadow 0.2s, border-color 0.2s;
         }
@@ -752,7 +792,14 @@ export default async function HomePage() {
           padding-top: 14px;
         }
         .hp-article-card__foot span { display: inline-flex; align-items: center; gap: 4px; }
-        .hp-article-card__read { font-weight: 600; color: var(--accent); }
+        .hp-article-card__read {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-weight: 600;
+          color: var(--accent);
+          text-decoration: none;
+        }
 
         /* Tool cards */
         .hp-tool-card {
@@ -801,6 +848,7 @@ export default async function HomePage() {
           font-size: 0.8125rem;
           font-weight: 600;
           color: var(--accent);
+          text-decoration: none;
         }
       `}} />
     </>

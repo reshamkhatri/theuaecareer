@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Disclaimer',
   description:
-    'Read theuaecareer.com disclaimer about job listings, third-party employers, and informational content.',
+    'Read theuaecareer.com disclaimer covering job-listing accuracy, third-party employers, candidate verification, and the limits of our informational content.',
   alternates: {
     canonical: '/disclaimer/',
   },

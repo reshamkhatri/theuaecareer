@@ -5,7 +5,7 @@ import Link from 'next/link';
 const studioUrl = process.env.NEXT_PUBLIC_SANITY_STUDIO_URL?.trim() || '/studio';
 
 export const metadata = {
-  title: 'Content Admin | theuaecareer.com',
+  title: 'Content Admin',
   robots: {
     index: false,
     follow: false,

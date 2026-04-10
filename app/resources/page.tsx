@@ -4,16 +4,16 @@ import { FiArrowRight, FiBookOpen, FiFileText, FiTool } from 'react-icons/fi';
 import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 
 export const metadata: Metadata = {
-  title: 'Resources | Interview prep, guides and job-seeker tools',
+  title: 'Job-Seeker Resources & Tools',
   description:
-    'Explore practical resources for Gulf job seekers, including the Interview Question Bank, career guides, and free planning tools.',
+    'Explore Gulf job-seeker resources including the Interview Question Bank, career guides, application explainers, and free planning tools for smarter decisions.',
   alternates: {
     canonical: '/resources/',
   },
   openGraph: {
-    title: 'Resources | Interview prep, guides and job-seeker tools',
+    title: 'Job-Seeker Resources & Tools',
     description:
-      'Explore practical resources for Gulf job seekers, including the Interview Question Bank, career guides, and free planning tools.',
+      'Explore Gulf job-seeker resources including the Interview Question Bank, career guides, application explainers, and free planning tools for smarter decisions.',
     url: '/resources/',
   },
 };
@@ -140,9 +140,8 @@ export default function ResourcesPage() {
         {/* Resource cards */}
         <div className="resources-card-grid">
           {resourceCards.map((card) => (
-            <Link
+            <article
               key={card.href}
-              href={card.href}
               className="resources-card"
             >
               <div
@@ -160,7 +159,11 @@ export default function ResourcesPage() {
               </span>
 
               <div>
-                <h2 className="resources-card-title">{card.title}</h2>
+                <h2 className="resources-card-title">
+                  <Link href={card.href} className="resources-card-title-link">
+                    {card.title}
+                  </Link>
+                </h2>
                 <p className="resources-card-desc">{card.description}</p>
               </div>
 
@@ -173,27 +176,31 @@ export default function ResourcesPage() {
                 ))}
               </ul>
 
-              <span className="resources-card-link">
+              <Link href={card.href} className="resources-card-link">
                 Explore <FiArrowRight />
-              </span>
-            </Link>
+              </Link>
+            </article>
           ))}
         </div>
 
         <div className="resources-card-grid">
           {clusterCards.map((card) => (
-            <Link key={card.href} href={card.href} className="resources-card">
+            <article key={card.href} className="resources-card">
               <span className="resources-card-eyebrow" style={{ color: '#0f766e' }}>
                 Low-difficulty pathway
               </span>
               <div>
-                <h2 className="resources-card-title">{card.title}</h2>
+                <h2 className="resources-card-title">
+                  <Link href={card.href} className="resources-card-title-link">
+                    {card.title}
+                  </Link>
+                </h2>
                 <p className="resources-card-desc">{card.description}</p>
               </div>
-              <span className="resources-card-link">
+              <Link href={card.href} className="resources-card-link">
                 Open page <FiArrowRight />
-              </span>
-            </Link>
+              </Link>
+            </article>
           ))}
         </div>
       </div>
@@ -340,6 +347,15 @@ export default function ResourcesPage() {
               line-height: 1.3;
             }
 
+            .resources-card-title-link {
+              color: inherit;
+              text-decoration: none;
+            }
+
+            .resources-card-title-link:hover {
+              color: var(--accent);
+            }
+
             .resources-card-desc {
               margin: 0;
               color: var(--text-secondary);
@@ -378,6 +394,7 @@ export default function ResourcesPage() {
               font-size: 0.88rem;
               margin-top: 4px;
               transition: gap 0.2s ease;
+              text-decoration: none;
             }
 
             @media (max-width: 980px) {

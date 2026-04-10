@@ -4,7 +4,7 @@ import { FiGlobe, FiMail, FiMapPin } from 'react-icons/fi';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Learn about theuaecareer.com, a practical job and career resource for UAE and Gulf job seekers.',
+    'Learn how theuaecareer.com helps UAE, Saudi Arabia, and Qatar job seekers with practical listings, career guides, interview prep, and free tools.',
   alternates: {
     canonical: '/about/',
   },

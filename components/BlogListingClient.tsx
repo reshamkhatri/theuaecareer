@@ -8,26 +8,11 @@ import AdSlot from '@/components/AdSlot';
 import ArticleCover from '@/components/ArticleCover';
 import { ARTICLE_CATEGORIES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
+import { buildSeoTitle } from '@/lib/seo-metadata';
 import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 import type { ArticleRecord } from '@/lib/types';
 
 const blogListAdSlot = process.env.NEXT_PUBLIC_ADSENSE_BLOG_LIST_SLOT?.trim();
-
-function buildBlogHref(
-  current: Record<string, string>,
-  overrides: Record<string, string | undefined>
-): string {
-  const params = new URLSearchParams();
-
-  Object.entries({ ...current, ...overrides }).forEach(([key, value]) => {
-    if (value && value.trim()) {
-      params.set(key, value);
-    }
-  });
-
-  const query = params.toString();
-  return query ? `/blog/?${query}` : '/blog/';
-}
 
 function matchesSearch(article: ArticleRecord, search: string): boolean {
   const haystack = [article.title, article.excerpt, article.content, article.category, article.tags.join(' ')]
@@ -81,11 +66,6 @@ function BlogListingView({
     if (currentSearch && !matchesSearch(article, currentSearch)) return false;
     return true;
   });
-
-  const currentFilters = {
-    category: currentCategory,
-    search: currentSearch,
-  };
 
   const featured = filteredArticles[0];
   const secondary = filteredArticles.slice(1, 3);
@@ -165,23 +145,23 @@ function BlogListingView({
       {/* Category filters */}
       <section className="blg-filters">
         <div className="container">
-          <div className="blg-filter-row">
-            <Link
-              href={buildBlogHref(currentFilters, { category: undefined })}
-              className={`blg-filter-chip ${currentCategory === '' ? 'active' : ''}`}
-            >
+          <form action="/blog/" method="get" className="blg-filter-row">
+            {currentSearch && <input type="hidden" name="search" value={currentSearch} />}
+            <button type="submit" className={`blg-filter-chip ${currentCategory === '' ? 'active' : ''}`}>
               All
-            </Link>
+            </button>
             {ARTICLE_CATEGORIES.map((category) => (
-              <Link
+              <button
                 key={category}
-                href={buildBlogHref(currentFilters, { category })}
+                type="submit"
+                name="category"
+                value={category}
                 className={`blg-filter-chip ${currentCategory === category ? 'active' : ''}`}
               >
                 {category}
-              </Link>
+              </button>
             ))}
-          </div>
+          </form>
         </div>
       </section>
 
@@ -206,7 +186,7 @@ function BlogListingView({
               {featured && (
                 <div className="blg-top-row">
                   {/* Main featured card */}
-                  <Link href={`/blog/${featured.slug}/`} className="blg-featured">
+                  <article className="blg-featured">
                     <ArticleCover
                       article={featured}
                       variant="feature"
@@ -220,14 +200,17 @@ function BlogListingView({
                         <span><FiClock style={{ marginRight: '4px' }} />{featured.readTime} min</span>
                         <span>{formatDisplayDate(featured.publishDate)}</span>
                       </div>
+                      <Link href={`/blog/${featured.slug}/`} className="blg-inline-cta blg-inline-cta--light">
+                        Read {buildSeoTitle(featured.title, 42)} <FiArrowRight />
+                      </Link>
                     </div>
-                  </Link>
+                  </article>
 
                   {/* Secondary cards */}
                   {secondary.length > 0 && (
                     <div className="blg-secondary-col">
                       {secondary.map((article) => (
-                        <Link key={article._id} href={`/blog/${article.slug}/`} className="blg-secondary-card">
+                        <article key={article._id} className="blg-secondary-card">
                           <ArticleCover
                             article={article}
                             variant="card"
@@ -239,8 +222,11 @@ function BlogListingView({
                             <div className="blg-secondary-meta">
                               <FiClock size={12} /> {article.readTime} min &middot; {formatDisplayDate(article.publishDate)}
                             </div>
+                            <Link href={`/blog/${article.slug}/`} className="blg-inline-cta">
+                              Read {buildSeoTitle(article.title, 38)} <FiArrowRight />
+                            </Link>
                           </div>
-                        </Link>
+                        </article>
                       ))}
                     </div>
                   )}
@@ -299,17 +285,19 @@ function BlogListingView({
 
                 <div className="grid-2">
                   {helperLinks.map((link) => (
-                    <Link
+                    <div
                       key={link.href}
-                      href={link.href}
                       className="card"
                       style={{ textDecoration: 'none', display: 'grid', gap: '6px' }}
                     >
                       <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6 }}>
+                      <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
                         {link.description}
-                      </span>
-                    </Link>
+                      </p>
+                      <Link href={link.href} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                        Open {buildSeoTitle(link.title, 38)}
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -328,7 +316,7 @@ function ArticleGridCard({ article, index }: { article: ArticleRecord; index: nu
 
   return (
     <>
-      <Link href={`/blog/${article.slug}/`} className="blg-card">
+      <article className="blg-card">
         <ArticleCover
           article={article}
           variant="card"
@@ -343,10 +331,12 @@ function ArticleGridCard({ article, index }: { article: ArticleRecord; index: nu
               <FiClock size={13} /> {article.readTime} min
             </span>
             <span className="blg-card-date">{formatDisplayDate(article.publishDate)}</span>
-            <FiArrowRight className="blg-card-arrow" />
+            <Link href={`/blog/${article.slug}/`} className="blg-inline-cta">
+              Read {buildSeoTitle(article.title, 38)} <FiArrowRight className="blg-card-arrow" />
+            </Link>
           </div>
         </div>
-      </Link>
+      </article>
 
       {shouldRenderAd && (
         <div style={{ gridColumn: '1 / -1', padding: 'var(--space-lg)' }}>
@@ -461,6 +451,9 @@ const blogStyles = `
   }
   .blg-filter-row::-webkit-scrollbar { display: none; }
   .blg-filter-chip {
+    appearance: none;
+    border: none;
+    font-family: inherit;
     padding: 7px 18px;
     border-radius: 100px;
     font-size: 0.82rem;
@@ -471,6 +464,7 @@ const blogStyles = `
     border: 1px solid transparent;
     transition: all 0.2s;
     text-decoration: none;
+    cursor: pointer;
   }
   .blg-filter-chip:hover {
     background: #e2e8f0;
@@ -536,7 +530,6 @@ const blogStyles = `
   .blg-featured-title {
     font-size: 1.65rem;
     font-weight: 800;
-    color: #fff;
     line-height: 1.25;
     margin: 10px 0 8px;
     letter-spacing: -0.01em;
@@ -623,7 +616,6 @@ const blogStyles = `
   .blg-secondary-title {
     font-size: 1rem;
     font-weight: 700;
-    color: #0f172a;
     line-height: 1.35;
     margin: 0;
     display: -webkit-box;
@@ -691,13 +683,50 @@ const blogStyles = `
   .blg-card-title {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #0f172a;
     line-height: 1.35;
     margin: 10px 0 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .blg-title-link {
+    color: #0f172a;
+    text-decoration: none;
+  }
+  .blg-title-link:hover {
+    color: #4f46e5;
+  }
+  .blg-title-link--light {
+    color: #fff;
+  }
+  .blg-title-link--light:hover {
+    color: #c7d2fe;
+  }
+  .blg-inline-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #4f46e5;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    width: fit-content;
+  }
+  .blg-featured-overlay .blg-inline-cta {
+    margin-top: 14px;
+  }
+  .blg-secondary-body .blg-inline-cta {
+    margin-top: auto;
+  }
+  .blg-card-footer .blg-inline-cta {
+    margin-left: auto;
+  }
+  .blg-inline-cta--light {
+    color: #c7d2fe;
+  }
+  .blg-inline-cta:hover {
+    gap: 10px;
   }
   .blg-card-excerpt {
     color: #64748b;
@@ -730,7 +759,6 @@ const blogStyles = `
     color: #94a3b8;
   }
   .blg-card-arrow {
-    margin-left: auto;
     color: #cbd5e1;
     transition: color 0.2s, transform 0.2s;
   }

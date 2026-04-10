@@ -22,6 +22,13 @@ import {
   getRelatedArticles,
 } from '@/lib/content';
 import {
+  buildSeoDescription,
+  buildSeoTitle,
+  getPublicImagePath,
+  normalizeComparableTitle,
+  stripBrandSuffix,
+} from '@/lib/seo-metadata';
+import {
   buildArticleTakeaways,
   decorateArticleHtml,
   deriveArticleTargeting,
@@ -46,6 +53,15 @@ function splitArticleHtml(html: string): { firstHalf: string; secondHalf: string
   };
 }
 
+function stripExternalArticleImages(html: string): string {
+  return html
+    .replace(
+      /<figure[^>]*>\s*<img[^>]+src=["']https?:\/\/[^"']+["'][^>]*>\s*(?:<figcaption[\s\S]*?<\/figcaption>\s*)?<\/figure>/gi,
+      ''
+    )
+    .replace(/<img[^>]+src=["']https?:\/\/[^"']+["'][^>]*>/gi, '');
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -60,18 +76,37 @@ export async function generateMetadata({
     };
   }
 
-  const ogImage = article.featuredImage || `${SITE_URL}/og-default.png`;
+  const allArticles = await getAllPublicArticles();
+  const baseTitle = stripBrandSuffix(article.metaTitle || article.title);
+  const matchingTitleArticles = allArticles.filter(
+    (item) =>
+      normalizeComparableTitle(item.metaTitle || item.title) === normalizeComparableTitle(baseTitle)
+  );
+  const preferredSlug = [...matchingTitleArticles]
+    .sort((left, right) => right.slug.length - left.slug.length || left.slug.localeCompare(right.slug))[0]?.slug;
+  const isPreferredVariant = !preferredSlug || article.slug === preferredSlug;
+  const seoTitle = buildSeoTitle(
+    isPreferredVariant ? baseTitle : `${baseTitle} (Legacy)`,
+    60
+  );
+  const seoDescription = buildSeoDescription(
+    article.metaDescription || article.excerpt,
+    'Read this Gulf career guide with practical advice for job seekers in the UAE, Saudi Arabia, and Qatar.'
+  );
+  const ogImage = getPublicImagePath(article.featuredImage) || `${SITE_URL}/og-default.png`;
+  const canonicalSlug = preferredSlug || article.slug;
 
   return {
-    title: article.metaTitle || `${article.title} | theuaecareer.com`,
-    description: article.metaDescription || article.excerpt,
+    title: { absolute: seoTitle },
+    description: seoDescription,
     alternates: {
-      canonical: `/blog/${article.slug}/`,
+      canonical: `/blog/${canonicalSlug}/`,
     },
+    robots: isPreferredVariant ? undefined : { index: false, follow: true },
     openGraph: {
-      title: article.metaTitle || article.title,
-      description: article.metaDescription || article.excerpt,
-      url: `/blog/${article.slug}/`,
+      title: seoTitle,
+      description: seoDescription,
+      url: `/blog/${canonicalSlug}/`,
       type: 'article',
       publishedTime: article.publishDate,
       modifiedTime: article.lastUpdatedDate || article.publishDate,
@@ -87,8 +122,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: article.metaTitle || article.title,
-      description: article.metaDescription || article.excerpt,
+      title: seoTitle,
+      description: seoDescription,
       images: [ogImage],
     },
   };
@@ -118,9 +153,9 @@ export default async function ArticlePage({
   const shareUrl = new URL(`/blog/${article.slug}/`, SITE_URL).toString();
   const articleTargeting = deriveArticleTargeting(article);
   const articleTakeaways = buildArticleTakeaways(article);
-  const decoratedArticle = decorateArticleHtml(article.content);
+  const decoratedArticle = decorateArticleHtml(stripExternalArticleImages(article.content));
   const { firstHalf, secondHalf } = splitArticleHtml(decoratedArticle.html);
-  const articleImage = article.featuredImage || `${SITE_URL}/og-default.png`;
+  const articleImage = getPublicImagePath(article.featuredImage) || `${SITE_URL}/og-default.png`;
   const articlePathways = getSeoPathwaysForTargeting(articleTargeting, {
     surface: 'blog',
     limit: 4,
@@ -368,9 +403,13 @@ export default async function ArticlePage({
                       <ArticleCover article={relatedArticle} variant="compact" />
                       <div className="article-card-body">
                         <span className="article-card-category">{relatedArticle.category}</span>
-                        <h3 className="article-card-title">
-                          <Link href={`/blog/${relatedArticle.slug}/`}>{relatedArticle.title}</Link>
-                        </h3>
+                        <h3 className="article-card-title">{relatedArticle.title}</h3>
+                        <Link
+                          href={`/blog/${relatedArticle.slug}/`}
+                          style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}
+                        >
+                          Read {buildSeoTitle(relatedArticle.title, 42)}
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -388,13 +427,13 @@ export default async function ArticlePage({
                         {job.categoryLabel || job.category}
                       </span>
                       <h3 style={{ fontSize: '1.125rem', marginBottom: '8px', lineHeight: 1.4 }}>
-                        <Link href={`/jobs/${job.slug}/`}>{job.title}</Link>
+                        {job.title}
                       </h3>
                       <p style={{ color: 'var(--text-secondary)', marginBottom: '12px' }}>
                         {job.companyName} | {job.location.city}, {job.location.country}
                       </p>
                       <Link href={`/jobs/${job.slug}/`} className="btn btn-secondary btn-sm">
-                        View Job
+                        Open {buildSeoTitle(job.title, 36)}
                       </Link>
                     </div>
                   ))}
@@ -410,24 +449,39 @@ export default async function ArticlePage({
             </div>
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-lg)' }}>Popular Categories</h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {ARTICLE_CATEGORIES.map((category, index) => (
-                  <li
-                    key={category}
-                    style={{
-                      borderBottom: index !== ARTICLE_CATEGORIES.length - 1 ? '1px solid var(--border)' : 'none',
-                      paddingBottom: index !== ARTICLE_CATEGORIES.length - 1 ? '12px' : '0',
-                    }}
-                  >
-                    <Link
-                      href={`/blog/?category=${encodeURIComponent(category)}`}
-                      style={{ color: 'var(--text)', fontWeight: 500, display: 'flex', justifyContent: 'space-between' }}
+              <form action="/blog/" method="get">
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {ARTICLE_CATEGORIES.map((category, index) => (
+                    <li
+                      key={category}
+                      style={{
+                        borderBottom: index !== ARTICLE_CATEGORIES.length - 1 ? '1px solid var(--border)' : 'none',
+                        paddingBottom: index !== ARTICLE_CATEGORIES.length - 1 ? '12px' : '0',
+                      }}
                     >
-                      {category} <FiChevronRight style={{ color: 'var(--text-muted)' }} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                      <button
+                        type="submit"
+                        name="category"
+                        value={category}
+                        style={{
+                          color: 'var(--text)',
+                          fontWeight: 500,
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          width: '100%',
+                          background: 'transparent',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                        }}
+                      >
+                        {category} <FiChevronRight style={{ color: 'var(--text-muted)' }} />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </form>
             </div>
 
             <div className="card">
@@ -442,22 +496,26 @@ export default async function ArticlePage({
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Next best pages</h3>
               <div style={{ display: 'grid', gap: '14px' }}>
                 {articlePathways.map((link) => (
-                  <Link
+                  <div
                     key={link.href}
-                    href={link.href}
                     style={{
                       display: 'grid',
                       gap: '4px',
                       paddingBottom: '14px',
                       borderBottom: '1px solid var(--border)',
-                      textDecoration: 'none',
                     }}
                   >
                     <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55, margin: 0 }}>
                       {link.description}
-                    </span>
-                  </Link>
+                    </p>
+                    <Link
+                      href={link.href}
+                      style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}
+                    >
+                      Open {buildSeoTitle(link.title, 38)}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

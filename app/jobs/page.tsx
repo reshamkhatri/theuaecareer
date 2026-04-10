@@ -6,16 +6,16 @@ import { getAllPublicJobs } from '@/lib/content';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'UAE Jobs 2026 | Dubai, Abu Dhabi & Gulf',
+  title: 'UAE Jobs in Dubai, Abu Dhabi & Gulf',
   description:
-    'Browse the latest job openings in UAE, Dubai, Abu Dhabi, Sharjah, Saudi Arabia and Qatar. Filter by country, job type, and industry.',
+    'Browse current Gulf job openings across the UAE, Saudi Arabia, and Qatar, then filter by country, category, or job type before you apply today.',
   alternates: {
     canonical: '/jobs/',
   },
   openGraph: {
-    title: 'UAE Jobs 2026 | Dubai, Abu Dhabi & Gulf',
+    title: 'UAE Jobs in Dubai, Abu Dhabi & Gulf',
     description:
-      'Browse the latest job openings in UAE, Dubai, Abu Dhabi, Sharjah, Saudi Arabia and Qatar. Filter by country, job type, and industry.',
+      'Browse current Gulf job openings across the UAE, Saudi Arabia, and Qatar, then filter by country, category, or job type before you apply today.',
     url: '/jobs/',
   },
 };

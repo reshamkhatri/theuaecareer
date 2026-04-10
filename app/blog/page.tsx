@@ -6,16 +6,16 @@ import { getAllPublicArticles } from '@/lib/content';
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: 'Career Blog | UAE Job Market Insights & Guides',
+  title: 'UAE Career Blog & Guides',
   description:
-    'Read expert articles on UAE salaries, visa processes, walk-in interviews, and career advice for Gulf job seekers.',
+    'Read practical Gulf career guides on UAE salaries, visa steps, safer applications, walk-in interviews, and interview prep for Gulf job seekers.',
   alternates: {
     canonical: '/blog/',
   },
   openGraph: {
-    title: 'Career Blog | UAE Job Market Insights & Guides',
+    title: 'UAE Career Blog & Guides',
     description:
-      'Read expert articles on UAE salaries, visa processes, walk-in interviews, and career advice for Gulf job seekers.',
+      'Read practical Gulf career guides on UAE salaries, visa steps, safer applications, walk-in interviews, and interview prep for Gulf job seekers.',
     url: '/blog/',
   },
 };

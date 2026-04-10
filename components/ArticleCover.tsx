@@ -9,6 +9,7 @@ import {
   FiShield,
 } from 'react-icons/fi';
 import { formatDisplayDate } from '@/lib/format';
+import { getPublicImagePath } from '@/lib/seo-metadata';
 import type { ArticleRecord } from '@/lib/types';
 
 type ArticleCoverVariant = 'card' | 'feature' | 'hero' | 'compact';
@@ -53,7 +54,7 @@ export default function ArticleCover({
 }) {
   const theme = getArticleTheme(article.category);
   const Icon = theme.icon;
-  const featuredImage = article.featuredImage;
+  const featuredImage = getPublicImagePath(article.featuredImage);
   const hasImage = Boolean(featuredImage);
   const coverStyle = {
     '--article-cover-accent': theme.accent,

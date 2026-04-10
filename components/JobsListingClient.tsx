@@ -7,27 +7,12 @@ import { FiBriefcase, FiClock, FiFilter, FiMapPin, FiSearch } from 'react-icons/
 import AdSlot from '@/components/AdSlot';
 import { COUNTRIES, JOB_CATEGORIES, JOB_TYPES } from '@/lib/constants';
 import { formatDisplayDate } from '@/lib/format';
+import { buildSeoTitle } from '@/lib/seo-metadata';
 import { getSeoPathwaysForTargeting, mergeContentBySlug } from '@/lib/seo-targeting';
 import type { JobRecord } from '@/lib/types';
 
 const PAGE_SIZE = 20;
 const jobListAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_LIST_SLOT?.trim();
-
-function buildJobsHref(
-  current: Record<string, string>,
-  overrides: Record<string, string | number | undefined>
-): string {
-  const params = new URLSearchParams();
-
-  Object.entries({ ...current, ...overrides }).forEach(([key, value]) => {
-    if (value !== undefined && String(value).trim()) {
-      params.set(key, String(value));
-    }
-  });
-
-  const query = params.toString();
-  return query ? `/jobs/?${query}` : '/jobs/';
-}
 
 function matchesSearch(job: JobRecord, search: string): boolean {
   const haystack = [
@@ -150,13 +135,6 @@ function JobsListingView({
     ],
     (item) => item.href
   ).slice(0, 4);
-
-  const currentFilters = {
-    search: currentSearch,
-    country: currentCountry,
-    category: currentCategory,
-    jobType: currentJobType,
-  };
 
   return (
     <>
@@ -294,30 +272,39 @@ function JobsListingView({
                       gap: 'var(--space-md)',
                     }}
                   >
-                    <Link
-                      href={buildJobsHref(currentFilters, { page: currentPage > 1 ? currentPage - 1 : undefined })}
-                      className="btn btn-secondary"
-                      aria-disabled={currentPage <= 1}
-                      style={{ pointerEvents: currentPage <= 1 ? 'none' : 'auto', opacity: currentPage <= 1 ? 0.5 : 1 }}
-                    >
-                      Previous
-                    </Link>
+                    <form action="/jobs/" method="get">
+                      {currentSearch && <input type="hidden" name="search" value={currentSearch} />}
+                      {currentCountry && <input type="hidden" name="country" value={currentCountry} />}
+                      {currentCategory && <input type="hidden" name="category" value={currentCategory} />}
+                      {currentJobType && <input type="hidden" name="jobType" value={currentJobType} />}
+                      <button
+                        type="submit"
+                        name="page"
+                        value={currentPage - 1}
+                        className="btn btn-secondary"
+                        disabled={currentPage <= 1}
+                      >
+                        Previous
+                      </button>
+                    </form>
                     <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
                       Page {currentPage} of {totalPages}
                     </span>
-                    <Link
-                      href={buildJobsHref(currentFilters, {
-                        page: currentPage < totalPages ? currentPage + 1 : undefined,
-                      })}
-                      className="btn btn-secondary"
-                      aria-disabled={currentPage >= totalPages}
-                      style={{
-                        pointerEvents: currentPage >= totalPages ? 'none' : 'auto',
-                        opacity: currentPage >= totalPages ? 0.5 : 1,
-                      }}
-                    >
-                      Next
-                    </Link>
+                    <form action="/jobs/" method="get">
+                      {currentSearch && <input type="hidden" name="search" value={currentSearch} />}
+                      {currentCountry && <input type="hidden" name="country" value={currentCountry} />}
+                      {currentCategory && <input type="hidden" name="category" value={currentCategory} />}
+                      {currentJobType && <input type="hidden" name="jobType" value={currentJobType} />}
+                      <button
+                        type="submit"
+                        name="page"
+                        value={currentPage + 1}
+                        className="btn btn-secondary"
+                        disabled={currentPage >= totalPages}
+                      >
+                        Next
+                      </button>
+                    </form>
                   </div>
                 )}
               </div>
@@ -327,37 +314,55 @@ function JobsListingView({
           <aside className="blog-sidebar">
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Browse by Country</h3>
-              <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {COUNTRIES.map((country) => (
-                  <li key={country}>
-                    <Link href={buildJobsHref(currentFilters, { country, page: 1 })} style={{ color: 'var(--text-secondary)' }}>
-                      Jobs in {country}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <form action="/jobs/" method="get">
+                {currentSearch && <input type="hidden" name="search" value={currentSearch} />}
+                {currentCategory && <input type="hidden" name="category" value={currentCategory} />}
+                {currentJobType && <input type="hidden" name="jobType" value={currentJobType} />}
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {COUNTRIES.map((country) => (
+                    <li key={country}>
+                      <button
+                        type="submit"
+                        name="country"
+                        value={country}
+                        style={{
+                          color: 'var(--text-secondary)',
+                          background: 'transparent',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                        }}
+                      >
+                        Jobs in {country}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </form>
             </div>
 
             <div className="card">
               <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Useful Before You Apply</h3>
               <div style={{ display: 'grid', gap: '14px' }}>
                 {helperLinks.map((link) => (
-                  <Link
+                  <div
                     key={link.href}
-                    href={link.href}
                     style={{
                       display: 'grid',
                       gap: '4px',
                       paddingBottom: '14px',
                       borderBottom: '1px solid var(--border)',
-                      textDecoration: 'none',
                     }}
                   >
                     <span style={{ color: 'var(--text)', fontWeight: 700 }}>{link.title}</span>
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55 }}>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.55, margin: 0 }}>
                       {link.description}
-                    </span>
-                  </Link>
+                    </p>
+                    <Link href={link.href} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                      Open {buildSeoTitle(link.title, 38)}
+                    </Link>
+                  </div>
                 ))}
               </div>
             </div>

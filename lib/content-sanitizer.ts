@@ -66,6 +66,12 @@ function normalizeRichTextHtml(value: string): string {
   return normalizeInternalHrefs(
     value
       .replace(
+        /<figure[^>]*>\s*<img[^>]+src=["']https?:\/\/[^"']+["'][^>]*>\s*(?:<figcaption[\s\S]*?<\/figcaption>\s*)?<\/figure>/gi,
+        ''
+      )
+      .replace(/<img[^>]+src=["']https?:\/\/[^"']+["'][^>]*>/gi, '')
+      .replace(/<h1>([\s\S]*?)<\/h1>/gi, '<h2>$1</h2>')
+      .replace(
         /<h([1-6])>\s*(?:•|â€¢|Ã¢â‚¬Â¢)\s*([\s\S]*?)<\/h\1>/gi,
         (_match, _level, text) => `<p>${String(text).trim()}</p>`
       )
@@ -108,6 +114,10 @@ export function sanitizeArticleRecord(article: ArticleRecord): ArticleRecord {
     title: applyReplacements(article.title, articleTextReplacements),
     excerpt: applyReplacements(article.excerpt, articleTextReplacements),
     content: normalizeRichTextHtml(applyReplacements(article.content, articleTextReplacements)),
+    featuredImage:
+      article.featuredImage && article.featuredImage.trim().startsWith('/')
+        ? article.featuredImage.trim()
+        : undefined,
     metaTitle: article.metaTitle
       ? applyReplacements(article.metaTitle, articleTextReplacements)
       : article.metaTitle,

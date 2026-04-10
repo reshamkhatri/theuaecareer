@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-  title: 'UAE Gratuity Calculator 2026 — End of Service Calculator',
+  title: 'UAE Gratuity Calculator',
   description:
     'Free UAE gratuity calculator 2026. Calculate your end-of-service gratuity based on UAE Labour Law. Supports limited and unlimited contracts. Instant PDF download.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/tools/gratuity-calculator/`,
   },
   openGraph: {
-    title: 'UAE Gratuity Calculator 2026 — Free End of Service Calculator',
+    title: 'UAE Gratuity Calculator',
     description:
       'Calculate your UAE end-of-service gratuity instantly. Based on UAE Labour Law Federal Decree No. 33 of 2021. Free PDF download.',
     url: `${SITE_URL}/tools/gratuity-calculator/`,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UAE Gratuity Calculator 2026',
+    title: 'UAE Gratuity Calculator',
     description: 'Free UAE end-of-service gratuity calculator. Instant result based on UAE Labour Law.',
   },
 };

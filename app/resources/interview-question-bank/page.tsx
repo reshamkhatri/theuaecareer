@@ -4,7 +4,7 @@ import { FiArrowRight, FiCheckCircle, FiExternalLink, FiFileText } from 'react-i
 import { interviewQuestionBankReferences, interviewResearchReviewedOn, interviewSectors } from '@/lib/interview-question-bank';
 
 export const metadata: Metadata = {
-  title: 'Interview Question Bank | Construction, Hospitality, Retail and Oil & Gas',
+  title: 'Interview Question Bank for Gulf Jobs',
   description:
     'Prepare for Gulf-facing interviews with a researched question bank covering Construction, Hospitality, Retail, and Oil & Gas, now with practical sample answers.',
   alternates: {
@@ -132,7 +132,7 @@ export default function InterviewQuestionBankPage() {
 
             {/* Prep checklist */}
             <div className="iqb-prep-box">
-              <h3 className="iqb-prep-heading">Before you practice</h3>
+              <p className="iqb-prep-heading">Before you practice</p>
               <div className="iqb-prep-grid">
                 {sector.prepChecklist.map((item) => (
                   <div key={item} className="iqb-prep-item">
@@ -178,7 +178,7 @@ export default function InterviewQuestionBankPage() {
 
             {/* Sources */}
             <div className="iqb-sources-box">
-              <h3 className="iqb-sources-heading">Research basis for this sector</h3>
+              <p className="iqb-sources-heading">Research basis for this sector</p>
               <div className="iqb-sources-grid">
                 {sector.sources.map((source) => (
                   <a

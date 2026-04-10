@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   title: {
     default: 'UAE Jobs 2026 | Walk-ins, Careers & Tools',
-    template: '%s | theuaecareer.com',
+    template: '%s | theuaecareer',
   },
   description:
     'Find the latest jobs in UAE, Dubai, Abu Dhabi, Sharjah, and the Gulf region. Walk-in interviews, career guides, salary insights, and free tools for UAE job seekers.',

@@ -18,7 +18,15 @@ import config from '../../../sanity.config'
 export const dynamic = 'force-static'
 export const dynamicParams = false
 
-export { metadata, viewport } from 'next-sanity/studio'
+export { viewport } from 'next-sanity/studio'
+
+export const metadata = {
+  title: 'Sanity Studio',
+  robots: {
+    index: false,
+    follow: false,
+  },
+}
 
 export function generateStaticParams() {
   return [{ tool: [] }]
