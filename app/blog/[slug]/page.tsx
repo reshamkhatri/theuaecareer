@@ -252,37 +252,22 @@ export default async function ArticlePage({
                 </div>
               </header>
 
-              <div
-                className={`article-insight-grid ${
-                  decoratedArticle.headings.length > 1 ? '' : 'article-insight-grid-single'
-                }`.trim()}
-              >
-                <section className="article-insight-card article-takeaways-card">
-                  <p className="article-insight-label">Key takeaways</p>
-                  <ul className="article-takeaways-list">
-                    {articleTakeaways.map((takeaway) => (
-                      <li key={takeaway}>{takeaway}</li>
+              {decoratedArticle.headings.length > 1 && (
+                <section className="article-insight-card article-sections-card" style={{ marginBottom: 'var(--space-2xl)' }}>
+                  <p className="article-insight-label">Jump to sections</p>
+                  <div className="article-sections-list">
+                    {decoratedArticle.headings.map((heading) => (
+                      <a
+                        key={heading.id}
+                        href={`#${heading.id}`}
+                        className={`article-section-link article-section-link-level-${heading.level}`}
+                      >
+                        {heading.title}
+                      </a>
                     ))}
-                  </ul>
+                  </div>
                 </section>
-
-                {decoratedArticle.headings.length > 1 && (
-                  <section className="article-insight-card article-sections-card">
-                    <p className="article-insight-label">Jump to sections</p>
-                    <div className="article-sections-list">
-                      {decoratedArticle.headings.map((heading) => (
-                        <a
-                          key={heading.id}
-                          href={`#${heading.id}`}
-                          className={`article-section-link article-section-link-level-${heading.level}`}
-                        >
-                          {heading.title}
-                        </a>
-                      ))}
-                    </div>
-                  </section>
-                )}
-              </div>
+              )}
 
               <div className="prose">
                 <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
@@ -290,8 +275,19 @@ export default async function ArticlePage({
                 {secondHalf && <div dangerouslySetInnerHTML={{ __html: secondHalf }} />}
               </div>
 
+              {articleTakeaways.length > 0 && (
+                <section className="article-insight-card article-takeaways-card" style={{ marginTop: 'var(--space-2xl)' }}>
+                  <p className="article-insight-label">Key takeaways</p>
+                  <ul className="article-takeaways-list">
+                    {articleTakeaways.map((takeaway) => (
+                      <li key={takeaway}>{takeaway}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+
               {article.tags.length > 0 && (
-                <div style={{ marginTop: 'var(--space-2xl)', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <div style={{ marginTop: 'var(--space-xl)', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                   <span style={{ fontSize: '0.875rem', fontWeight: 600, marginRight: '8px', alignSelf: 'center' }}>
                     Tagged with:
                   </span>
