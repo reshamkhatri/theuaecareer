@@ -232,23 +232,24 @@ export default async function ArticlePage({
 
             <article className="card article-detail-card article-shell">
               <header className="article-hero">
-                <div className="article-hero-copy">
+                <div className="article-hero-topline">
                   <span className="badge badge-primary article-hero-badge">{article.category}</span>
-                  <h1 className="article-detail-title article-hero-title">{article.title}</h1>
-                  <p className="article-hero-excerpt">{article.excerpt}</p>
-                  <div className="article-hero-meta">
-                    <span className="article-hero-meta-item">
-                      <strong>By {article.author}</strong>
-                    </span>
-                    <span className="article-hero-meta-item">
-                      <FiCalendar /> {formatDisplayDate(article.publishDate)}
-                    </span>
-                    <span className="article-hero-meta-item">
-                      <FiClock /> {article.readTime} min read
-                    </span>
-                  </div>
+                  <span className="article-hero-date">{formatDisplayDate(article.publishDate)}</span>
                 </div>
+                <h1 className="article-detail-title article-hero-title">{article.title}</h1>
                 <ArticleCover article={article} variant="hero" className="article-hero-cover" />
+                <p className="article-hero-excerpt">{article.excerpt}</p>
+                <div className="article-hero-meta">
+                  <span className="article-hero-meta-item">
+                    <strong>By {article.author}</strong>
+                  </span>
+                  <span className="article-hero-meta-item">
+                    <FiClock /> {article.readTime} min read
+                  </span>
+                  <span className="article-hero-meta-item">
+                    <FiCalendar /> Updated {formatDisplayDate(article.lastUpdatedDate || article.publishDate)}
+                  </span>
+                </div>
               </header>
 
               <div
