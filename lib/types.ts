@@ -44,6 +44,7 @@ export interface ArticleRecord {
   excerpt: string;
   content: string;
   featuredImage?: string;
+  coverAlt?: string;
   category: string;
   tags: string[];
   status: 'draft' | 'published' | 'archived';

@@ -116,7 +116,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: article.title,
+          alt: article.coverAlt || article.title,
         },
       ],
     },
@@ -230,115 +230,56 @@ export default async function ArticlePage({
               {article.title}
             </div>
 
-            <article className="card article-detail-card" style={{ padding: 'var(--space-2xl)' }}>
-              <span className="badge badge-primary" style={{ marginBottom: 'var(--space-md)' }}>
-                {article.category}
-              </span>
-
-              <h1 className="article-detail-title" style={{ fontSize: 'clamp(2rem, 6vw, 2.5rem)', marginBottom: 'var(--space-lg)' }}>{article.title}</h1>
-
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--space-lg)',
-                  color: 'var(--text-muted)',
-                  fontSize: '0.875rem',
-                  marginBottom: 'var(--space-2xl)',
-                  paddingBottom: 'var(--space-lg)',
-                  borderBottom: '1px solid var(--border)',
-                  flexWrap: 'wrap',
-                }}
-              >
-                <span>
-                  <strong style={{ color: 'var(--text)' }}>By {article.author}</strong>
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <FiCalendar /> {formatDisplayDate(article.publishDate)}
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <FiClock /> {article.readTime} min read
-                </span>
-              </div>
-
-              <ArticleCover article={article} variant="hero" style={{ marginBottom: 'var(--space-2xl)' }} />
+            <article className="card article-detail-card article-shell">
+              <header className="article-hero">
+                <div className="article-hero-copy">
+                  <span className="badge badge-primary article-hero-badge">{article.category}</span>
+                  <h1 className="article-detail-title article-hero-title">{article.title}</h1>
+                  <p className="article-hero-excerpt">{article.excerpt}</p>
+                  <div className="article-hero-meta">
+                    <span className="article-hero-meta-item">
+                      <strong>By {article.author}</strong>
+                    </span>
+                    <span className="article-hero-meta-item">
+                      <FiCalendar /> {formatDisplayDate(article.publishDate)}
+                    </span>
+                    <span className="article-hero-meta-item">
+                      <FiClock /> {article.readTime} min read
+                    </span>
+                  </div>
+                </div>
+                <ArticleCover article={article} variant="hero" className="article-hero-cover" />
+              </header>
 
               <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns:
-                    decoratedArticle.headings.length > 1 ? '1.2fr 0.8fr' : '1fr',
-                  gap: '16px',
-                  marginBottom: 'var(--space-2xl)',
-                }}
+                className={`article-insight-grid ${
+                  decoratedArticle.headings.length > 1 ? '' : 'article-insight-grid-single'
+                }`.trim()}
               >
-                <div
-                  style={{
-                    background: '#F8FAFC',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius-lg)',
-                    padding: 'var(--space-xl)',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: '0.78rem',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      color: 'var(--accent)',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    Key takeaways
-                  </p>
-                  <ul style={{ display: 'grid', gap: '10px', paddingLeft: '18px', margin: 0 }}>
+                <section className="article-insight-card article-takeaways-card">
+                  <p className="article-insight-label">Key takeaways</p>
+                  <ul className="article-takeaways-list">
                     {articleTakeaways.map((takeaway) => (
-                      <li key={takeaway} style={{ color: 'var(--text-secondary)', lineHeight: 1.65 }}>
-                        {takeaway}
-                      </li>
+                      <li key={takeaway}>{takeaway}</li>
                     ))}
                   </ul>
-                </div>
+                </section>
 
                 {decoratedArticle.headings.length > 1 && (
-                  <div
-                    style={{
-                      background: '#FFFFFF',
-                      border: '1px solid var(--border)',
-                      borderRadius: 'var(--radius-lg)',
-                      padding: 'var(--space-xl)',
-                    }}
-                  >
-                    <p
-                      style={{
-                        fontSize: '0.78rem',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
-                        color: 'var(--accent)',
-                        marginBottom: '10px',
-                      }}
-                    >
-                      Jump to sections
-                    </p>
-                    <div style={{ display: 'grid', gap: '10px' }}>
+                  <section className="article-insight-card article-sections-card">
+                    <p className="article-insight-label">Jump to sections</p>
+                    <div className="article-sections-list">
                       {decoratedArticle.headings.map((heading) => (
                         <a
                           key={heading.id}
                           href={`#${heading.id}`}
-                          style={{
-                            color: 'var(--text)',
-                            textDecoration: 'none',
-                            fontWeight: heading.level === 2 ? 700 : 500,
-                            paddingLeft: heading.level === 2 ? '0' : '12px',
-                          }}
+                          className={`article-section-link article-section-link-level-${heading.level}`}
                         >
                           {heading.title}
                         </a>
                       ))}
                     </div>
-                  </div>
+                  </section>
                 )}
               </div>
 

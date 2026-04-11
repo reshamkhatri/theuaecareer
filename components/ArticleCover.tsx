@@ -74,7 +74,7 @@ export default function ArticleCover({
         <>
           <Image
             src={featuredImage || ''}
-            alt={article.title}
+            alt={article.coverAlt || article.title}
             fill
             className="article-cover-media"
             loading={imageLoading}
@@ -97,11 +97,11 @@ export default function ArticleCover({
           <div className="article-cover-glow article-cover-glow-a" />
           <div className="article-cover-glow article-cover-glow-b" />
           <div className="article-cover-grid" />
-          <div className="article-cover-content">
-            <div className="article-cover-topline">
-              <span className="article-cover-badge">{article.category}</span>
-              <span className="article-cover-kicker">{theme.kicker}</span>
-            </div>
+        <div className="article-cover-content">
+          <div className="article-cover-topline">
+            <span className="article-cover-badge">{article.category}</span>
+            <span className="article-cover-kicker">{theme.kicker}</span>
+          </div>
             <div className="article-cover-icon-shell">
               <Icon />
             </div>
