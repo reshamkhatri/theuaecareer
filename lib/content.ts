@@ -109,7 +109,6 @@ const slugFeaturedImages: Record<string, string> = {
 
   // SEO seed exact matches
   'what-to-carry-for-walk-in-interview-in-uae': '/article-images/what-to-carry-walk-in-hero.png',
-  'what-to-carry-for-walk-in-interview-uae': '/article-images/what-to-carry-walk-in-hero.png',
   'self-introduction-for-walk-in-interview-in-uae': '/article-images/self-introduction-uae-hero.png',
   'cleaner-salary-in-uae':                    '/article-images/cleaner-salary-hero.jpg',
   'documents-required-after-getting-a-saudi-job-offer': '/article-images/saudi-offer-documents-hero.jpg',
