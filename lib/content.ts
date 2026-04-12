@@ -101,7 +101,7 @@ const slugFeaturedImages: Record<string, string> = {
   'salary-guide-uae-2026':                    '/article-images/salary-guide-uae-hero.jpg',
   'uae-interview-questions-and-answers':      '/article-images/uae-interview-qa-hero.jpg',
   'abu-dhabi-vs-dubai-working-expats':        '/article-images/abu-dhabi-vs-dubai-hero.jpg',
-  'best-remittance-options-uae-2026':         '/article-images/remittance-uae-hero.jpg',
+  'best-remittance-options-uae-2026':         '/article-images/remittance-uae-hero.png',
   'how-to-get-uae-driving-licence-2026':      '/article-images/uae-driving-licence-hero.png',
   'how-to-renew-uae-work-visa-2026':          '/article-images/uae-visa-renewal-hero.jpg',
   'uae-labour-law-guide-for-expats':          '/article-images/uae-labour-law-hero.jpg',
