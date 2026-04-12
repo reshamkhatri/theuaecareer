@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
             <h2>8. Contact</h2>
             <p>
               If you have questions about this policy, email us at{' '}
-              <a href="mailto:info@theuaecareer.com">info@theuaecareer.com</a>.
+              <strong>info [at] theuaecareer.com</strong>.
             </p>
           </div>
         </div>

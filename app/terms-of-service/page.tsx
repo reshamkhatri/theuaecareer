@@ -84,7 +84,7 @@ export default function TermsPage() {
             <h2>9. Contact</h2>
             <p>
               For questions about these terms, contact{' '}
-              <a href="mailto:info@theuaecareer.com">info@theuaecareer.com</a>.
+              <strong>info [at] theuaecareer.com</strong>.
             </p>
           </div>
         </div>

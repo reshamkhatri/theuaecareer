@@ -50,7 +50,7 @@ const stockImagesByCategory: Record<string, string[]> = {
   ],
   career: [
     '/article-images/dubai-hotel-jobs-hero.png',
-    '/article-images/gulf-cv-format-hero.jpg',
+    '/article-images/gulf-cv-format-hero.png',
     '/article-images/saudi-warehouse-jobs-hero.jpg',
   ],
   salary: [
@@ -80,7 +80,7 @@ const stockImagesByCategory: Record<string, string[]> = {
   ],
   default: [
     '/article-images/dubai-hotel-jobs-hero.png',
-    '/article-images/gulf-cv-format-hero.jpg',
+    '/article-images/gulf-cv-format-hero.png',
     '/article-images/walk-in-vs-online-hero.jpg',
   ],
 };
@@ -95,7 +95,7 @@ const slugFeaturedImages: Record<string, string> = {
   'how-to-find-a-job-in-dubai-as-a-fresher':  '/article-images/dubai-fresher-jobs-hero.jpg',
   'top-10-in-demand-jobs-uae-2026':           '/article-images/top-10-jobs-uae-2026-hero.jpg',
   'cost-of-living-dubai-2026':                '/article-images/cost-of-living-dubai-hero.jpg',
-  'how-to-write-cv-for-gulf-jobs':            '/article-images/cv-for-gulf-jobs-hero.jpg',
+  'how-to-write-cv-for-gulf-jobs':            '/article-images/cv-for-gulf-jobs-hero.png',
   'uae-golden-visa-2026-guide':               '/article-images/uae-golden-visa-hero.jpg',
   'best-free-zones-dubai-2026':               '/article-images/dubai-free-zone-hero.jpg',
   'salary-guide-uae-2026':                    '/article-images/salary-guide-uae-hero.jpg',
@@ -117,9 +117,9 @@ const slugFeaturedImages: Record<string, string> = {
   'cashier-interview-questions-for-saudi-retail-jobs': '/article-images/cashier-interview-saudi-hero.jpg',
   'housekeeping-interview-questions-for-qatar-hotel-jobs': '/article-images/housekeeping-qatar-hero.jpg',
   'driver-interview-questions-in-qatar':      '/article-images/driver-qatar-hero.png',
-  'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/article-images/fake-job-offers-hero.jpg',
+  'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/article-images/fake-job-offers-hero.png',
   'difference-between-walk-in-interview-and-online-application-in-gulf-jobs': '/article-images/walk-in-vs-online-hero.jpg',
-  'best-cv-format-for-uae-saudi-qatar-job-applications': '/article-images/gulf-cv-format-hero.jpg',
+  'best-cv-format-for-uae-saudi-qatar-job-applications': '/article-images/gulf-cv-format-hero.png',
   
   // Sanity/other new articles
   'cv-for-housekeeping-jobs-dubai-sample':    '/article-images/cv-housekeeping-dubai-hero.png',
@@ -137,7 +137,7 @@ const slugFeaturedImages: Record<string, string> = {
 // Fallback pool — unique images used when slug doesn't match above
 const fallbackFeaturedImages = [
   '/article-images/dubai-hotel-jobs-hero.png',
-  '/article-images/gulf-cv-format-hero.jpg',
+  '/article-images/gulf-cv-format-hero.png',
   '/article-images/walk-in-vs-online-hero.jpg',
   '/article-images/cleaner-salary-hero.jpg',
   '/article-images/self-introduction-uae-hero.png',

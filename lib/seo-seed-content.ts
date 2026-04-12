@@ -359,7 +359,7 @@ export const seoSeedArticles = [
     slug: 'how-to-avoid-fake-job-offers-in-uae-saudi-qatar',
     excerpt:
       'Use this practical checklist to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay money, share documents, or make travel plans.',
-    featuredImage: '/article-images/fake-job-offers-hero.jpg',
+    featuredImage: '/article-images/fake-job-offers-hero.png',
     coverAlt:
       'Job seeker checking warning signs on a suspicious Gulf job offer before sharing documents',
     category: 'Career Guides',
@@ -373,7 +373,7 @@ export const seoSeedArticles = [
       'Learn how to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay fees, share documents, or trust a suspicious recruiter.',
     content: `<p>If you want to avoid fake job offers in UAE, Saudi Arabia, or Qatar, start with one rule: slow down before you send money, documents, or passport details. Fake offers usually create urgency first and clarity later. That is exactly why candidates make costly mistakes.</p>
 <p>The safest response to any attractive job offer is not excitement first. It is verification first. A genuine opportunity can survive clear questions. A fake one usually starts to collapse as soon as you ask for specifics.</p>
-<figure><img src="/article-images/fake-job-offers-inline.jpg" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-job-offers-inline.png" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
 <ul>
 <li>Do not pay money to be shortlisted, interviewed, or hired.</li>
 <li>Verify the employer name, role, and contact path before sharing sensitive papers.</li>
@@ -434,7 +434,7 @@ export const seoSeedArticles = [
     slug: 'best-cv-format-for-uae-saudi-qatar-job-applications',
     excerpt:
       'Use the best CV format for UAE, Saudi Arabia, and Qatar job applications so recruiters can understand your role fit quickly and shortlist you faster.',
-    featuredImage: '/article-images/gulf-cv-format-hero.jpg',
+    featuredImage: '/article-images/gulf-cv-format-hero.png',
     coverAlt:
       'Recruiter reviewing a clean Gulf-style CV format designed for UAE, Saudi Arabia, and Qatar job applications',
     category: 'Career Guides',
@@ -448,7 +448,7 @@ export const seoSeedArticles = [
       'Learn the best CV format for UAE, Saudi Arabia, and Qatar job applications, including layout, profile summary, and better experience bullets.',
     content: `<p>The best CV format for UAE, Saudi Arabia, and Qatar job applications is usually not the most creative one. It is the clearest one. Recruiters across the Gulf often review high volumes of profiles quickly, which means your CV should help them understand your role fit in seconds.</p>
 <p>That usually means a simple structure, strong top section, clear experience bullets, and role-specific keywords that match the job you are targeting.</p>
-<figure><img src="/article-images/gulf-cv-format-inline.jpg" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
+<figure><img src="/article-images/gulf-cv-format-inline.png" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
 <ul>
 <li>Keep the layout simple and readable before you worry about design.</li>
 <li>Put your target role, contact details, and short profile summary near the top.</li>

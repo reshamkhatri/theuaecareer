@@ -117,7 +117,7 @@ export default function NewsletterForm({
       )}
       {!newsletterEndpoint && (
         <div style={{ color: 'var(--text-muted)', fontSize: '0.8125rem' }}>
-          This opens your email app so you can request newsletter signup directly at {newsletterEmail}.
+          This opens your email app so you can request newsletter signup directly.
         </div>
       )}
     </form>

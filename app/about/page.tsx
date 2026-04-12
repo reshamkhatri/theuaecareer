@@ -94,7 +94,7 @@ export default function AboutPage() {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
                 <FiMail style={{ color: 'var(--accent)' }} />
-                <span>info@theuaecareer.com</span>
+                <span>info [at] theuaecareer.com</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
                 <FiMapPin style={{ color: 'var(--accent)' }} />

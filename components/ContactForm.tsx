@@ -150,7 +150,7 @@ export default function ContactForm() {
                 </button>
                 {!contactEndpoint && (
                   <p style={{ marginTop: '12px', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-                    This form opens your email app so your message is sent directly to {contactEmail}.
+                    This form opens your email app so your message is sent directly to us.
                   </p>
                 )}
               </form>
