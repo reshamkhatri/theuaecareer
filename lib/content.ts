@@ -44,42 +44,42 @@ const textReplacements: Array<[string, string]> = [
 // Stock images keyed by category keyword — used when articles have no inline images
 const stockImagesByCategory: Record<string, string[]> = {
   'walk-in': [
-    '/article-images/what-to-carry-walk-in-hero.jpg',
-    '/article-images/self-introduction-uae-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.png',
+    '/article-images/self-introduction-uae-hero.png',
     '/article-images/walk-in-vs-online-hero.jpg',
   ],
   career: [
-    '/article-images/dubai-hotel-jobs-hero.jpg',
+    '/article-images/dubai-hotel-jobs-hero.png',
     '/article-images/gulf-cv-format-hero.jpg',
     '/article-images/saudi-warehouse-jobs-hero.jpg',
   ],
   salary: [
     '/article-images/cleaner-salary-hero.jpg',
-    '/article-images/driver-qatar-hero.jpg',
+    '/article-images/driver-qatar-hero.png',
     '/article-images/saudi-offer-documents-hero.jpg',
   ],
   interview: [
-    '/article-images/self-introduction-uae-hero.jpg',
+    '/article-images/self-introduction-uae-hero.png',
     '/article-images/cashier-interview-saudi-hero.jpg',
     '/article-images/housekeeping-qatar-hero.jpg',
   ],
   retail: [
     '/article-images/cashier-interview-saudi-hero.jpg',
-    '/article-images/what-to-carry-walk-in-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.png',
     '/article-images/walk-in-vs-online-hero.jpg',
   ],
   construction: [
     '/article-images/saudi-warehouse-jobs-hero.jpg',
-    '/article-images/driver-qatar-hero.jpg',
-    '/article-images/what-to-carry-walk-in-hero.jpg',
+    '/article-images/driver-qatar-hero.png',
+    '/article-images/what-to-carry-walk-in-hero.png',
   ],
   visa: [
     '/article-images/saudi-offer-documents-hero.jpg',
-    '/article-images/what-to-carry-walk-in-hero.jpg',
-    '/article-images/self-introduction-uae-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.png',
+    '/article-images/self-introduction-uae-hero.png',
   ],
   default: [
-    '/article-images/dubai-hotel-jobs-hero.jpg',
+    '/article-images/dubai-hotel-jobs-hero.png',
     '/article-images/gulf-cv-format-hero.jpg',
     '/article-images/walk-in-vs-online-hero.jpg',
   ],
@@ -89,9 +89,9 @@ const stockImagesByCategory: Record<string, string[]> = {
 const slugFeaturedImages: Record<string, string> = {
   // Launch content exact matches
   'walk-in-interviews-dubai-this-week':       '/article-images/walk-in-interviews-dubai-hero.jpg',
-  'hospitality-jobs-in-dubai-what-employers-want-2026': '/article-images/dubai-hotel-jobs-hero.jpg',
-  'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026': '/article-images/dubai-hotel-jobs-inline.jpg',
-  'verified-dubai-jobs-open-now-direct-employer-march-2026': '/article-images/verified-dubai-jobs-hero.jpg',
+  'hospitality-jobs-in-dubai-what-employers-want-2026': '/article-images/dubai-hotel-jobs-hero.png',
+  'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026': '/article-images/dubai-hotel-jobs-inline.png',
+  'verified-dubai-jobs-open-now-direct-employer-march-2026': '/article-images/verified-dubai-jobs-hero.png',
   'how-to-find-a-job-in-dubai-as-a-fresher':  '/article-images/dubai-fresher-jobs-hero.jpg',
   'top-10-in-demand-jobs-uae-2026':           '/article-images/top-10-jobs-uae-2026-hero.jpg',
   'cost-of-living-dubai-2026':                '/article-images/cost-of-living-dubai-hero.jpg',
@@ -102,45 +102,45 @@ const slugFeaturedImages: Record<string, string> = {
   'uae-interview-questions-and-answers':      '/article-images/uae-interview-qa-hero.jpg',
   'abu-dhabi-vs-dubai-working-expats':        '/article-images/abu-dhabi-vs-dubai-hero.jpg',
   'best-remittance-options-uae-2026':         '/article-images/remittance-uae-hero.jpg',
-  'how-to-get-uae-driving-licence-2026':      '/article-images/uae-driving-licence-hero.jpg',
+  'how-to-get-uae-driving-licence-2026':      '/article-images/uae-driving-licence-hero.png',
   'how-to-renew-uae-work-visa-2026':          '/article-images/uae-visa-renewal-hero.jpg',
   'uae-labour-law-guide-for-expats':          '/article-images/uae-labour-law-hero.jpg',
   'driver-salary-in-uae-2026':                '/article-images/driver-salary-uae-hero.jpg',
 
   // SEO seed exact matches
-  'what-to-carry-for-walk-in-interview-in-uae': '/article-images/what-to-carry-walk-in-hero.jpg',
-  'what-to-carry-for-walk-in-interview-uae': '/article-images/what-to-carry-walk-in-hero.jpg',
-  'self-introduction-for-walk-in-interview-in-uae': '/article-images/self-introduction-uae-hero.jpg',
+  'what-to-carry-for-walk-in-interview-in-uae': '/article-images/what-to-carry-walk-in-hero.png',
+  'what-to-carry-for-walk-in-interview-uae': '/article-images/what-to-carry-walk-in-hero.png',
+  'self-introduction-for-walk-in-interview-in-uae': '/article-images/self-introduction-uae-hero.png',
   'cleaner-salary-in-uae':                    '/article-images/cleaner-salary-hero.jpg',
   'documents-required-after-getting-a-saudi-job-offer': '/article-images/saudi-offer-documents-hero.jpg',
   'how-to-apply-for-warehouse-jobs-in-saudi-arabia-safely': '/article-images/saudi-warehouse-jobs-hero.jpg',
   'cashier-interview-questions-for-saudi-retail-jobs': '/article-images/cashier-interview-saudi-hero.jpg',
   'housekeeping-interview-questions-for-qatar-hotel-jobs': '/article-images/housekeeping-qatar-hero.jpg',
-  'driver-interview-questions-in-qatar':      '/article-images/driver-qatar-hero.jpg',
+  'driver-interview-questions-in-qatar':      '/article-images/driver-qatar-hero.png',
   'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/article-images/fake-job-offers-hero.jpg',
   'difference-between-walk-in-interview-and-online-application-in-gulf-jobs': '/article-images/walk-in-vs-online-hero.jpg',
   'best-cv-format-for-uae-saudi-qatar-job-applications': '/article-images/gulf-cv-format-hero.jpg',
   
   // Sanity/other new articles
-  'cv-for-housekeeping-jobs-dubai-sample':    '/article-images/cv-housekeeping-dubai-hero.jpg',
-  'documents-for-walk-in-interview-dubai':    '/article-images/documents-walk-in-dubai-hero.jpg',
+  'cv-for-housekeeping-jobs-dubai-sample':    '/article-images/cv-housekeeping-dubai-hero.png',
+  'documents-for-walk-in-interview-dubai':    '/article-images/documents-walk-in-dubai-hero.png',
   'dubai-free-zone-comparison-2026':          '/article-images/dubai-free-zone-comparison-hero.jpg',
-  'front-office-interview-questions-dubai-hotels': '/article-images/front-office-interview-hero.jpg',
+  'front-office-interview-questions-dubai-hotels': '/article-images/front-office-interview-hero.png',
   'housekeeping-interview-questions-dubai-hotels': '/article-images/housekeeping-interview-hero.jpg',
   'room-attendant-interview-questions-dubai': '/article-images/room-attendant-interview-hero.jpg',
-  'walk-in-interview-checklist-uae':          '/article-images/walk-in-interview-checklist-hero.jpg',
+  'walk-in-interview-checklist-uae':          '/article-images/walk-in-interview-checklist-hero.png',
   'retail-sales-associate-interview-questions-uae': '/article-images/cashier-interview-saudi-hero.jpg',
   'construction-helper-interview-questions-uae': '/article-images/saudi-warehouse-jobs-inline.jpg',
-  'walk-in-interview-self-introduction-sample-uae': '/article-images/self-introduction-uae-hero.jpg',
+  'walk-in-interview-self-introduction-sample-uae': '/article-images/self-introduction-uae-hero.png',
 };
 
 // Fallback pool — unique images used when slug doesn't match above
 const fallbackFeaturedImages = [
-  '/article-images/dubai-hotel-jobs-hero.jpg',
+  '/article-images/dubai-hotel-jobs-hero.png',
   '/article-images/gulf-cv-format-hero.jpg',
   '/article-images/walk-in-vs-online-hero.jpg',
   '/article-images/cleaner-salary-hero.jpg',
-  '/article-images/self-introduction-uae-hero.jpg',
+  '/article-images/self-introduction-uae-hero.png',
 ];
 
 function getStockFeaturedImage(slug: string): string {
@@ -186,10 +186,10 @@ function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
     let images = stockImagesByCategory[key] || stockImagesByCategory.default;
     
     // Inject the article's own unique inline image first if possible
-    if (article.featuredImage && article.featuredImage.includes('-hero.jpg')) {
-      const inlineUnique = article.featuredImage.replace('-hero.jpg', '-inline.jpg');
+    if (article.featuredImage && article.featuredImage.includes('-hero.')) {
+      const inlineUnique = article.featuredImage.replace('-hero.jpg', '-inline.jpg').replace('-hero.png', '-inline.png');
       images = [inlineUnique, ...images];
-    } else if (article.featuredImage && article.featuredImage.includes('-inline.jpg')) {
+    } else if (article.featuredImage && article.featuredImage.includes('-inline.')) {
       // If the featured image is ALREADY the inline image (e.g. from fallback), just use it
       images = [article.featuredImage, ...images];
     }
