@@ -5,7 +5,7 @@ export const seoSeedArticles = [
     slug: 'what-to-carry-for-walk-in-interview-in-uae',
     excerpt:
       'Learn what to carry for a walk-in interview in UAE, including documents, CV copies, dress essentials, and the small items that help you look ready from the first minute.',
-    featuredImage: '/article-images/what-to-carry-walk-in-hero.jpg',
+    featuredImage: '/article-images/what-to-carry-walk-in-hero.png',
     coverAlt:
       'Job seeker reviewing printed CV copies and interview documents before a UAE walk-in interview',
     category: 'Walk-In Interviews',
@@ -19,7 +19,7 @@ export const seoSeedArticles = [
       'Discover what to carry for a walk-in interview in UAE, from CV copies and passport documents to photos, pens, and role-specific preparation.',
     content: `<p>If you are wondering what to carry for a walk-in interview in UAE, start with this rule: carry more preparation than the average candidate. Walk-ins move quickly, and recruiters often decide in the first few minutes whether you look organized, serious, and ready to join.</p>
 <p>The strongest candidates do not arrive with only a phone and one folded CV. They arrive with the right documents, extra copies, neat presentation, and enough preparation to answer basic questions without panic.</p>
-<figure><img src="/article-images/what-to-carry-walk-in-inline.jpg" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
+<figure><img src="/article-images/what-to-carry-walk-in-inline.png" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
 <ul>
 <li>Carry at least three printed copies of your CV in clean condition.</li>
 <li>Keep passport, visa, Emirates ID or visit-visa papers, and one recent photo in a simple folder.</li>
@@ -46,7 +46,7 @@ export const seoSeedArticles = [
     slug: 'self-introduction-for-walk-in-interview-in-uae',
     excerpt:
       'Use a clear self introduction for walk-in interview in UAE, with a simple formula, sample answers, and common mistakes to avoid.',
-    featuredImage: '/article-images/self-introduction-uae-hero.jpg',
+    featuredImage: '/article-images/self-introduction-uae-hero.png',
     coverAlt:
       'Candidate introducing themself confidently during a short job interview in the UAE',
     category: 'Walk-In Interviews',
@@ -60,7 +60,7 @@ export const seoSeedArticles = [
       'Learn how to give a strong self introduction for walk-in interview in UAE with a short formula, sample scripts, and role-specific tips.',
     content: `<p>A good self introduction for walk-in interview in UAE should be short, role-focused, and easy for the recruiter to remember. In a walk-in event, you often have only 20 to 30 seconds to sound clear and employable before the interviewer decides how much attention to give the rest of your answers.</p>
 <p>Your goal is not to tell your whole life story. Your goal is to help the recruiter understand who you are, what role you fit, what experience you bring, and whether you are ready to join.</p>
-<figure><img src="/article-images/self-introduction-uae-inline.jpg" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
+<figure><img src="/article-images/self-introduction-uae-inline.png" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
 <ul>
 <li>Start with your name and target role.</li>
 <li>Add your most relevant experience or training in one line.</li>
@@ -87,7 +87,7 @@ export const seoSeedArticles = [
     slug: 'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026',
     excerpt:
       'Learn how to apply for Dubai hotel jobs through official employer career pages so you can avoid recycled listings, tailor your CV better, and apply more safely.',
-    featuredImage: '/article-images/dubai-hotel-jobs-hero.jpg',
+    featuredImage: '/article-images/dubai-hotel-jobs-hero.png',
     coverAlt:
       'Hospitality job seeker reviewing official Dubai hotel career pages on a laptop before applying',
     category: 'Career Guides',
@@ -101,7 +101,7 @@ export const seoSeedArticles = [
       'Discover how to apply for Dubai hotel jobs through official employer career pages with stronger CV matching, safer applications, and better follow-up habits.',
     content: `<p>If you want to apply for Dubai hotel jobs the smarter way, start with the official employer career page whenever the hotel brand is known. Too many candidates waste time on reposted listings, copied social posts, or random job groups without checking whether the role still exists on the employer's own site.</p>
 <p>The better route is simple: identify the hotel brand, go to the official career page, study the role language, and tailor your CV before you apply. It takes more thought, but it usually leads to cleaner, safer applications.</p>
-<figure><img src="/article-images/dubai-hotel-jobs-inline.jpg" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
+<figure><img src="/article-images/dubai-hotel-jobs-inline.png" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
 <ul>
 <li>Use official employer pages first whenever the hotel brand is clearly known.</li>
 <li>Mirror the employer wording on your CV instead of sending one generic hospitality resume.</li>
@@ -320,7 +320,7 @@ export const seoSeedArticles = [
     slug: 'driver-interview-questions-in-qatar',
     excerpt:
       'Prepare for driver interview questions in Qatar with practical answer ideas about safety checks, traffic delays, customer handling, and accident reporting.',
-    featuredImage: '/article-images/driver-qatar-hero.jpg',
+    featuredImage: '/article-images/driver-qatar-hero.png',
     coverAlt:
       'Professional driver preparing for interview questions about road safety and passenger handling in Qatar',
     category: 'Career Guides',
@@ -334,7 +334,7 @@ export const seoSeedArticles = [
       'Prepare for driver interview questions in Qatar and learn how to answer about safety, vehicle checks, route planning, and guest handling.',
     content: `<p>Driver interview questions in Qatar are rarely only about holding a licence. Employers want to hear about safety habits, route awareness, punctuality, vehicle checks, and, in many cases, customer-facing professionalism. If the role is hotel, executive, or company transport, your behaviour matters as much as your driving.</p>
 <p>That means your answers should sound like someone who protects both passengers and the employer, not just someone who can move a vehicle from one place to another.</p>
-<figure><img src="/article-images/driver-qatar-inline.jpg" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
+<figure><img src="/article-images/driver-qatar-inline.png" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
 <ul>
 <li>Expect questions about safety checks, punctuality, and route decisions.</li>
 <li>For guest-facing roles, prepare for customer-service and presentation questions too.</li>

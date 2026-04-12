@@ -1,7 +1,10 @@
 const fs = require('fs');
 
-const file = 'd:/theuaecareer/frontend/lib/content.ts';
-let content = fs.readFileSync(file, 'utf8');
+const filesToUpdate = [
+    'd:/theuaecareer/frontend/lib/content.ts',
+    'd:/theuaecareer/frontend/lib/launch-content.ts',
+    'd:/theuaecareer/frontend/lib/seo-seed-articles.ts',
+];
 
 const pngFiles = [
     'driver-qatar-hero', 'driver-qatar-inline',
@@ -13,14 +16,31 @@ const pngFiles = [
     'front-office-interview-hero', 'front-office-interview-inline',
     'dubai-hotel-jobs-hero', 'dubai-hotel-jobs-inline',
     'documents-walk-in-dubai-hero', 'documents-walk-in-dubai-inline',
-    'verified-dubai-jobs-hero', 'verified-dubai-jobs-inline'
+    'verified-dubai-jobs-hero', 'verified-dubai-jobs-inline',
+    'remittance-uae-hero', 'remittance-uae-inline'
 ];
 
-pngFiles.forEach(name => {
-    // replace exact strings
-    const regex = new RegExp(name + '\\.jpg', 'g');
-    content = content.replace(regex, name + '.png');
-});
+for (const file of filesToUpdate) {
+    if (!fs.existsSync(file)) {
+        console.log(`Skipping missing file: ${file}`);
+        continue;
+    }
+    
+    let content = fs.readFileSync(file, 'utf8');
+    let changed = false;
 
-fs.writeFileSync(file, content);
-console.log('Fixed content.ts to use .png');
+    pngFiles.forEach(name => {
+        const regex = new RegExp(name + '\\.jpg', 'g');
+        if (regex.test(content)) {
+            content = content.replace(regex, name + '.png');
+            changed = true;
+        }
+    });
+
+    if (changed) {
+        fs.writeFileSync(file, content);
+        console.log(`Updated ${file}`);
+    } else {
+        console.log(`No changes needed in ${file}`);
+    }
+}
