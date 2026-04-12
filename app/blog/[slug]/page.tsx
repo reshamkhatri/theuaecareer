@@ -311,7 +311,7 @@ export default async function ArticlePage({
                   gap: '12px',
                 }}
               >
-                <h3 style={{ fontSize: '1.25rem' }}>Share this article</h3>
+                <p style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0 }}>Share this article</p>
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                   <Link
                     href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(article.title)}`}
@@ -386,7 +386,7 @@ export default async function ArticlePage({
               <AdSlot slot={articleSidebarAdSlot} minHeight={320} />
             </div>
             <div className="card">
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-lg)' }}>Popular Categories</h3>
+              <p style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: 'var(--space-lg)' }}>Popular Categories</p>
               <form action="/blog/" method="get">
                 <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {ARTICLE_CATEGORIES.map((category, index) => (
@@ -423,7 +423,7 @@ export default async function ArticlePage({
             </div>
 
             <div className="card">
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Subscribe</h3>
+              <p style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: 'var(--space-md)' }}>Subscribe</p>
               <p style={{ fontSize: '0.875rem', marginBottom: 'var(--space-md)' }}>
                 Get the latest Gulf career tips and hiring updates by email.
               </p>
@@ -431,7 +431,7 @@ export default async function ArticlePage({
             </div>
 
             <div className="card">
-              <h3 style={{ fontSize: '1.125rem', marginBottom: 'var(--space-md)' }}>Next best pages</h3>
+              <p style={{ fontSize: '1.125rem', fontWeight: 700, marginBottom: 'var(--space-md)' }}>Next best pages</p>
               <div style={{ display: 'grid', gap: '14px' }}>
                 {articlePathways.map((link) => (
                   <div
