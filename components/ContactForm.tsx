@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FiCheckCircle, FiMail, FiMessageSquare, FiSend, FiUser } from 'react-icons/fi';
 
 const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT?.trim() || '';
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || 'hello@theuaecareer.com';
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || ['hello', 'theuaecareer.com'].join('@');
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });

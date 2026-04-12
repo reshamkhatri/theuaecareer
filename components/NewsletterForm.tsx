@@ -7,7 +7,7 @@ const newsletterEndpoint = process.env.NEXT_PUBLIC_NEWSLETTER_FORM_ENDPOINT?.tri
 const newsletterEmail =
   process.env.NEXT_PUBLIC_NEWSLETTER_EMAIL?.trim() ||
   process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ||
-  'hello@theuaecareer.com';
+  ['hello', 'theuaecareer.com'].join('@');
 
 export default function NewsletterForm({
   source,
