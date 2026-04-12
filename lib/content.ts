@@ -44,85 +44,111 @@ const textReplacements: Array<[string, string]> = [
 // Stock images keyed by category keyword — used when articles have no inline images
 const stockImagesByCategory: Record<string, string[]> = {
   'walk-in': [
-    'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1280&q=80',
-    'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1280&q=80',
-    'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1280&q=80',
+    '/article-images/what-to-carry-walk-in-hero.jpg',
+    '/article-images/self-introduction-uae-hero.jpg',
+    '/article-images/walk-in-vs-online-hero.jpg',
   ],
   career: [
-    'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1280&q=80',
-    'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1280&q=80',
-    'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1280&q=80',
+    '/article-images/dubai-hotel-jobs-hero.jpg',
+    '/article-images/gulf-cv-format-hero.jpg',
+    '/article-images/saudi-warehouse-jobs-hero.jpg',
   ],
   salary: [
-    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1280&q=80',
-    'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1280&q=80',
-    'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1280&q=80',
+    '/article-images/cleaner-salary-hero.jpg',
+    '/article-images/driver-qatar-hero.jpg',
+    '/article-images/saudi-offer-documents-hero.jpg',
   ],
   interview: [
-    'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1280&q=80',
-    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1280&q=80',
-    'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1280&q=80',
+    '/article-images/self-introduction-uae-hero.jpg',
+    '/article-images/cashier-interview-saudi-hero.jpg',
+    '/article-images/housekeeping-qatar-hero.jpg',
   ],
   retail: [
-    'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1280&q=80',
-    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1280&q=80',
-    'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=1280&q=80',
+    '/article-images/cashier-interview-saudi-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.jpg',
+    '/article-images/walk-in-vs-online-hero.jpg',
   ],
   construction: [
-    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1280&q=80',
-    'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1280&q=80',
-    'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=1280&q=80',
+    '/article-images/saudi-warehouse-jobs-hero.jpg',
+    '/article-images/driver-qatar-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.jpg',
   ],
   visa: [
-    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1280&q=80',
-    'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=1280&q=80',
-    'https://images.unsplash.com/photo-1577415124269-fc1140815ced?w=1280&q=80',
+    '/article-images/saudi-offer-documents-hero.jpg',
+    '/article-images/what-to-carry-walk-in-hero.jpg',
+    '/article-images/self-introduction-uae-hero.jpg',
   ],
   default: [
-    'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1280&q=80',
-    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1280&q=80',
-    'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1280&q=80',
+    '/article-images/dubai-hotel-jobs-hero.jpg',
+    '/article-images/gulf-cv-format-hero.jpg',
+    '/article-images/walk-in-vs-online-hero.jpg',
   ],
 };
 
 // Per-slug featured images — every article gets a unique image
 const slugFeaturedImages: Record<string, string> = {
-  'walk-in-interviews-dubai-this-week':       'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1600&q=80',
-  'hospitality-jobs-in-dubai':                'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1600&q=80',
-  'how-to-apply-dubai-hotel-jobs':            'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1600&q=80',
-  'verified-dubai-jobs-direct-employer':      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80',
-  'how-to-find-a-job-in-dubai-as-a-fresher':  'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80',
-  'top-10-in-demand-jobs-uae-2026':           'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1600&q=80',
-  'cost-of-living-dubai-2026':                'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=80',
-  'how-to-write-cv-for-gulf-jobs':            'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1600&q=80',
-  'uae-golden-visa-2026-guide':               'https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1600&q=80',
-  'best-free-zones-dubai-2026':               'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
-  'salary-guide-uae-2026':                    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80',
-  'uae-interview-questions-and-answers':      'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80',
-  'abu-dhabi-vs-dubai-working-living':        'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?w=1600&q=80',
-  'best-remittance-options-uae-2026':         'https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=1600&q=80',
-  'how-to-get-uae-driving-licence':           'https://images.unsplash.com/photo-1449965408869-ebd3fee1f2f3?w=1600&q=80',
-  'how-to-renew-uae-work-visa':               'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80',
-  'uae-labour-law-guide-for-expats':          'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1600&q=80',
-  'driver-salary-in-uae-2026':               'https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?w=1600&q=80',
-  'what-to-carry-for-walk-in-interview-uae': 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80',
-  'walk-in-interview-self-introduction-sample-uae': 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80',
-  'retail-sales-associate-interview-questions-uae': 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1600&q=80',
-  'construction-helper-interview-questions-uae':    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80',
+  // Launch content exact matches
+  'walk-in-interviews-dubai-this-week':       '/article-images/walk-in-interviews-dubai-hero.jpg',
+  'hospitality-jobs-in-dubai-what-employers-want-2026': '/article-images/dubai-hotel-jobs-hero.jpg',
+  'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026': '/article-images/dubai-hotel-jobs-inline.jpg',
+  'verified-dubai-jobs-open-now-direct-employer-march-2026': '/article-images/verified-dubai-jobs-hero.jpg',
+  'how-to-find-a-job-in-dubai-as-a-fresher':  '/article-images/dubai-fresher-jobs-hero.jpg',
+  'top-10-in-demand-jobs-uae-2026':           '/article-images/top-10-jobs-uae-2026-hero.jpg',
+  'cost-of-living-dubai-2026':                '/article-images/cost-of-living-dubai-hero.jpg',
+  'how-to-write-cv-for-gulf-jobs':            '/article-images/cv-for-gulf-jobs-hero.jpg',
+  'uae-golden-visa-2026-guide':               '/article-images/uae-golden-visa-hero.jpg',
+  'best-free-zones-dubai-2026':               '/article-images/dubai-free-zone-hero.jpg',
+  'salary-guide-uae-2026':                    '/article-images/salary-guide-uae-hero.jpg',
+  'uae-interview-questions-and-answers':      '/article-images/uae-interview-qa-hero.jpg',
+  'abu-dhabi-vs-dubai-working-expats':        '/article-images/abu-dhabi-vs-dubai-hero.jpg',
+  'best-remittance-options-uae-2026':         '/article-images/remittance-uae-hero.jpg',
+  'how-to-get-uae-driving-licence-2026':      '/article-images/uae-driving-licence-hero.jpg',
+  'how-to-renew-uae-work-visa-2026':          '/article-images/uae-visa-renewal-hero.jpg',
+  'uae-labour-law-guide-for-expats':          '/article-images/uae-labour-law-hero.jpg',
+  'driver-salary-in-uae-2026':                '/article-images/driver-salary-uae-hero.jpg',
+
+  // SEO seed exact matches
+  'what-to-carry-for-walk-in-interview-in-uae': '/article-images/what-to-carry-walk-in-hero.jpg',
+  'what-to-carry-for-walk-in-interview-uae': '/article-images/what-to-carry-walk-in-hero.jpg',
+  'self-introduction-for-walk-in-interview-in-uae': '/article-images/self-introduction-uae-hero.jpg',
+  'cleaner-salary-in-uae':                    '/article-images/cleaner-salary-hero.jpg',
+  'documents-required-after-getting-a-saudi-job-offer': '/article-images/saudi-offer-documents-hero.jpg',
+  'how-to-apply-for-warehouse-jobs-in-saudi-arabia-safely': '/article-images/saudi-warehouse-jobs-hero.jpg',
+  'cashier-interview-questions-for-saudi-retail-jobs': '/article-images/cashier-interview-saudi-hero.jpg',
+  'housekeeping-interview-questions-for-qatar-hotel-jobs': '/article-images/housekeeping-qatar-hero.jpg',
+  'driver-interview-questions-in-qatar':      '/article-images/driver-qatar-hero.jpg',
+  'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/article-images/fake-job-offers-hero.jpg',
+  'difference-between-walk-in-interview-and-online-application-in-gulf-jobs': '/article-images/walk-in-vs-online-hero.jpg',
+  'best-cv-format-for-uae-saudi-qatar-job-applications': '/article-images/gulf-cv-format-hero.jpg',
+  
+  // Sanity/other new articles
+  'cv-for-housekeeping-jobs-dubai-sample':    '/article-images/cv-housekeeping-dubai-hero.jpg',
+  'documents-for-walk-in-interview-dubai':    '/article-images/documents-walk-in-dubai-hero.jpg',
+  'dubai-free-zone-comparison-2026':          '/article-images/dubai-free-zone-comparison-hero.jpg',
+  'front-office-interview-questions-dubai-hotels': '/article-images/front-office-interview-hero.jpg',
+  'housekeeping-interview-questions-dubai-hotels': '/article-images/housekeeping-interview-hero.jpg',
+  'room-attendant-interview-questions-dubai': '/article-images/room-attendant-interview-hero.jpg',
+  'walk-in-interview-checklist-uae':          '/article-images/walk-in-interview-checklist-hero.jpg',
+  'retail-sales-associate-interview-questions-uae': '/article-images/cashier-interview-saudi-hero.jpg',
+  'construction-helper-interview-questions-uae': '/article-images/saudi-warehouse-jobs-inline.jpg',
+  'walk-in-interview-self-introduction-sample-uae': '/article-images/self-introduction-uae-hero.jpg',
 };
 
 // Fallback pool — unique images used when slug doesn't match above
 const fallbackFeaturedImages = [
-  'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1600&q=80',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1600&q=80',
-  'https://images.unsplash.com/photo-1521791055366-0d553872125f?w=1600&q=80',
-  'https://images.unsplash.com/photo-1577415124269-fc1140815ced?w=1600&q=80',
-  'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80',
+  '/article-images/dubai-hotel-jobs-hero.jpg',
+  '/article-images/gulf-cv-format-hero.jpg',
+  '/article-images/walk-in-vs-online-hero.jpg',
+  '/article-images/cleaner-salary-hero.jpg',
+  '/article-images/self-introduction-uae-hero.jpg',
 ];
 
 function getStockFeaturedImage(slug: string): string {
-  // Try exact slug match first (handles both dot and hyphen variants)
   const normalizedSlug = slug.replace(/^article\./, '');
+  if (slugFeaturedImages[normalizedSlug]) {
+    return slugFeaturedImages[normalizedSlug];
+  }
+
   for (const [key, url] of Object.entries(slugFeaturedImages)) {
     if (normalizedSlug.includes(key) || key.includes(normalizedSlug.split('-').slice(0, 4).join('-'))) {
       return url;
@@ -157,7 +183,17 @@ function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
 
   // Inject inline images if none exist in content
   if (!hasInlineImages && article.content.length > 200) {
-    const images = stockImagesByCategory[key] || stockImagesByCategory.default;
+    let images = stockImagesByCategory[key] || stockImagesByCategory.default;
+    
+    // Inject the article's own unique inline image first if possible
+    if (article.featuredImage && article.featuredImage.includes('-hero.jpg')) {
+      const inlineUnique = article.featuredImage.replace('-hero.jpg', '-inline.jpg');
+      images = [inlineUnique, ...images];
+    } else if (article.featuredImage && article.featuredImage.includes('-inline.jpg')) {
+      // If the featured image is ALREADY the inline image (e.g. from fallback), just use it
+      images = [article.featuredImage, ...images];
+    }
+
     const paragraphs = article.content.split('</p>');
 
     if (paragraphs.length > 4) {

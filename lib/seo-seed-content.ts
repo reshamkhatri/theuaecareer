@@ -5,7 +5,7 @@ export const seoSeedArticles = [
     slug: 'what-to-carry-for-walk-in-interview-in-uae',
     excerpt:
       'Learn what to carry for a walk-in interview in UAE, including documents, CV copies, dress essentials, and the small items that help you look ready from the first minute.',
-    featuredImage: '/article-images/what-to-carry-walk-in-hero.svg',
+    featuredImage: '/article-images/what-to-carry-walk-in-hero.jpg',
     coverAlt:
       'Job seeker reviewing printed CV copies and interview documents before a UAE walk-in interview',
     category: 'Walk-In Interviews',
@@ -19,7 +19,7 @@ export const seoSeedArticles = [
       'Discover what to carry for a walk-in interview in UAE, from CV copies and passport documents to photos, pens, and role-specific preparation.',
     content: `<p>If you are wondering what to carry for a walk-in interview in UAE, start with this rule: carry more preparation than the average candidate. Walk-ins move quickly, and recruiters often decide in the first few minutes whether you look organized, serious, and ready to join.</p>
 <p>The strongest candidates do not arrive with only a phone and one folded CV. They arrive with the right documents, extra copies, neat presentation, and enough preparation to answer basic questions without panic.</p>
-<figure><img src="/article-images/what-to-carry-walk-in-inline.svg" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
+<figure><img src="/article-images/what-to-carry-walk-in-inline.jpg" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
 <ul>
 <li>Carry at least three printed copies of your CV in clean condition.</li>
 <li>Keep passport, visa, Emirates ID or visit-visa papers, and one recent photo in a simple folder.</li>
@@ -46,7 +46,7 @@ export const seoSeedArticles = [
     slug: 'self-introduction-for-walk-in-interview-in-uae',
     excerpt:
       'Use a clear self introduction for walk-in interview in UAE, with a simple formula, sample answers, and common mistakes to avoid.',
-    featuredImage: '/article-images/self-introduction-uae-hero.svg',
+    featuredImage: '/article-images/self-introduction-uae-hero.jpg',
     coverAlt:
       'Candidate introducing themself confidently during a short job interview in the UAE',
     category: 'Walk-In Interviews',
@@ -60,7 +60,7 @@ export const seoSeedArticles = [
       'Learn how to give a strong self introduction for walk-in interview in UAE with a short formula, sample scripts, and role-specific tips.',
     content: `<p>A good self introduction for walk-in interview in UAE should be short, role-focused, and easy for the recruiter to remember. In a walk-in event, you often have only 20 to 30 seconds to sound clear and employable before the interviewer decides how much attention to give the rest of your answers.</p>
 <p>Your goal is not to tell your whole life story. Your goal is to help the recruiter understand who you are, what role you fit, what experience you bring, and whether you are ready to join.</p>
-<figure><img src="/article-images/self-introduction-uae-inline.svg" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
+<figure><img src="/article-images/self-introduction-uae-inline.jpg" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
 <ul>
 <li>Start with your name and target role.</li>
 <li>Add your most relevant experience or training in one line.</li>
@@ -87,7 +87,7 @@ export const seoSeedArticles = [
     slug: 'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026',
     excerpt:
       'Learn how to apply for Dubai hotel jobs through official employer career pages so you can avoid recycled listings, tailor your CV better, and apply more safely.',
-    featuredImage: '/article-images/dubai-hotel-jobs-hero.svg',
+    featuredImage: '/article-images/dubai-hotel-jobs-hero.jpg',
     coverAlt:
       'Hospitality job seeker reviewing official Dubai hotel career pages on a laptop before applying',
     category: 'Career Guides',
@@ -101,7 +101,7 @@ export const seoSeedArticles = [
       'Discover how to apply for Dubai hotel jobs through official employer career pages with stronger CV matching, safer applications, and better follow-up habits.',
     content: `<p>If you want to apply for Dubai hotel jobs the smarter way, start with the official employer career page whenever the hotel brand is known. Too many candidates waste time on reposted listings, copied social posts, or random job groups without checking whether the role still exists on the employer's own site.</p>
 <p>The better route is simple: identify the hotel brand, go to the official career page, study the role language, and tailor your CV before you apply. It takes more thought, but it usually leads to cleaner, safer applications.</p>
-<figure><img src="/article-images/dubai-hotel-jobs-inline.svg" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
+<figure><img src="/article-images/dubai-hotel-jobs-inline.jpg" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
 <ul>
 <li>Use official employer pages first whenever the hotel brand is clearly known.</li>
 <li>Mirror the employer wording on your CV instead of sending one generic hospitality resume.</li>
@@ -128,7 +128,7 @@ export const seoSeedArticles = [
     slug: 'cleaner-salary-in-uae',
     excerpt:
       'Understand cleaner salary in UAE, what affects the real package value, and how to compare accommodation, overtime, transport, and working hours before you accept an offer.',
-    featuredImage: '/article-images/cleaner-salary-hero.svg',
+    featuredImage: '/article-images/cleaner-salary-hero.jpg',
     coverAlt:
       'Cleaning worker reviewing a UAE salary offer with notes about accommodation and transport',
     category: 'Salary Insights',
@@ -142,7 +142,7 @@ export const seoSeedArticles = [
       'Find out how cleaner salary in UAE works, what pay ranges usually mean, and how accommodation, transport, and overtime change the real value of the job.',
     content: `<p>Cleaner salary in UAE can look simple on a job post, but the real value of the offer depends on far more than the headline number. Two jobs may both say "AED 1,400 salary" and still feel completely different once you account for accommodation, transport, food, overtime, and duty hours.</p>
 <p>That is why job seekers should not ask only "What is the salary?" They should ask, "What is included, how many hours is the duty, and how much can I realistically save every month?"</p>
-<figure><img src="/article-images/cleaner-salary-inline.svg" alt="Package comparison illustration showing salary, transport, meals, housing, and overtime for a cleaning job offer" loading="lazy" /></figure>
+<figure><img src="/article-images/cleaner-salary-inline.jpg" alt="Package comparison illustration showing salary, transport, meals, housing, and overtime for a cleaning job offer" loading="lazy" /></figure>
 <ul>
 <li>Entry-level cleaner salary in UAE usually sits in lower salary bands, but accommodation and transport support can change the real value a lot.</li>
 <li>Overtime, weekly day off, and site location matter almost as much as the basic salary.</li>
@@ -166,7 +166,7 @@ export const seoSeedArticles = [
     slug: 'documents-required-after-getting-a-saudi-job-offer',
     excerpt:
       'Use this checklist of documents required after getting a Saudi job offer, plus the verification questions you should ask before you send anything sensitive.',
-    featuredImage: '/article-images/saudi-offer-documents-hero.svg',
+    featuredImage: '/article-images/saudi-offer-documents-hero.jpg',
     coverAlt:
       'Job seeker organizing passport copies, photos, and certificates after receiving a Saudi job offer',
     category: 'Visa & PRO Guides',
@@ -180,7 +180,7 @@ export const seoSeedArticles = [
       'See the documents required after getting a Saudi job offer and learn what to verify before sharing passport copies, certificates, and personal records.',
     content: `<p>The documents required after getting a Saudi job offer can vary by employer, role, nationality, and visa category. That is exactly why candidates should not panic and send everything immediately. The goal is not only to collect papers. The goal is to send the right documents to the right place for a genuine process.</p>
 <p>A safer approach is to confirm the employer identity, role details, and next step before sharing anything sensitive. If the employer or recruiter cannot clearly explain the process, that is already a warning sign.</p>
-<figure><img src="/article-images/saudi-offer-documents-inline.svg" alt="Document checklist illustration showing passport copies, photos, and certificates for a Saudi job offer process" loading="lazy" /></figure>
+<figure><img src="/article-images/saudi-offer-documents-inline.jpg" alt="Document checklist illustration showing passport copies, photos, and certificates for a Saudi job offer process" loading="lazy" /></figure>
 <ul>
 <li>Keep your passport valid and make sure the employer name and role match what you originally applied for.</li>
 <li>Prepare only the documents the verified employer or authorized processor actually asks for.</li>
@@ -204,7 +204,7 @@ export const seoSeedArticles = [
     slug: 'how-to-apply-for-warehouse-jobs-in-saudi-arabia-safely',
     excerpt:
       'Learn how to apply for warehouse jobs in Saudi Arabia safely so you can avoid fake leads, match your CV better, and verify the role before sending documents.',
-    featuredImage: '/article-images/saudi-warehouse-jobs-hero.svg',
+    featuredImage: '/article-images/saudi-warehouse-jobs-hero.jpg',
     coverAlt:
       'Warehouse job seeker checking a Saudi job listing and verifying employer details before applying',
     category: 'Career Guides',
@@ -218,7 +218,7 @@ export const seoSeedArticles = [
       'Learn how to apply for warehouse jobs in Saudi Arabia safely by verifying employers, matching your CV to the role, and checking the process before sending documents.',
     content: `<p>If you want to apply for warehouse jobs in Saudi Arabia safely, start with verification before volume. Warehouse and logistics jobs attract many applicants because they can offer steady hiring and overtime potential. They also attract a lot of low-quality or misleading leads because candidates are eager to move quickly.</p>
 <p>The safest strategy is not complicated. Verify the employer, confirm the role exists, understand the real duties, and only then send documents or make travel decisions.</p>
-<figure><img src="/article-images/saudi-warehouse-jobs-inline.svg" alt="Illustration comparing warehouse role fit on a CV with a verified Saudi job listing" loading="lazy" /></figure>
+<figure><img src="/article-images/saudi-warehouse-jobs-inline.jpg" alt="Illustration comparing warehouse role fit on a CV with a verified Saudi job listing" loading="lazy" /></figure>
 <ul>
 <li>Verify the company or authorized recruiter before sharing documents.</li>
 <li>Read the real duties: loading, scanning, packing, stock movement, or dispatch support are not all the same job.</li>
@@ -242,7 +242,7 @@ export const seoSeedArticles = [
     slug: 'cashier-interview-questions-for-saudi-retail-jobs',
     excerpt:
       'Prepare for cashier interview questions for Saudi retail jobs with practical answer ideas about billing accuracy, queue handling, customer service, and till closing.',
-    featuredImage: '/article-images/cashier-interview-saudi-hero.svg',
+    featuredImage: '/article-images/cashier-interview-saudi-hero.jpg',
     coverAlt:
       'Retail cashier answering interview questions about billing accuracy and customer service',
     category: 'Career Guides',
@@ -256,7 +256,7 @@ export const seoSeedArticles = [
       'Review cashier interview questions for Saudi retail jobs and learn the answer points employers expect around accuracy, POS handling, and customer care.',
     content: `<p>Cashier interview questions for Saudi retail jobs usually test more than just your ability to use a POS machine. Employers want to hear how you handle accuracy, customer pressure, queue management, and cash closing when the store gets busy.</p>
 <p>That means your answers should not stop at "I can use POS." They should show how you behave when a customer disputes a bill, when the queue is long, or when the drawer does not balance at the end of the shift.</p>
-<figure><img src="/article-images/cashier-interview-saudi-inline.svg" alt="Cashier interview checklist showing billing accuracy, queue handling, customer service, and till closing" loading="lazy" /></figure>
+<figure><img src="/article-images/cashier-interview-saudi-inline.jpg" alt="Cashier interview checklist showing billing accuracy, queue handling, customer service, and till closing" loading="lazy" /></figure>
 <ul>
 <li>Prepare examples that prove accuracy, honesty, and calm customer handling.</li>
 <li>Use short answers based on real counter situations, not textbook definitions.</li>
@@ -281,7 +281,7 @@ export const seoSeedArticles = [
     slug: 'housekeeping-interview-questions-for-qatar-hotel-jobs',
     excerpt:
       'Practice housekeeping interview questions for Qatar hotel jobs with answer ideas about room standards, guest handling, lost-and-found rules, and time pressure.',
-    featuredImage: '/article-images/housekeeping-qatar-hero.svg',
+    featuredImage: '/article-images/housekeeping-qatar-hero.jpg',
     coverAlt:
       'Hotel housekeeping candidate preparing for interview questions about room standards and guest service',
     category: 'Career Guides',
@@ -295,7 +295,7 @@ export const seoSeedArticles = [
       'Practice housekeeping interview questions for Qatar hotel jobs and learn how to answer around room cleaning standards, guest requests, and shift discipline.',
     content: `<p>Housekeeping interview questions for Qatar hotel jobs usually test three things at once: standards, pace, and attitude. Employers want to know whether you can clean properly, work under time pressure, and still behave professionally around guests and supervisors.</p>
 <p>That is why the strongest answers are not only about cleaning. They show discipline, attention to detail, and respect for hotel process.</p>
-<figure><img src="/article-images/housekeeping-qatar-inline.svg" alt="Housekeeping interview topics illustration showing room flow, guest requests, reporting, and speed" loading="lazy" /></figure>
+<figure><img src="/article-images/housekeeping-qatar-inline.jpg" alt="Housekeeping interview topics illustration showing room flow, guest requests, reporting, and speed" loading="lazy" /></figure>
 <ul>
 <li>Use examples that show room quality, speed, and consistency together.</li>
 <li>Mention guest requests, lost-and-found awareness, and supervisor communication.</li>
@@ -320,7 +320,7 @@ export const seoSeedArticles = [
     slug: 'driver-interview-questions-in-qatar',
     excerpt:
       'Prepare for driver interview questions in Qatar with practical answer ideas about safety checks, traffic delays, customer handling, and accident reporting.',
-    featuredImage: '/article-images/driver-qatar-hero.svg',
+    featuredImage: '/article-images/driver-qatar-hero.jpg',
     coverAlt:
       'Professional driver preparing for interview questions about road safety and passenger handling in Qatar',
     category: 'Career Guides',
@@ -334,7 +334,7 @@ export const seoSeedArticles = [
       'Prepare for driver interview questions in Qatar and learn how to answer about safety, vehicle checks, route planning, and guest handling.',
     content: `<p>Driver interview questions in Qatar are rarely only about holding a licence. Employers want to hear about safety habits, route awareness, punctuality, vehicle checks, and, in many cases, customer-facing professionalism. If the role is hotel, executive, or company transport, your behaviour matters as much as your driving.</p>
 <p>That means your answers should sound like someone who protects both passengers and the employer, not just someone who can move a vehicle from one place to another.</p>
-<figure><img src="/article-images/driver-qatar-inline.svg" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
+<figure><img src="/article-images/driver-qatar-inline.jpg" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
 <ul>
 <li>Expect questions about safety checks, punctuality, and route decisions.</li>
 <li>For guest-facing roles, prepare for customer-service and presentation questions too.</li>
@@ -359,7 +359,7 @@ export const seoSeedArticles = [
     slug: 'how-to-avoid-fake-job-offers-in-uae-saudi-qatar',
     excerpt:
       'Use this practical checklist to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay money, share documents, or make travel plans.',
-    featuredImage: '/article-images/fake-job-offers-hero.svg',
+    featuredImage: '/article-images/fake-job-offers-hero.jpg',
     coverAlt:
       'Job seeker checking warning signs on a suspicious Gulf job offer before sharing documents',
     category: 'Career Guides',
@@ -373,7 +373,7 @@ export const seoSeedArticles = [
       'Learn how to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay fees, share documents, or trust a suspicious recruiter.',
     content: `<p>If you want to avoid fake job offers in UAE, Saudi Arabia, or Qatar, start with one rule: slow down before you send money, documents, or passport details. Fake offers usually create urgency first and clarity later. That is exactly why candidates make costly mistakes.</p>
 <p>The safest response to any attractive job offer is not excitement first. It is verification first. A genuine opportunity can survive clear questions. A fake one usually starts to collapse as soon as you ask for specifics.</p>
-<figure><img src="/article-images/fake-job-offers-inline.svg" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-job-offers-inline.jpg" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
 <ul>
 <li>Do not pay money to be shortlisted, interviewed, or hired.</li>
 <li>Verify the employer name, role, and contact path before sharing sensitive papers.</li>
@@ -396,7 +396,7 @@ export const seoSeedArticles = [
     slug: 'difference-between-walk-in-interview-and-online-application-in-gulf-jobs',
     excerpt:
       'Understand the difference between walk-in interview and online application routes so you can choose the better option for Gulf jobs and avoid wasting time.',
-    featuredImage: '/article-images/walk-in-vs-online-hero.svg',
+    featuredImage: '/article-images/walk-in-vs-online-hero.jpg',
     coverAlt:
       'Job seeker comparing a walk-in interview event notice with an online application page for Gulf jobs',
     category: 'Career Guides',
@@ -410,7 +410,7 @@ export const seoSeedArticles = [
       'Understand the difference between walk-in interviews and online applications in Gulf jobs so you can choose the smarter route for each employer and role.',
     content: `<p>The difference between walk-in interview and online application routes matters more than many Gulf job seekers think. Some people attend every walk-in they find. Others only submit online applications and wait. Both habits can waste time when they are not matched to the role and employer.</p>
 <p>Walk-ins and online applications are not competing systems. They solve different hiring problems. Your job-search strategy gets stronger when you know when each one is useful.</p>
-<figure><img src="/article-images/walk-in-vs-online-inline.svg" alt="Comparison illustration showing when to choose walk-in interviews versus online applications for Gulf jobs" loading="lazy" /></figure>
+<figure><img src="/article-images/walk-in-vs-online-inline.jpg" alt="Comparison illustration showing when to choose walk-in interviews versus online applications for Gulf jobs" loading="lazy" /></figure>
 <ul>
 <li>Walk-ins are better for urgent, high-volume, and operations-heavy hiring.</li>
 <li>Online applications are usually stronger for branded employers and more structured hiring pipelines.</li>
@@ -434,7 +434,7 @@ export const seoSeedArticles = [
     slug: 'best-cv-format-for-uae-saudi-qatar-job-applications',
     excerpt:
       'Use the best CV format for UAE, Saudi Arabia, and Qatar job applications so recruiters can understand your role fit quickly and shortlist you faster.',
-    featuredImage: '/article-images/gulf-cv-format-hero.svg',
+    featuredImage: '/article-images/gulf-cv-format-hero.jpg',
     coverAlt:
       'Recruiter reviewing a clean Gulf-style CV format designed for UAE, Saudi Arabia, and Qatar job applications',
     category: 'Career Guides',
@@ -448,7 +448,7 @@ export const seoSeedArticles = [
       'Learn the best CV format for UAE, Saudi Arabia, and Qatar job applications, including layout, profile summary, and better experience bullets.',
     content: `<p>The best CV format for UAE, Saudi Arabia, and Qatar job applications is usually not the most creative one. It is the clearest one. Recruiters across the Gulf often review high volumes of profiles quickly, which means your CV should help them understand your role fit in seconds.</p>
 <p>That usually means a simple structure, strong top section, clear experience bullets, and role-specific keywords that match the job you are targeting.</p>
-<figure><img src="/article-images/gulf-cv-format-inline.svg" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
+<figure><img src="/article-images/gulf-cv-format-inline.jpg" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
 <ul>
 <li>Keep the layout simple and readable before you worry about design.</li>
 <li>Put your target role, contact details, and short profile summary near the top.</li>
