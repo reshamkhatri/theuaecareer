@@ -533,6 +533,7 @@ const blogStyles = `
     line-height: 1.25;
     margin: 10px 0 8px;
     letter-spacing: -0.01em;
+    color: #fff;
   }
   .blg-featured-excerpt {
     color: rgba(255,255,255,0.7);
