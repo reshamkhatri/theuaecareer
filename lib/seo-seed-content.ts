@@ -501,4 +501,76 @@ export const seoSeedArticles = [
 <h2>What to do next</h2>
 <p>Once you build your resume, put it to work. If you are targeting fast-moving roles, check the latest <a href="/jobs/walk-in/">walk-in interviews in the UAE</a>. If you are targeting corporate or branded roles, make sure your new CV is tailored to the specific job description before submitting it through official employer career pages.</p>`,
   },
+  {
+    _id: 'seo-article-gratuity-calculator-2026',
+    title: 'UAE Gratuity Calculator 2026: End of Service Explained',
+    slug: 'uae-gratuity-calculator-end-of-service-benefits-2026',
+    excerpt:
+      'Learn how to calculate your UAE end of service benefits accurately and legally using our free 2026 gratuity calculator.',
+    featuredImage: '/article-images/gratuity-calculator-hero.png',
+    coverAlt:
+      'A worker reviewing end of service documents on a laptop next to a calculator in a bright office',
+    category: 'Career Guides',
+    tags: ['gratuity calculator', 'end of service', 'uae labour law', 'resignation'],
+    status: 'published',
+    publishDate: '2026-04-13T11:00:00.000Z',
+    lastUpdatedDate: '2026-04-13T11:00:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'UAE Gratuity Calculator 2026: Calculate End of Service',
+    metaDescription:
+      'Need a UAE gratuity calculator? Read our guide on the latest 2026 end of service rules, find out how much you are owed, and use our free tool to check it.',
+    content: `<p>Finding an accurate UAE gratuity calculator is critical when you are preparing to resign or if your contract is being terminated. Understanding exactly how much end of service benefit you are owed prevents disputes with your employer and helps you plan your next move. The UAE Labour Law guarantees this payment, but the math confuses many expats.</p>
+<p>To make this simple, we built a free, up-to-date <a href="/tools/gratuity-calculator/">Gratuity Calculator</a>. It uses the latest Federal Decree-Law No. 33 of 2021 to instantly determine your precise payout based on your basic salary and years of service.</p>
+<h2>How is your gratuity calculated in 2026?</h2>
+<p>Your end of service payout depends entirely on your basic salary, not your total package. This is the most common mistake workers make. If your total salary is AED 10,000 but your basic is AED 6,000, your gratuity uses the AED 6,000 figure.</p>
+<p>According to the law, workers who complete one to five years of service are entitled to 21 days of basic salary for each year. If you exceed five years, the rate increases to 30 days of basic salary for every additional year. Partial years are prorated exactly to the day.</p>
+<h2>Does resignation type affect your payout?</h2>
+<ul>
+<li><strong>Unlimited contracts:</strong> Under the new legislation, there is no longer a gratuity reduction if you resign voluntarily on an unlimited contract, provided you have passed the one-year mark.</li>
+<li><strong>Termination:</strong> If you are terminated by the company (for non-disciplinary reasons), you receive your full accumulated gratuity.</li>
+<li><strong>Less than one year:</strong> If you leave before completing a full continuous year of service, you are legally entitled to nothing.</li>
+</ul>
+<p>If you are unsure about your contract type, you should review our <a href="/blog/uae-labour-law-guide-for-expats/">UAE Labour Law Guide</a> before sending your resignation email.</p>
+<h2>What about unpaid leave and absences?</h2>
+<p>Any days taken as unpaid leave must be deducted from your total years of service before running the final calculation. This is why checking your HR records before your final month is highly recommended.</p>
+<p>Sick leave and paid annual leave, however, are fully counted toward your service period. Our calculator automatically handles these complexities so you do not have to guess.</p>
+<h2>What to do next</h2>
+<p>First, input your basic salary and start dates into the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a> to see your exact number. Once you know your financial runway, use the <a href="/tools/cv-maker/">CV Maker</a> to update your resume and start checking the latest <a href="/jobs/">open jobs in the UAE</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-remittance-options-2026',
+    title: 'Best UAE Remittance Options 2026: Compare Exchange Rates',
+    slug: 'best-uae-remittance-options-compare-exchange-rates-2026',
+    excerpt:
+      'Compare the best UAE remittance options to send money home efficiently, avoid hidden fees, and secure the highest exchange rates in 2026.',
+    featuredImage: '/article-images/remittance-guide-hero.png',
+    coverAlt:
+      'A person checking exchange rates on a mobile app outside a modern Dubai building',
+    category: 'Career Guides',
+    tags: ['currency converter', 'remittance', 'exchange rate', 'send money'],
+    status: 'published',
+    publishDate: '2026-04-13T11:30:00.000Z',
+    lastUpdatedDate: '2026-04-13T11:30:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'Best UAE Remittance Options 2026: Money Exchange Rates',
+    metaDescription:
+      'Discover the best UAE remittance options for 2026. Compare exchange rates, avoid hidden transfer fees, and use our currency converter to track your money.',
+    content: `<p>Finding the best UAE remittance options is a monthly priority for millions of working expats. Sending money home efficiently can literally save you thousands of dirhams over a year. The problem is that many workers accept whatever bad exchange rate their local counter offers without checking the live market.</p>
+<p>You should always establish a baseline before you transfer. We recommend using our free <a href="/tools/currency-converter/">Currency Converter</a> to check the exact live rate so you know exactly how much the exchange house is taking from you.</p>
+<h2>Which remittance methods are best right now?</h2>
+<p>There are mainly three ways to send money out of the UAE: traditional exchange houses, digital remittance apps, and direct bank wire transfers. Exchange houses like Al Ansari and UAE Exchange dominate corridors to India, Pakistan, and the Philippines because their margins are incredibly thin.</p>
+<p>Digital apps like Wise and Remitly are winning the European and North American markets. They offer mid-market rates with transparent, slightly higher flat fees but completely eliminate the hidden spread.</p>
+<h2>How to spot hidden transfer fees</h2>
+<ul>
+<li><strong>The rate markup:</strong> Many apps claim "zero fees" but give you a terrible exchange rate. This hidden markup is where they make their profit.</li>
+<li><strong>Frontend fees:</strong> A flat AED 15 or AED 20 charge applied at the counter or in the app.</li>
+<li><strong>Receiving bank fees:</strong> Sometimes the bank in your home country will slice off a fee before depositing the money. Ask your provider about "intermediary fees."</li>
+</ul>
+<p>The only way to beat this is to calculate the total amount your family will receive on the other side, rather than obsessing over the front-end fee alone.</p>
+<h2>Timing the market vs. monthly transfers</h2>
+<p>It is tempting to hold onto your salary and wait for the UAE money exchange rate to spike in your favor. Unless you are moving hundreds of thousands of dirhams, this is usually a mistake.</p>
+<p>Consistent, monthly transfers are statistically safer. Trying to time currency fluctuations often leads to stress, and holding cash in a low-interest checking account rarely beats the cost of inflation back home.</p>
+<h2>What to do next</h2>
+<p>Before you make your next transfer, open the <a href="/tools/currency-converter/">Currency Converter</a> to check today's live rate. If you are struggling to save enough to send home, check our latest <a href="/jobs/walk-in/">walk-in interviews</a> to find a better-paying role, or brush up with our <a href="/resources/interview-question-bank/">Interview Question Bank</a>.</p>`,
+  },
 ] as const;
