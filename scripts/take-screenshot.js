@@ -7,12 +7,12 @@ const puppeteer = require('puppeteer');
         const page = await browser.newPage();
         
         await page.setViewport({ width: 1280, height: 2500 });
-        console.log("Navigating to http://localhost:3000/blog ...");
+        console.log("Navigating to http://localhost:3000/tools/cv-maker ...");
         
-        await page.goto('http://localhost:3000/blog', { waitUntil: 'networkidle2' });
+        await page.goto('http://localhost:3000/tools/cv-maker', { waitUntil: 'networkidle2' });
         
         console.log("Taking screenshot...");
-        await page.screenshot({ path: 'blog_check.png', fullPage: true });
+        await page.screenshot({ path: 'cv_maker_tool_screenshot.png', fullPage: true });
         
         console.log("Done! Saved to blog_check.png");
         await browser.close();

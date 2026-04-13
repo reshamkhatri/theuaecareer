@@ -119,7 +119,7 @@ const slugFeaturedImages: Record<string, string> = {
   'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/article-images/fake-job-offers-hero.png',
   'difference-between-walk-in-interview-and-online-application-in-gulf-jobs': '/article-images/walk-in-vs-online-hero.jpg',
   'best-cv-format-for-uae-saudi-qatar-job-applications': '/article-images/gulf-cv-format-hero.png',
-  'best-cv-maker-for-gulf-jobs-uae-saudi-qatar': '/article-images/cv-maker-guide-hero.png',
+  'best-cv-maker-for-gulf-jobs-uae-saudi-qatar': '/article-images/cv-maker-app-screenshot.png',
   'uae-gratuity-calculator-end-of-service-benefits-2026': '/article-images/gratuity-calculator-hero.png',
   'best-uae-remittance-options-compare-exchange-rates-2026': '/article-images/remittance-guide-hero.png',
   
