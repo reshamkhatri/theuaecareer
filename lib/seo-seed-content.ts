@@ -466,4 +466,39 @@ export const seoSeedArticles = [
 <h2>What to do next</h2>
 <p>Apply this format in the <a href="/tools/cv-maker/">CV Maker</a>, then pair it with <a href="/blog/how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026/">official application workflow guidance</a>, <a href="/blog/how-to-apply-for-warehouse-jobs-in-saudi-arabia-safely/">safe application tips for Saudi warehouse jobs</a>, and the <a href="/resources/interview-question-bank/">Interview Question Bank</a> so the rest of your hiring funnel matches the same level of quality.</p>`,
   },
+  {
+    _id: 'seo-article-cv-maker-gulf',
+    title: 'Best CV Maker for Gulf Jobs: Build Your Resume Free',
+    slug: 'best-cv-maker-for-gulf-jobs-uae-saudi-qatar',
+    excerpt:
+      'Use the free CV Maker built specifically for UAE, Saudi, and Qatar job seekers to create an ATS-friendly, professional resume in minutes.',
+    featuredImage: '/article-images/cv-maker-guide-hero.png',
+    coverAlt:
+      'Modern laptop displaying a clean ATS-friendly CV design for Gulf jobs on a professional desk',
+    category: 'Career Guides',
+    tags: ['cv maker', 'resume builder', 'gulf jobs', 'career tools'],
+    status: 'published',
+    publishDate: '2026-04-13T10:00:00.000Z',
+    lastUpdatedDate: '2026-04-13T10:00:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'Best CV Maker for Gulf Jobs: Free ATS Resume Builder',
+    metaDescription:
+      'Looking for a CV maker for Gulf jobs? Use our free, privacy-first tool to build an ATS-friendly resume for your next UAE, Saudi, or Qatar job application.',
+    content: `<p>Finding the right CV maker for Gulf jobs is harder than it should be. Many resume builders charge hidden fees, force you into overly complex designs, or use layouts that fail Applicant Tracking Systems (ATS). If you are applying for jobs in the UAE, Saudi Arabia, or Qatar, recruiters prioritize clarity over creativity.</p>
+<p>To solve this, we built a free, privacy-first <a href="/tools/cv-maker/">CV Maker</a> designed specifically for the Gulf market. It strips away the unnecessary clutter and helps you focus on what actually gets you shortlisted: clean formatting and strong role-specific keywords.</p>
+<h2>Why use a dedicated CV Maker for Gulf jobs?</h2>
+<p>Recruiters in Dubai, Riyadh, and Doha receive hundreds of applications for single roles. When they open your CV, they spend an average of six seconds scanning it. If your resume uses a confusing two-column layout, weird fonts, or overwhelming graphics, they move on.</p>
+<p>Our free CV Maker forces you into proven, single-column templates that are readable by humans and easily parsed by corporate ATS software. The goal is to make your experience and skills instantly visible.</p>
+<h2>What makes a good Gulf CV format?</h2>
+<ul>
+<li><strong>Clean layout:</strong> Avoid heavy colors, confusing sidebars, or unreadable fonts.</li>
+<li><strong>Strong profile summary:</strong> Answer who you are, what you do, and what you bring in three clear sentences.</li>
+<li><strong>Action-driven bullets:</strong> Do not just list duties. List how you executed the work (e.g., "Handled high-volume POS billing" instead of "Did cashier work").</li>
+</ul>
+<p>If you aren't sure how to structure these sections, read our guide on the <a href="/blog/best-cv-format-for-uae-saudi-qatar-job-applications/">Best CV Format for UAE and Saudi Applications</a> before drafting your content.</p>
+<h2>How to build your resume completely free</h2>
+<p>Our tool requires no account creation and does not store your data. Simply open the <a href="/tools/cv-maker/">CV Maker</a>, fill out your professional details, enhance your experience bullets with clear language, and click export. You will instantly receive a polished, ATS-ready PDF document that you can use for online portals or print for walk-in interviews.</p>
+<h2>What to do next</h2>
+<p>Once you build your resume, put it to work. If you are targeting fast-moving roles, check the latest <a href="/jobs/walk-in/">walk-in interviews in the UAE</a>. If you are targeting corporate or branded roles, make sure your new CV is tailored to the specific job description before submitting it through official employer career pages.</p>`,
+  },
 ] as const;
