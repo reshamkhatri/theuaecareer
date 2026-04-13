@@ -42,10 +42,10 @@ export const seoSeedArticles = [
   },
   {
     _id: 'seo-article-self-introduction-walk-in-uae',
-    title: 'Self Introduction for Walk-In Interview in UAE',
+    title: 'Self Introduction for Walk-In Interview in Dubai & UAE',
     slug: 'self-introduction-for-walk-in-interview-in-uae',
     excerpt:
-      'Use a clear self introduction for walk-in interview in UAE, with a simple formula, sample answers, and common mistakes to avoid.',
+      'Use a clear self introduction for walk-in interview in Dubai and the UAE, with a simple formula, sample answers, and common mistakes to avoid.',
     featuredImage: '/article-images/self-introduction-uae-hero.png',
     coverAlt:
       'Candidate introducing themself confidently during a short job interview in the UAE',
@@ -55,10 +55,10 @@ export const seoSeedArticles = [
     publishDate: '2026-04-10T05:40:00.000Z',
     lastUpdatedDate: '2026-04-10T05:40:00.000Z',
     author: 'Editorial Team',
-    metaTitle: 'Self Introduction for Walk-In Interview in UAE: Sample Answers',
+    metaTitle: 'Self Introduction for Walk-In Interview in Dubai & UAE: Sample Answers',
     metaDescription:
-      'Learn how to give a strong self introduction for walk-in interview in UAE with a short formula, sample scripts, and role-specific tips.',
-    content: `<p>A good self introduction for walk-in interview in UAE should be short, role-focused, and easy for the recruiter to remember. In a walk-in event, you often have only 20 to 30 seconds to sound clear and employable before the interviewer decides how much attention to give the rest of your answers.</p>
+      'Learn how to give a strong self introduction for walk-in interview in Dubai and UAE with a short formula, sample scripts, and role-specific tips.',
+    content: `<p>A good self introduction for walk-in interview in Dubai or the UAE should be short, role-focused, and easy for the recruiter to remember. In a walk-in event, you often have only 20 to 30 seconds to sound clear and employable before the interviewer decides how much attention to give the rest of your answers.</p>
 <p>Your goal is not to tell your whole life story. Your goal is to help the recruiter understand who you are, what role you fit, what experience you bring, and whether you are ready to join.</p>
 <figure><img src="/article-images/self-introduction-uae-inline.png" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
 <ul>
@@ -66,7 +66,7 @@ export const seoSeedArticles = [
 <li>Add your most relevant experience or training in one line.</li>
 <li>Finish with your availability, location, or the kind of employer you want to join.</li>
 </ul>
-<h2>What is the best self introduction for walk-in interview in UAE?</h2>
+<h2>What is the best self introduction for walk-in interview in Dubai and the UAE?</h2>
 <p>A simple formula works best: name + current background + relevant experience + immediate fit. For example: "My name is Ramesh. I have two years of retail sales experience in supermarkets and fashion stores. I am comfortable with customer service, billing support, and shift work, and I am available to join immediately in Dubai."</p>
 <p>That answer is short, clear, and useful. Compare it with a weak version such as "Myself Ramesh. I came from Nepal. I am hardworking and sincere and I need a job." The second version sounds honest, but it does not help the recruiter place you into a role.</p>
 <h2>Sample self introduction for hospitality jobs</h2>
