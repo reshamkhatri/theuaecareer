@@ -1,4 +1,6 @@
-import { getCliClient } from 'sanity/cli';
+import fs from 'node:fs';
+import path from 'node:path';
+import { createClient } from 'next-sanity';
 
 type PortableTextBlock = {
   _type: 'block';
@@ -53,12 +55,41 @@ type JobDocument = {
   metaDescription: string;
 };
 
-const verifiedAt = '2026-03-29T09:00:00.000Z';
-const expiresAt = '2026-04-12T23:59:59.000Z';
+const verifiedAt = new Date().toISOString();
+const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(); // 30 days from now
 let keyCounter = 0;
 
-const client = getCliClient({
-  apiVersion: '2026-03-27',
+function loadEnvFiles() {
+  const processWithLoader = process as typeof process & {
+    loadEnvFile?: (path?: string) => void;
+  };
+
+  const candidates = ['.env.local', '.env'];
+  for (const candidate of candidates) {
+    const resolved = path.resolve(process.cwd(), candidate);
+    if (fs.existsSync(resolved) && processWithLoader.loadEnvFile) {
+      processWithLoader.loadEnvFile(resolved);
+    }
+  }
+}
+
+loadEnvFiles();
+
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'gmirvpfp';
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
+const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2026-03-27';
+const token = process.env.SANITY_API_WRITE_TOKEN;
+
+if (!token) {
+  throw new Error('Missing SANITY_API_WRITE_TOKEN. Add it to .env.local.');
+}
+
+const client = createClient({
+  projectId,
+  dataset,
+  apiVersion,
+  token,
+  useCdn: false,
 });
 
 function nextKey() {
