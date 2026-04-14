@@ -678,12 +678,146 @@ export default function CVMakerPage() {
               <FiMail /> {isSendingEmail ? 'Sending...' : 'Send CV'}
             </button>
 
-            <p style={{ fontSize: '0.75rem', color: '#94a3b8', textAlign: 'center', marginTop: '12px', marginBottom: 0 }}>
-              Your email is only used to deliver this CV and is not stored.
-            </p>
+      {/* Deep-Dive Pillar Content for CV Maker */}
+      <section className="container" style={{ marginTop: '80px', maxWidth: '1000px', lineHeight: 1.8 }}>
+        <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', marginBottom: '80px' }} />
+        
+        <h2 style={{ fontSize: '2.75rem', color: '#0f172a', marginBottom: '24px', letterSpacing: '-1.5px', fontWeight: 800 }}>
+          The Ultimate Guide to UAE & Gulf CV Standards (2026)
+        </h2>
+        
+        <p style={{ fontSize: '1.25rem', color: '#475569', marginBottom: '40px', fontWeight: 400 }}>
+          Finding a job in Dubai, Abu Dhabi, or Riyadh starts with a Resume that speaks the language of local recruiters. Unlike Western markets where brief, minimalist CVs are the norm, the <strong>Gulf job market requires specific personal data</strong> and a clear focus on industry-recognized keywords. This guide explains how to use our free CV Maker to build a document that actually gets read.
+        </p>
+
+        <h3 style={{ fontSize: '1.75rem', color: '#0f172a', margin: '40px 0 20px', fontWeight: 700 }}>1. The &quot;Big Four&quot; Mandatory Fields in the UAE</h3>
+        <p style={{ marginBottom: '20px' }}>
+          In the UAE, recruiters filter candidates based on logistics and legality first. If you leave these four fields out, your CV might be filtered out before a human even sees it:
+        </p>
+        <ul style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <li><strong>Nationality:</strong> Many companies have specific visa quotas or language requirements based on project locations. Stating your nationality upfront helps HR quickly categorize your application.</li>
+          <li><strong>Visa Status:</strong> Are you on a Visit Visa, Employment Visa, or Husband/Father Sponsorship? Employers need to know if they need to process a new visa (which costs money) or if you are available for an immediate start.</li>
+          <li><strong>Date of Birth (DOB):</strong> While &quot;ageism&quot; is a concern in some markets, providing your DOB is standard practice across the GCC and is required for initial insurance and labor registrations.</li>
+          <li><strong>Professional Photo:</strong> In Hospitality, Retail, and Executive roles in Dubai, a high-quality, professional headshot is expected. Use a white or light background and wear business attire.</li>
+        </ul>
+
+        <div style={{ background: '#f0f9ff', borderLeft: '4px solid #0369a1', padding: '24px', borderRadius: '12px', margin: '40px 0' }}>
+          <h4 style={{ color: '#075985', fontSize: '1.125rem', marginBottom: '12px', fontWeight: 700 }}>🚀 Pro Tip: The 5-Second Test</h4>
+          <p style={{ color: '#0c4a6e', fontSize: '0.9375rem', margin: 0 }}>
+            An average HR person in a Dubai recruitment agency receives 500+ CVs for a single Sales or Admin role. They spend roughly <strong>5 seconds</strong> looking at your header and your &quot;Professional Summary&quot;. If they don&apos;t see your core skill and your current location in that window, they will move to the next candidate.
+          </p>
+        </div>
+
+        <h3 style={{ fontSize: '1.75rem', color: '#0f172a', margin: '40px 0 20px', fontWeight: 700 }}>2. Optimizing for Dubai&apos;s ATS (Applicant Tracking Systems)</h3>
+        <p style={{ marginBottom: '20px' }}>
+          Top employers like Emaar, Emirates Group, and Majid Al Futtaim use advanced ATS software to scan resumes. To pass the &quot;Robot Screen,&quot; follow these rules:
+        </p>
+        <ul style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <li><strong>Use the &quot;Gulf Classic&quot; Template:</strong> Our Classic layout is designed with high parsing accuracy in mind. Avoid complex graphics or nested tables that confuse the scanner.</li>
+          <li><strong>Quantify Achievements:</strong> Instead of saying &quot;Responsible for sales,&quot; say &quot;Exceeded sales targets by 22% (AED 1.2M) in FY2025.&quot;</li>
+          <li><strong>Mirror the Job Description:</strong> If the job ad lists &quot;Oracle ERP&quot; or &quot;Agile Scrum,&quot; ensure those exact phrases appear in your Skills section.</li>
+        </ul>
+
+        <h3 style={{ fontSize: '1.75rem', color: '#0f172a', margin: '40px 0 20px', fontWeight: 700 }}>3. Template Choice: Which one fits your career?</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', margin: '32px 0' }}>
+          <div style={{ background: '#F8FAFC', padding: '24px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+            <h4 style={{ color: '#0f766e', marginBottom: '8px' }}>Gulf Classic</h4>
+            <p style={{ fontSize: '0.875rem', color: '#444' }}><strong>Best for:</strong> Construction, Engineering, Logistics, and Government applications. High ATS compliance and traditional professional appeal.</p>
+          </div>
+          <div style={{ background: '#F8FAFC', padding: '24px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+            <h4 style={{ color: '#0f172a', marginBottom: '8px' }}>Dubai Executive</h4>
+            <p style={{ fontSize: '0.875rem', color: '#444' }}><strong>Best for:</strong> Project Managers, C-Suite, Banking, and Real Estate. Shows authority and highlights specific leadership metrics in the sidebar.</p>
+          </div>
+          <div style={{ background: '#F8FAFC', padding: '24px', borderRadius: '12px', border: '1px solid #E2E8F0' }}>
+            <h4 style={{ color: '#4f46e5', marginBottom: '8px' }}>Modern Minimal</h4>
+            <p style={{ fontSize: '0.875rem', color: '#444' }}><strong>Best for:</strong> Digital Marketing, Tech, Creative, and SMEs. Clean, energetic, and focuses on skills above all else.</p>
           </div>
         </div>
-      )}
+
+        <h2 style={{ fontSize: '2.25rem', color: '#0f172a', marginTop: '80px', marginBottom: '32px', textAlign: 'center', letterSpacing: '-1px' }}>
+           CV Maker FAQ & Recruiter Insights
+        </h2>
+
+        <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '60px' }}>
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Is it mandatory to include a photo on a UAE CV?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>While not &quot;legally&quot; mandatory, it is culturally expected in many sectors like Retail, Front Office, and Sales. If you are in a purely technical role (like Software Engineering), you can skip it.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>How long should my CV be?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>For freshers and junior staff, <strong>1 page</strong> is ideal. For experienced professionals with 5+ years of history, <strong>2 pages</strong> is standard. Avoid 3+ pages unless you are in Academics or high-level Project Management.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Should I list my visa status?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}><strong>YES.</strong> This is one of the most important fields in the UAE. Stating &quot;Visit Visa (Valid until June 2026)&quot; or &quot;Available for Immediate Joining&quot; gives you a massive advantage over overseas candidates.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Do I need to mention my marital status?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>It is optional. However, some companies still prefer to know for insurance purposes (family vs individual cover). Unless explicitly asked, you can leave this off to save space.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Will this builder help with Saudi and Qatar jobs?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>Yes. The &quot;Gulf Classic&quot; layout is modeled after recruitment standards used across the entire GCC (Saudi Arabia, Qatar, Kuwait, Oman, and UAE).</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Does this tool work on mobile?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>Yes, the builder is fully responsive. You can edit your CV on your phone and download the PDF directly, though we recommend a desktop for the best layout preview experience.</p>
+          </div>
+          
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>Can I save my progress and come back later?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>Yes. Your CV data is saved automatically in your browser&apos;s local storage. As long as you don&apos;t clear your browser cache, your work will be here when you return.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: '#0f172a', marginBottom: '12px', fontWeight: 700 }}>How do I get an ATS-friendly CV?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#475569', lineHeight: 1.7, margin: 0 }}>Select the &quot;Gulf Classic&quot; template. It uses a single-column format that is the Gold Standard for automated scanning systems.</p>
+          </div>
+        </div>
+
+        {/* Dynamic linking for Pillar SEO */}
+        <div style={{ padding: '40px', background: '#0f172a', color: '#fff', borderRadius: '24px', textAlign: 'center', marginBottom: '80px' }}>
+           <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>Ready to launch your UAE career?</h3>
+           <p style={{ color: '#94a3b8', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>Once your CV is ready, check out our latest verified jobs and career guides to start applying today.</p>
+           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
+              <Link href="/blog/walk-in-interviews-dubai-this-week" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Walk-In Interviews</Link>
+              <Link href="/blog/uae-labour-law-guide-for-expats" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
+              <Link href="/tools/gratuity-calculator" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
+           </div>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Is it mandatory to include a photo on a UAE CV?',
+                acceptedAnswer: { '@type': 'Answer', text: 'It is culturally expected in many sectors like Retail and Hospitality, though not legally mandatory. For technical roles, it is optional.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'What details are mandatory on a Gulf CV?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Nationality, Visa Status, Date of Birth, and Phone Number are the standard requirements for recruiters in the UAE and GCC.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'How do I make my CV ATS-friendly for Dubai?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Use a single-column layout, avoid complex graphics, and include industry-specific keywords that match the job description.' },
+              },
+            ],
+          }),
+        }}
+      />
     </div>
   );
 }

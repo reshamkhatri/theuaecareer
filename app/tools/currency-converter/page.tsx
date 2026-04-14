@@ -150,37 +150,111 @@ export default function CurrencyConverterPage() {
         </div>
       </div>
 
-      {/* FAQ Section */}
-      <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--primary)', marginBottom: '8px', textAlign: 'center' }}>Frequently Asked Questions</h2>
-        <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '32px' }}>Common questions about UAE currency and remittance</p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '32px' }}>
-          {[
-            { q: 'What is today\'s AED to INR rate?', a: 'The AED to INR rate fluctuates daily. Use the converter above for the current mid-market reference rate. Exchange houses like Al Ansari and UAE Exchange typically offer rates within 0.3–0.5% of the mid-market rate.' },
-            { q: 'Which is cheaper — exchange house or bank transfer?', a: 'Exchange houses are almost always cheaper for small to medium remittances. Banks charge higher fees and worse rates. For large transfers above AED 10,000, compare Wise or your bank directly.' },
-            { q: 'Why is my bank rate different from this tool?', a: 'This tool shows the mid-market (interbank) reference rate. Banks and exchange houses add a margin on top. The difference is typically 0.5–2% depending on the provider and amount.' },
-            { q: 'What is the best time to send money from UAE?', a: 'Mid-week (Tuesday to Thursday) tends to have slightly better rates than weekends. Avoid sending on UAE public holidays when exchange desks are closed or rates are less competitive.' },
-            { q: 'Is it cheaper to send AED or convert first?', a: 'Send in AED and let the receiving end convert — most exchange houses and apps handle this automatically at the mid-market rate. Converting before sending often costs extra.' },
-            { q: 'How do I find AED to NPR or SAR to PHP rates?', a: 'Use the currency dropdowns above. This tool covers all major Gulf remittance corridors including AED, SAR, QAR to INR, PHP, NPR, BDT, PKR and more.' },
-          ].map(({ q, a }) => (
-            <div key={q} style={{ background: '#f9fafb', border: '1px solid var(--border)', padding: '20px 24px', borderRadius: '10px' }}>
-              <h3 style={{ fontSize: '0.9375rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '10px' }}>{q}</h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.65, margin: 0 }}>{a}</p>
-            </div>
-          ))}
+      {/* Deep-Dive Pillar Content for Currency & Remittance */}
+      <section className="container" style={{ marginTop: '800ox', maxWidth: '1000px', lineHeight: 1.8, paddingTop: '80px', borderTop: '1px solid #e2e8f0' }}>
+        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '24px', letterSpacing: '-1.5px', fontWeight: 800 }}>
+          The Expat&apos;s Guide to Remittance & Currency Exchange (2026)
+        </h2>
+        
+        <p style={{ fontSize: '1.25rem', color: '#444', marginBottom: '32px' }}>
+          For the 9 million expats living in the UAE, &quot;sending money home&quot; is more than a monthly chore—it&apos;s a significant financial decision. With the <strong>UAE Dirham (AED) pegged to the US Dollar (USD)</strong> at a fixed rate of 3.6725, the volatility you see in rates like AED to INR or AED to PHP is driven entirely by the performance of the global economy. Understanding how to navigate this market can save you thousands of Dirhams every year.
+        </p>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>1. Mid-Market Rates vs. The &quot;Real&quot; Rate</h3>
+        <p style={{ marginBottom: '20px' }}>
+          When you search Google for &quot;AED to INR today,&quot; you are shown the <strong>Mid-Market Rate</strong> (also known as the Interbank Rate). This is the midpoint between the buy and sell prices of a currency on the global market. 
+        </p>
+        <p style={{ marginBottom: '20px' }}>
+          Crucially, this is <strong>not the rate you will get</strong> at an exchange house in Satwa or a bank app in Business Bay. Banks and remittance providers add a &quot;markup&quot; or &quot;spread&quot; on top of this rate. A provider might claim &quot;Zero Fees,&quot; but they are often making their profit by giving you a rate that is 1% or 2% worse than the mid-market rate.
+        </p>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>2. Top Remittance Corridors from the UAE</h3>
+        <div style={{ background: '#f8fafc', padding: '32px', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '32px 0' }}>
+          <h4 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--primary)' }}>Key Corridors Explained:</h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0 }}>
+            <li><strong>AED to INR (India):</strong> The largest corridor. Competition is fierce, meaning margins are often as low as 0.10 AED per Rupee. Look for instant-transfer options to major Indian banks.</li>
+            <li><strong>AED to PHP (Philippines):</strong> High volume driven by personal remittances. Many providers offer &quot;Cash Pickup&quot; at locations like Palawan Pawnshop or Cebuana Lhuillier.</li>
+            <li><strong>AED to PKR (Pakistan):</strong> Heavily influenced by government incentives like the PRI (Pakistan Remittance Initiative) which often eliminates fees for transfers above $100.</li>
+            <li><strong>AED to NPR (Nepal):</strong> Rapidly growing corridor with a focus on bank account deposits and IME Pay integrations.</li>
+          </ul>
         </div>
 
-        {/* Internal links */}
-        <div style={{ padding: '24px', background: '#fff', border: '1px solid var(--border)', borderRadius: '10px', marginBottom: '32px' }}>
-          <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '12px' }}>Related guides</p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-            <Link href="/blog/best-remittance-options-uae-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Best Remittance Options from UAE 2026</Link>
-            <Link href="/blog/cost-of-living-dubai-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Cost of Living in Dubai 2026</Link>
-            <Link href="/blog/salary-guide-uae-2026/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Salary Guide 2026</Link>
-            <Link href="/tools/gratuity-calculator/" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Gratuity Calculator</Link>
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>3. Hidden Costs: What to Watch For</h3>
+        <p style={{ marginBottom: '20px' }}>
+          To get the best value, you must look at the <strong>Total Payout Amount</strong>—the number of units the receiver actually gets after all deductions. Watch out for:
+        </p>
+        <ul style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <li><strong>Fixed Fees:</strong> AED 15 to AED 25 is standard for a physical exchange house visit.</li>
+          <li><strong>The Spread:</strong> The difference between the market rate and the provider&apos;s rate. This is usually the largest &quot;hidden&quot; cost.</li>
+          <li><strong>Correspondent Bank Charges:</strong> If you send via SWIFT (standard bank transfer), the receiving bank or an intermediary might deduct a &quot;lifting fee&quot; of $15-$30 from the final amount.</li>
+        </ul>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>4. Digital Apps vs. Physical Exchange Houses</h3>
+        <p style={{ marginBottom: '20px' }}>
+          The UAE has seen a digital revolution in remittance. Apps like <strong>Hubpay, Careem Pay, and Al Ansari Exchange App</strong> now often offer better rates than their physical counters to encourage digital adoption. However, for &quot;cash-to-cash&quot; transfers, physical branches like Lulu Exchange remain the standard.
+        </p>
+
+        <div style={{ padding: '32px', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', margin: '48px 0' }}>
+           <h4 style={{ fontSize: '1.5rem', marginBottom: '12px' }}>Calculate your next transfer</h4>
+           <p style={{ opacity: 0.8, marginBottom: '24px' }}>Use our live reference tool at the top of this page to check the latest mid-market rates.</p>
+           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)', border: 'none', fontWeight: 700 }}>
+             Back to Converter
+           </button>
+        </div>
+
+        <h2 style={{ fontSize: '2.25rem', color: 'var(--primary)', marginBottom: '32px', textAlign: 'center', letterSpacing: '-1px' }}>
+           Common Currency & Remittance Questions
+        </h2>
+
+        <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '64px' }}>
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What is the best day to send money from UAE?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Historically, mid-week (Tuesday to Thursday) offers more stable rates. Markets are closed on weekends, so providers often add a &quot;safety margin&quot; to their rates to protect against Monday morning volatility.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Is the UAE Dirham (AED) pegged?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Yes, the AED has been pegged to the US Dollar at a rate of <strong>3.6725</strong> since 1997. This means the Dirham only gets stronger or weaker against other currencies (like the Euro or Rupee) when the US Dollar does.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What is a &quot;T-pin&quot; for remittance?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>A T-pin is a Transaction Pin assigned by exchange houses for your security. You should never share this with anyone except when verifying your identity with the official provider.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Why do rates differ between exchange houses?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Exchange houses have different operational costs and inventory. One house might have a surplus of INR and offer a better rate to &quot;sell&quot; it, while another might have a shortage and offer a lower rate.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Is there a limit on how much I can send?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>For standard transfers, there is no hard legal limit, but transfers above AED 35,000 usually require additional documentation like a salary certificate or proof of funds for AML compliance.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Can I send money without a bank account?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Yes. You can visit any physical exchange house with your <strong>Emirates ID</strong> and cash. They will process the transfer to a bank account or cash pickup location in your home country.</p>
           </div>
         </div>
-      </div>
+
+        <div style={{ padding: '32px', background: '#F1F5F9', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '16px', fontWeight: 700 }}>More Career & Finance Tools</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+               {[
+                 { label: 'Gratuity Calculator', href: '/tools/gratuity-calculator' },
+                 { label: 'Free CV Maker', href: '/tools/cv-maker' },
+                 { label: 'Latest Walk-In Interviews', href: '/blog/walk-in-interviews-dubai-this-week' },
+                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
+                 { label: 'Best Remittance Options 2026', href: '/blog/best-remittance-options-uae-2026' }
+               ].map((link) => (
+                 <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#fff', padding: '8px 16px', borderRadius: '8px', border: '1px solid #CBD5E1', textDecoration: 'none' }}>
+                   {link.label}
+                 </Link>
+               ))}
+            </div>
+        </div>
+      </section>
 
       <script
         type="application/ld+json"

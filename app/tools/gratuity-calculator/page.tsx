@@ -248,46 +248,167 @@ export default function GratuityCalculatorPage() {
         </div>
       </div>
 
+      {/* Deep-Dive Pillar Content */}
+      <section className="container" style={{ marginTop: '80px', maxWidth: '900px', lineHeight: 1.8 }}>
+        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '24px', letterSpacing: '-1px' }}>
+          Final Guide to UAE End-of-Service Gratuity (2026 Edition)
+        </h2>
+        
+        <p style={{ fontSize: '1.125rem', color: '#444', marginBottom: '32px' }}>
+          For expats working in the UAE, the <strong>End-of-Service Gratuity</strong> isn&apos;t just a bonus—it&apos;s a vital financial safety net regulated by federal law. Since the major overhaul of the UAE Labour Law in February 2022 (Federal Decree-Law No. 33), the rules surrounding how much you are owed, when you get paid, and how &quot;limited&quot; contracts work have changed significantly.
+        </p>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px' }}>What is the UAE Gratuity Law (Federal Decree-Law No. 33)?</h3>
+        <p style={{ marginBottom: '20px' }}>
+          The current UAE Labour Law applies to all private sector employees in the mainland and most free zones. The fundamental principle is that any employee who completes <strong>one full year of continuous service</strong> is entitled to a lump-sum payment upon the termination of their employment.
+        </p>
+        <p style={{ marginBottom: '20px' }}>
+          One of the biggest changes in the recent law update was the <strong>standardisation of contracts</strong>. Previously, employees on &quot;Limited&quot; and &quot;Unlimited&quot; contracts faced different gratuity reduction rules if they resigned. Today, most contracts are standardised, and the old &quot;resignation reductions&quot; (where you might only get 1/3 or 2/3 of your gratuity) have been largely phased out in favour of a more transparent, service-years-based calculation.
+        </p>
+
+        <div style={{ background: '#FFF7ED', borderLeft: '4px solid #F59E0B', padding: '24px', borderRadius: '8px', margin: '40px 0' }}>
+          <h4 style={{ color: '#92400E', fontSize: '1.125rem', marginBottom: '12px', fontWeight: 700 }}>⚠️ Important: The 2024 Voluntary Savings Scheme</h4>
+          <p style={{ color: '#92400E', fontSize: '0.9375rem', margin: 0 }}>
+            In late 2023, the UAE government introduced a voluntary <strong>End-of-Service Savings Scheme</strong> (as per Cabinet Resolution No. 96). Companies can now opt to enroll their employees in an investment-based fund (supervised by SCA and MOHRE) instead of the traditional lump-sum gratuity. If your company has joined this scheme, your benefits will be managed through an investment account rather than the standard basic-salary formula.
+          </p>
+        </div>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px' }}>How the Gratuity Formula is Calculated</h3>
+        <p style={{ marginBottom: '20px' }}>
+          Gratuity is calculated based on your <strong>last basic salary</strong>. It does not include allowances like housing, transport, or utilities. This is why many expats see a &quot;Total Package&quot; of AED 20,000 but a &quot;Basic Salary&quot; of AED 10,000—your gratuity will be calculated on the latter.
+        </p>
+        
+        <div style={{ background: '#F8FAFC', padding: '32px', borderRadius: '16px', border: '1px solid #E2E8F0', margin: '32px 0' }}>
+          <h4 style={{ fontSize: '1.25rem', marginBottom: '16px', color: 'var(--primary)' }}>Standard Gratuity Accrual:</h4>
+          <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0 }}>
+            <li style={{ display: 'flex', gap: '12px' }}>
+              <span style={{ color: '#10B981', fontWeight: 800 }}>✔</span>
+              <span><strong>1 to 5 Years of Service:</strong> 21 days&apos; basic salary for each year of service.</span>
+            </li>
+            <li style={{ display: 'flex', gap: '12px' }}>
+              <span style={{ color: '#10B981', fontWeight: 800 }}>✔</span>
+              <span><strong>More than 5 Years of Service:</strong> 30 days&apos; basic salary for each additional year.</span>
+            </li>
+            <li style={{ display: 'flex', gap: '12px', color: '#64748B', fontSize: '0.875rem' }}>
+              <span><em>Note: Total gratuity cannot exceed the equivalent of two years&apos; basic salary.</em></span>
+            </li>
+          </ul>
+        </div>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px' }}>Eligibility & Exclusions: The Fine Print</h3>
+        <p style={{ marginBottom: '20px' }}>
+          While most workers qualify, there are specific scenarios where you might not receive your full benefit:
+        </p>
+        <ul style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <li><strong>Unpaid Leave:</strong> Days taken as unpaid leave are deducted from your total days of service. If you worked for 365 days but took 10 days of unpaid leave, you haven&apos;t completed &quot;one full year&quot; yet.</li>
+          <li><strong>Absconding:</strong> If an employee leaves work without notice (absconds), they may lose their right to end-of-service benefits.</li>
+          <li><strong>Gross Misconduct:</strong> Under Article 44 of the Labour Law, if an employee is terminated for reasons like physical assault at work, sharing trade secrets, or being under the influence of alcohol during shift, the employer may attempt to withhold benefits (though this is often contested in court).</li>
+        </ul>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px' }}>MOHRE Dispute Resolution: What to do if you aren&apos;t paid</h3>
+        <p style={{ marginBottom: '20px' }}>
+          The UAE government requires that all end-of-service benefits be paid within <strong>14 days of the contract termination date</strong>. If your employer refuses to pay or miscalculates the amount, follow these steps:
+        </p>
+        <ol style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <li><strong>Internal Query:</strong> Request a written breakdown from your HR department. Compare it with the results from our <strong>UAE Gratuity Calculator</strong>.</li>
+          <li><strong>MOHRE Complaint:</strong> If unresolved, file a labor complaint through the MOHRE Website or the MOHRE App.</li>
+          <li><strong>TAWAFUQ Center:</strong> A mediator from a Tawafuq center will attempt to settle the case within 10 working days.</li>
+          <li><strong>Labor Court:</strong> If mediation fails and the claim is over AED 50,000, the case is referred to the UAE Labor Court. For claims under AED 50,000, MOHRE now has the power to issue a final, binding decision.</li>
+        </ol>
+
+        <div style={{ padding: '32px', background: 'var(--primary)', color: 'white', borderRadius: '16px', textAlign: 'center' }}>
+          <h4 style={{ fontSize: '1.5rem', marginBottom: '12px' }}>Ready to check your numbers?</h4>
+          <p style={{ opacity: 0.8, marginBottom: '24px' }}>Use the tool at the top of this page for an instant, accurate estimate.</p>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)' }}>
+            Back to Calculator
+          </button>
+        </div>
+      </section>
+
       {/* FAQ Section */}
       <div className="container" style={{ marginTop: '80px', maxWidth: '1000px' }}>
-         <h2 style={{ textAlign: 'center', fontSize: '2rem', color: 'var(--primary)', marginBottom: '8px' }}>Frequently Asked Questions</h2>
-         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '40px' }}>Everything you need to know about UAE end-of-service gratuity</p>
+         <h2 style={{ textAlign: 'center', fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '8px', letterSpacing: '-1px' }}>Gratuity FAQ & People Also Ask</h2>
+         <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '40px', fontSize: '1.125rem' }}>Expert answers to your most common end-of-service questions</p>
+         
          <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Am I eligible for gratuity if I resign?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Yes. Under UAE Labour Law (Federal Decree No. 33 of 2021), employees are eligible for gratuity even if they resign — as long as they have completed at least 1 year of continuous service.</p>
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Am I eligible for gratuity if I resign?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Yes. Under the 2022 UAE Labour Law, employees are eligible for gratuity even if they resign, provided they have completed at least 1 year of continuous service. The old reductions for resignation on Unlimited contracts have been removed for most employees.</p>
             </div>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>How is the daily wage calculated for gratuity?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>The daily wage is your basic monthly salary divided by 30 days. Housing, transport, and other allowances are excluded. Only your basic salary is used.</p>
+            
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Does gratuity include my housing allowance?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>No. Gratuity is calculated <strong>only on your basic salary</strong> as stated in your employment contract. Housing, transport, and utilities are technically considered &quot;allowances&quot; and are excluded from the calculation.</p>
             </div>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>What is the UAE gratuity formula?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>For the first 5 years: 21 days of basic salary per year. Beyond 5 years: 30 days of basic salary per year. Total gratuity is capped at 2 years of basic salary.</p>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What is the maximum gratuity I can receive?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>The total sum of end-of-service gratuity cannot exceed the equivalent of <strong>two years&apos; worth of your basic salary</strong>, regardless of how many decades you have worked for the company.</p>
             </div>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>When is gratuity paid in UAE?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Gratuity must be paid within 14 days of your last working day. If your employer delays payment, you can file a complaint with MOHRE at 800-60.</p>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What happens if I leave before 1 year?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>If you leave your job before completing 365 days of continuous service, you are <strong>not entitled</strong> to any gratuity payment. Even leaving at 360 days results in zero benefit.</p>
             </div>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Does gratuity apply to free zone employees?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>Most free zones follow UAE Labour Law for gratuity. However, some zones (like DIFC) have their own regulations. Check your employment contract to confirm which law applies.</p>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Is gratuity the same for Free Zone workers?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Most free zones (like JAFZA or DMCC) follow the UAE Federal Labour Law. However, the <strong>DIFC</strong> and <strong>ADGM</strong> have their own specific employment laws and a mandatory pension-style scheme (DEWS), which replaces traditional gratuity.</p>
             </div>
-            <div style={{ background: '#F4F7FA', padding: '24px', borderRadius: '12px' }}>
-               <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '12px' }}>Is gratuity taxed in UAE?</h3>
-               <p style={{ fontSize: '0.9375rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>No. There is no income tax in the UAE, so your gratuity payment is tax-free in the UAE. You may need to declare it in your home country depending on local tax laws.</p>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>How long should it take to receive my payment?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>The law is very strict here: all end-of-service entitlements—including gratuity and unpaid leave—must be paid within <strong>14 days</strong> of your last working day.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Does maternity leave reduce my gratuity?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>No. Paid maternity leave is considered <strong>service time</strong>. Only periods of unpaid leave (beyond what is legally protected) are deducted from the service day count.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Can an employer deduct fines from my gratuity?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Employers can only make deductions for specific reasons: outstanding loans, damage to company property (proven), or court-ordered garnishments. They cannot deduct visa costs or general recruitment expenses.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What is Article 44 of the UAE Labour Law?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Article 44 lists the conditions under which an employer can terminate an employee <strong>without notice</strong>. While gratuity is still generally paid, some specific cases of gross misconduct can lead to legal challenges over the payoff.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>How is the &quot;last basic salary&quot; determined?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>It is the basic salary you were earning on your final day of work. If you received a pay rise 6 months before leaving, your gratuity for the *entire* service period is calculated using that new, higher basic salary.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What if I work part-time in the UAE?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Part-time employees are also entitled to gratuity, but it is calculated on a pro-rata basis based on the number of hours worked compared to a full-time role.</p>
+            </div>
+
+            <div style={{ background: '#F8FAFC', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+               <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Do I get gratuity on a visit visa?</h3>
+               <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>No. Working on a visit visa is illegal in the UAE. Gratuity is only legally enforceable for employees with a valid labor contract and residence visa registered with MOHRE.</p>
             </div>
          </div>
 
          {/* Internal links */}
-         <div style={{ marginTop: '40px', padding: '28px', background: '#fff', border: '1px solid var(--border)', borderRadius: '12px' }}>
-            <h3 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '16px' }}>Related Guides</h3>
+         <div style={{ marginTop: '40px', padding: '32px', background: '#fff', border: '1px solid #E2E8F0', borderRadius: '16px' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '16px', fontWeight: 700 }}>Related Career Resources</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-               <Link href="/blog/uae-labour-law-guide-for-expats" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Labour Law Guide for Expats</Link>
-               <Link href="/blog/salary-guide-uae-2026" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Salary Guide 2026</Link>
-               <Link href="/blog/how-to-renew-uae-work-visa" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>UAE Work Visa Renewal Guide</Link>
-               <Link href="/blog/abu-dhabi-vs-dubai-working-expats" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>Abu Dhabi vs Dubai for Expats</Link>
-               <Link href="/tools/currency-converter" style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, textDecoration: 'underline' }}>AED Currency Converter</Link>
+               {[
+                 { label: 'Full UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
+                 { label: '2026 Salary Guide by Industry', href: '/blog/salary-guide-uae-2026' },
+                 { label: 'Work Visa Renewal Process', href: '/blog/how-to-renew-uae-work-visa' },
+                 { label: 'Dubai vs Abu Dhabi Salaries', href: '/blog/abu-dhabi-vs-dubai-working-expats' },
+                 { label: 'Best Remittance Rates AED', href: '/blog/best-remittance-options-uae-2026' },
+                 { label: 'How to find a job as a fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher' },
+                 { label: 'Building a Gulf CV', href: '/tools/cv-maker' }
+               ].map((link) => (
+                 <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#F1F5F9', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none' }}>
+                   {link.label}
+                 </Link>
+               ))}
             </div>
          </div>
       </div>

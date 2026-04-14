@@ -236,7 +236,131 @@ export default function InterviewQuestionBankPage() {
             ))}
           </div>
         </div>
-      </div>
+      {/* Deep-Dive Pillar Content for Interview Bank */}
+      <section className="container" style={{ marginTop: '80px', maxWidth: '1000px', lineHeight: 1.8, paddingTop: '80px', borderTop: '1px solid #e2e8f0' }}>
+        <h2 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '24px', letterSpacing: '-1px', fontWeight: 800 }}>
+          Mastering the UAE Job Interview: The 2026 Context
+        </h2>
+        
+        <p style={{ fontSize: '1.25rem', color: '#444', marginBottom: '32px' }}>
+          Landing a job in the UAE or Saudi Arabia is only half the battle. The interview stage in the Gulf is a unique blend of high-level technical assessment and deep professional etiquette. As the region moves toward <strong>Net Zero 2050</strong> and massive infrastructure projects like <strong>NEOM</strong>, recruiters are looking for candidates who can not only do the job but also navigate the complex multi-national team dynamics of a modern Gulf office.
+        </p>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>1. The Cultural Nuances of a Dubai Interview</h3>
+        <p style={{ marginBottom: '20px' }}>
+          In London or New York, a &quot;relaxed&quot; interview style might be acceptable. In the UAE, <strong>formalism is key</strong>. Even if the office looks modern and cool, the interview process remains traditional.
+        </p>
+        <ul style={{ marginBottom: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <li><strong>Punctuality:</strong> Arriving 10 minutes early is &quot;on time.&quot; Traffic in Dubai and Riyadh is unpredictable—plan for it.</li>
+          <li><strong>Dress Code:</strong> Standard business attire (suit and tie or professional dress) is the default unless explicitly told otherwise. It signal respect for the company and the position.</li>
+          <li><strong>The &quot;Personal&quot; Touch:</strong> It is common for interviewers to ask general questions about your life, your arrival in the UAE, or how you like the region. This is a &quot;vibe check&quot; to see if you are a stable candidate who plans to stay for the long term.</li>
+        </ul>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>2. Handling the Salary & &quot;Last Basic&quot; Question</h3>
+        <p style={{ marginBottom: '20px' }}>
+          UAE recruiters often ask for your <strong>&quot;Current Basic Salary&quot;</strong> and your latest payslip. Because gratuity is calculated on basic salary, many employers try to keep this number low while offering higher allowances.
+        </p>
+        <div style={{ background: '#f8fafc', padding: '32px', borderRadius: '16px', border: '1px solid #e2e8f0', margin: '32px 0' }}>
+          <h4 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '12px' }}>Strategy for Negotiation:</h4>
+          <p style={{ marginBottom: 0 }}>
+            Instead of giving a single number, discuss the <strong>Total Remuneration Package</strong>. Mention your expectations for housing, transport, schooling (if applicable), and medical insurance alongside your basic salary. If you are moving from a tax-free region to another, highlight your net take-home pay rather than gross taxable income.
+          </p>
+        </div>
+
+        <h3 style={{ fontSize: '1.75rem', color: 'var(--primary)', margin: '40px 0 20px', fontWeight: 700 }}>3. Trends: AI Screening and Psychometric Testing</h3>
+        <p style={{ marginBottom: '20px' }}>
+          If you are applying for roles at major entities like <strong>EMAAR, ADNOC, or Aramco</strong>, your first interview might not be with a human. AI video platforms scan your tone of voice and keyword usage. Use the sample answers above to ensure you are hitting the technical &quot;buzzwords&quot; while maintaining a steady, professional delivery.
+        </p>
+
+        <div style={{ padding: '32px', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', margin: '48px 0' }}>
+           <h4 style={{ fontSize: '1.5rem', marginBottom: '12px' }}>Practice with our Question Bank</h4>
+           <p style={{ opacity: 0.8, marginBottom: '24px' }}>Jump to your sector to see real recruiter patterns and sample answers.</p>
+           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)', border: 'none', fontWeight: 700 }}>
+             Back to Question Bank
+           </button>
+        </div>
+
+        <h2 style={{ fontSize: '2.25rem', color: 'var(--primary)', marginBottom: '32px', textAlign: 'center', letterSpacing: '-1px' }}>
+           Interview FAQ: Essential Knowledge
+        </h2>
+
+        <div className="gratuity-faq-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '64px' }}>
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Should I bring a printed CV to a Dubai interview?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}><strong>Yes.</strong> Even if you applied online, always bring 2-3 clean, printed copies of your CV. High-level managers in the Gulf often prefer to have a physical copy to scribble notes on during the face-to-face session.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>How do I answer &quot;Why do you want to work in the UAE?&quot;</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Avoid saying &quot;for the tax-free money.&quot; Instead, focus on the <strong>scale of projects</strong> occurring in the region, the <strong>multi-cultural environment</strong>, and your desire to contribute to specific regional goals like Vision 2030 or UAE 2071.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What is a &quot;Second Round&quot; usually about?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>The first round is usually technical. The second round is often with a Director or Managing Partner and is focused on <strong>cultural fit</strong> and long-term ambition. Be prepared to talk more about your leadership style and conflict resolution.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Can an employer ask for my passport?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>They can ask for a <strong>color copy</strong> for visa processing or flight booking, but it is illegal in the UAE for an employer to retain your physical passport once you are hired.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>Is punctuality really that strict?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>Yes. In the Gulf, being late is often seen as a sign of unreliability. If you are stuck in traffic (a common Dubai problem), call the recruiter <strong>at least 20 minutes before</strong> the scheduled time to explain.</p>
+          </div>
+
+          <div style={{ background: '#fff', padding: '28px', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+             <h3 style={{ fontSize: '1.125rem', color: 'var(--primary)', marginBottom: '12px', fontWeight: 700 }}>What if I don&apos;t have a UAE phone number yet?</h3>
+             <p style={{ fontSize: '0.9375rem', color: '#444', lineHeight: 1.7, margin: 0 }}>If you are applying from abroad, use a professional <strong>WhatsApp-enabled number</strong>. UAE recruiters heavily use WhatsApp for initial contact and coordination.</p>
+          </div>
+        </div>
+
+        <div style={{ padding: '32px', background: '#F1F5F9', borderRadius: '16px', border: '1px solid #E2E8F0' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '16px', fontWeight: 700 }}>Related Career Resources</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+               {[
+                 { label: 'Free CV Maker', href: '/tools/cv-maker' },
+                 { label: 'Gratuity Calculator', href: '/tools/gratuity-calculator' },
+                 { label: 'Latest Walk-In Interviews', href: '/blog/walk-in-interviews-dubai-this-week' },
+                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
+                 { label: 'How to Find Jobs as a Fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher' }
+               ].map((link) => (
+                 <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#fff', padding: '8px 16px', borderRadius: '8px', border: '1px solid #CBD5E1', textDecoration: 'none' }}>
+                   {link.label}
+                 </Link>
+               ))}
+            </div>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Should I bring a printed CV to a Dubai interview?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Yes. Bringing 2-3 printed copies is standard practice and shows preparedness, as managers often use them for note-taking.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'What is the dress code for an interview in UAE?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Standard formal business attire (suit and tie or professional dress) is the expectation for virtually all professional interviews in the region.' },
+              },
+              {
+                '@type': 'Question',
+                name: 'How do I handle the current salary question in UAE?',
+                acceptedAnswer: { '@type': 'Answer', text: 'Focus on the total package (basic + allowances) and mention your net take-home pay. Be prepared to provide a recent payslip if requested.' },
+              },
+            ],
+          }),
+        }}
+      />
+    </div>
 
       <style
         dangerouslySetInnerHTML={{
