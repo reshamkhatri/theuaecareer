@@ -275,9 +275,9 @@ export default function InterviewQuestionBankPage() {
         <div style={{ padding: '32px', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', margin: '48px 0' }}>
            <h4 style={{ fontSize: '1.5rem', marginBottom: '12px' }}>Practice with our Question Bank</h4>
            <p style={{ opacity: 0.8, marginBottom: '24px' }}>Jump to your sector to see real recruiter patterns and sample answers.</p>
-           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)', border: 'none', fontWeight: 700 }}>
+           <a href="#" className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)', border: 'none', fontWeight: 700, textDecoration: 'none', display: 'inline-block' }}>
              Back to Question Bank
-           </button>
+           </a>
         </div>
 
         <h2 style={{ fontSize: '2.25rem', color: 'var(--primary)', marginBottom: '32px', textAlign: 'center', letterSpacing: '-1px' }}>

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import JobsListingClient from '@/components/JobsListingClient';
 import { SITE_URL } from '@/lib/constants';
 import { getAllPublicJobs } from '@/lib/content';

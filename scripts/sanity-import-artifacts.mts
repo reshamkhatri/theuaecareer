@@ -179,7 +179,7 @@ function collectInlineContent(
 function createTextBlock(
   element: Element,
   style: string,
-  options: Pick<PortableTextBlockWithLists, 'listItem' | 'level'> = {}
+  options: Partial<Pick<PortableTextBlockWithLists, 'listItem' | 'level'>> = {}
 ): PortableTextBlockWithLists | null {
   const spans: PortableTextSpan[] = [];
   const markDefs: PortableTextLinkMark[] = [];

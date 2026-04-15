@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode, Ref } from 'react';
+import Link from 'next/link';
 import { startTransition, useEffect, useMemo, useRef, useState } from 'react';
 import { FiCheck, FiCpu, FiDownload, FiMail, FiPlus, FiTrash2, FiX } from 'react-icons/fi';
 import { buildCvBullets, buildCvSummary } from '@/lib/cv-assist';
@@ -677,6 +678,9 @@ export default function CVMakerPage() {
             >
               <FiMail /> {isSendingEmail ? 'Sending...' : 'Send CV'}
             </button>
+          </div>
+        </div>
+      )}
 
       {/* Deep-Dive Pillar Content for CV Maker */}
       <section className="container" style={{ marginTop: '80px', maxWidth: '1000px', lineHeight: 1.8 }}>

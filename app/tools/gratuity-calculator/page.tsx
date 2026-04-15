@@ -319,9 +319,9 @@ export default function GratuityCalculatorPage() {
         <div style={{ padding: '32px', background: 'var(--primary)', color: 'white', borderRadius: '16px', textAlign: 'center' }}>
           <h4 style={{ fontSize: '1.5rem', marginBottom: '12px' }}>Ready to check your numbers?</h4>
           <p style={{ opacity: 0.8, marginBottom: '24px' }}>Use the tool at the top of this page for an instant, accurate estimate.</p>
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)' }}>
-            Back to Calculator
-          </button>
+          <a href="#" className="btn" style={{ background: 'var(--accent)', color: 'var(--primary)', display: 'inline-block', textDecoration: 'none' }}>
+             Scroll up to calculate
+          </a>
         </div>
       </section>
 
