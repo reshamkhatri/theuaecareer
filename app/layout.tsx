@@ -19,8 +19,8 @@ const defaultOgImage = {
   alt: `${SITE_NAME} social share image`,
 };
 
-const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || 'ca-pub-1314124961994994';
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-C9Y178ND5Q';
+const adsensePublisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID?.trim() || '';
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || '';
 const iconVersion = '20260329';
 
 const websiteJsonLd = {

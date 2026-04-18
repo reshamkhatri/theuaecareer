@@ -1,4 +1,5 @@
 import { articles as launchArticles } from '../../lib/launch-content';
+import { isOriginAllowed, forbiddenResponse } from '../lib/origin-guard';
 
 interface Env {
   NEXT_PUBLIC_SANITY_PROJECT_ID?: string;
@@ -213,6 +214,10 @@ export async function onRequestGet(context: { request: Request; env: Env }) {
 }
 
 export async function onRequestPost(context: { request: Request; env: Env }) {
+  if (!isOriginAllowed(context.request)) {
+    return forbiddenResponse();
+  }
+
   try {
     const payload = (await context.request.json()) as CommentPayload;
     const action = cleanString(payload.action, 20);

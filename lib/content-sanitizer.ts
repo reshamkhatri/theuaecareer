@@ -1,4 +1,5 @@
 import type { ArticleRecord, JobRecord, WalkInDetails } from '@/lib/types';
+import { sanitizeHtml } from '@/lib/html-sanitize';
 
 type Replacement = [RegExp, string];
 
@@ -113,7 +114,7 @@ export function sanitizeArticleRecord(article: ArticleRecord): ArticleRecord {
     ...article,
     title: applyReplacements(article.title, articleTextReplacements),
     excerpt: applyReplacements(article.excerpt, articleTextReplacements),
-    content: normalizeRichTextHtml(applyReplacements(article.content, articleTextReplacements)),
+    content: sanitizeHtml(normalizeRichTextHtml(applyReplacements(article.content, articleTextReplacements))),
     featuredImage:
       article.featuredImage && article.featuredImage.trim().startsWith('/')
         ? article.featuredImage.trim()
@@ -136,8 +137,8 @@ export function sanitizeJobRecord(job: JobRecord): JobRecord {
   return {
     ...job,
     companyName,
-    description: normalizeRichTextHtml(applyReplacements(job.description, jobHtmlReplacements)),
-    howToApply: normalizeRichTextHtml(applyReplacements(job.howToApply, jobHtmlReplacements)),
+    description: sanitizeHtml(normalizeRichTextHtml(applyReplacements(job.description, jobHtmlReplacements))),
+    howToApply: sanitizeHtml(normalizeRichTextHtml(applyReplacements(job.howToApply, jobHtmlReplacements))),
     walkInDetails: sanitizeWalkInDetails(job.walkInDetails),
     metaTitle: job.metaTitle ? applyReplacements(job.metaTitle, jobTextReplacements) : job.metaTitle,
     metaDescription: job.metaDescription

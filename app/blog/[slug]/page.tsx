@@ -11,6 +11,7 @@ import {
 import AdSlot from '@/components/AdSlot';
 import ArticleCover from '@/components/ArticleCover';
 import CommentsSection from '@/components/CommentsSection';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import CopyLinkButton from '@/components/CopyLinkButton';
 import NewsletterForm from '@/components/NewsletterForm';
 import { ARTICLE_CATEGORIES, SITE_URL } from '@/lib/constants';
@@ -461,7 +462,9 @@ export default async function ArticlePage({
         </div>
 
         <div className="container" style={{ marginTop: 'var(--space-xl)' }}>
-          <CommentsSection articleSlug={article.slug} articleTitle={article.title} />
+          <ErrorBoundary>
+            <CommentsSection articleSlug={article.slug} articleTitle={article.title} />
+          </ErrorBoundary>
         </div>
       </section>
     </>

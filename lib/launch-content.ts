@@ -15,7 +15,9 @@ export const articles = [
     "tags": [
       "career",
       "uae"
-    ]
+    ],
+    "metaTitle": "Walk-In Interviews in Dubai This Week — Updated April 2026",
+    "metaDescription": "Latest walk-in interviews in Dubai, Abu Dhabi & Sharjah this week. Retail, driver, hotel & call centre jobs with salaries. Updated every Monday."
   },
   {
     "_id": "article-2",
@@ -32,7 +34,9 @@ export const articles = [
     "tags": [
       "career",
       "uae"
-    ]
+    ],
+    "metaTitle": "UAE Labour Law for Expats: Contracts, Gratuity & Rights (2026)",
+    "metaDescription": "Plain-English guide to UAE Labour Law. Covers employment contracts, gratuity calculation, notice periods, probation rules, and what to do if salary is delayed."
   },
   {
     "_id": "article-3",
@@ -49,7 +53,9 @@ export const articles = [
     "tags": [
       "career",
       "uae"
-    ]
+    ],
+    "metaTitle": "How to Find a Job in Dubai as a Fresher — Honest Guide (2026)",
+    "metaDescription": "Realistic advice for freshers looking for jobs in Dubai. No sugar-coating — what actually works, which industries hire freshers, and mistakes to avoid."
   },
   {
     "_id": "article-4",
@@ -66,7 +72,9 @@ export const articles = [
     "tags": [
       "career",
       "uae"
-    ]
+    ],
+    "metaTitle": "Driver Salary in UAE 2026: AED 1,800–5,000 by Vehicle & City",
+    "metaDescription": "Real driver salary data for UAE 2026. Light vehicle, heavy truck, e-commerce delivery & school bus pay ranges by company type, city, and experience level."
   },
   {
     "_id": "article-5",
@@ -83,7 +91,9 @@ export const articles = [
     "tags": [
       "career",
       "uae"
-    ]
+    ],
+    "metaTitle": "How to Renew UAE Work Visa in 2026: Step-by-Step Process & Cost",
+    "metaDescription": "Complete guide to UAE work visa renewal. Medical test, Emirates ID, visa stamping steps, documents needed, costs, and what to do if your employer delays."
   },
   {
     "_id": "article-6",
@@ -97,7 +107,9 @@ export const articles = [
     "publishDate": "2026-03-24T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["career", "uae", "dubai"]
+    "tags": ["career", "uae", "dubai"],
+    "metaTitle": "Top 10 In-Demand Jobs in UAE 2026: What Employers Are Hiring",
+    "metaDescription": "Which jobs are hardest to fill in UAE right now? Nurses, developers, sales, hospitality & more — with real salary ranges and hiring tips for each role."
   },
   {
     "_id": "article-7",
@@ -111,7 +123,9 @@ export const articles = [
     "publishDate": "2026-03-25T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["dubai", "cost-of-living", "uae"]
+    "tags": ["dubai", "cost-of-living", "uae"],
+    "metaTitle": "Cost of Living in Dubai 2026: Real Monthly Budget Breakdown",
+    "metaDescription": "How much does it cost to live in Dubai? Real 2026 numbers for rent, food, transport & utilities. Budget, comfortable & premium tiers compared."
   },
   {
     "_id": "article-8",
@@ -125,7 +139,9 @@ export const articles = [
     "publishDate": "2026-03-26T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["career", "cv", "uae"]
+    "tags": ["career", "cv", "uae"],
+    "metaTitle": "How to Write a CV for Gulf Jobs: What UAE Recruiters Want (2026)",
+    "metaDescription": "Format your CV the way UAE recruiters expect. Photo, visa status, nationality, ATS tips, and Gulf-specific sections that get you shortlisted faster."
   },
   {
     "_id": "article-9",
@@ -139,7 +155,9 @@ export const articles = [
     "publishDate": "2026-03-26T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["career", "golden-visa", "uae"]
+    "tags": ["career", "golden-visa", "uae"],
+    "metaTitle": "UAE Golden Visa 2026: Who Qualifies, Cost & How to Apply",
+    "metaDescription": "Complete guide to UAE Golden Visa. Salary threshold, property route, application steps, costs, and common mistakes. Updated for 2026 rules."
   },
   {
     "_id": "article-10",
@@ -153,7 +171,9 @@ export const articles = [
     "publishDate": "2026-03-28T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["business", "free-zone", "dubai"]
+    "tags": ["business", "free-zone", "dubai"],
+    "metaTitle": "Dubai Free Zone Comparison 2026: DMCC vs IFZA vs DIFC & More",
+    "metaDescription": "Compare Dubai free zones side by side. DMCC, IFZA, DIFC, DSO, Dubai South — licence costs, visa allocation, and which one fits your business."
   },
   {
     "_id": "article-11",
@@ -167,7 +187,9 @@ export const articles = [
     "publishDate": "2026-03-28T12:00:00.000Z",
     "readTime": 6,
     "author": "Editorial Team",
-    "tags": ["salary", "career", "uae"]
+    "tags": ["salary", "career", "uae"],
+    "metaTitle": "UAE Salary Guide 2026: Average Pay by Industry & Role",
+    "metaDescription": "What does your role pay in the UAE? Real 2026 salary data for tech, healthcare, finance, hospitality, construction, logistics, teaching & retail."
   },
   {
     "_id": "article-12",
@@ -181,7 +203,9 @@ export const articles = [
     "publishDate": "2026-03-29T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["interview", "career", "uae"]
+    "tags": ["interview", "career", "uae"],
+    "metaTitle": "UAE Interview Questions & Answers: What Dubai Employers Ask",
+    "metaDescription": "Prepare for your UAE job interview. Common questions about salary, visa, experience & availability — with example answers that work in Dubai."
   },
   {
     "_id": "article-13",
@@ -195,7 +219,9 @@ export const articles = [
     "publishDate": "2026-03-30T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["abu-dhabi", "dubai", "uae", "career"]
+    "tags": ["abu-dhabi", "dubai", "uae", "career"],
+    "metaTitle": "Abu Dhabi vs Dubai for Expats: Salary, Cost & Lifestyle (2026)",
+    "metaDescription": "Honest comparison of working in Abu Dhabi vs Dubai. Government salaries, rent costs, career opportunities, lifestyle differences & commute reality."
   },
   {
     "_id": "article-14",
@@ -209,7 +235,9 @@ export const articles = [
     "publishDate": "2026-03-31T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["remittance", "finance", "uae"]
+    "tags": ["remittance", "finance", "uae"],
+    "metaTitle": "Best Way to Send Money from UAE 2026: Fees & Rates Compared",
+    "metaDescription": "Compare UAE remittance options. Exchange houses, bank transfers & apps like Wise and Remitly — real fees, rates, and best choice by corridor."
   },
   {
     "_id": "article-15",
@@ -223,7 +251,9 @@ export const articles = [
     "publishDate": "2026-04-01T10:00:00.000Z",
     "readTime": 5,
     "author": "Editorial Team",
-    "tags": ["driving-licence", "uae", "guide"]
+    "tags": ["driving-licence", "uae", "guide"],
+    "metaTitle": "How to Get a UAE Driving Licence 2026: Cost, Process & Tips",
+    "metaDescription": "Full guide to getting a UAE driving licence. Direct conversion countries, test process, driving school costs, and tips to pass the RTA road test."
   }
 ];
 

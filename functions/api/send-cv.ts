@@ -6,6 +6,8 @@
  * raw SigV4-signed HTTP requests (no AWS SDK required).
  */
 
+import { isOriginAllowed, forbiddenResponse } from '../lib/origin-guard';
+
 interface Env {
   AWS_SES_ACCESS_KEY_ID?: string;
   AWS_SES_SECRET_ACCESS_KEY?: string;
@@ -196,7 +198,10 @@ async function sendCvEmail(
 }
 
 export async function onRequestPost(context: { request: Request; env: Env }) {
-  // Rate-limit hint via CF-Connecting-IP (best effort, not a hard limit)
+  if (!isOriginAllowed(context.request)) {
+    return forbiddenResponse();
+  }
+
   let body: RequestBody;
   try {
     body = (await context.request.json()) as RequestBody;

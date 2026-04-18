@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import BlogListingClient from '@/components/BlogListingClient';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import { SITE_URL } from '@/lib/constants';
 import { getAllPublicArticles } from '@/lib/content';
 
@@ -46,7 +47,9 @@ export default async function BlogListingPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCollectionJsonLd) }}
       />
-      <BlogListingClient initialArticles={articles} />
+      <ErrorBoundary>
+        <BlogListingClient initialArticles={articles} />
+      </ErrorBoundary>
     </>
   );
 }
