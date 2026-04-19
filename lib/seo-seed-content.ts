@@ -1069,7 +1069,7 @@ export const seoSeedArticles = [
     slug: 'fake-recruiter-red-flags-dubai',
     excerpt:
       'Spot fake Dubai recruiters before they cost you money. 10 specific warning signs to check in every message, call, or email in 2026.',
-    featuredImage: '/article-images/fake-job-offers-hero.svg',
+    featuredImage: '/article-images/fake-recruiter-red-flags-hero.png',
     coverAlt:
       'Job seeker comparing a real Dubai recruiter email to a fake one with highlighted red flag warnings',
     category: 'Job Scams',
@@ -1083,7 +1083,7 @@ export const seoSeedArticles = [
       'Ten specific fake recruiter red flags to spot in Dubai job offers. Learn what real recruiters never do and protect your documents and money in 2026.',
     content: `<p>Fake recruiter red flags in Dubai follow recognisable patterns once you know them. The scams have become more polished — better English, cleaner offer letters, real-sounding job titles — but the behavioural signs still give them away. If you spot three or more of these warning signs in the same conversation, the recruiter is almost certainly fake.</p>
 <p>This article covers the ten most reliable red flags Dubai job seekers see in 2026, along with what genuine recruiters actually do.</p>
-<figure><img src="/article-images/fake-job-offers-inline.svg" alt="Grid showing ten fake recruiter warning signs including urgency, payment requests, and free email domains" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-recruiter-red-flags-inline.png" alt="Grid showing ten fake recruiter warning signs including urgency, payment requests, and free email domains" loading="lazy" /></figure>
 <ul>
 <li>Real Dubai recruiters work through corporate emails, verified phone numbers, and established LinkedIn profiles.</li>
 <li>Fake recruiters use urgency, vague job descriptions, and payment requests to pressure you into mistakes.</li>
@@ -1127,7 +1127,7 @@ export const seoSeedArticles = [
     slug: 'waiter-salary-in-uae',
     excerpt:
       'Real waiter salary in UAE 2026 across hotels, restaurants, and cafes. Pay ranges, service charge, tips, and what makes one offer better than another.',
-    featuredImage: '/article-images/salary-guide-uae-hero.jpg',
+    featuredImage: '/article-images/waiter-salary-uae-hero.png',
     coverAlt:
       'Waiter serving a table at a Dubai restaurant while checking a payslip breakdown of basic salary and service charge',
     category: 'Salary Insights',
@@ -1141,7 +1141,7 @@ export const seoSeedArticles = [
       'Waiter salary in UAE 2026 by venue: 5-star hotels, casual restaurants, and cafes. See basic pay, service charge share, tips, and real take-home.',
     content: `<p>Waiter salary in UAE 2026 varies more than most job seekers expect. A waiter at a 5-star Dubai hotel can take home AED 3,500 to AED 5,500 once basic salary, service charge, and tips are combined. A waiter at a small cafe in Sharjah might earn AED 1,500 to AED 2,200 with food and transport included. Both are valid offers — the difference is what you value.</p>
 <p>This guide breaks down real waiter pay ranges in the UAE, what service charge actually means for your paycheck, and how to compare offers beyond the headline number.</p>
-<figure><img src="/article-images/salary-guide-uae-inline.jpg" alt="Pay breakdown chart showing basic salary, service charge, and tips for waiter jobs in UAE across hotels and restaurants" loading="lazy" /></figure>
+<figure><img src="/article-images/waiter-salary-uae-inline.png" alt="Pay breakdown chart showing basic salary, service charge, and tips for waiter jobs in UAE across hotels and restaurants" loading="lazy" /></figure>
 <ul>
 <li>5-star hotel waiter jobs in Dubai pay AED 2,000 to AED 3,000 basic plus AED 1,500 to AED 2,500 in service charge and tips.</li>
 <li>Casual restaurant waiters earn AED 1,800 to AED 2,800 total, often with accommodation and food included.</li>
@@ -1180,7 +1180,7 @@ export const seoSeedArticles = [
     slug: 'receptionist-salary-in-uae',
     excerpt:
       'Receptionist salary in UAE 2026 by industry: hotels, clinics, corporate offices, and spas. Real pay ranges, benefits, and which sector pays best.',
-    featuredImage: '/article-images/front-office-interview-hero.jpg',
+    featuredImage: '/article-images/receptionist-salary-uae-hero.png',
     coverAlt:
       'Receptionist at a Dubai corporate office front desk reviewing a salary breakdown document',
     category: 'Salary Insights',
@@ -1194,7 +1194,7 @@ export const seoSeedArticles = [
       'Receptionist salary in UAE 2026: hotels vs clinics vs corporate vs spas. See basic pay, benefits, and which industry actually pays the highest.',
     content: `<p>Receptionist salary in UAE 2026 depends heavily on the industry you work in. A corporate receptionist in a DIFC law firm can earn AED 5,500 to AED 8,000 per month. A hotel receptionist at a 5-star property earns AED 3,000 to AED 4,500 plus service charge. A clinic receptionist earns AED 3,500 to AED 5,500 depending on the medical facility. Understanding the gap between industries helps you target the right role from the start.</p>
 <p>This guide breaks down the real pay ranges for receptionist roles across the biggest hiring sectors in the UAE, what skills raise your package, and how to choose the right industry for your background.</p>
-<figure><img src="/article-images/front-office-interview-inline.jpg" alt="Comparison chart showing receptionist salaries in UAE across hotels, clinics, corporate offices, and spas" loading="lazy" /></figure>
+<figure><img src="/article-images/receptionist-salary-uae-inline.png" alt="Comparison chart showing receptionist salaries in UAE across hotels, clinics, corporate offices, and spas" loading="lazy" /></figure>
 <ul>
 <li>Corporate receptionists in DIFC, ADGM, or free zone offices earn the highest total packages.</li>
 <li>Hotel receptionists earn a moderate base plus service charge, usually with accommodation.</li>
@@ -1235,7 +1235,7 @@ export const seoSeedArticles = [
     slug: 'helper-salary-in-uae',
     excerpt:
       'Helper salary in UAE 2026 across warehouse, construction, kitchen, and retail jobs. Real pay ranges, overtime, accommodation, and food value explained.',
-    featuredImage: '/article-images/cleaner-salary-hero.svg',
+    featuredImage: '/article-images/helper-salary-uae-hero.png',
     coverAlt:
       'Helper worker in a Dubai warehouse reviewing a salary offer letter with accommodation and overtime details',
     category: 'Salary Insights',
@@ -1249,7 +1249,7 @@ export const seoSeedArticles = [
       'Helper salary in UAE 2026 by sector: warehouse, construction, kitchen, and retail. Real pay ranges, overtime, food value, and how to compare offers.',
     content: `<p>Helper salary in UAE 2026 ranges from AED 800 to AED 2,000 depending on the sector. The headline number alone does not tell the full story. A warehouse helper offered AED 1,200 with food and accommodation can save more monthly than a helper earning AED 1,800 with nothing included. Overtime, site location, and weekly duty pattern change the real value even more.</p>
 <p>This guide breaks down what helpers actually earn across warehouse, construction, kitchen, and retail jobs in the UAE, and how to evaluate a full package before accepting.</p>
-<figure><img src="/article-images/cleaner-salary-inline.svg" alt="Salary comparison showing helper pay in UAE across warehouse, construction, kitchen, and retail with accommodation values" loading="lazy" /></figure>
+<figure><img src="/article-images/helper-salary-uae-inline.png" alt="Salary comparison showing helper pay in UAE across warehouse, construction, kitchen, and retail with accommodation values" loading="lazy" /></figure>
 <ul>
 <li>Warehouse helpers earn AED 1,000 to AED 1,500 basic with accommodation and transport usually included.</li>
 <li>Construction site helpers earn AED 900 to AED 1,400 with mandatory accommodation, transport, and food.</li>
@@ -1291,7 +1291,7 @@ export const seoSeedArticles = [
     slug: 'how-to-negotiate-salary-in-uae',
     excerpt:
       'Negotiate your UAE job offer without burning the relationship. Scripts, market data, and the right moment to ask for more money in 2026.',
-    featuredImage: '/article-images/salary-guide-uae-hero.jpg',
+    featuredImage: '/article-images/negotiate-salary-uae-hero.png',
     coverAlt:
       'Candidate discussing salary with a UAE recruiter across a desk with offer letter and market pay chart',
     category: 'Career Guides',
@@ -1305,7 +1305,7 @@ export const seoSeedArticles = [
       'Negotiate your UAE job offer the right way. Exact scripts, market data to cite, and the moments that cost or gain you AED 500 to AED 3,000.',
     content: `<p>How to negotiate salary in UAE jobs is a skill worth learning once and using for life. The UAE market rewards polite, prepared negotiation — most employers expect some pushback on the first offer and build 5 to 15 percent of flex into their initial number. Most candidates never ask and accept the first figure. That silence costs AED 500 to AED 3,000 per month, and compounds over years.</p>
 <p>This guide walks through exactly when, how, and what to say when negotiating a UAE job offer, along with the phrases that work best with local recruiters in 2026.</p>
-<figure><img src="/article-images/salary-guide-uae-inline.jpg" alt="Negotiation conversation flow showing research, response timing, and script for UAE salary discussion" loading="lazy" /></figure>
+<figure><img src="/article-images/negotiate-salary-uae-inline.png" alt="Negotiation conversation flow showing research, response timing, and script for UAE salary discussion" loading="lazy" /></figure>
 <ul>
 <li>Research the market range before negotiating — data beats opinion every time.</li>
 <li>Never negotiate before you have a written offer in hand.</li>
