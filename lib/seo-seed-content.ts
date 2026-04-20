@@ -709,10 +709,10 @@ export const seoSeedArticles = [
   },
   {
     _id: 'seo-article-nurse-salary-uae',
-    title: 'Nurse Salary in UAE 2026: Pay by Specialization and Hospital',
+    title: 'Nurse Salary in UAE 2026: Real Pay from AED 6,000 to 20,000',
     slug: 'nurse-salary-in-uae',
     excerpt:
-      'What do nurses earn in the UAE? Detailed salary breakdown by specialization, hospital tier, and emirate. DHA and HAAD licensing explained.',
+      'Real nurse salary in UAE 2026 by specialty and hospital: staff, ICU, ER, OT, and senior nurse pay at DHA and HAAD hospitals — plus housing and flights.',
     featuredImage: '/article-images/nurse-salary-uae-hero.webp',
     coverAlt:
       'Registered nurse in scrubs reviewing patient charts at a modern Dubai hospital',
@@ -720,11 +720,11 @@ export const seoSeedArticles = [
     tags: ['salary', 'nursing jobs', 'healthcare', 'uae jobs'],
     status: 'published' as const,
     publishDate: '2026-04-18T06:10:00.000Z',
-    lastUpdatedDate: '2026-04-18T06:10:00.000Z',
+    lastUpdatedDate: '2026-04-20T09:00:00.000Z',
     author: 'Editorial Team',
-    metaTitle: 'Nurse Salary in UAE 2026: Pay Range by Hospital & Role',
+    metaTitle: 'Nurse Salary in UAE 2026 — AED 6,000 to 20,000 Real Pay',
     metaDescription:
-      'What do nurses earn in UAE? Real salary data for staff nurses, ICU, ER, OT & supervisors at DHA and HAAD hospitals. Includes housing and flight benefits.',
+      'Real nurse salary in UAE 2026 by specialty and hospital: staff, ICU, ER, OT, and senior nurse pay at DHA and HAAD hospitals. Includes housing and flights.',
     content: `<p>Nursing is one of the most in-demand healthcare professions in the UAE. With new hospitals and clinics opening across Dubai, Abu Dhabi, and the Northern Emirates, demand for qualified nurses has been steady for years. If you are a registered nurse considering the Gulf, understanding the real salary landscape will help you negotiate properly and choose the right employer.</p>
 <p>All figures below are monthly total package for 2026 unless stated otherwise. Packages at major hospitals typically include accommodation or a housing allowance, annual flights, and medical insurance on top of the cash salary.</p>
 <figure><img src="/article-images/nurse-salary-uae-inline.webp" alt="Nurse working in a modern UAE hospital representing salary scale" loading="lazy" /></figure>
