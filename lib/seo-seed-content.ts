@@ -5,7 +5,7 @@ export const seoSeedArticles = [
     slug: 'what-to-carry-for-walk-in-interview-in-uae',
     excerpt:
       'Learn what to carry for a walk-in interview in UAE, including documents, CV copies, dress essentials, and the small items that help you look ready from the first minute.',
-    featuredImage: '/article-images/what-to-carry-walk-in-hero.png',
+    featuredImage: '/article-images/what-to-carry-walk-in-hero.webp',
     coverAlt:
       'Job seeker reviewing printed CV copies and interview documents before a UAE walk-in interview',
     category: 'Walk-In Interviews',
@@ -19,7 +19,7 @@ export const seoSeedArticles = [
       'Discover what to carry for a walk-in interview in UAE, from CV copies and passport documents to photos, pens, and role-specific preparation.',
     content: `<p>If you are wondering what to carry for a walk-in interview in UAE, start with this rule: carry more preparation than the average candidate. Walk-ins move quickly, and recruiters often decide in the first few minutes whether you look organized, serious, and ready to join.</p>
 <p>The strongest candidates do not arrive with only a phone and one folded CV. They arrive with the right documents, extra copies, neat presentation, and enough preparation to answer basic questions without panic.</p>
-<figure><img src="/article-images/what-to-carry-walk-in-inline.png" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
+<figure><img src="/article-images/what-to-carry-walk-in-inline.webp" alt="Checklist illustration showing CV copies, documents, and interview essentials for a UAE walk-in interview" loading="lazy" /></figure>
 <ul>
 <li>Carry at least three printed copies of your CV in clean condition.</li>
 <li>Keep passport, visa, Emirates ID or visit-visa papers, and one recent photo in a simple folder.</li>
@@ -46,7 +46,7 @@ export const seoSeedArticles = [
     slug: 'self-introduction-for-walk-in-interview-in-uae',
     excerpt:
       'Use a clear self introduction for walk-in interview in Dubai and the UAE, with a simple formula, sample answers, and common mistakes to avoid.',
-    featuredImage: '/article-images/self-introduction-uae-hero.png',
+    featuredImage: '/article-images/self-introduction-uae-hero.webp',
     coverAlt:
       'Candidate introducing themself confidently during a short job interview in the UAE',
     category: 'Walk-In Interviews',
@@ -60,7 +60,7 @@ export const seoSeedArticles = [
       'Learn how to give a strong self introduction for walk-in interview in Dubai and UAE with a short formula, sample scripts, and role-specific tips.',
     content: `<p>A good self introduction for walk-in interview in Dubai or the UAE should be short, role-focused, and easy for the recruiter to remember. In a walk-in event, you often have only 20 to 30 seconds to sound clear and employable before the interviewer decides how much attention to give the rest of your answers.</p>
 <p>Your goal is not to tell your whole life story. Your goal is to help the recruiter understand who you are, what role you fit, what experience you bring, and whether you are ready to join.</p>
-<figure><img src="/article-images/self-introduction-uae-inline.png" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
+<figure><img src="/article-images/self-introduction-uae-inline.webp" alt="Formula illustration showing name, role, experience, and availability for a walk-in interview self introduction" loading="lazy" /></figure>
 <ul>
 <li>Start with your name and target role.</li>
 <li>Add your most relevant experience or training in one line.</li>
@@ -87,7 +87,7 @@ export const seoSeedArticles = [
     slug: 'how-to-apply-for-dubai-hotel-jobs-through-official-career-pages-2026',
     excerpt:
       'Learn how to apply for Dubai hotel jobs through official employer career pages so you can avoid recycled listings, tailor your CV better, and apply more safely.',
-    featuredImage: '/article-images/dubai-hotel-jobs-hero.png',
+    featuredImage: '/article-images/dubai-hotel-jobs-hero.webp',
     coverAlt:
       'Hospitality job seeker reviewing official Dubai hotel career pages on a laptop before applying',
     category: 'Career Guides',
@@ -101,7 +101,7 @@ export const seoSeedArticles = [
       'Discover how to apply for Dubai hotel jobs through official employer career pages with stronger CV matching, safer applications, and better follow-up habits.',
     content: `<p>If you want to apply for Dubai hotel jobs the smarter way, start with the official employer career page whenever the hotel brand is known. Too many candidates waste time on reposted listings, copied social posts, or random job groups without checking whether the role still exists on the employer's own site.</p>
 <p>The better route is simple: identify the hotel brand, go to the official career page, study the role language, and tailor your CV before you apply. It takes more thought, but it usually leads to cleaner, safer applications.</p>
-<figure><img src="/article-images/dubai-hotel-jobs-inline.png" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
+<figure><img src="/article-images/dubai-hotel-jobs-inline.webp" alt="Illustration showing a hospitality CV being matched to an official Dubai hotel career page" loading="lazy" /></figure>
 <ul>
 <li>Use official employer pages first whenever the hotel brand is clearly known.</li>
 <li>Mirror the employer wording on your CV instead of sending one generic hospitality resume.</li>
@@ -320,7 +320,7 @@ export const seoSeedArticles = [
     slug: 'driver-interview-questions-in-qatar',
     excerpt:
       'Prepare for driver interview questions in Qatar with practical answer ideas about safety checks, traffic delays, customer handling, and accident reporting.',
-    featuredImage: '/article-images/driver-qatar-hero.png',
+    featuredImage: '/article-images/driver-qatar-hero.webp',
     coverAlt:
       'Professional driver preparing for interview questions about road safety and passenger handling in Qatar',
     category: 'Career Guides',
@@ -334,7 +334,7 @@ export const seoSeedArticles = [
       'Prepare for driver interview questions in Qatar and learn how to answer about safety, vehicle checks, route planning, and guest handling.',
     content: `<p>Driver interview questions in Qatar are rarely only about holding a licence. Employers want to hear about safety habits, route awareness, punctuality, vehicle checks, and, in many cases, customer-facing professionalism. If the role is hotel, executive, or company transport, your behaviour matters as much as your driving.</p>
 <p>That means your answers should sound like someone who protects both passengers and the employer, not just someone who can move a vehicle from one place to another.</p>
-<figure><img src="/article-images/driver-qatar-inline.png" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
+<figure><img src="/article-images/driver-qatar-inline.webp" alt="Driver interview checklist illustration showing vehicle checks, traffic delays, passenger handling, and incident reporting" loading="lazy" /></figure>
 <ul>
 <li>Expect questions about safety checks, punctuality, and route decisions.</li>
 <li>For guest-facing roles, prepare for customer-service and presentation questions too.</li>
@@ -359,7 +359,7 @@ export const seoSeedArticles = [
     slug: 'how-to-avoid-fake-job-offers-in-uae-saudi-qatar',
     excerpt:
       'Use this practical checklist to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay money, share documents, or make travel plans.',
-    featuredImage: '/article-images/fake-job-offers-hero.png',
+    featuredImage: '/article-images/fake-job-offers-hero.webp',
     coverAlt:
       'Job seeker checking warning signs on a suspicious Gulf job offer before sharing documents',
     category: 'Career Guides',
@@ -373,7 +373,7 @@ export const seoSeedArticles = [
       'Learn how to avoid fake job offers in UAE, Saudi Arabia, and Qatar before you pay fees, share documents, or trust a suspicious recruiter.',
     content: `<p>If you want to avoid fake job offers in UAE, Saudi Arabia, or Qatar, start with one rule: slow down before you send money, documents, or passport details. Fake offers usually create urgency first and clarity later. That is exactly why candidates make costly mistakes.</p>
 <p>The safest response to any attractive job offer is not excitement first. It is verification first. A genuine opportunity can survive clear questions. A fake one usually starts to collapse as soon as you ask for specifics.</p>
-<figure><img src="/article-images/fake-job-offers-inline.png" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-job-offers-inline.webp" alt="Red flag illustration showing fees, urgency, unknown recruiter identity, and role mismatch in fake Gulf job offers" loading="lazy" /></figure>
 <ul>
 <li>Do not pay money to be shortlisted, interviewed, or hired.</li>
 <li>Verify the employer name, role, and contact path before sharing sensitive papers.</li>
@@ -434,7 +434,7 @@ export const seoSeedArticles = [
     slug: 'best-cv-format-for-uae-saudi-qatar-job-applications',
     excerpt:
       'The best CV format for UAE, Saudi, and Qatar jobs in 2026: exact layout recruiters want, what to include, and what to cut from your resume.',
-    featuredImage: '/article-images/gulf-cv-format-hero.png',
+    featuredImage: '/article-images/gulf-cv-format-hero.webp',
     coverAlt:
       'Recruiter reviewing a clean Gulf-style CV format designed for UAE, Saudi Arabia, and Qatar job applications',
     category: 'Career Guides',
@@ -448,7 +448,7 @@ export const seoSeedArticles = [
       'The best CV format for UAE, Saudi, and Qatar jobs in 2026: exact layout recruiters want, what to include, and what to cut to get shortlisted.',
     content: `<p>The best CV format for UAE, Saudi Arabia, and Qatar job applications is usually not the most creative one. It is the clearest one. Recruiters across the Gulf often review high volumes of profiles quickly, which means your CV should help them understand your role fit in seconds.</p>
 <p>That usually means a simple structure, strong top section, clear experience bullets, and role-specific keywords that match the job you are targeting.</p>
-<figure><img src="/article-images/gulf-cv-format-inline.png" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
+<figure><img src="/article-images/gulf-cv-format-inline.webp" alt="CV structure illustration showing summary, skills, and experience blocks for Gulf job applications" loading="lazy" /></figure>
 <ul>
 <li>Keep the layout simple and readable before you worry about design.</li>
 <li>Put your target role, contact details, and short profile summary near the top.</li>
@@ -472,7 +472,7 @@ export const seoSeedArticles = [
     slug: 'best-cv-maker-for-gulf-jobs-uae-saudi-qatar',
     excerpt:
       'Use the best free CV maker for Gulf jobs in 2026. ATS-friendly templates built for UAE, Saudi, and Qatar recruiters — no signup, no watermark.',
-    featuredImage: '/article-images/cv-maker-app-screenshot.png',
+    featuredImage: '/article-images/cv-maker-app-screenshot.webp',
     coverAlt:
       'Screenshot of the free CV Maker for Gulf jobs, showing a clean interface optimized for UAE and Saudi ATS systems',
     category: 'Career Guides',
@@ -502,7 +502,7 @@ export const seoSeedArticles = [
 
 <h2>How Our Gulf-Specific CV Maker Works</h2>
 <p>We designed our <a href="/tools/cv-maker/">CV Maker</a> with one strict rule: prioritize readability and ATS compliance over everything else. We stripped away the unnecessary visual clutter to focus purely on the data that gets candidates shortlisted.</p>
-<figure><img src="/article-images/cv-maker-app-screenshot.png" alt="A detailed screenshot showing the clean, single-column interface of the free CV Maker for Gulf jobs" loading="lazy" /></figure>
+<figure><img src="/article-images/cv-maker-app-screenshot.webp" alt="A detailed screenshot showing the clean, single-column interface of the free CV Maker for Gulf jobs" loading="lazy" /></figure>
 
 <h3>1. Strictly Single-Column Design</h3>
 <p>Every template in our builder utilizes a single-column layout. This ensures that ATS bots read your document from top to bottom, left to right, exactly as a human would. Your name, contact details, profile summary, and experience are parsed in the perfect chronological order, meaning your profile lands in the recruiter's dashboard without critical missing fields.</p>
@@ -593,7 +593,7 @@ export const seoSeedArticles = [
     slug: 'uae-gratuity-calculator-end-of-service-benefits-2026',
     excerpt:
       'Learn how to calculate your UAE end of service benefits accurately and legally using our free 2026 gratuity calculator.',
-    featuredImage: '/article-images/gratuity-calculator-hero.png',
+    featuredImage: '/article-images/gratuity-calculator-hero.webp',
     coverAlt:
       'A worker reviewing end of service documents on a laptop next to a calculator in a bright office',
     category: 'Career Guides',
@@ -629,7 +629,7 @@ export const seoSeedArticles = [
     slug: 'best-uae-remittance-options-compare-exchange-rates-2026',
     excerpt:
       'Compare the best UAE remittance options to send money home efficiently, avoid hidden fees, and secure the highest exchange rates in 2026.',
-    featuredImage: '/article-images/remittance-guide-hero.png',
+    featuredImage: '/article-images/remittance-guide-hero.webp',
     coverAlt:
       'A person checking exchange rates on a mobile app outside a modern Dubai building',
     category: 'Career Guides',
@@ -665,7 +665,7 @@ export const seoSeedArticles = [
     slug: 'security-guard-salary-in-uae',
     excerpt:
       'What do security guards earn in UAE? Real salary data for mall security, hotel security, CCTV operators, and armed guards across Dubai, Abu Dhabi, and Sharjah.',
-    featuredImage: '/article-images/security-guard-salary-uae-hero.png',
+    featuredImage: '/article-images/security-guard-salary-uae-hero.webp',
     coverAlt:
       'Security guard on duty at a Dubai shopping mall entrance checking visitor credentials',
     category: 'Salary Insights',
@@ -679,7 +679,7 @@ export const seoSeedArticles = [
       'What do security guards earn in UAE? Mall, hotel, CCTV & site security pay ranges for Dubai, Abu Dhabi & Sharjah. Includes benefits and overtime rates.',
     content: `<p>Security guard roles are among the most consistently hired positions in the UAE. Every shopping mall, hotel, office tower, warehouse, and residential compound needs guards around the clock. If you are considering a security career in the Gulf, knowing what the market actually pays will help you evaluate offers and avoid underpaid contracts.</p>
 <p>The salary ranges below reflect 2026 market conditions across Dubai, Abu Dhabi, and Sharjah. All figures are monthly total package unless noted otherwise.</p>
-<figure><img src="/article-images/security-guard-salary-uae-inline.png" alt="Security guard salary comparison and roles in UAE" loading="lazy" /></figure>
+<figure><img src="/article-images/security-guard-salary-uae-inline.webp" alt="Security guard salary comparison and roles in UAE" loading="lazy" /></figure>
 <h2>Security guard salary by role in UAE</h2>
 <h3>Mall and retail security</h3>
 <p>Mall security guards in Dubai and Abu Dhabi typically earn AED 1,800 to 2,500 per month. Guards at premium malls like Dubai Mall, Mall of the Emirates, and Yas Mall tend to sit at the higher end. Duties include visitor screening, bag checks, CCTV monitoring, and crowd management during events.</p>
@@ -713,7 +713,7 @@ export const seoSeedArticles = [
     slug: 'nurse-salary-in-uae',
     excerpt:
       'What do nurses earn in the UAE? Detailed salary breakdown by specialization, hospital tier, and emirate. DHA and HAAD licensing explained.',
-    featuredImage: '/article-images/nurse-salary-uae-hero.png',
+    featuredImage: '/article-images/nurse-salary-uae-hero.webp',
     coverAlt:
       'Registered nurse in scrubs reviewing patient charts at a modern Dubai hospital',
     category: 'Salary Insights',
@@ -727,7 +727,7 @@ export const seoSeedArticles = [
       'What do nurses earn in UAE? Real salary data for staff nurses, ICU, ER, OT & supervisors at DHA and HAAD hospitals. Includes housing and flight benefits.',
     content: `<p>Nursing is one of the most in-demand healthcare professions in the UAE. With new hospitals and clinics opening across Dubai, Abu Dhabi, and the Northern Emirates, demand for qualified nurses has been steady for years. If you are a registered nurse considering the Gulf, understanding the real salary landscape will help you negotiate properly and choose the right employer.</p>
 <p>All figures below are monthly total package for 2026 unless stated otherwise. Packages at major hospitals typically include accommodation or a housing allowance, annual flights, and medical insurance on top of the cash salary.</p>
-<figure><img src="/article-images/nurse-salary-uae-inline.png" alt="Nurse working in a modern UAE hospital representing salary scale" loading="lazy" /></figure>
+<figure><img src="/article-images/nurse-salary-uae-inline.webp" alt="Nurse working in a modern UAE hospital representing salary scale" loading="lazy" /></figure>
 <h2>Nurse salary by role and specialization</h2>
 <h3>Staff nurse and general ward nurse</h3>
 <p>General ward nurses earn AED 6,000 to 10,000 per month. Freshers with less than 2 years of experience start at the lower end. Nurses with 3 to 5 years of hospital experience and a valid DHA or DOH licence typically earn AED 8,000 to 10,000.</p>
@@ -771,7 +771,7 @@ export const seoSeedArticles = [
     slug: 'walk-in-interviews-abu-dhabi-this-week',
     excerpt:
       'Latest walk-in interviews happening in Abu Dhabi this week. Retail, hospitality, security, and driver roles with direct employer hiring. Updated weekly.',
-    featuredImage: '/article-images/walk-in-abu-dhabi-hero.png',
+    featuredImage: '/article-images/walk-in-abu-dhabi-hero.webp',
     coverAlt:
       'Job seekers queuing outside an Abu Dhabi employer office for a walk-in interview event',
     category: 'Walk-In Interviews',
@@ -785,7 +785,7 @@ export const seoSeedArticles = [
       'Latest walk-in interviews in Abu Dhabi this week. Retail, hotel, security & driver jobs with salaries. Direct employer hiring — no agency fees.',
     content: `<p>If you are based in Abu Dhabi or willing to travel there for a walk-in interview, this page lists the latest open-door hiring events happening this week across the capital. Abu Dhabi has a strong hiring market for hospitality, security, government services, and logistics roles.</p>
 <p>We update this list every week. Bookmark this page and check back regularly. All listings are direct employer or authorised recruiter only. We do not list agencies that charge fees from job seekers.</p>
-<figure><img src="/article-images/walk-in-abu-dhabi-inline.png" alt="Candidates waiting in modern Abu Dhabi office for walk in interview" loading="lazy" /></figure>
+<figure><img src="/article-images/walk-in-abu-dhabi-inline.webp" alt="Candidates waiting in modern Abu Dhabi office for walk in interview" loading="lazy" /></figure>
 <h2>Walk-in interviews happening in Abu Dhabi this week</h2>
 <h3>Hospitality staff — hotels and restaurants</h3>
 <p>Several hotel groups on Yas Island and Saadiyat Island are conducting walk-in hiring for housekeeping attendants, waiters, kitchen helpers, and front desk agents. Abu Dhabi's hotel sector has expanded significantly with new properties and events. Freshers with basic English and a clean appearance are welcome for attendant roles.</p>
@@ -832,7 +832,7 @@ export const seoSeedArticles = [
     slug: 'how-to-file-mohre-complaint-in-uae',
     excerpt:
       'Step-by-step guide to filing a labour complaint with MOHRE in UAE. Covers salary delays, unfair termination, contract disputes, and what happens after you file.',
-    featuredImage: '/article-images/mohre-complaint-uae-hero.png',
+    featuredImage: '/article-images/mohre-complaint-uae-hero.webp',
     coverAlt:
       'Worker filing a labour complaint on the MOHRE mobile app at a government service centre in UAE',
     category: 'Career Guides',
@@ -846,7 +846,7 @@ export const seoSeedArticles = [
       'File a labour complaint with MOHRE for salary delays, unfair termination, or contract disputes. Step-by-step process, required documents, and what to expect.',
     content: `<p>If your employer has delayed your salary, terminated you unfairly, or violated your employment contract, you have the legal right to file a complaint with MOHRE, the Ministry of Human Resources and Emiratisation. This process is free, available online, and taken seriously by the UAE government.</p>
 <p>Many workers hesitate to file because they do not know the process or worry about retaliation. UAE law protects employees who file legitimate complaints. Here is exactly how to do it in 2026.</p>
-<figure><img src="/article-images/mohre-complaint-uae-inline.png" alt="Worker using a mobile phone to file a MOHRE labour complaint" loading="lazy" /></figure>
+<figure><img src="/article-images/mohre-complaint-uae-inline.webp" alt="Worker using a mobile phone to file a MOHRE labour complaint" loading="lazy" /></figure>
 <h2>When should you file a MOHRE complaint?</h2>
 <p>You can file a MOHRE complaint for any of these situations:</p>
 <ul>
@@ -898,7 +898,7 @@ export const seoSeedArticles = [
     slug: 'emirates-airline-job-scams-how-to-apply-safely',
     excerpt:
       'How to identify fake Emirates Airline job postings on social media and WhatsApp. Learn to spot scam accounts, verify real vacancies, and apply through official channels.',
-    featuredImage: '/article-images/emirates-airline-scams-hero.png',
+    featuredImage: '/article-images/emirates-airline-scams-hero.webp',
     coverAlt:
       'Warning illustration showing a fake Emirates Airline job posting next to the real careers page',
     category: 'Career Guides',
@@ -912,7 +912,7 @@ export const seoSeedArticles = [
       'How to spot fake Emirates Airline job postings on social media. Verify real vacancies, avoid scam accounts, and apply through official channels only.',
     content: `<p>Emirates Airline is one of the most impersonated employers in the Gulf job market. Scammers create fake social media accounts, WhatsApp groups, and websites that mimic Emirates branding to steal personal documents and money from job seekers. If you have seen an Emirates Airline job posting that asks for payment or personal details upfront, it is almost certainly a scam.</p>
 <p>This guide explains how to identify fake Emirates postings, how to verify real vacancies, and how to apply through the only legitimate channel.</p>
-<figure><img src="/article-images/emirates-airline-scams-inline.png" alt="Warning illustration showing how to identify a fake Emirates Airline job posting" loading="lazy" /></figure>
+<figure><img src="/article-images/emirates-airline-scams-inline.webp" alt="Warning illustration showing how to identify a fake Emirates Airline job posting" loading="lazy" /></figure>
 <h2>How Emirates Airline scams work</h2>
 <p>The most common scam pattern involves fake Instagram, Facebook, or WhatsApp accounts that use the Emirates logo and claim to be hiring cabin crew, ground staff, or airport workers. These accounts post attractive job offers with high salaries and easy requirements. They then ask you to pay a processing fee, share your passport scan, or click a link to register your details.</p>
 <p>Some scams go further. They send fake offer letters with Emirates branding and ask for visa processing fees of AED 1,000 to 5,000. Others create convincing WhatsApp groups where fake employees discuss their hiring experience to make it seem legitimate.</p>
@@ -952,7 +952,7 @@ export const seoSeedArticles = [
     slug: 'whatsapp-job-scams-in-uae',
     excerpt:
       'Spot WhatsApp job scams in UAE before they cost you money. Real examples, red flags, and the exact messages scammers send in 2026.',
-    featuredImage: '/article-images/fake-job-offers-hero.png',
+    featuredImage: '/article-images/fake-job-offers-hero.webp',
     coverAlt:
       'Job seeker reviewing a suspicious WhatsApp job offer message on a phone with red flag warnings highlighted',
     category: 'Job Scams',
@@ -966,7 +966,7 @@ export const seoSeedArticles = [
       'WhatsApp job scams in UAE are rising fast. See real 2026 examples, the exact red flags, and how to verify before you send money or documents.',
     content: `<p>WhatsApp job scams in UAE have exploded in 2026. Fraudsters pose as Emirates, Etihad, Almarai, or DP World recruiters and send well-written offer messages that look real — until they ask for money. Hundreds of job seekers lose money every month to these scams, and the patterns are becoming easier to recognise once you know what to look for.</p>
 <p>This guide walks through the most common WhatsApp job scam formats in the UAE right now, what makes them believable, and how to verify before you share a single document.</p>
-<figure><img src="/article-images/fake-job-offers-inline.png" alt="Example of a fake recruiter WhatsApp message showing red flags like payment request, urgency, and non-corporate phone number" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-job-offers-inline.webp" alt="Example of a fake recruiter WhatsApp message showing red flags like payment request, urgency, and non-corporate phone number" loading="lazy" /></figure>
 <ul>
 <li>Real UAE employers never ask for money to process your application, visa, or training.</li>
 <li>Genuine recruiters use corporate email and verified company phone numbers — not random WhatsApp numbers.</li>
@@ -1012,7 +1012,7 @@ export const seoSeedArticles = [
     slug: 'how-to-verify-uae-job-offer-is-real',
     excerpt:
       'Got a UAE job offer? Run this 5-step verification check before you accept. Spot fake offers, verify employers, and protect your documents in 2026.',
-    featuredImage: '/article-images/fake-gulf-job-offers-hero.png',
+    featuredImage: '/article-images/fake-gulf-job-offers-hero.webp',
     coverAlt:
       'Job seeker cross-checking a UAE job offer letter with the official company website on a laptop',
     category: 'Job Scams',
@@ -1026,7 +1026,7 @@ export const seoSeedArticles = [
       'Verify your UAE job offer in 5 steps before you send money or documents. Check MOHRE, company registration, and recruiter identity the right way.',
     content: `<p>Before you celebrate a UAE job offer, verify it. Fake offers in the UAE look more convincing than ever — full letterheads, MOHRE references, and polished emails. One simple rule protects you: treat every offer as unverified until you have completed these five checks yourself.</p>
 <p>This guide is the exact 5-step workflow job seekers should run on every UAE offer before accepting, paying anything, or sharing passport scans.</p>
-<figure><img src="/article-images/fake-gulf-job-offers-inline.png" alt="Checklist illustration showing five verification steps for checking a UAE job offer authenticity" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-gulf-job-offers-inline.webp" alt="Checklist illustration showing five verification steps for checking a UAE job offer authenticity" loading="lazy" /></figure>
 <ul>
 <li>Step 1: confirm the company exists through MOHRE or the UAE economic department.</li>
 <li>Step 2: contact HR through the official phone number on the company website.</li>
@@ -1069,7 +1069,7 @@ export const seoSeedArticles = [
     slug: 'fake-recruiter-red-flags-dubai',
     excerpt:
       'Spot fake Dubai recruiters before they cost you money. 10 specific warning signs to check in every message, call, or email in 2026.',
-    featuredImage: '/article-images/fake-recruiter-red-flags-hero.png',
+    featuredImage: '/article-images/fake-recruiter-red-flags-hero.webp',
     coverAlt:
       'Job seeker comparing a real Dubai recruiter email to a fake one with highlighted red flag warnings',
     category: 'Job Scams',
@@ -1083,7 +1083,7 @@ export const seoSeedArticles = [
       'Ten specific fake recruiter red flags to spot in Dubai job offers. Learn what real recruiters never do and protect your documents and money in 2026.',
     content: `<p>Fake recruiter red flags in Dubai follow recognisable patterns once you know them. The scams have become more polished — better English, cleaner offer letters, real-sounding job titles — but the behavioural signs still give them away. If you spot three or more of these warning signs in the same conversation, the recruiter is almost certainly fake.</p>
 <p>This article covers the ten most reliable red flags Dubai job seekers see in 2026, along with what genuine recruiters actually do.</p>
-<figure><img src="/article-images/fake-recruiter-red-flags-inline.png" alt="Grid showing ten fake recruiter warning signs including urgency, payment requests, and free email domains" loading="lazy" /></figure>
+<figure><img src="/article-images/fake-recruiter-red-flags-inline.webp" alt="Grid showing ten fake recruiter warning signs including urgency, payment requests, and free email domains" loading="lazy" /></figure>
 <ul>
 <li>Real Dubai recruiters work through corporate emails, verified phone numbers, and established LinkedIn profiles.</li>
 <li>Fake recruiters use urgency, vague job descriptions, and payment requests to pressure you into mistakes.</li>
@@ -1127,7 +1127,7 @@ export const seoSeedArticles = [
     slug: 'waiter-salary-in-uae',
     excerpt:
       'Real waiter salary in UAE 2026 across hotels, restaurants, and cafes. Pay ranges, service charge, tips, and what makes one offer better than another.',
-    featuredImage: '/article-images/waiter-salary-uae-hero.png',
+    featuredImage: '/article-images/waiter-salary-uae-hero.webp',
     coverAlt:
       'Waiter serving a table at a Dubai restaurant while checking a payslip breakdown of basic salary and service charge',
     category: 'Salary Insights',
@@ -1141,7 +1141,7 @@ export const seoSeedArticles = [
       'Waiter salary in UAE 2026 by venue: 5-star hotels, casual restaurants, and cafes. See basic pay, service charge share, tips, and real take-home.',
     content: `<p>Waiter salary in UAE 2026 varies more than most job seekers expect. A waiter at a 5-star Dubai hotel can take home AED 3,500 to AED 5,500 once basic salary, service charge, and tips are combined. A waiter at a small cafe in Sharjah might earn AED 1,500 to AED 2,200 with food and transport included. Both are valid offers — the difference is what you value.</p>
 <p>This guide breaks down real waiter pay ranges in the UAE, what service charge actually means for your paycheck, and how to compare offers beyond the headline number.</p>
-<figure><img src="/article-images/waiter-salary-uae-inline.png" alt="Pay breakdown chart showing basic salary, service charge, and tips for waiter jobs in UAE across hotels and restaurants" loading="lazy" /></figure>
+<figure><img src="/article-images/waiter-salary-uae-inline.webp" alt="Pay breakdown chart showing basic salary, service charge, and tips for waiter jobs in UAE across hotels and restaurants" loading="lazy" /></figure>
 <ul>
 <li>5-star hotel waiter jobs in Dubai pay AED 2,000 to AED 3,000 basic plus AED 1,500 to AED 2,500 in service charge and tips.</li>
 <li>Casual restaurant waiters earn AED 1,800 to AED 2,800 total, often with accommodation and food included.</li>
@@ -1180,7 +1180,7 @@ export const seoSeedArticles = [
     slug: 'receptionist-salary-in-uae',
     excerpt:
       'Receptionist salary in UAE 2026 by industry: hotels, clinics, corporate offices, and spas. Real pay ranges, benefits, and which sector pays best.',
-    featuredImage: '/article-images/receptionist-salary-uae-hero.png',
+    featuredImage: '/article-images/receptionist-salary-uae-hero.webp',
     coverAlt:
       'Receptionist at a Dubai corporate office front desk reviewing a salary breakdown document',
     category: 'Salary Insights',
@@ -1194,7 +1194,7 @@ export const seoSeedArticles = [
       'Receptionist salary in UAE 2026: hotels vs clinics vs corporate vs spas. See basic pay, benefits, and which industry actually pays the highest.',
     content: `<p>Receptionist salary in UAE 2026 depends heavily on the industry you work in. A corporate receptionist in a DIFC law firm can earn AED 5,500 to AED 8,000 per month. A hotel receptionist at a 5-star property earns AED 3,000 to AED 4,500 plus service charge. A clinic receptionist earns AED 3,500 to AED 5,500 depending on the medical facility. Understanding the gap between industries helps you target the right role from the start.</p>
 <p>This guide breaks down the real pay ranges for receptionist roles across the biggest hiring sectors in the UAE, what skills raise your package, and how to choose the right industry for your background.</p>
-<figure><img src="/article-images/receptionist-salary-uae-inline.png" alt="Comparison chart showing receptionist salaries in UAE across hotels, clinics, corporate offices, and spas" loading="lazy" /></figure>
+<figure><img src="/article-images/receptionist-salary-uae-inline.webp" alt="Comparison chart showing receptionist salaries in UAE across hotels, clinics, corporate offices, and spas" loading="lazy" /></figure>
 <ul>
 <li>Corporate receptionists in DIFC, ADGM, or free zone offices earn the highest total packages.</li>
 <li>Hotel receptionists earn a moderate base plus service charge, usually with accommodation.</li>
@@ -1235,7 +1235,7 @@ export const seoSeedArticles = [
     slug: 'helper-salary-in-uae',
     excerpt:
       'Helper salary in UAE 2026 across warehouse, construction, kitchen, and retail jobs. Real pay ranges, overtime, accommodation, and food value explained.',
-    featuredImage: '/article-images/helper-salary-uae-hero.png',
+    featuredImage: '/article-images/helper-salary-uae-hero.webp',
     coverAlt:
       'Helper worker in a Dubai warehouse reviewing a salary offer letter with accommodation and overtime details',
     category: 'Salary Insights',
@@ -1249,7 +1249,7 @@ export const seoSeedArticles = [
       'Helper salary in UAE 2026 by sector: warehouse, construction, kitchen, and retail. Real pay ranges, overtime, food value, and how to compare offers.',
     content: `<p>Helper salary in UAE 2026 ranges from AED 800 to AED 2,000 depending on the sector. The headline number alone does not tell the full story. A warehouse helper offered AED 1,200 with food and accommodation can save more monthly than a helper earning AED 1,800 with nothing included. Overtime, site location, and weekly duty pattern change the real value even more.</p>
 <p>This guide breaks down what helpers actually earn across warehouse, construction, kitchen, and retail jobs in the UAE, and how to evaluate a full package before accepting.</p>
-<figure><img src="/article-images/helper-salary-uae-inline.png" alt="Salary comparison showing helper pay in UAE across warehouse, construction, kitchen, and retail with accommodation values" loading="lazy" /></figure>
+<figure><img src="/article-images/helper-salary-uae-inline.webp" alt="Salary comparison showing helper pay in UAE across warehouse, construction, kitchen, and retail with accommodation values" loading="lazy" /></figure>
 <ul>
 <li>Warehouse helpers earn AED 1,000 to AED 1,500 basic with accommodation and transport usually included.</li>
 <li>Construction site helpers earn AED 900 to AED 1,400 with mandatory accommodation, transport, and food.</li>
@@ -1291,7 +1291,7 @@ export const seoSeedArticles = [
     slug: 'how-to-negotiate-salary-in-uae',
     excerpt:
       'Negotiate your UAE job offer without burning the relationship. Scripts, market data, and the right moment to ask for more money in 2026.',
-    featuredImage: '/article-images/negotiate-salary-uae-hero.png',
+    featuredImage: '/article-images/negotiate-salary-uae-hero.webp',
     coverAlt:
       'Candidate discussing salary with a UAE recruiter across a desk with offer letter and market pay chart',
     category: 'Career Guides',
@@ -1305,7 +1305,7 @@ export const seoSeedArticles = [
       'Negotiate your UAE job offer the right way. Exact scripts, market data to cite, and the moments that cost or gain you AED 500 to AED 3,000.',
     content: `<p>How to negotiate salary in UAE jobs is a skill worth learning once and using for life. The UAE market rewards polite, prepared negotiation — most employers expect some pushback on the first offer and build 5 to 15 percent of flex into their initial number. Most candidates never ask and accept the first figure. That silence costs AED 500 to AED 3,000 per month, and compounds over years.</p>
 <p>This guide walks through exactly when, how, and what to say when negotiating a UAE job offer, along with the phrases that work best with local recruiters in 2026.</p>
-<figure><img src="/article-images/negotiate-salary-uae-inline.png" alt="Negotiation conversation flow showing research, response timing, and script for UAE salary discussion" loading="lazy" /></figure>
+<figure><img src="/article-images/negotiate-salary-uae-inline.webp" alt="Negotiation conversation flow showing research, response timing, and script for UAE salary discussion" loading="lazy" /></figure>
 <ul>
 <li>Research the market range before negotiating — data beats opinion every time.</li>
 <li>Never negotiate before you have a written offer in hand.</li>
