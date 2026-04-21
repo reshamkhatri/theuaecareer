@@ -276,8 +276,8 @@ export const jobs = [
     "category": "Retail / FMCG",
     "description": "<p>We are looking for enthusiastic and customer-focused Sales Associates to join our team at Dubai Mall. This is a full-time role with fixed shifts. No prior UAE experience is required — if you have retail or customer service experience from your home country, you are eligible to apply.</p><p>You will be responsible for greeting customers, helping them find products, maintaining store displays, and processing transactions. Training is provided for all new joiners.</p><h3>What We're Looking For</h3><p>•\tGood communication skills in English (additional languages a plus)</p><p>•\tProfessional appearance and a positive attitude</p><p>•\tAbility to stand for extended periods during shifts</p><p>•\tAvailability to work weekends (Friday and Saturday are the busiest days)</p><p>•\tUAE residence visa (visit visa candidates may be considered for immediate joiners)</p>",
     "howToApply": "<p>Walk in directly during the interview timings above. Bring your CV, passport copy, and one photograph. No need to call ahead.</p>",
-    "postedDate": "2026-03-21T08:58:21.161Z",
-    "expiryDate": "2026-04-20T08:58:21.161Z",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-05-31T08:58:21.161Z",
     "isWalkIn": true,
     "walkInDetails": {
       "summary": "Every Sunday–Thursday, 10am–4pm at Mall HR office, Ground Floor near main entrance",
@@ -305,8 +305,8 @@ export const jobs = [
     "category": "Logistics & Transport",
     "description": "<p>A well-established logistics company in Jebel Ali is hiring light vehicle delivery drivers. The role involves daily deliveries across Dubai and Sharjah on a fixed route basis. Company vehicle provided. Fuel card provided. Working hours are 7am to 5pm with one hour break.</p><h3>Requirements</h3><p>•\tValid UAE light vehicle driving licence (mandatory)</p><p>•\tMinimum 1 year driving experience in UAE</p><p>•\tSmartphone with WhatsApp for route communication</p><p>•\tClean driving record (no major accidents or traffic fines in the past year)</p><p>•\tBasic English for delivery documentation</p>",
     "howToApply": "<p>Walk in on Saturday or Sunday between 9am and 1pm. Bring your UAE driving licence (original), passport copy, visa copy, and CV. WhatsApp the number on the contact page with \"Driver Application\" to get the depot address.</p>",
-    "postedDate": "2026-03-21T08:58:21.161Z",
-    "expiryDate": "2026-04-20T08:58:21.161Z",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-05-31T08:58:21.161Z",
     "isWalkIn": true,
     "walkInDetails": {
       "summary": "Saturday and Sunday, 9am–11am at Jebel Ali depot (check WhatsApp for location map)",
@@ -334,8 +334,8 @@ export const jobs = [
     "category": "Hospitality / F&B",
     "description": "<p>We are hiring Housekeeping Attendants for our 4-star properties in Dubai Marina and JBR. This role is ideal for freshers who are hardworking and willing to learn. Prior experience in housekeeping from home country is a plus but not mandatory. We provide thorough training to all new team members.</p><h3>Benefits</h3><p>•\tShared accommodation provided</p><p>•\tTransportation to and from workplace provided</p><p>•\tThree meals a day in the staff cafeteria</p><p>•\tUniform and laundry service provided</p><p>•\tHealth insurance and annual flight ticket</p>",
     "howToApply": "<p>Attend the walk-in interviews this Saturday and Sunday. Bring your updated CV and professional appearance.</p>",
-    "postedDate": "2026-03-21T08:58:21.162Z",
-    "expiryDate": "2026-04-20T08:58:21.162Z",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-05-31T08:58:21.162Z",
     "isWalkIn": true,
     "walkInDetails": {
       "summary": "Saturday and Sunday, 9am–2pm at Hotel HR office, B1 floor",
@@ -363,8 +363,8 @@ export const jobs = [
     "category": "Customer Service / BPO",
     "description": "<p>We are looking for English and Hindi speaking Customer Service Agents to join our call centre team in Business Bay. You will be responsible for handling inbound queries regarding telecommunications services, troubleshooting basic issues, and assisting customers with plan renewals.</p><h3>Candidate Profile</h3><p>•\tExcellent communication skills in English and Hindi (must be fluent in both)</p><p>•\tBasic computer literacy and typing skills</p><p>•\tCustomer-first attitude and ability to handle pressure</p><p>•\tWillingness to work in shifts (rotational shifts)</p><p>•\tBachelor's degree preferred but not mandatory for experienced candidates</p>",
     "howToApply": "<p>Walk in during the specified timings this week. Bring your CV and be prepared for a quick language assessment.</p>",
-    "postedDate": "2026-03-21T08:58:21.162Z",
-    "expiryDate": "2026-04-20T08:58:21.162Z",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-05-31T08:58:21.162Z",
     "isWalkIn": true,
     "walkInDetails": {
       "summary": "Monday to Wednesday, 11am–3pm at Clover Bay Tower, 12th Floor, Business Bay",
@@ -373,5 +373,237 @@ export const jobs = [
     },
     "status": "active",
     "slug": "customer-service-agent-call-centre-3"
+  },
+  {
+    "title": "Security Guard — Residential Towers",
+    "companyName": "Facility management company (Downtown Dubai)",
+    "location": {
+      "city": "Downtown Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 2400,
+      "max": 2800,
+      "currency": "AED",
+      "label": "AED 2,400 – 2,800 + accommodation"
+    },
+    "experienceRequired": "SIRA certified (Basic or Advanced)",
+    "category": "Security / Facilities",
+    "description": "<p>A large facility management company is hiring SIRA-certified security guards for residential towers in Downtown Dubai and Business Bay. 12-hour rotating shifts (day / night). Company provides uniform, accommodation, transport, and medical insurance. Annual leave ticket provided after completing 1 year of service.</p><h3>Requirements</h3><p>•\tValid SIRA Basic Security Guard certificate (mandatory)</p><p>•\tMinimum 173 cm height, medically fit</p><p>•\tBasic English (reading guest names, using the visitor log system)</p><p>•\tWilling to work 12-hour shifts including nights and weekends</p><p>•\tClean police record from home country and UAE</p>",
+    "howToApply": "<p>Walk in Monday to Thursday between 10am and 12pm with your SIRA card, passport copy, visa copy, and 2 photographs. No appointment needed.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-10T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Monday to Thursday, 10am–12pm at facility company HR office, Al Quoz Industrial Area 3",
+      "time": "Monday to Thursday, 10am–12pm",
+      "venue": "Facility company HR office, Al Quoz Industrial Area 3"
+    },
+    "status": "active",
+    "slug": "security-guard-residential-towers-4"
+  },
+  {
+    "title": "Supermarket Cashier",
+    "companyName": "Hypermarket chain (Sharjah)",
+    "location": {
+      "city": "Al Nahda, Sharjah",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 2000,
+      "max": 2600,
+      "currency": "AED",
+      "label": "AED 2,000 – 2,600 + transport + medical"
+    },
+    "experienceRequired": "6 months cashier or retail experience",
+    "category": "Retail / FMCG",
+    "description": "<p>A major hypermarket chain is hiring full-time cashiers for its Sharjah stores. 9-hour shifts with 1 hour paid break, rotating weekly. Company provides transport from staff accommodation in Al Nahda and Muweilah, free uniforms, medical insurance, and an annual ticket after 1 year.</p><h3>Requirements</h3><p>•\t6 months minimum cashier or retail front-desk experience</p><p>•\tBasic English and either Arabic, Hindi, Urdu, or Malayalam</p><p>•\tComfortable standing for 9-hour shifts</p><p>•\tBasic math skills for manual backup when POS is down</p><p>•\tUAE residence visa preferred; visit visa candidates considered if available to join within 2 weeks</p>",
+    "howToApply": "<p>Walk in any Saturday or Monday between 10am and 2pm. Bring CV, passport copy, visa copy, and a recent photograph.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-05T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Saturday and Monday, 10am–2pm at hypermarket HR office, Al Nahda Sharjah",
+      "time": "Saturday and Monday, 10am–2pm",
+      "venue": "Hypermarket HR office, Al Nahda Sharjah (near Sahara Centre)"
+    },
+    "status": "active",
+    "slug": "supermarket-cashier-sharjah-5"
+  },
+  {
+    "title": "Waiter / Waitress — Fine Dining",
+    "companyName": "Restaurant group (Downtown Dubai)",
+    "location": {
+      "city": "Downtown Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 2200,
+      "max": 3000,
+      "currency": "AED",
+      "label": "AED 2,200 – 3,000 + tips + meals + accommodation"
+    },
+    "experienceRequired": "1+ year restaurant service",
+    "category": "Hospitality / F&B",
+    "description": "<p>A high-end restaurant group in Downtown Dubai is hiring experienced waiters and waitresses for its Italian and Asian fine-dining concepts. Company provides shared accommodation in Al Quoz, transport, 2 meals per shift, medical insurance, and annual air ticket. Tips are pooled and paid monthly — typically AED 800 to 1,500 on top of base salary.</p><h3>Requirements</h3><p>•\tMinimum 1 year experience in restaurant service (home country experience counted)</p><p>•\tFluent conversational English</p><p>•\tPresentable appearance — no visible tattoos or piercings</p><p>•\tBasic POS knowledge (Micros, Toast, or similar) is a plus</p><p>•\tFood and hygiene basics; Dubai Municipality food handler certification will be arranged by the company</p>",
+    "howToApply": "<p>Walk in every Tuesday and Wednesday between 3pm and 5pm (between service hours). Bring CV and one recent photo. Ask for the HR manager at reception.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-15T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Tuesday and Wednesday, 3pm–5pm at restaurant group HR, Boulevard Plaza Tower 1 lobby",
+      "time": "Tuesday and Wednesday, 3pm–5pm",
+      "venue": "Restaurant group HR, Boulevard Plaza Tower 1 lobby, Downtown Dubai"
+    },
+    "status": "active",
+    "slug": "waiter-waitress-fine-dining-6"
+  },
+  {
+    "title": "Warehouse Helper — E-Commerce",
+    "companyName": "E-commerce fulfilment centre (Dubai Investment Park)",
+    "location": {
+      "city": "Dubai Investment Park",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 1800,
+      "max": 2400,
+      "currency": "AED",
+      "label": "AED 1,800 – 2,400 + overtime + accommodation"
+    },
+    "experienceRequired": "Freshers welcome",
+    "category": "Logistics & Transport",
+    "description": "<p>A large e-commerce fulfilment centre in DIP is hiring warehouse helpers for picking, packing, inbound, and returns processing. 3-shift rotation (morning / afternoon / night). Company provides shared accommodation, transport to and from site, 1 meal per shift, uniform, and medical insurance. Overtime pays 1.25x and is available most weeks.</p><h3>Requirements</h3><p>•\tPhysically fit — able to lift up to 20 kg and stand for 8-hour shifts</p><p>•\tBasic English and ability to read numbers / SKU labels</p><p>•\tSmartphone literacy (all picking is done via handheld scanners and an Android app)</p><p>•\tAvailability to start within 2 weeks</p><p>•\tVisit visa candidates considered if employment visa can be processed quickly</p>",
+    "howToApply": "<p>Walk in any weekday between 9am and 11am. Bring passport copy, visa copy, and CV. Same-day trial shift may be offered if you match requirements.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-10T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Monday to Thursday, 9am–11am at fulfilment centre main gate, DIP Phase 2",
+      "time": "Monday to Thursday, 9am–11am",
+      "venue": "Fulfilment centre main gate, DIP Phase 2 (take bus F55 from Ibn Battuta Metro)"
+    },
+    "status": "active",
+    "slug": "warehouse-helper-ecommerce-7"
+  },
+  {
+    "title": "Kitchen Helper",
+    "companyName": "Restaurant chain (Sharjah)",
+    "location": {
+      "city": "Al Nahda, Sharjah",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 1700,
+      "max": 2100,
+      "currency": "AED",
+      "label": "AED 1,700 – 2,100 + accommodation + meals"
+    },
+    "experienceRequired": "Freshers welcome",
+    "category": "Hospitality / F&B",
+    "description": "<p>A growing restaurant chain is hiring kitchen helpers for its Sharjah and Ajman branches. The role involves basic food prep, washing and cleaning, stocking, and supporting cooks during service hours. Shared accommodation provided near the workplace. 3 meals a day provided. Freshers are welcome; training given on the job.</p><h3>What We're Looking For</h3><p>•\tPhysically fit and able to stand for long shifts in a hot kitchen</p><p>•\tBasic English or Hindi for kitchen communication</p><p>•\tGood personal hygiene and willingness to follow food safety rules</p><p>•\tComfortable with early morning or late night shifts (rotating)</p><p>•\tUAE visa holders preferred; sponsored visas offered for strong candidates</p>",
+    "howToApply": "<p>Walk in Sunday to Tuesday between 11am and 1pm. Bring CV and passport copy. On-the-spot trial shift possible for immediate joiners.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-05T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Sunday to Tuesday, 11am–1pm at restaurant chain central kitchen, Industrial Area 4 Sharjah",
+      "time": "Sunday to Tuesday, 11am–1pm",
+      "venue": "Restaurant chain central kitchen, Industrial Area 4 Sharjah"
+    },
+    "status": "active",
+    "slug": "kitchen-helper-sharjah-8"
+  },
+  {
+    "title": "Hotel Front Desk Agent",
+    "companyName": "4-star hotel (Deira, Dubai)",
+    "location": {
+      "city": "Deira, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 2800,
+      "max": 3500,
+      "currency": "AED",
+      "label": "AED 2,800 – 3,500 + accommodation + service charge"
+    },
+    "experienceRequired": "1+ year front office experience",
+    "category": "Hospitality / F&B",
+    "description": "<p>A 4-star hotel in Deira is hiring front desk agents. You will handle check-in and check-out, guest requests, reservations calls, and basic concierge services. Opera PMS experience is a strong plus. Company provides shared accommodation, transport, duty meals, uniform, and monthly service charge (typically AED 400–900 on top of base).</p><h3>Requirements</h3><p>•\tMinimum 1 year experience in hotel front office or reservations</p><p>•\tFluent English; Arabic, Russian, or Hindi as additional languages is a big plus</p><p>•\tPresentable appearance and professional grooming</p><p>•\tAvailable for rotating shifts including overnight</p><p>•\tPrevious Opera or similar PMS experience preferred</p>",
+    "howToApply": "<p>Walk in Monday and Thursday between 10am and 12pm. Bring CV, passport copy, visa copy, and 2 passport-size photos. A brief on-the-spot English assessment may be conducted.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-15T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Monday and Thursday, 10am–12pm at hotel HR office, ground floor, near Union Metro Station",
+      "time": "Monday and Thursday, 10am–12pm",
+      "venue": "Hotel HR office, ground floor, near Union Metro Station, Deira"
+    },
+    "status": "active",
+    "slug": "hotel-front-desk-agent-deira-9"
+  },
+  {
+    "title": "Office Cleaner",
+    "companyName": "Corporate cleaning services (Business Bay)",
+    "location": {
+      "city": "Business Bay, Dubai",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 1500,
+      "max": 1900,
+      "currency": "AED",
+      "label": "AED 1,500 – 1,900 + transport + accommodation"
+    },
+    "experienceRequired": "Freshers welcome",
+    "category": "Cleaning / Facilities",
+    "description": "<p>A corporate cleaning company is hiring office cleaners for Business Bay, DIFC, and Downtown Dubai. Morning shifts (6am to 2pm) and evening shifts (4pm to 10pm) available. Shared accommodation in Al Quoz provided. Company transport between accommodation and client sites. Uniforms, cleaning supplies, and medical insurance provided.</p><h3>Requirements</h3><p>•\tPhysically fit — able to stand, bend, and reach for 8-hour shifts</p><p>•\tBasic English is helpful but not required</p><p>•\tClean personal appearance and punctuality</p><p>•\tPrior cleaning experience in home country counted</p><p>•\tWilling to work 6 days per week</p>",
+    "howToApply": "<p>Walk in Sunday, Monday, and Tuesday between 9am and 11am. Bring passport copy, visa copy (if any), and 2 photos. Joining can be within 3 days.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-10T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Sunday to Tuesday, 9am–11am at cleaning company HQ, Al Quoz Industrial Area 4",
+      "time": "Sunday to Tuesday, 9am–11am",
+      "venue": "Cleaning company HQ, Al Quoz Industrial Area 4"
+    },
+    "status": "active",
+    "slug": "office-cleaner-business-bay-10"
+  },
+  {
+    "title": "Sales Associate — Fashion Retail",
+    "companyName": "International fashion brand (Yas Mall, Abu Dhabi)",
+    "location": {
+      "city": "Yas Mall, Abu Dhabi",
+      "country": "UAE"
+    },
+    "jobType": "Full-time",
+    "salaryRange": {
+      "min": 2200,
+      "max": 2800,
+      "currency": "AED",
+      "label": "AED 2,200 – 2,800 + commission + accommodation"
+    },
+    "experienceRequired": "6 months retail experience",
+    "category": "Retail / FMCG",
+    "description": "<p>An international fashion brand is hiring sales associates for its Yas Mall and The Galleria Al Maryah Island stores in Abu Dhabi. 9-hour shifts on rotating schedules including weekends. Company provides shared staff accommodation in Mussafah, transport, uniforms, medical insurance, and monthly sales commission (AED 300–900 on top of base depending on store performance).</p><h3>Candidate Profile</h3><p>•\tMinimum 6 months fashion retail or department store experience</p><p>•\tGood conversational English; Arabic, Hindi, or Filipino as a second language is a plus</p><p>•\tConfident, customer-first personality</p><p>•\tAvailable to work all weekends and public holidays (retail industry standard)</p><p>•\tPresentable, no visible tattoos, professional grooming</p>",
+    "howToApply": "<p>Walk in Wednesday and Saturday between 11am and 3pm. Bring CV, passport copy, visa copy, and one recent photograph. Be dressed as if you were already on the sales floor.</p>",
+    "postedDate": "2026-04-18T09:00:00.000Z",
+    "expiryDate": "2026-06-15T09:00:00.000Z",
+    "isWalkIn": true,
+    "walkInDetails": {
+      "summary": "Wednesday and Saturday, 11am–3pm at brand HR office, Yas Mall Level 2 staff entrance",
+      "time": "Wednesday and Saturday, 11am–3pm",
+      "venue": "Brand HR office, Yas Mall Level 2 staff entrance, Abu Dhabi"
+    },
+    "status": "active",
+    "slug": "sales-associate-fashion-yas-mall-11"
   }
 ];

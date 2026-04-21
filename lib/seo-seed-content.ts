@@ -1589,4 +1589,338 @@ export const seoSeedArticles = [
 <h2>What to do next</h2>
 <p>Before replying to any Gulf job offer, run the <a href="/blog/how-to-verify-uae-job-offer-is-real/">5-step UAE offer verification check</a> and review the common <a href="/blog/fake-recruiter-red-flags-dubai/">fake recruiter red flags in Dubai</a>. If the offer is for UAE specifically, read the deeper <a href="/blog/how-to-avoid-fake-job-offers-in-uae-saudi-qatar/">how to avoid fake job offers in UAE, Saudi Arabia, and Qatar guide</a>. Learn about <a href="/blog/whatsapp-job-scams-in-uae/">WhatsApp job scams in UAE</a> before you reply to any WhatsApp recruiter. If you are already employed and facing a scam or abuse, file a <a href="/blog/how-to-file-mohre-complaint-in-uae/">MOHRE complaint</a> immediately.</p>`,
   },
+  {
+    _id: 'seo-article-dubai-visit-visa-job-search-2026',
+    title: 'Dubai Visit Visa for Job Search 2026: Cost, Duration, and How to Extend',
+    slug: 'dubai-visit-visa-for-job-search-2026',
+    excerpt:
+      'Using a Dubai visit visa to find a job in 2026? Real cost, 30 vs 60 vs 90-day options, extension process, and the exact step-by-step from landing to signed offer.',
+    featuredImage: '/article-images/uae-visa-renewal-hero.jpg',
+    coverAlt:
+      'Dubai visit visa stamped in passport next to a Dubai skyline and a CV folder — planning a job search trip to UAE',
+    category: 'Visa & Immigration',
+    tags: ['dubai visit visa', 'job search uae', 'uae visa 2026', 'tourist visa dubai', 'visit visa extension'],
+    status: 'published',
+    publishDate: '2026-04-20T10:00:00.000Z',
+    lastUpdatedDate: '2026-04-20T10:00:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'Dubai Visit Visa for Job Search 2026 — Cost, Duration & Extend',
+    metaDescription:
+      'Dubai visit visa for job search in 2026: exact cost (AED 370–1,100), 30/60/90-day options, extension process, and step-by-step from landing to offer letter.',
+    content: `<p>Most people who move to Dubai for work arrive first on a visit visa, hunt for jobs on the ground for a few weeks, then convert to an employment visa once they get an offer. This guide is the 2026 version of what that actually costs, how long your visa lets you stay, what happens when it expires, and how to extend if you need more time.</p>
+<p>Everything here is current for April 2026. Fees, durations, and the extension process were last confirmed against the UAE ICP (Federal Authority for Identity, Citizenship, Customs & Port Security) portal and the GDRFA Dubai smart services.</p>
+<figure><img src="/article-images/uae-visa-renewal-inline.jpg" alt="Job seeker holding a Dubai visit visa, passport, and printed CVs — arriving at Dubai International Airport for a job search trip" loading="lazy" /></figure>
+<ul>
+<li>The standard Dubai tourist visa is 60 days, single entry, around AED 370 through the ICP or airline.</li>
+<li>Extensions add another 30 days for AED 600 — total on-ground time can reach 90 days.</li>
+<li>You cannot legally work on a visit visa. You can attend interviews, sign offers, and wait for your employment visa.</li>
+</ul>
+<h2>What is a Dubai visit visa and who needs one?</h2>
+<p>A visit visa (also called a tourist visa in everyday speech) lets you enter the UAE for tourism, family visits, or — in practice — job interviews. Around 45 countries including the UK, Germany, France, and the United States get a free 30 or 90-day visa on arrival. Most candidates reading this guide — Nepal, India, Pakistan, Bangladesh, Sri Lanka, the Philippines, Egypt, Nigeria, Kenya — need to apply for a visit visa before flying.</p>
+<p>You can apply through three main channels: the official UAE ICP portal (icp.gov.ae), your airline (Emirates and Etihad both issue visit visas to flight passengers), or a registered travel agency or immigration consultant in your home country. All three route the application to the same government system — the difference is price and processing time.</p>
+<h2>How much does a Dubai visit visa cost in 2026?</h2>
+<p>For most nationalities who need a pre-arranged visa, the costs in April 2026 are as follows. These are government fees; agency and airline markups are on top.</p>
+<ul>
+<li><strong>30-day single entry visit visa:</strong> AED 300 government fee (around USD 82 / NPR 11,000 / INR 6,800). Typical airline/agency cost with service charge: AED 420 to AED 550.</li>
+<li><strong>60-day single entry visit visa:</strong> AED 370 government fee. Typical agency cost: AED 550 to AED 750.</li>
+<li><strong>90-day single entry visit visa:</strong> AED 650 government fee. Typical agency cost: AED 900 to AED 1,100.</li>
+<li><strong>30-day multiple entry tourist visa:</strong> AED 650 government fee. Only useful if you plan to leave and re-enter.</li>
+</ul>
+<p>For job hunting, the 60-day single entry is the sweet spot — long enough to attend walk-ins, get shortlisted, and sign an offer, but not as expensive as 90 days. If you do not find a role in 60 days, a one-time 30-day extension inside the UAE costs around AED 600. More on extensions below.</p>
+<h2>Can you work on a Dubai visit visa?</h2>
+<p>No. It is illegal to take paid work in the UAE on a visit visa, even for a single day. What you can do is: attend interviews (walk-in or scheduled), complete assessment tests, sign job offer letters, get a medical done for the employment visa, and wait for your employment visa and Emirates ID to be processed.</p>
+<p>If an employer offers you a trial shift paid in cash while you are on a visit visa, refuse it. Both you and the employer can be fined and banned. A legitimate employer will wait for your work visa — that process usually takes 2 to 4 weeks once the offer is signed. If someone pressures you to start work "off-the-books", it is almost always a <a href="/blog/avoid-fake-gulf-job-offers/">fake or abusive offer</a> and you should walk away.</p>
+<h2>How long does it take to find a job on a Dubai visit visa?</h2>
+<p>Realistic timelines based on what candidates actually report in 2026:</p>
+<ul>
+<li><strong>Freshers with no UAE experience:</strong> Plan for 4 to 8 weeks of active applying. Walk-ins and referrals close faster than online applications.</li>
+<li><strong>1 to 3 years of experience in retail, hospitality, logistics, or construction:</strong> Typically 2 to 5 weeks if your CV is Gulf-formatted and you attend walk-ins.</li>
+<li><strong>Skilled trades with GCC certifications (electricians, welders, HVAC technicians, nurses with DHA / HAAD):</strong> Often 1 to 3 weeks. Some employers hire the same week.</li>
+<li><strong>Office / corporate roles:</strong> 4 to 10 weeks. These roles usually rely on LinkedIn and agency pipelines, not walk-ins.</li>
+</ul>
+<p>If you are a fresher or someone without UAE experience, do not arrive on a 30-day visa. Start with 60 days. The difference in cost is small compared to a rushed return flight and the visa ban that comes with overstaying.</p>
+<figure><img src="/article-images/walk-in-interviews-dubai-inline.jpg" alt="Dubai walk-in interview hall with job seekers holding CVs waiting for their turn" loading="lazy" /></figure>
+<h2>How do you extend a Dubai visit visa?</h2>
+<p>You can extend a visit visa inside the UAE once, for an additional 30 days. You do not need to exit the country. The extension process in 2026:</p>
+<ul>
+<li><strong>Cost:</strong> AED 600 government fee (sometimes AED 660 with service charges at a typing centre or Amer service).</li>
+<li><strong>Where to apply:</strong> The GDRFA Dubai website (gdrfad.gov.ae), the ICP smart app, or any Amer service centre in Dubai. For other emirates, use ICP smart services.</li>
+<li><strong>When to apply:</strong> Ideally 5 to 7 days before your current visa expires. Last-minute extensions on the day of expiry risk overstay fines if the system does not process in time.</li>
+<li><strong>Documents needed:</strong> Passport copy, current visa copy, and a UAE mobile number. No sponsor letter or hotel booking is usually needed for a first extension.</li>
+</ul>
+<p>Extension is approved in most cases. It is refused only if you have an active criminal record, existing overstay fines, or a flagged immigration history. A 60-day visa plus one 30-day extension gives you 90 days total on the ground — enough time for most job searches.</p>
+<h2>What happens if you overstay a Dubai visit visa?</h2>
+<p>Overstay fines in 2026 are AED 50 per day for every day past expiry. For example: overstay 10 days and you owe AED 500; overstay 30 days and you owe AED 1,500. These fines must be cleared before you can leave the country, get an employment visa stamped, or come back on any future visa.</p>
+<p>More importantly: an overstay can cause your pending employment visa to be rejected. If an employer has initiated your work visa and you overstay, immigration may block the approval. Always extend before expiry — never overstay and try to "sort it out later".</p>
+<h2>Visit visa vs employment visa — the difference</h2>
+<p>A visit visa lets you be in the country but not work. An employment visa is sponsored by a UAE employer, allows you to legally work for them, and comes with an Emirates ID. The usual flow looks like this:</p>
+<ul>
+<li>You arrive on a visit visa and start attending interviews.</li>
+<li>A company offers you a job and signs an offer letter.</li>
+<li>The company applies for your entry permit and work visa (this takes 5 to 15 working days).</li>
+<li>Once the work visa is issued, you do a status adjustment inside the UAE — converting your visit visa to a work visa without leaving the country. This costs around AED 800 to 1,200 in government fees (usually paid by the employer).</li>
+<li>You do a medical test and fingerprinting, the Emirates ID is issued, and you officially start work.</li>
+</ul>
+<p>Some employers still prefer the old method: you exit the UAE (usually to Oman by road, or a short flight home), they stamp the work visa, and you re-enter on the employment permit. Both methods are legal — the in-country status adjustment is faster and cheaper in most cases.</p>
+<h2>Tips for job hunting on a Dubai visit visa</h2>
+<p>Candidates who get hired quickly on visit visas almost always do these things:</p>
+<ul>
+<li><strong>Apply from home before flying.</strong> Start sending CVs on <a href="/jobs">theuaecareer.com</a>, Bayt, GulfTalent, and LinkedIn 2 to 3 weeks before your trip. Line up interviews for your first week in Dubai.</li>
+<li><strong>Attend walk-in interviews every week.</strong> Walk-ins are the fastest path to an offer. Bookmark the <a href="/blog/walk-in-interviews-abu-dhabi-this-week/">walk-in interviews list</a> and attend 3 to 5 a week.</li>
+<li><strong>Stay in affordable accommodation.</strong> Shared bed spaces in Al Karama, Deira, or Bur Dubai cost AED 800 to 1,500 per month. Hotel apartments burn through your budget in days.</li>
+<li><strong>Use a UAE SIM card and local number.</strong> Employers rarely call back foreign numbers. du and Etisalat tourist SIMs are available at the airport for AED 55.</li>
+<li><strong>Keep your CV Gulf-formatted.</strong> Photo in the top-right, visa status clearly stated, one page if under 3 years of experience. Build one in 5 minutes with our <a href="/tools/cv-maker">free CV Maker</a>.</li>
+<li><strong>Do not pay any agency "job placement fees".</strong> Licensed recruitment agencies in UAE cannot charge candidates. Anyone asking for money to "get you interviews" is scamming you. Read <a href="/blog/fake-recruiter-red-flags-dubai/">fake recruiter red flags</a> first.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>Can I convert my visit visa to an employment visa without leaving UAE?</h3>
+<p>Yes. Since 2022, in-country status adjustment from visit visa to employment visa is allowed. Your employer pays the adjustment fee (AED 800 to 1,200). You stay in the UAE the whole time and receive your Emirates ID once the medical and biometrics are done.</p>
+<h3>What is the cheapest Dubai visit visa for 2026?</h3>
+<p>The 30-day single entry visa at around AED 300 government fee is cheapest, but for job searching it is usually too short. The 60-day single entry at AED 370 is the best value — roughly USD 100, plus any agency service charge.</p>
+<h3>Can I extend a Dubai visit visa more than once?</h3>
+<p>Standard policy in 2026 allows one 30-day extension inside the UAE. A second extension is possible in rare cases (medical emergency, formal sponsor letter) but not guaranteed. Plan your job search around one extension at most — total 90 days.</p>
+<h3>Do I need a return ticket to enter Dubai on a visit visa?</h3>
+<p>In theory yes — immigration officers at Dubai International can ask for a return ticket. In practice, if your visa is already approved and you are coming from a listed low-risk country, a printed return booking is enough. Candidates from high-risk nationalities sometimes face stricter checks and may be asked for proof of funds (AED 5,000 to 10,000 in cash or a bank statement).</p>
+<h3>Can an employer apply for my visit visa?</h3>
+<p>Some employers offer to sponsor your visit visa as part of the hiring process (common for hotel groups and large retailers). Accept it only if you have a confirmed offer letter. Never pay the employer for the visa — it is illegal for them to charge you.</p>
+<h3>What if I already have a visit visa but no return flight booked?</h3>
+<p>Most airlines require onward travel within your visa duration. Book a refundable return ticket or a cheap low-cost flight to a nearby country (Muscat, Doha, Kathmandu) — you can usually cancel or shift it once you have an offer and work visa in hand.</p>
+<h2>What to do next</h2>
+<p>If you are planning a job search trip, pair this guide with the <a href="/blog/how-to-find-a-job-in-dubai-as-a-fresher/">fresher's guide to finding a job in Dubai</a> and the <a href="/blog/how-much-money-needed-for-dubai-job-search-2026/">budget guide for a Dubai job search trip</a>. Before you accept any offer, verify the employer using the <a href="/blog/how-to-verify-uae-job-offer-is-real/">5-step offer verification check</a> and read up on <a href="/blog/avoid-fake-gulf-job-offers/">fake Gulf job offers to avoid</a>. Once you land, check the <a href="/blog/walk-in-interviews-abu-dhabi-this-week/">latest walk-in interviews</a> and start building your Gulf CV in the <a href="/tools/cv-maker">CV Maker</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-uae-jobs-for-nepali-citizens-2026',
+    title: 'UAE Jobs for Nepali Citizens 2026: How to Apply Safely and What to Expect',
+    slug: 'uae-jobs-for-nepali-citizens-2026',
+    excerpt:
+      'Complete 2026 guide for Nepali citizens applying to UAE jobs — licensed agencies, direct application routes, realistic salaries, and scams to avoid.',
+    featuredImage: '/article-images/dubai-fresher-jobs-hero.jpg',
+    coverAlt:
+      'Nepali job seeker reviewing UAE work visa documents and a signed offer letter in Kathmandu — preparing to fly to Dubai for a new job',
+    category: 'Country Guides',
+    tags: ['uae jobs nepali', 'nepal to dubai', 'gulf jobs nepal', 'nepali migrant workers', 'dubai jobs 2026'],
+    status: 'published',
+    publishDate: '2026-04-20T10:30:00.000Z',
+    lastUpdatedDate: '2026-04-20T10:30:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'UAE Jobs for Nepali Citizens 2026 — Apply Safely, Real Salaries',
+    metaDescription:
+      'UAE jobs for Nepali citizens 2026: licensed agency list, direct application routes, realistic pay for each sector, and the exact 5-step safe apply process.',
+    content: `<p>Nepal sends more than 100,000 workers to the UAE every year. Most of them land good jobs in hospitality, construction, security, retail, and driving. A smaller but growing number go into skilled roles — nursing, IT support, accounting, hotel management. But every year, thousands also lose money to fake agencies, fake visas, and fake job offers. This guide is for Nepali candidates who want the real picture of how to get to the UAE in 2026 — safely, legally, and with a job that pays what it promised.</p>
+<p>Written with the 2022 amendments to Nepal's Foreign Employment Act in mind, and updated for the 2026 UAE labour law framework. Every agency fee, salary range, and process step here reflects what we confirmed with Nepal's Department of Foreign Employment (DoFE) and the UAE MOHRE as of April 2026.</p>
+<figure><img src="/article-images/dubai-fresher-jobs-inline.jpg" alt="Group of Nepali migrant workers arriving at Dubai International Airport with passports and orientation packs" loading="lazy" /></figure>
+<ul>
+<li>Free-visa-free-ticket (FVFT) policy: UAE employers must pay visa, ticket, medical, and insurance. Nepali workers cannot legally be charged these fees.</li>
+<li>Use only DoFE-licensed agencies. There are around 800 licensed manpower companies in Nepal — never use an unlisted middleman.</li>
+<li>Minimum salary policy: Nepal has bilateral agreements with UAE setting minimum wages for common occupations. Know the minimum for your role before signing.</li>
+</ul>
+<h2>Which UAE jobs are most common for Nepali citizens?</h2>
+<p>In 2026, Nepali workers in UAE are concentrated in these sectors. Salary figures are monthly basic pay excluding accommodation and food unless stated.</p>
+<ul>
+<li><strong>Security guard (SIRA certified):</strong> AED 2,000 to 2,800 + accommodation + transport. One of the highest-hiring roles for Nepali men. Requires SIRA training in Dubai after arrival (employer usually pays).</li>
+<li><strong>Hotel and restaurant staff (steward, waiter, housekeeping, kitchen helper):</strong> AED 1,500 to 2,500 + accommodation + meals + annual flight. Service charge can add AED 300 to 800 monthly. Hospitality is the largest employer of Nepali workers in the UAE.</li>
+<li><strong>Construction and facility maintenance (labourer, helper, AC technician):</strong> AED 1,200 to 2,200 + accommodation. Tough physical work; make sure the company is a registered contractor and not a labour supply scam.</li>
+<li><strong>Cleaner (residential, hotel, office):</strong> AED 1,300 to 1,900 + accommodation + transport. Very high hiring volume; many reputable cleaning companies hire direct from Nepal.</li>
+<li><strong>Driver (light or heavy vehicle):</strong> AED 2,000 to 4,000 depending on licence and experience. A UAE driving licence is usually required; some companies arrange conversion courses.</li>
+<li><strong>Supermarket and retail (cashier, sales, stock helper):</strong> AED 1,800 to 2,600 + accommodation. LuLu, Carrefour, and local hypermarkets hire regularly.</li>
+<li><strong>Skilled roles for Nepali graduates (nurse, lab technician, IT support, accountant):</strong> AED 3,500 to 9,000+ depending on qualifications and licensing (DHA / HAAD / DoH for healthcare).</li>
+</ul>
+<h2>How do Nepali citizens legally apply for UAE jobs?</h2>
+<p>There are three legal routes to a UAE job from Nepal. Any route outside of these three is either illegal or extremely high risk.</p>
+<ul>
+<li><strong>Route 1 — DoFE-licensed manpower agency in Nepal.</strong> You apply through a licensed agency in Kathmandu, Pokhara, or another district. The agency matches you to a UAE employer, arranges the contract and visa, and handles orientation training. This is the most common route.</li>
+<li><strong>Route 2 — Direct employer application.</strong> You apply directly to a UAE employer through their careers page or a platform like <a href="/jobs">theuaecareer.com</a>, Bayt, or LinkedIn. Once hired, the employer files your work permit and entry permit. You still need to do DoFE clearance in Nepal before flying.</li>
+<li><strong>Route 3 — Visit visa then in-country job search.</strong> You fly to Dubai on a visit visa and attend walk-in interviews. After signing an offer, your employer converts the visit visa to an employment visa. Higher cost and risk but avoids agency middlemen.</li>
+</ul>
+<p>Whichever route you use, you must get a DoFE labour clearance (called "labour approval" or "final approval") before flying. Without this, you can be stopped at Kathmandu airport and your employment abroad will not be counted as legal migration.</p>
+<h2>How much does it cost a Nepali citizen to go to UAE in 2026?</h2>
+<p>Under Nepal's free-visa-free-ticket (FVFT) policy for UAE, these costs must be paid by the UAE employer, not the worker:</p>
+<ul>
+<li>UAE work visa and entry permit</li>
+<li>Flight ticket from Kathmandu to Dubai / Abu Dhabi</li>
+<li>Medical test in Nepal and repeat medical in UAE</li>
+<li>Emirates ID</li>
+<li>Insurance</li>
+</ul>
+<p>What you legally pay out of pocket is limited to: DoFE service fee (around NPR 2,500 to 5,000 depending on destination), foreign employment welfare fund contribution (NPR 1,500), your Nepali passport fee if you do not already have one, the orientation training (NPR 700), and personal items like clothes, toiletries, and some starter cash.</p>
+<p>Total legitimate cost from Nepal to UAE in 2026 should be under NPR 15,000 to 25,000 (roughly AED 400 to 650). Anyone asking for NPR 100,000, 200,000, or more is violating the law and scamming you. Report them.</p>
+<h2>Which Nepali agencies are licensed to send workers to UAE?</h2>
+<p>The Department of Foreign Employment (DoFE) in Kathmandu maintains the official list of licensed manpower companies. Before paying any agency a single rupee, do two checks:</p>
+<ul>
+<li><strong>Check 1 — DoFE licence:</strong> Visit dofe.gov.np and search the agency name. Every licensed agency has a unique registration number and a valid-until date. Expired or unlisted agencies are illegal.</li>
+<li><strong>Check 2 — Demand letter match:</strong> Ask to see the "demand letter" from the UAE employer. This must be stamped by the UAE embassy in Kathmandu and logged with DoFE. If the agency cannot show it, the job may not exist.</li>
+</ul>
+<p>Avoid agencies that: operate only from a WhatsApp number; ask for payment before showing a contract; promise "free visa" then charge NPR 100,000+; or pressure you to sign same-day. A real licensed agency will let you take a copy of the contract home, discuss it with family, and return in a few days.</p>
+<h2>What should be in your UAE employment contract?</h2>
+<p>Before you sign anything, confirm your contract has all of the following. This is the exact checklist DoFE and UAE MOHRE both require:</p>
+<ul>
+<li>Your full name, passport number, and nationality</li>
+<li>Employer name, trade licence number, and full UAE address</li>
+<li>Job title that matches the demand letter and your skill</li>
+<li>Basic monthly salary in AED (not just a total package figure)</li>
+<li>Breakdown of accommodation, food, and transport (who pays)</li>
+<li>Working hours (maximum 48 hours per week is legal)</li>
+<li>Overtime rate (1.25x for the first 2 hours, 1.5x after)</li>
+<li>Annual leave (30 days after 1 year)</li>
+<li>Annual flight ticket entitlement</li>
+<li>End-of-service gratuity clause (21 days basic salary per year for first 5 years)</li>
+<li>Probation period (maximum 6 months legally)</li>
+<li>Notice period for resignation or termination</li>
+</ul>
+<p>If any of these are missing or verbally promised but not written, do not sign. Verbal promises are not enforceable in UAE labour court. The MOHRE-registered contract is the only document that matters.</p>
+<h2>Common scams that target Nepali citizens applying to UAE jobs</h2>
+<p>These are the most frequently reported scams in 2026. If anything in your process looks like one of these, stop and verify before paying or flying.</p>
+<ul>
+<li><strong>"Free visa" fee scam:</strong> Agency asks for NPR 80,000 to 200,000 saying the employer will refund the money. Under FVFT this is already illegal. No refund ever comes.</li>
+<li><strong>Fake demand letter:</strong> The demand letter looks real but was never logged at DoFE or the UAE embassy. You arrive in Dubai and the "employer" does not exist or denies any offer was made.</li>
+<li><strong>Visit visa trap:</strong> Agency tells you "apply first on visit visa then convert in UAE". They charge heavy fees, put you on a visit visa, and disappear. You are left on a 60-day visa with no job and no support.</li>
+<li><strong>Contract switch:</strong> You sign a contract in Kathmandu at one salary. On arrival in UAE, the employer makes you sign a second contract at a lower salary. This is illegal — the MOHRE contract is what applies, and you can file a complaint.</li>
+<li><strong>WhatsApp-only recruiters:</strong> Someone contacts you on WhatsApp saying "direct employer, Dubai Airport job, AED 4,000 salary, no agency fee". They then ask for "visa processing fee", "medical fee", or "ticket deposit". All scams.</li>
+</ul>
+<p>Read <a href="/blog/avoid-fake-gulf-job-offers/">the full guide to fake Gulf job offers</a> and <a href="/blog/whatsapp-job-scams-in-uae/">WhatsApp job scams in UAE</a> before replying to any offer. Verify every offer with the <a href="/blog/how-to-verify-uae-job-offer-is-real/">5-step UAE offer verification check</a>.</p>
+<h2>The safe 5-step process for a Nepali citizen in 2026</h2>
+<ul>
+<li><strong>Step 1 — Passport first.</strong> Get your Nepali passport (MRP or e-passport) ready before you start job hunting. UAE employers will not process anything without a valid passport with at least 6 months validity.</li>
+<li><strong>Step 2 — Choose your route.</strong> Either a DoFE-licensed agency or direct application on a trusted jobs portal. Verify the agency licence on dofe.gov.np before engaging.</li>
+<li><strong>Step 3 — Verify the employer.</strong> Check the UAE employer's trade licence on MOHRE (mohre.gov.ae). The company name, address, and licence number on your contract must match exactly.</li>
+<li><strong>Step 4 — DoFE clearance.</strong> After signing the contract and before flying, get your labour approval sticker from DoFE Kathmandu. This is your legal proof of migration.</li>
+<li><strong>Step 5 — Keep records.</strong> Take photos of the demand letter, contract, DoFE sticker, and every receipt. Share them with a family member in Nepal. If anything goes wrong after arrival, these documents are your strongest defence.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>Can a Nepali citizen apply to UAE jobs directly without an agency?</h3>
+<p>Yes. You can apply directly through company careers pages, job portals like <a href="/jobs">theuaecareer.com</a>, LinkedIn, and direct employer contact. You still need DoFE clearance before flying. Direct application is legal and often cheaper — but you must handle contract verification and travel on your own.</p>
+<h3>What is the minimum salary for Nepali workers in UAE?</h3>
+<p>Nepal and UAE have bilateral minimums for certain roles — for example, security guards have a minimum around AED 1,200 basic plus accommodation. Hospitality and domestic workers have their own floors. Check the latest DoFE circulars for your specific occupation. Any contract below the minimum is not eligible for DoFE approval.</p>
+<h3>Is it safe to go to UAE on a visit visa from Nepal?</h3>
+<p>It is legal but risky. You have 60 to 90 days (with extension) to find a job. If you do not find one, you fly back at your own cost. For fresher candidates, going through a DoFE-licensed agency with a confirmed job is safer. For skilled or semi-skilled workers with savings and a network, visit visa can work.</p>
+<h3>How long does it take from signing a UAE offer to arriving in Dubai?</h3>
+<p>Typically 6 to 10 weeks via a licensed agency: 2 weeks for documents, 2 to 3 weeks for employer to process entry permit, 1 week for medical and police clearance in Nepal, 1 week for DoFE clearance and orientation, then travel. Direct application can be faster — 3 to 6 weeks.</p>
+<h3>What do I do if my UAE employer does not pay my salary?</h3>
+<p>Under UAE law, salaries must be paid within 10 days of due date. If not, file a complaint with MOHRE through their app, website, or the 800-MOHRE hotline. Complaints are taken seriously. See the guide to <a href="/blog/how-to-file-mohre-complaint-in-uae/">filing a MOHRE complaint in UAE</a>.</p>
+<h3>Can I change employers in UAE as a Nepali worker?</h3>
+<p>Yes. Since the 2022 labour law update, UAE workers can change jobs with proper notice (30 to 90 days depending on contract). You do not need your current employer's permission. The new employer handles the visa transfer.</p>
+<h2>What to do next</h2>
+<p>If you are starting a UAE job search from Nepal, first read the <a href="/blog/how-to-find-a-job-in-dubai-as-a-fresher/">fresher's guide to finding a Dubai job</a>, then check current <a href="/jobs">UAE jobs on theuaecareer.com</a>. Before signing any offer, verify with the <a href="/blog/how-to-verify-uae-job-offer-is-real/">5-step offer check</a> and read the <a href="/blog/avoid-fake-gulf-job-offers/">fake Gulf job offer warning signs</a>. If you are planning to fly on a visit visa, read the <a href="/blog/dubai-visit-visa-for-job-search-2026/">Dubai visit visa guide</a> and <a href="/blog/how-much-money-needed-for-dubai-job-search-2026/">how much money you need for a Dubai job search trip</a>. Build your CV free in the <a href="/tools/cv-maker">CV Maker</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-money-needed-for-dubai-job-search-2026',
+    title: 'How Much Money You Need to Come to Dubai for a Job (2026 Budget)',
+    slug: 'how-much-money-needed-for-dubai-job-search-2026',
+    excerpt:
+      'Exact 2026 budget for a Dubai job search trip — visa, flight, bed space, food, SIM, transport, and how much emergency cash you should carry in your wallet.',
+    featuredImage: '/article-images/cost-of-living-dubai-hero.jpg',
+    coverAlt:
+      'Job seeker counting money and reviewing a Dubai job search trip budget notebook with visa, flight, and accommodation costs listed',
+    category: 'Career Guides',
+    tags: ['dubai job search', 'dubai budget', 'visit visa dubai', 'cost to find job dubai', 'dubai trip cost'],
+    status: 'published',
+    publishDate: '2026-04-20T11:00:00.000Z',
+    lastUpdatedDate: '2026-04-20T11:00:00.000Z',
+    author: 'Editorial Team',
+    metaTitle: 'Money Needed for Dubai Job Search 2026 — Real Budget (AED)',
+    metaDescription:
+      'Exact budget for a Dubai job search trip in 2026: visa, flight, bed space, food, SIM, transport, and emergency cash. Real numbers for a 60-day stay.',
+    content: `<p>The most dangerous mistake you can make when flying to Dubai for a job search is underbudgeting. People arrive with enough money for two weeks, spend three weeks getting interviews, and then panic-accept a bad job or fly back broke. This guide breaks down exactly what a 60-day Dubai job search trip costs in 2026 — nothing hidden, nothing glossed over.</p>
+<p>The numbers below are based on what real candidates from Nepal, India, Pakistan, and the Philippines spent during job hunting trips between October 2025 and March 2026. No hotel-apartment fantasies; no "food courts cost AED 15" pretending. Just the actual spend.</p>
+<figure><img src="/article-images/cost-of-living-dubai-inline.jpg" alt="Dubai job seeker's budget breakdown with stacked AED notes, a visit visa stamp, a bed space receipt, and a Nol metro card" loading="lazy" /></figure>
+<ul>
+<li>Plan a minimum of AED 7,500 to 10,000 (roughly USD 2,050 to 2,725) for a 60-day trip if you share a bed space.</li>
+<li>Skilled candidates with a few interviews lined up can sometimes make it on AED 6,000. Freshers should budget AED 9,000+.</li>
+<li>Keep at least AED 2,000 in cash as emergency money — never let your last week's cash run below AED 1,000.</li>
+</ul>
+<h2>The one-time costs (before you fly)</h2>
+<p>These are the costs you pay before stepping on the plane. Get them right and the rest of your budget stays predictable.</p>
+<ul>
+<li><strong>Dubai 60-day visit visa:</strong> AED 370 to 550 (government fee + agency / airline service charge). The 30-day visa is cheaper but too short — do not save here.</li>
+<li><strong>Return flight to Dubai (economy):</strong> Kathmandu / New Delhi / Mumbai / Islamabad / Karachi / Manila — AED 900 to 1,800 depending on season. Cheapest months are May, September, and late November.</li>
+<li><strong>Travel insurance (recommended, sometimes mandatory):</strong> AED 100 to 200 for 60 days of basic medical cover. Some airlines include it; check before buying separately.</li>
+<li><strong>Clothes and grooming for interviews:</strong> AED 300 to 600 if you need to buy formal shirts, trousers, and shoes at home. Cheaper than buying in Dubai.</li>
+<li><strong>Printed CVs, passport photos, folder:</strong> AED 50 to 80. Print 15 to 20 CV copies in Dubai — printing at Al Karama or Deira shops is AED 0.30 per page.</li>
+</ul>
+<p>Total pre-departure spend: around AED 1,800 to 3,200 for someone travelling from South Asia.</p>
+<h2>Accommodation in Dubai during job search</h2>
+<p>This is the biggest monthly cost and where budgets usually go wrong. Realistic 2026 options for a job seeker on a visit visa:</p>
+<ul>
+<li><strong>Shared bed space (8 to 12 people per room) in Deira, Al Karama, Bur Dubai, Al Quoz:</strong> AED 800 to 1,400 per month. Cheapest legal option. Bed, cupboard, shared bathroom, shared kitchen. Not comfortable but gets the job done.</li>
+<li><strong>Partitioned room (2 to 4 sharing):</strong> AED 1,500 to 2,200 per month. More privacy, better for interviews at home (Zoom calls).</li>
+<li><strong>Shared studio apartment:</strong> AED 2,500 to 3,500 per person. Overkill for a 60-day job hunt unless you are splitting with a friend.</li>
+<li><strong>Hostel / backpacker dorm (short-term first week):</strong> AED 80 to 150 per night. Fine for 3 to 5 days while you find a bed space, but too expensive long-term.</li>
+<li><strong>Hotel apartments:</strong> AED 250 to 500 per night. Will destroy your budget in 10 days. Avoid unless you have skilled-job interviews lined up.</li>
+</ul>
+<p>For a typical 60-day trip, plan AED 1,600 to 2,800 for accommodation. Find bed spaces on Dubizzle, Property Finder, and local Facebook groups. Never pay more than one month upfront — many bed space scams take 3 months rent and disappear.</p>
+<h2>Food and daily expenses</h2>
+<p>Food in Dubai is shockingly affordable if you eat like a local worker — not a tourist. Realistic daily food costs in 2026:</p>
+<ul>
+<li><strong>Breakfast at a karak tea + paratha shop:</strong> AED 6 to 12. Common in Deira, Al Karama, Al Quoz.</li>
+<li><strong>Lunch at a South Asian "mandi" or "thali" restaurant:</strong> AED 12 to 20. Rice, curry, roti, salad — often served in all-you-can-eat style for AED 18 in some Al Karama spots.</li>
+<li><strong>Dinner (same places):</strong> AED 15 to 25. Many bed space blocks also have communal kitchens — cooking your own rice and vegetables costs AED 8 to 12 per meal.</li>
+<li><strong>Water, snacks, energy drinks (daily):</strong> AED 10 to 20.</li>
+</ul>
+<p>Total food budget for 60 days: AED 1,500 to 2,400. Cook more, eat out less, and you can stay under AED 1,800 easily.</p>
+<h2>Transport around Dubai</h2>
+<p>Dubai has one of the cheapest metro systems in any major Gulf city. You do not need a car or even daily taxis.</p>
+<ul>
+<li><strong>Nol card (one-time):</strong> AED 25 (Silver Nol card). Top-up as you go.</li>
+<li><strong>Metro single journey:</strong> AED 3 to 8 depending on zones.</li>
+<li><strong>Bus single journey:</strong> AED 3 to 5. RTA buses cover the rest of the city not on the metro line.</li>
+<li><strong>Monthly unlimited metro + bus pass:</strong> AED 350. Worth it only if you are travelling more than 5 times a day.</li>
+<li><strong>Taxi (occasional, for interviews that start before 6am metro opening):</strong> AED 15 to 40 per trip inside central Dubai. Use Careem or Uber for transparent pricing.</li>
+</ul>
+<p>Realistic 60-day transport budget: AED 500 to 900 for someone attending 3 to 5 interviews per week.</p>
+<h2>Communication: SIM card and internet</h2>
+<ul>
+<li><strong>Tourist SIM at Dubai Airport:</strong> AED 55 (du or Etisalat). 5 to 10 GB data plus local minutes. Good for first 2 weeks.</li>
+<li><strong>Monthly tourist or short-term plan:</strong> AED 100 to 150 for 20+ GB data. Essential — employers will only call UAE numbers.</li>
+<li><strong>Free Wi-Fi:</strong> Available in most cafes, shopping malls, and bed space blocks. Good enough for job applications and WhatsApp.</li>
+</ul>
+<p>Realistic 60-day communication budget: AED 200 to 350.</p>
+<h2>Hidden costs most people forget</h2>
+<p>These are the costs that blow up budgets in week 4 and 5.</p>
+<ul>
+<li><strong>Visit visa extension:</strong> AED 600 if you need an extra 30 days. Most freshers do.</li>
+<li><strong>Employment medical test:</strong> AED 350 to 500 (if required before the employer processes your work visa; often reimbursed later but you pay upfront).</li>
+<li><strong>Attested certificates (degree, diploma, experience letters):</strong> AED 150 to 400 per document at a UAE attestation centre.</li>
+<li><strong>Police clearance from home country (if employer asks):</strong> AED 200 to 500 equivalent, plus courier.</li>
+<li><strong>Smartphone or data backup (if your phone dies):</strong> AED 400 to 800 for a basic Android.</li>
+<li><strong>Emergency dental / doctor visit:</strong> AED 300 to 800 for a basic clinic visit; hospitals are much more expensive.</li>
+</ul>
+<p>Budget at least AED 1,500 for hidden costs. If you do not use it, great — you fly back with a cushion. If you do, you are not stranded.</p>
+<h2>The final 60-day Dubai job search budget (2026)</h2>
+<ul>
+<li>Pre-departure costs (visa, flight, clothes, CVs): <strong>AED 1,800 to 3,200</strong></li>
+<li>Accommodation (60 days bed space): <strong>AED 1,600 to 2,800</strong></li>
+<li>Food (60 days, mostly eating at South Asian joints): <strong>AED 1,500 to 2,400</strong></li>
+<li>Transport (Nol card + occasional taxi): <strong>AED 500 to 900</strong></li>
+<li>Communication (SIM + data): <strong>AED 200 to 350</strong></li>
+<li>Hidden costs buffer: <strong>AED 1,500</strong></li>
+<li>Emergency cash cushion (untouched if possible): <strong>AED 2,000</strong></li>
+</ul>
+<p><strong>Total minimum budget: AED 7,500</strong> — tight, requires discipline, works for experienced candidates with interviews lined up.</p>
+<p><strong>Total comfortable budget: AED 10,000 to 12,000</strong> — recommended for freshers, candidates without UAE experience, and anyone nervous about the job market.</p>
+<p>In USD: USD 2,050 to 3,270. In NPR: approximately NPR 270,000 to 435,000. In INR: approximately INR 170,000 to 275,000. In PKR: approximately PKR 580,000 to 935,000.</p>
+<h2>How to make your budget last longer</h2>
+<ul>
+<li><strong>Apply and interview-schedule from home country first.</strong> Every week of applications before you fly means fewer weeks eating up your budget on the ground.</li>
+<li><strong>Attend walk-in interviews.</strong> Most walk-ins end the same day in a verbal offer. Fastest path to a work visa. See <a href="/blog/walk-in-interviews-abu-dhabi-this-week/">walk-in interviews this week</a>.</li>
+<li><strong>Stay in Deira or Al Karama, not Marina.</strong> Bed spaces are 40% cheaper in the older parts of Dubai, and most walk-in interview venues are in Deira, Bur Dubai, Business Bay, and Al Quoz anyway.</li>
+<li><strong>Cook instead of eating out for dinner.</strong> Buy rice, dal, vegetables from carrefour or a local grocer. Costs AED 8 to 12 per meal versus AED 20 at a restaurant.</li>
+<li><strong>Use the metro, not taxis.</strong> A monthly metro pass at AED 350 beats AED 25 taxis three times a day.</li>
+<li><strong>Avoid paying any "job agency fees".</strong> All licensed agencies in UAE are banned from charging candidates. Every dirham you spend on a "placement fee" is wasted and probably a scam. Read <a href="/blog/fake-recruiter-red-flags-dubai/">fake recruiter red flags</a>.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>What is the minimum money I need to fly to Dubai for a job search in 2026?</h3>
+<p>Realistically AED 7,500 to 8,000 for 60 days if you share a bed space, eat at South Asian restaurants, and take the metro. Anything under AED 6,000 is risky — you will be under pressure to accept any job, including bad ones.</p>
+<h3>Do I need to show money in cash at Dubai immigration?</h3>
+<p>For many nationalities, yes. Immigration officers can ask to see AED 3,000 to 5,000 in cash or a bank statement showing funds. Carry some cash — AED 2,000 to 3,000 is usually enough to clear immigration even for high-scrutiny nationalities.</p>
+<h3>Can I work while on a visit visa to recover my budget?</h3>
+<p>No. Working on a visit visa is illegal and results in fines, deportation, and future visa bans. If your budget is running low, extend your visa (AED 600) or fly home, not take illegal work. Read the full <a href="/blog/dubai-visit-visa-for-job-search-2026/">Dubai visit visa guide</a>.</p>
+<h3>How much should I keep as emergency cash?</h3>
+<p>At least AED 2,000 untouched until you have an offer letter and your employer has paid for your work visa. This is the money that gets you home if things do not work out.</p>
+<h3>Is it cheaper to rent weekly or monthly bed spaces?</h3>
+<p>Monthly is cheaper per night but requires a full month upfront. Many bed spaces in Deira and Al Quoz will rent at AED 300 to 400 per week to first-timers — pay weekly for the first 2 weeks, then switch to monthly once you find a place you like.</p>
+<h3>Which month is cheapest to fly to Dubai for a job search?</h3>
+<p>May, June, September, and late November have the cheapest flights from South Asia. Avoid the December holiday spike and the February business-season spike. Job hiring itself is strongest September to November and January to March, so September gives the best balance of cheap flights plus active hiring.</p>
+<h2>What to do next</h2>
+<p>Before you book your flight, plan your visit visa using the <a href="/blog/dubai-visit-visa-for-job-search-2026/">Dubai visit visa guide for job search</a> and pick an application route from the <a href="/blog/uae-jobs-for-nepali-citizens-2026/">UAE jobs guide for Nepali citizens</a> (the same process works for India, Pakistan, Bangladesh, and the Philippines). Once on the ground, check the latest <a href="/blog/walk-in-interviews-abu-dhabi-this-week/">walk-in interviews</a>, <a href="/jobs">UAE jobs</a>, and build your CV in the <a href="/tools/cv-maker">free CV Maker</a>. Before signing any offer, run it through the <a href="/blog/how-to-verify-uae-job-offer-is-real/">offer verification check</a> and watch for <a href="/blog/avoid-fake-gulf-job-offers/">fake Gulf job offer red flags</a>.</p>`,
+  },
 ] as const;
