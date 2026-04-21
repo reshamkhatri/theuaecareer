@@ -674,9 +674,9 @@ export const seoSeedArticles = [
     publishDate: '2026-04-18T06:00:00.000Z',
     lastUpdatedDate: '2026-04-18T06:00:00.000Z',
     author: 'Editorial Team',
-    metaTitle: 'Security Guard Salary in UAE 2026: Real Pay by Role',
+    metaTitle: 'Security Guard Salary UAE 2026 — AED 2,000 to 3,500 Real Pay',
     metaDescription:
-      'What do security guards earn in UAE? Mall, hotel, CCTV & site security pay ranges for Dubai, Abu Dhabi & Sharjah. Includes benefits and overtime rates.',
+      'Security guard salary in UAE 2026: AED 2,000–3,500 by site type. Mall, hotel, SIRA-certified, armed guard & CCTV operator pay in Dubai, Abu Dhabi & Sharjah.',
     content: `<p>Security guard roles are among the most consistently hired positions in the UAE. Every shopping mall, hotel, office tower, warehouse, and residential compound needs guards around the clock. If you are considering a security career in the Gulf, knowing what the market actually pays will help you evaluate offers and avoid underpaid contracts.</p>
 <p>The salary ranges below reflect 2026 market conditions across Dubai, Abu Dhabi, and Sharjah. All figures are monthly total package unless noted otherwise.</p>
 <figure><img src="/article-images/security-guard-salary-uae-inline.webp" alt="Security guard salary comparison and roles in UAE" loading="lazy" /></figure>

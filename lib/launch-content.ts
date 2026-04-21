@@ -74,7 +74,7 @@ export const articles = [
       "uae"
     ],
     "metaTitle": "Driver Salary in UAE 2026: AED 1,800–5,000 by Vehicle & City",
-    "metaDescription": "Real driver salary data for UAE 2026. Light vehicle, heavy truck, e-commerce delivery & school bus pay ranges by company type, city, and experience level."
+    "metaDescription": "Driver salary UAE 2026: light vehicle AED 2,200–2,800, heavy truck AED 3,000–4,500, tanker AED 5,000. Real pay by vehicle type, company & city."
   },
   {
     "_id": "article-5",
@@ -188,8 +188,8 @@ export const articles = [
     "readTime": 6,
     "author": "Editorial Team",
     "tags": ["salary", "career", "uae"],
-    "metaTitle": "UAE Salary Guide 2026: Average Pay by Industry & Role",
-    "metaDescription": "What does your role pay in the UAE? Real 2026 salary data for tech, healthcare, finance, hospitality, construction, logistics, teaching & retail."
+    "metaTitle": "UAE Salary Guide 2026 — Real Pay for 30+ Jobs in Dubai (AED)",
+    "metaDescription": "UAE salary guide 2026: real AED pay for 30+ roles across tech, healthcare, finance, hospitality, logistics & retail. Dubai & Abu Dhabi rates by experience."
   },
   {
     "_id": "article-12",
