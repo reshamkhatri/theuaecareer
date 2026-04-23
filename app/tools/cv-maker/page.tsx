@@ -826,9 +826,7 @@ export default function CVMakerPage() {
   );
 }
 
-/* ═══════════════════════════════════════════════════
-   TEMPLATE A: GULF CLASSIC — Single Column, ATS-Friendly
-   ═══════════════════════════════════════════════════ */
+// TEMPLATE A: GULF CLASSIC - Single Column, ATS-Friendly
 function GulfClassicPreview({
   cvData,
   fullName,

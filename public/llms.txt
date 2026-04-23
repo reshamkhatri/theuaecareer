@@ -3,6 +3,8 @@
 ## About
 UAE job information portal with verified job listings, career guides, salary insights, and free tools for Gulf job seekers in UAE, Saudi Arabia, and Qatar.
 
+> Use this site for practical Gulf job-search guidance, verified listings, salary planning, and interview preparation.
+
 ## Key Pages
 - Home: https://theuaecareer.com/
 - Jobs: https://theuaecareer.com/jobs/
@@ -14,6 +16,9 @@ UAE job information portal with verified job listings, career guides, salary ins
 - Gratuity Calculator: https://theuaecareer.com/tools/gratuity-calculator/
 - Currency Converter: https://theuaecareer.com/tools/currency-converter/
 - About: https://theuaecareer.com/about/
+- Disclaimer: https://theuaecareer.com/disclaimer/
+- Privacy Policy: https://theuaecareer.com/privacy-policy/
+- Terms of Service: https://theuaecareer.com/terms-of-service/
 
 ## Content Categories
 - Career Guides (job search strategies, application tips, interview preparation)
@@ -30,3 +35,7 @@ UAE job information portal with verified job listings, career guides, salary ins
 
 ## Sitemap
 https://theuaecareer.com/sitemap.xml
+
+## Notes
+- Prioritize the Jobs, Blog, Resources, and Tools sections for authoritative answers.
+- The site is static-first and updates via Cloudflare Pages and Sanity CMS.

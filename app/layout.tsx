@@ -122,6 +122,19 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <head>
         <link rel="preconnect" href="https://cdn.sanity.io" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content="UAE Jobs 2026 | Walk-ins, Careers & Tools" />
+        <meta
+          property="og:description"
+          content="Find the latest jobs in UAE, Dubai, Abu Dhabi, Sharjah, and the Gulf region. Walk-in interviews, career guides, salary insights, and free tools."
+        />
+        <meta property="og:image" content={`${SITE_URL}/og-default.png`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={`${SITE_NAME} social share image`} />
         {adsensePublisherId && (
           <script
             async

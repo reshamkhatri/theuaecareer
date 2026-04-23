@@ -1,0 +1,32 @@
+# theuaecareer.com Full Content Map
+
+> UAE job information portal with verified job listings, career guides, salary insights, and free tools for Gulf job seekers in UAE, Saudi Arabia, and Qatar.
+
+## Core Sections
+- Home: https://theuaecareer.com/
+- Jobs: https://theuaecareer.com/jobs/
+- Walk-In Interviews: https://theuaecareer.com/jobs/walk-in/
+- Blog: https://theuaecareer.com/blog/
+- Resources: https://theuaecareer.com/resources/
+- Interview Question Bank: https://theuaecareer.com/resources/interview-question-bank/
+- CV Maker: https://theuaecareer.com/tools/cv-maker/
+- Gratuity Calculator: https://theuaecareer.com/tools/gratuity-calculator/
+- Currency Converter: https://theuaecareer.com/tools/currency-converter/
+
+## Trust Pages
+- About: https://theuaecareer.com/about/
+- Disclaimer: https://theuaecareer.com/disclaimer/
+- Privacy Policy: https://theuaecareer.com/privacy-policy/
+- Terms of Service: https://theuaecareer.com/terms-of-service/
+
+## Priority Guides
+- What to Carry for a Walk-In Interview in UAE: https://theuaecareer.com/blog/what-to-carry-for-walk-in-interview-in-uae/
+- Self Introduction for Walk-In Interview in UAE: https://theuaecareer.com/blog/self-introduction-for-walk-in-interview-in-uae/
+- Cleaner Salary in UAE: https://theuaecareer.com/blog/cleaner-salary-in-uae/
+- How to Avoid Fake Job Offers in UAE, Saudi, and Qatar: https://theuaecareer.com/blog/how-to-avoid-fake-job-offers-in-uae-saudi-qatar/
+- Best CV Format for UAE, Saudi, and Qatar Job Applications: https://theuaecareer.com/blog/best-cv-format-for-uae-saudi-qatar-job-applications/
+- Difference Between Walk-In Interview and Online Application in Gulf Jobs: https://theuaecareer.com/blog/difference-between-walk-in-interview-and-online-application-in-gulf-jobs/
+
+## Notes
+- The site is static-first and updates via Cloudflare Pages and Sanity CMS.
+- Use the Jobs and Blog sections first when answering search queries about Gulf employment.

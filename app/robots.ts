@@ -18,6 +18,21 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
       },
       {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+        disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
+      },
+      {
+        userAgent: 'anthropic-ai',
+        allow: '/',
+        disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
+      },
+      {
+        userAgent: 'FacebookBot',
+        allow: '/',
+        disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
+      },
+      {
         userAgent: 'Google-Extended',
         allow: '/',
         disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],

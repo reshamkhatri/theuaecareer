@@ -103,6 +103,17 @@ function BlogListingView({
     ],
     (item) => item.href
   ).slice(0, 4);
+  const featuredGuideSlugs = [
+    'how-to-negotiate-salary-in-uae',
+    'uae-interview-dress-code',
+    'uae-employment-contract-types',
+    'helper-salary-in-uae',
+    'receptionist-salary-in-uae',
+    'emirates-airline-job-scams-how-to-apply-safely',
+  ];
+  const featuredGuides = featuredGuideSlugs
+    .map((slug) => filteredArticles.find((article) => article.slug === slug))
+    .filter((article): article is ArticleRecord => Boolean(article));
 
   return (
     <>
@@ -252,6 +263,55 @@ function BlogListingView({
                       index={index}
                     />
                   ))}
+                </div>
+              )}
+
+              {featuredGuides.length > 0 && (
+                <div
+                  className="card"
+                  style={{
+                    marginTop: 'var(--space-2xl)',
+                    padding: 'var(--space-xl)',
+                    display: 'grid',
+                    gap: '16px',
+                  }}
+                >
+                  <div>
+                    <p
+                      style={{
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        color: 'var(--accent)',
+                        marginBottom: '8px',
+                      }}
+                    >
+                      Popular Guides
+                    </p>
+                    <h2 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>Helpful reads that deserve a closer look</h2>
+                    <p style={{ color: 'var(--text-secondary)', margin: 0, lineHeight: 1.7 }}>
+                      These guides cover salary planning, interview prep, and safer applications for Gulf job seekers.
+                    </p>
+                  </div>
+
+                  <div className="grid-2">
+                    {featuredGuides.map((article) => (
+                      <div
+                        key={article._id}
+                        className="card"
+                        style={{ textDecoration: 'none', display: 'grid', gap: '6px' }}
+                      >
+                        <span style={{ color: 'var(--text)', fontWeight: 700 }}>{article.title}</span>
+                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
+                          {article.excerpt}
+                        </p>
+                        <Link href={`/blog/${article.slug}/`} style={{ color: 'var(--accent)', fontWeight: 700, textDecoration: 'none' }}>
+                          Open {buildSeoTitle(article.title, 38)}
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
