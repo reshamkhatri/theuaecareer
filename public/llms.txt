@@ -1,0 +1,32 @@
+# theuaecareer.com
+
+## About
+UAE job information portal with verified job listings, career guides, salary insights, and free tools for Gulf job seekers in UAE, Saudi Arabia, and Qatar.
+
+## Key Pages
+- Home: https://theuaecareer.com/
+- Jobs: https://theuaecareer.com/jobs/
+- Walk-In Interviews: https://theuaecareer.com/jobs/walk-in/
+- Blog: https://theuaecareer.com/blog/
+- Resources: https://theuaecareer.com/resources/
+- Interview Question Bank: https://theuaecareer.com/resources/interview-question-bank/
+- CV Maker: https://theuaecareer.com/tools/cv-maker/
+- Gratuity Calculator: https://theuaecareer.com/tools/gratuity-calculator/
+- Currency Converter: https://theuaecareer.com/tools/currency-converter/
+- About: https://theuaecareer.com/about/
+
+## Content Categories
+- Career Guides (job search strategies, application tips, interview preparation)
+- Salary Insights (AED salary data, cost of living, remittance corridors)
+- Visa & PRO Guides (UAE visa types, work permit process, PRO services)
+- Interview Preparation (common questions, dress code, etiquette)
+- Job Safety & Scam Prevention (how to verify employers, red flags)
+- Walk-In Interviews (scheduled walk-in events across UAE, Dubai, Sharjah, Abu Dhabi)
+
+## Data Coverage
+- Job listings: UAE (Dubai, Abu Dhabi, Sharjah), Saudi Arabia, Qatar
+- Salary data sourced from real candidate reports (Oct 2025–present)
+- Articles written for Gulf expatriate job seekers
+
+## Sitemap
+https://theuaecareer.com/sitemap.xml

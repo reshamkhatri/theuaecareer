@@ -89,6 +89,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@theuaecareer',
+    creator: '@theuaecareer',
     title: 'UAE Jobs 2026 | theuaecareer.com',
     description: 'Find the latest jobs in UAE, Dubai, Abu Dhabi, and the Gulf region.',
     images: [defaultOgImage.url],

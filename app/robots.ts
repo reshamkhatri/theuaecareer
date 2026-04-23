@@ -11,6 +11,22 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
       },
+      // Allow AI search engines that drive referral traffic (not training)
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+        disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+        disallow: ['/admin/', '/api/', '/studio/', '/cdn-cgi/'],
+      },
+      // Block AI training crawlers
+      { userAgent: 'GPTBot', disallow: '/' },
+      { userAgent: 'ClaudeBot', disallow: '/' },
+      { userAgent: 'CCBot', disallow: '/' },
+      { userAgent: 'Bytespider', disallow: '/' },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

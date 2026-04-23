@@ -151,7 +151,7 @@ export default function Navbar() {
             </div>
           </div>
           {/* Mobile only buttons */}
-          <div className="navbar-mobile-actions">
+          <div className="navbar-mobile-actions" aria-hidden="true">
             <div className="navbar-mobile-section-label">Resources</div>
             {resourceLinks.map((link) => (
               <Link

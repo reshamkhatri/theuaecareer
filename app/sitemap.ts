@@ -6,28 +6,26 @@ export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, jobs] = await Promise.all([getAllPublicArticles(), getAllPublicJobs()]);
-  const staticLastModified = new Date('2026-04-09T00:00:00.000Z');
-
   const staticRoutes: MetadataRoute.Sitemap = [
-    '/',
-    '/about/',
-    '/blog/',
-    '/contact/',
-    '/jobs/',
-    '/jobs/walk-in/',
-    '/privacy-policy/',
-    '/resources/',
-    '/resources/interview-question-bank/',
-    '/terms-of-service/',
-    '/disclaimer/',
-    '/tools/cv-maker/',
-    '/tools/currency-converter/',
-    '/tools/gratuity-calculator/',
-  ].map((path) => ({
+    { path: '/', lastModified: '2026-04-22', changeFrequency: 'daily', priority: 1 },
+    { path: '/about/', lastModified: '2026-04-09', changeFrequency: 'monthly', priority: 0.5 },
+    { path: '/blog/', lastModified: '2026-04-22', changeFrequency: 'daily', priority: 0.9 },
+    { path: '/contact/', lastModified: '2026-04-09', changeFrequency: 'monthly', priority: 0.4 },
+    { path: '/jobs/', lastModified: '2026-04-22', changeFrequency: 'daily', priority: 0.9 },
+    { path: '/jobs/walk-in/', lastModified: '2026-04-22', changeFrequency: 'daily', priority: 0.9 },
+    { path: '/privacy-policy/', lastModified: '2026-04-09', changeFrequency: 'yearly', priority: 0.3 },
+    { path: '/resources/', lastModified: '2026-04-15', changeFrequency: 'weekly', priority: 0.7 },
+    { path: '/resources/interview-question-bank/', lastModified: '2026-04-15', changeFrequency: 'weekly', priority: 0.7 },
+    { path: '/terms-of-service/', lastModified: '2026-04-09', changeFrequency: 'yearly', priority: 0.3 },
+    { path: '/disclaimer/', lastModified: '2026-04-09', changeFrequency: 'yearly', priority: 0.3 },
+    { path: '/tools/cv-maker/', lastModified: '2026-04-15', changeFrequency: 'monthly', priority: 0.8 },
+    { path: '/tools/currency-converter/', lastModified: '2026-04-15', changeFrequency: 'monthly', priority: 0.7 },
+    { path: '/tools/gratuity-calculator/', lastModified: '2026-04-15', changeFrequency: 'monthly', priority: 0.7 },
+  ].map(({ path, lastModified, changeFrequency, priority }) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: staticLastModified,
-    changeFrequency: path === '/' ? 'daily' : 'weekly',
-    priority: path === '/' ? 1 : 0.7,
+    lastModified: new Date(lastModified),
+    changeFrequency: changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
+    priority,
   }));
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
