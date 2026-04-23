@@ -41,7 +41,12 @@ const organizationJsonLd = {
   '@type': 'Organization',
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/icon-512x512.png`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${SITE_URL}/icon-512x512.png`,
+    width: 512,
+    height: 512,
+  },
 };
 
 export const viewport: Viewport = {

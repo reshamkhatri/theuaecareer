@@ -4,6 +4,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), geolocation=(), microphone=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googlesyndication.com https://*.googletagmanager.com https://*.cloudflareinsights.com https://*.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.cloudflareinsights.com https://*.google-analytics.com https://*.googleapis.com https://cdn.sanity.io; frame-src 'self' https://*.googlesyndication.com https://disqus.com https://*.disqus.com
   Link: <https://cdn.sanity.io>; rel=preconnect
 
 /_next/static/*
@@ -19,6 +20,9 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
   Cache-Control: public, max-age=31536000, immutable
 
 /manifest.webmanifest
