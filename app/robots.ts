@@ -24,7 +24,6 @@ export default function robots(): MetadataRoute.Robots {
       },
       // Block AI training crawlers
       { userAgent: 'GPTBot', disallow: '/' },
-      { userAgent: 'ClaudeBot', disallow: '/' },
       { userAgent: 'CCBot', disallow: '/' },
       { userAgent: 'Bytespider', disallow: '/' },
     ],
