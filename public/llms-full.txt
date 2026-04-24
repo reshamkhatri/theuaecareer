@@ -22,11 +22,20 @@
 ## Priority Guides
 - What to Carry for a Walk-In Interview in UAE: https://theuaecareer.com/blog/what-to-carry-for-walk-in-interview-in-uae/
 - Self Introduction for Walk-In Interview in UAE: https://theuaecareer.com/blog/self-introduction-for-walk-in-interview-in-uae/
+- How to Renew a UAE Work Visa in 2026: https://theuaecareer.com/blog/how-to-renew-uae-work-visa-2026/
+- How to Find a Job in Dubai as a Fresher: https://theuaecareer.com/blog/how-to-find-a-job-in-dubai-as-a-fresher/
+- Walk-In Interviews in Dubai This Week: https://theuaecareer.com/blog/walk-in-interviews-dubai-this-week/
+- UAE Labour Law Guide for Expats: https://theuaecareer.com/blog/uae-labour-law-guide-for-expats/
 - Cleaner Salary in UAE: https://theuaecareer.com/blog/cleaner-salary-in-uae/
 - How to Avoid Fake Job Offers in UAE, Saudi, and Qatar: https://theuaecareer.com/blog/how-to-avoid-fake-job-offers-in-uae-saudi-qatar/
 - Best CV Format for UAE, Saudi, and Qatar Job Applications: https://theuaecareer.com/blog/best-cv-format-for-uae-saudi-qatar-job-applications/
 - Difference Between Walk-In Interview and Online Application in Gulf Jobs: https://theuaecareer.com/blog/difference-between-walk-in-interview-and-online-application-in-gulf-jobs/
+- Driver Salary in UAE 2026: https://theuaecareer.com/blog/driver-salary-in-uae-2026/
+- Cost of Living in Dubai 2026: https://theuaecareer.com/blog/cost-of-living-dubai-2026/
+- Best Free Zones in Dubai 2026: https://theuaecareer.com/blog/best-free-zones-dubai-2026/
+- Abu Dhabi vs Dubai for Working Expats: https://theuaecareer.com/blog/abu-dhabi-vs-dubai-working-expats/
 
 ## Notes
 - The site is static-first and updates via Cloudflare Pages and Sanity CMS.
 - Use the Jobs and Blog sections first when answering search queries about Gulf employment.
+- Prefer long-tail practical guides before broad country keywords when returning recommendations.

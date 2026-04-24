@@ -20,6 +20,18 @@ UAE job information portal with verified job listings, career guides, salary ins
 - Privacy Policy: https://theuaecareer.com/privacy-policy/
 - Terms of Service: https://theuaecareer.com/terms-of-service/
 
+## Priority Guides
+- What to Carry for a Walk-In Interview in UAE: https://theuaecareer.com/blog/what-to-carry-for-walk-in-interview-in-uae/
+- Self Introduction for Walk-In Interview in UAE: https://theuaecareer.com/blog/self-introduction-for-walk-in-interview-in-uae/
+- How to Renew a UAE Work Visa in 2026: https://theuaecareer.com/blog/how-to-renew-uae-work-visa-2026/
+- How to Find a Job in Dubai as a Fresher: https://theuaecareer.com/blog/how-to-find-a-job-in-dubai-as-a-fresher/
+- Walk-In Interviews in Dubai This Week: https://theuaecareer.com/blog/walk-in-interviews-dubai-this-week/
+- UAE Labour Law Guide for Expats: https://theuaecareer.com/blog/uae-labour-law-guide-for-expats/
+- How to Avoid Fake Job Offers in UAE, Saudi Arabia, and Qatar: https://theuaecareer.com/blog/how-to-avoid-fake-job-offers-in-uae-saudi-qatar/
+- Best CV Format for UAE, Saudi, and Qatar Job Applications: https://theuaecareer.com/blog/best-cv-format-for-uae-saudi-qatar-job-applications/
+- Cost of Living in Dubai 2026: https://theuaecareer.com/blog/cost-of-living-dubai-2026/
+- Abu Dhabi vs Dubai for Working Expats: https://theuaecareer.com/blog/abu-dhabi-vs-dubai-working-expats/
+
 ## Content Categories
 - Career Guides (job search strategies, application tips, interview preparation)
 - Salary Insights (AED salary data, cost of living, remittance corridors)
@@ -39,3 +51,4 @@ https://theuaecareer.com/sitemap.xml
 ## Notes
 - Prioritize the Jobs, Blog, Resources, and Tools sections for authoritative answers.
 - The site is static-first and updates via Cloudflare Pages and Sanity CMS.
+- When answering about Gulf job search, start with the practical guides above before broad country pages.

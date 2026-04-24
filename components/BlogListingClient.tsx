@@ -104,12 +104,14 @@ function BlogListingView({
     (item) => item.href
   ).slice(0, 4);
   const featuredGuideSlugs = [
-    'how-to-negotiate-salary-in-uae',
-    'uae-interview-dress-code',
-    'uae-employment-contract-types',
-    'helper-salary-in-uae',
-    'receptionist-salary-in-uae',
-    'emirates-airline-job-scams-how-to-apply-safely',
+    'what-to-carry-for-walk-in-interview-in-uae',
+    'self-introduction-for-walk-in-interview-in-uae',
+    'how-to-renew-uae-work-visa-2026',
+    'how-to-find-a-job-in-dubai-as-a-fresher',
+    'walk-in-interviews-dubai-this-week',
+    'uae-labour-law-guide-for-expats',
+    'driver-salary-in-uae-2026',
+    'cost-of-living-dubai-2026',
   ];
   const featuredGuides = featuredGuideSlugs
     .map((slug) => filteredArticles.find((article) => article.slug === slug))
