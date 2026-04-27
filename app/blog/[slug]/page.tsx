@@ -9,6 +9,7 @@ import {
   FiTwitter,
 } from 'react-icons/fi';
 import AdSlot from '@/components/AdSlot';
+import AuthorBio from '@/components/AuthorBio';
 import ArticleCover from '@/components/ArticleCover';
 import CommentsSection from '@/components/CommentsSection';
 import ErrorBoundary from '@/components/ErrorBoundary';
@@ -35,6 +36,7 @@ import {
   deriveArticleTargeting,
   getSeoPathwaysForTargeting,
 } from '@/lib/seo-targeting';
+import { getAuthor } from '@/lib/authors';
 
 export const revalidate = 300;
 const articleInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_INLINE_SLOT?.trim();
@@ -162,6 +164,7 @@ export default async function ArticlePage({
     limit: 4,
     excludeHrefs: [`/blog/${article.slug}/`],
   });
+  const articleAuthor = getAuthor(article.author);
   const blogPostingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -170,7 +173,9 @@ export default async function ArticlePage({
     image: [articleImage],
     author: {
       '@type': 'Person',
-      name: article.author,
+      name: articleAuthor.name,
+      jobTitle: articleAuthor.role,
+      ...(articleAuthor.portfolio ? { url: articleAuthor.portfolio } : { url: `${SITE_URL}/about/` }),
     },
     publisher: {
       '@type': 'Organization',
@@ -331,6 +336,9 @@ export default async function ArticlePage({
                   <CopyLinkButton url={shareUrl} />
                 </div>
               </div>
+
+              {/* Author bio — E-E-A-T trust signal for AdSense */}
+              <AuthorBio authorName={article.author} />
             </article>
 
             {relatedArticles.length > 0 && (
