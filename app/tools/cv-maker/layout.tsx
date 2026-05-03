@@ -42,6 +42,7 @@ const faqs = [
   { q: 'What is a Gulf-ready CV format?', a: 'A Gulf-ready CV includes a professional photo, nationality, visa status, date of birth, and languages spoken. It uses a clean layout compatible with ATS systems used by UAE companies.' },
   { q: 'Should I include my visa status on a UAE CV?', a: 'Yes. State whether you\'re on an employment visa, visit visa, or outside the UAE. Employers need to know your availability and visa processing requirements.' },
   { q: 'Is this CV builder really free?', a: 'Yes, completely free. Build your CV, choose a template, and download it as a PDF - no account required, no watermark, no payment.' },
+  { q: 'How do I make my CV ATS-friendly for Dubai?', a: 'Use a single-column layout (like our Gulf Classic template), avoid complex graphics, and include industry-specific keywords that match the job description.' },
 ];
 
 const faqJsonLd = {

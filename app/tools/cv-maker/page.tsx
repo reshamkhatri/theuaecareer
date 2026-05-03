@@ -796,32 +796,7 @@ export default function CVMakerPage() {
         </div>
       </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: [
-              {
-                '@type': 'Question',
-                name: 'Is it mandatory to include a photo on a UAE CV?',
-                acceptedAnswer: { '@type': 'Answer', text: 'It is culturally expected in many sectors like Retail and Hospitality, though not legally mandatory. For technical roles, it is optional.' },
-              },
-              {
-                '@type': 'Question',
-                name: 'What details are mandatory on a Gulf CV?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Nationality, Visa Status, Date of Birth, and Phone Number are the standard requirements for recruiters in the UAE and GCC.' },
-              },
-              {
-                '@type': 'Question',
-                name: 'How do I make my CV ATS-friendly for Dubai?',
-                acceptedAnswer: { '@type': 'Answer', text: 'Use a single-column layout, avoid complex graphics, and include industry-specific keywords that match the job description.' },
-              },
-            ],
-          }),
-        }}
-      />
+      
     </div>
   );
 }
