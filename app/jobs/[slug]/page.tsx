@@ -128,6 +128,7 @@ export default async function JobDetailPage({
         '@type': 'PostalAddress',
         addressLocality: job.location.city,
         addressCountry: job.location.country,
+        ...(job.walkInDetails?.venue ? { streetAddress: job.walkInDetails.venue } : {}),
       },
     },
     datePosted: job.postedDate,

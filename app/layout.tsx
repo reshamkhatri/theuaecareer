@@ -47,6 +47,43 @@ const organizationJsonLd = {
     width: 512,
     height: 512,
   },
+  sameAs: [
+    'https://www.instagram.com/theuaecareer/',
+    'https://x.com/theuaecareer',
+    'https://www.facebook.com/theuaecareer',
+    'https://www.linkedin.com/company/theuaecareer',
+  ],
+  founder: [
+    {
+      '@type': 'Person',
+      name: 'Resham KC',
+      jobTitle: 'Co-Founder & Developer',
+      url: 'https://rxm.ae',
+    },
+    {
+      '@type': 'Person',
+      name: 'Nishan KC',
+      jobTitle: 'Co-Founder & Career Researcher',
+    },
+  ],
+};
+
+const reshamPersonJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Resham KC',
+  jobTitle: 'Co-Founder & Developer',
+  url: 'https://rxm.ae',
+  worksFor: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+};
+
+const nishanPersonJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Nishan KC',
+  jobTitle: 'Co-Founder & Career Researcher',
+  url: `${SITE_URL}/about/`,
+  worksFor: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
 };
 
 export const viewport: Viewport = {
@@ -146,7 +183,7 @@ export default function RootLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([websiteJsonLd, organizationJsonLd]) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([websiteJsonLd, organizationJsonLd, reshamPersonJsonLd, nishanPersonJsonLd]) }}
         />
         {gaMeasurementId && (
           <Suspense fallback={null}>

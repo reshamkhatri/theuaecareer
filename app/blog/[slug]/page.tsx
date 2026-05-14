@@ -175,11 +175,18 @@ export default async function ArticlePage({
       '@type': 'Person',
       name: articleAuthor.name,
       jobTitle: articleAuthor.role,
-      ...(articleAuthor.portfolio ? { url: articleAuthor.portfolio } : { url: `${SITE_URL}/about/` }),
+      url: articleAuthor.portfolio || `${SITE_URL}/about/`,
+      ...(articleAuthor.linkedin ? { sameAs: [articleAuthor.linkedin] } : {}),
+      worksFor: {
+        '@type': 'Organization',
+        name: 'theuaecareer.com',
+        url: SITE_URL,
+      },
     },
     publisher: {
       '@type': 'Organization',
       name: 'theuaecareer.com',
+      url: SITE_URL,
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/icon-512x512.png`,
