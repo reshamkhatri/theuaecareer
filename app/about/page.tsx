@@ -64,6 +64,29 @@ export default function AboutPage() {
               opportunity. We aggregate useful job listings, publish practical career guides, and
               provide free tools designed for Gulf-based job seekers.
             </p>
+            <p>
+              We focus on the practical, on-the-ground reality of Gulf hiring — what salary you
+              actually get, what walk-in interviews actually look like, which contract clauses
+              actually trip people up — instead of recycling generic global career advice. Every
+              guide, salary breakdown, and tool on this site exists because someone we know
+              struggled to find that information when they needed it.
+            </p>
+
+            <h2>Our Story</h2>
+            <p>
+              theuaecareer.com was started in early 2026 by Resham KC and Nishan KC, two South-Asian
+              expats with direct experience navigating the UAE job market — both as candidates and
+              as people who repeatedly helped friends and family members land their first Gulf
+              role.
+            </p>
+            <p>
+              The trigger was a familiar pattern: a cousin or college friend lands in Dubai on a
+              visit visa, has 60 days to find work, and ends up paying a fake recruiter AED 500 for
+              a fictitious shortlist. Or accepts a hotel housekeeping offer at AED 1,200 because no
+              one explained that service charge and accommodation are negotiable. Or signs a
+              contract without realising the basic salary determines their gratuity. We saw enough
+              of this to build the platform we wished existed when we arrived.
+            </p>
 
             <h2>What We Do</h2>
             <p>
@@ -262,18 +285,103 @@ export default function AboutPage() {
       <section className="section">
         <div className="container container-narrow">
           <div className="prose">
-            <h2>Editorial Standards</h2>
+            <h2>How We Source Job Listings</h2>
+            <p>
+              Every job listing on theuaecareer.com goes through a manual curation step before
+              going live. We do not auto-scrape Indeed, LinkedIn, or aggregator feeds. Our sources
+              are:
+            </p>
+            <ul>
+              <li>
+                Public employer career pages (verified against the company&apos;s official domain
+                and Trade Licence number where available)
+              </li>
+              <li>
+                Walk-in interview notices shared on official social channels of UAE employers
+              </li>
+              <li>Direct submissions from HR or hiring managers we have built relationships with</li>
+              <li>
+                Editorial leads from our community — job seekers and employees who tip us off about
+                upcoming hiring events
+              </li>
+            </ul>
+            <p>
+              Listings that show classic scam markers — vague company names, Gmail/Outlook contact
+              addresses for management roles, upfront fee requests, or pressure tactics — are
+              rejected at the curation step. Our running guide on{' '}
+              <Link href="/blog/avoid-fake-gulf-job-offers/">how to spot fake Gulf job offers</Link>{' '}
+              is built from the patterns we see in rejected submissions.
+            </p>
+
+            <h2>How We Write Articles</h2>
             <p>
               Every article on theuaecareer.com is written or reviewed by Resham KC or Nishan KC
-              before publishing. We do not publish AI-generated filler content. Our goal is to give
-              Gulf job seekers information that is accurate, specific, and practically useful.
+              before publishing. We do not publish AI-generated filler content. When we use AI as a
+              drafting tool, the final version is edited, fact-checked, and signed off by a named
+              human author — and the article carries that human&apos;s byline, not a generic
+              &ldquo;Editorial Team&rdquo; label.
             </p>
+            <p>Our editorial process for any new article:</p>
+            <ol>
+              <li>
+                <strong>Question first.</strong> We start with a real question we have heard from
+                Gulf job seekers — not a keyword spreadsheet.
+              </li>
+              <li>
+                <strong>Primary sources.</strong> Salary figures are cross-checked against MOHRE
+                wage protection records (where public), employer career pages, and at least one
+                first-hand conversation with someone in the role.
+              </li>
+              <li>
+                <strong>Legal cross-check.</strong> Articles touching UAE Labour Law, visa rules, or
+                gratuity are checked against the latest Federal Decree-Law text on the MOHRE and ICP
+                portals.
+              </li>
+              <li>
+                <strong>Date-stamp.</strong> Every article shows its publish date and last-updated
+                date. We re-review evergreen articles at least once every 12 months and refresh
+                anything affected by a regulatory change immediately.
+              </li>
+              <li>
+                <strong>Corrections policy.</strong> If we get something wrong, we fix the article,
+                note what changed, and reset the last-updated date. If you spot an error, please
+                <Link href="/contact/"> let us know</Link> and we will credit you for the catch.
+              </li>
+            </ol>
+
+            <h2>Editorial Independence</h2>
             <p>
-              Job listings are curated from public employer sources. We verify employer identity
-              where possible and remove listings that show signs of being fraudulent or expired.
-              We do not charge job seekers and we do not accept payment from employers to list
-              positions.
+              theuaecareer.com is independently owned and operated. We do not accept payment from
+              employers to publish, prioritise, or favourably review their job listings. We do not
+              accept payment from training providers, immigration consultants, or relocation firms
+              to recommend them in our articles. We may earn advertising revenue from Google AdSense
+              (this funds the site) and occasional affiliate commissions on tools we already use
+              and would recommend regardless — see our <Link href="/disclaimer/">Disclaimer</Link>{' '}
+              for the full picture.
             </p>
+
+            <h2>Why Trust Us</h2>
+            <ul>
+              <li>
+                <strong>Named human authors.</strong> Every article carries a real byline, not a
+                generic editorial label.
+              </li>
+              <li>
+                <strong>First-hand Gulf experience.</strong> Both founders live and work in the
+                UAE — this is our market, not a content niche we picked because it ranks well.
+              </li>
+              <li>
+                <strong>No paid placements.</strong> Job listings are editorial, not advertorial.
+              </li>
+              <li>
+                <strong>Transparent corrections.</strong> When we update an article, we say so.
+              </li>
+              <li>
+                <strong>Free tools, no signup.</strong> The CV Maker, Gratuity Calculator, and
+                Currency Converter work without an account, without an email gate, and without
+                selling your data.
+              </li>
+            </ul>
 
             <h2>Contact Us</h2>
             <p>Have questions, feedback, or a listing to share? We would love to hear from you.</p>
