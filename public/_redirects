@@ -3,3 +3,11 @@
 /blog/what-to-carry-for-walk-in-interview-uae /blog/what-to-carry-for-walk-in-interview-in-uae/ 301
 /blog/top-in-demand-jobs-uae-2026/ /blog/top-10-in-demand-jobs-uae-2026/ 301
 /blog/top-in-demand-jobs-uae-2026 /blog/top-10-in-demand-jobs-uae-2026/ 301
+
+# Expired/removed job listings — redirect to closest topical landing page.
+# Source: Search Console "Not found (404)" report (2026-05-27).
+# Both redirect targets verified live (200 OK) before adding rules.
+/jobs/sobha-construction-survey-facade-walkin/ /jobs/walk-in/ 301
+/jobs/sobha-construction-survey-facade-walkin /jobs/walk-in/ 301
+/jobs/security-guard-7/ /jobs/security-guard-dubai/ 301
+/jobs/security-guard-7 /jobs/security-guard-dubai/ 301
