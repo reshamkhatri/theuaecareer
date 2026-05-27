@@ -442,7 +442,21 @@ function normalizeArticleRecord(source: unknown, fallbackId?: string): ArticleRe
       typeof record.readTime === 'number' && record.readTime > 0
         ? record.readTime
         : calculateReadTime(content),
-    author: normalizeText(record.author) || 'Editorial Team',
+    // Attribute articles to a named human (not "Editorial Team") so the
+    // BlogPosting schema in app/blog/[slug]/page.tsx links to a real Person
+    // with a bio and portfolio URL. Generic "Editorial Team" bylines are a
+    // major Google E-E-A-T weakness for YMYL content (employment, salary,
+    // visa, contracts) and were correlated with the 3 articles flagged
+    // "Crawled - currently not indexed" in Search Console (2026-05-27).
+    //
+    // We coerce "Editorial Team" (legacy seed value) → "Resham KC" too, since
+    // Sanity records were bootstrapped from seed and many still hold the
+    // generic value. See lib/authors.ts for the available Author records.
+    author: ((): string => {
+      const raw = normalizeText(record.author);
+      if (!raw || raw.toLowerCase() === 'editorial team') return 'Resham KC';
+      return raw;
+    })(),
     metaTitle: normalizeText(record.metaTitle) || `${title} | theuaecareer.com`,
     metaDescription: normalizeText(record.metaDescription) || excerpt,
   };

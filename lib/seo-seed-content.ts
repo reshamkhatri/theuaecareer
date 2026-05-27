@@ -1343,22 +1343,28 @@ export const seoSeedArticles = [
   },
   {
     _id: 'seo-article-uae-contract-types',
-    title: 'UAE Employment Contract Types 2026: Limited vs Unlimited',
+    title: 'UAE Employment Contract Types in 2026: What Changed After the New Labour Law',
     slug: 'uae-employment-contract-types',
     excerpt:
-      'UAE employment contract types 2026 explained: limited vs unlimited, what changed under the 2021 law, and how each affects gratuity and notice.',
+      'UAE employment contracts in 2026 are fixed-term only — the unlimited contract was phased out by the 2021 Labour Law. Here is what changed for notice, gratuity, and termination.',
     featuredImage: '/article-images/uae-labour-law-hero.jpg',
     coverAlt:
-      'UAE employment contract on a desk with annotations highlighting limited and unlimited contract differences',
+      'UAE MOHRE fixed-term employment contract with annotations on key clauses an expat employee should check before signing',
     category: 'Career Guides',
-    tags: ['employment contract', 'uae labour law', 'limited contract', 'unlimited contract'],
+    tags: [
+      'employment contract',
+      'uae labour law',
+      'fixed-term contract',
+      'mohre contract',
+      'gratuity',
+    ],
     status: 'published',
     publishDate: '2026-04-19T09:10:00.000Z',
-    lastUpdatedDate: '2026-04-19T09:10:00.000Z',
-    author: 'Editorial Team',
-    metaTitle: 'UAE Employment Contract Types 2026: Limited vs Unlimited',
+    lastUpdatedDate: '2026-05-27T00:00:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'UAE Employment Contract Types 2026 (After the New Labour Law)',
     metaDescription:
-      'UAE employment contract types 2026: limited vs unlimited, notice rules, gratuity impact, and what changed after the 2021 Labour Law update.',
+      'UAE employment contracts in 2026 are fixed-term only — the unlimited contract was phased out by the 2021 Labour Law. Notice, gratuity, and what to check before signing.',
     content: `<p>UAE employment contract types changed significantly after Federal Decree-Law No. 33 of 2021. Today, most UAE private sector contracts are fixed-term (formerly called "limited"), while the unlimited contract model has been largely phased out. Understanding which contract type you are signing — and what it means for notice, termination, and gratuity — is one of the most important things an expat worker can do before joining.</p>
 <p>This article explains how UAE employment contract types work in 2026, the practical differences between them, and what to check before you sign.</p>
 <figure><img src="/article-images/uae-labour-law-inline.jpg" alt="Side-by-side comparison of limited and unlimited UAE employment contract key clauses" loading="lazy" /></figure>
