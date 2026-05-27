@@ -31,7 +31,7 @@ const websiteJsonLd = {
   description: SITE_DESCRIPTION,
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${SITE_URL}/jobs?search={search_term_string}`,
+    target: `${SITE_URL}/jobs/?search={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 };

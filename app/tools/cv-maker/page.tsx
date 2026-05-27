@@ -789,9 +789,9 @@ export default function CVMakerPage() {
            <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>Ready to launch your UAE career?</h3>
            <p style={{ color: '#94a3b8', marginBottom: '24px', maxWidth: '600px', margin: '0 auto 24px' }}>Once your CV is ready, check out our latest verified jobs and career guides to start applying today.</p>
            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
-              <Link href="/blog/walk-in-interviews-dubai-this-week" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Walk-In Interviews</Link>
-              <Link href="/blog/uae-labour-law-guide-for-expats" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
-              <Link href="/tools/gratuity-calculator" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
+              <Link href="/blog/walk-in-interviews-dubai-this-week/" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Walk-In Interviews</Link>
+              <Link href="/blog/uae-labour-law-guide-for-expats/" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
+              <Link href="/tools/gratuity-calculator/" style={{ background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '12px', color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
            </div>
         </div>
       </section>

@@ -76,7 +76,7 @@ export default function InterviewQuestionBankPage() {
                 Start with the roles closest to the job you are applying for.
               </p>
             </div>
-            <Link href="/resources" className="iqb-back-link">
+            <Link href="/resources/" className="iqb-back-link">
               Back to Resources
             </Link>
           </div>
@@ -208,10 +208,10 @@ export default function InterviewQuestionBankPage() {
             shutdowns, or safety actions. The goal is to sound prepared and credible, not scripted.
           </p>
           <div className="iqb-cta-dark-actions">
-            <Link href="/tools/cv-maker" className="btn" style={{ textDecoration: 'none', background: '#fff', color: 'var(--primary)' }}>
+            <Link href="/tools/cv-maker/" className="btn" style={{ textDecoration: 'none', background: '#fff', color: 'var(--primary)' }}>
               Open CV Maker <FiArrowRight />
             </Link>
-            <Link href="/blog" className="btn" style={{ textDecoration: 'none', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <Link href="/blog/" className="btn" style={{ textDecoration: 'none', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)' }}>
               Read career guides
             </Link>
           </div>

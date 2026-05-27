@@ -78,7 +78,7 @@ export default async function WalkInJobsPage() {
             {jobs.items.length === 0 ? (
               <div className="card" style={{ textAlign: 'center', padding: '3rem' }}>
                 <p>No active walk-in interviews found right now. Check back soon.</p>
-                <Link href="/jobs" className="btn btn-primary mt-md">
+                <Link href="/jobs/" className="btn btn-primary mt-md">
                   View All Jobs
                 </Link>
               </div>

@@ -27,10 +27,10 @@ export default function NotFound() {
             <Link href="/" className="btn btn-primary">
               Go Home
             </Link>
-            <Link href="/jobs" className="btn btn-secondary">
+            <Link href="/jobs/" className="btn btn-secondary">
               Browse Jobs
             </Link>
-            <Link href="/blog" className="btn btn-secondary">
+            <Link href="/blog/" className="btn btn-secondary">
               Read the Blog
             </Link>
           </div>

@@ -40,7 +40,7 @@ export default function GlobalError({
                 <button className="btn btn-primary" onClick={() => window.location.reload()}>
                   Retry
                 </button>
-                <a href="/contact" className="btn btn-secondary">
+                <a href="/contact/" className="btn btn-secondary">
                   Contact Support
                 </a>
               </div>

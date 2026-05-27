@@ -115,10 +115,60 @@ export default async function JobsPage() {
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-             <Link href="/blog/uae-labour-law-guide-for-expats" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
-             <Link href="/tools/cv-maker" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>CV Maker</Link>
-             <Link href="/tools/gratuity-calculator" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
+             <Link href="/blog/uae-labour-law-guide-for-expats/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
+             <Link href="/tools/cv-maker/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>CV Maker</Link>
+             <Link href="/tools/gratuity-calculator/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
           </div>
+        </div>
+      </section>
+
+      {/*
+        SEO crawl index — JobsListingClient paginates to PAGE_SIZE=20 via
+        <button type="submit"> forms, which Googlebot does NOT follow. Without
+        this server-rendered anchor list, jobs beyond the first page become
+        orphan URLs in Search Console ("Discovered - currently not indexed").
+        This list is intentionally simple text links so Googlebot can discover
+        every job from a single static crawl of /jobs/.
+      */}
+      <section
+        aria-label="Browse all current Gulf job listings"
+        style={{ background: '#f8fafc', borderTop: '1px solid #e2e8f0', padding: '40px 0' }}
+      >
+        <div className="container" style={{ maxWidth: '1000px' }}>
+          <h2 style={{ fontSize: '1.5rem', color: '#0f172a', marginBottom: '8px', fontWeight: 700 }}>
+            Browse all {jobs.length} current job listings
+          </h2>
+          <p style={{ fontSize: '0.9375rem', color: '#475569', marginBottom: '20px' }}>
+            Quick index of every open role on our board, grouped by country and city for faster
+            browsing.
+          </p>
+          <ul
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: '8px 24px',
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
+              fontSize: '0.875rem',
+              lineHeight: 1.55,
+            }}
+          >
+            {jobs.map((job) => (
+              <li key={job._id}>
+                <Link
+                  href={`/jobs/${job.slug}/`}
+                  style={{ color: '#1e293b', textDecoration: 'none' }}
+                >
+                  {job.title}
+                  <span style={{ color: '#94a3b8' }}>
+                    {' '}
+                    — {job.location.city}, {job.location.country}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

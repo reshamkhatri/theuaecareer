@@ -238,7 +238,7 @@ export default function GratuityCalculatorPage() {
                <div>
                   <div style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', color: '#10B981', letterSpacing: '1px', marginBottom: '8px' }}>Read Expert Guide</div>
                   <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '8px', lineHeight: 1.3 }}>What is UAE Gratuity? A Complete Guide 2024</h4>
-                  <Link href="/blog/uae-labour-law-guide-for-expats" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Link href="/blog/uae-labour-law-guide-for-expats/" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                     Read Article <FiArrowRight />
                   </Link>
                </div>
