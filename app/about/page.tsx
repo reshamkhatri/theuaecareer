@@ -4,11 +4,20 @@ import Image from 'next/image';
 import { FiGlobe, FiMail, FiMapPin, FiExternalLink } from 'react-icons/fi';
 
 export const metadata: Metadata = {
-  title: 'About Us — theuaecareer.com',
+  // Title template in app/layout.tsx appends " | theuaecareer", so this
+  // becomes "About Us | theuaecareer". Avoid repeating the brand here.
+  title: 'About Us',
   description:
     'Meet the team behind theuaecareer.com — Resham KC and Nishan KC. We help expats find jobs in the UAE, Saudi Arabia, and Qatar with curated listings, career guides, and free tools.',
   alternates: {
     canonical: '/about/',
+  },
+  openGraph: {
+    title: 'About theuaecareer.com — the team behind your Gulf job search',
+    description:
+      'Meet Resham KC and Nishan KC, the team building theuaecareer.com. Curated UAE, Saudi, and Qatar job listings, free career tools, and honest hiring guidance for Gulf expats.',
+    url: '/about/',
+    type: 'website',
   },
 };
 

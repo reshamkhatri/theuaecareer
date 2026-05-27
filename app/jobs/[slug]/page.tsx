@@ -27,6 +27,25 @@ export const revalidate = 300;
 const jobInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_INLINE_SLOT?.trim();
 const jobSidebarAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_SIDEBAR_SLOT?.trim();
 
+// Google's JobPosting schema requires `addressCountry` to be an ISO 3166-1
+// alpha-2 code, NOT a free-form country name. Job content uses display names
+// like "UAE" / "Saudi Arabia"; map to the ISO code Google expects.
+const COUNTRY_TO_ISO: Record<string, string> = {
+  UAE: 'AE',
+  'United Arab Emirates': 'AE',
+  'Saudi Arabia': 'SA',
+  KSA: 'SA',
+  Qatar: 'QA',
+  Bahrain: 'BH',
+  Kuwait: 'KW',
+  Oman: 'OM',
+};
+
+function toIsoCountry(country: string | undefined): string {
+  if (!country) return 'AE';
+  return COUNTRY_TO_ISO[country] ?? country;
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -127,13 +146,23 @@ export default async function JobDetailPage({
       address: {
         '@type': 'PostalAddress',
         addressLocality: job.location.city,
-        addressCountry: job.location.country,
+        addressCountry: toIsoCountry(job.location.country),
         ...(job.walkInDetails?.venue ? { streetAddress: job.walkInDetails.venue } : {}),
       },
     },
     datePosted: job.postedDate,
     validThrough: job.expiryDate,
     employmentType: job.jobType.toUpperCase().replace('-', '_'),
+    // Google explicitly recommends `directApply: false` for aggregator sites
+    // that don't host the application form themselves (helps avoid indirect
+    // application penalties since 2024).
+    directApply: false,
+    // applicantLocationRequirements helps Google understand the candidate
+    // location vs. the job location.
+    applicantLocationRequirements: {
+      '@type': 'Country',
+      name: toIsoCountry(job.location.country),
+    },
     ...(job.salaryRange && (job.salaryRange.min || job.salaryRange.max)
       ? {
           baseSalary: {
