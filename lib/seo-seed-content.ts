@@ -2198,4 +2198,413 @@ export const seoSeedArticles = [
 <h2>What to do next</h2>
 <p>Compare the monthly cost using <a href="/blog/cost-of-living-dubai-2026/">the Dubai cost of living guide</a>, then check whether the offer is still strong after converting savings with the <a href="/tools/currency-converter/">Currency Converter</a>.</p>`,
   },
+  {
+    _id: 'seo-article-mohre-salary-certificate',
+    title: 'MOHRE Salary Certificate UAE 2026: How to Download, Verify & Use It',
+    slug: 'mohre-salary-certificate-uae',
+    excerpt:
+      'Full 2026 guide to the UAE MOHRE salary certificate — how to download it from the MOHRE app, when employers, banks, and embassies actually accept it, and what to do if your salary on the certificate is wrong.',
+    featuredImage: '/article-images/mohre-complaint-uae-hero.webp',
+    coverAlt:
+      'MOHRE salary certificate displayed on a UAE resident’s phone with the official seal and Arabic header visible',
+    category: 'Career Guides',
+    tags: ['mohre', 'salary certificate', 'uae documents', 'uae bank loan', 'uae visa documents'],
+    status: 'published',
+    publishDate: '2026-05-27T08:00:00.000Z',
+    lastUpdatedDate: '2026-05-27T08:00:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'MOHRE Salary Certificate UAE 2026: Download, Verify, Use',
+    metaDescription:
+      'How to download your UAE MOHRE salary certificate in 2026, what it is used for (visa, bank loan, embassy), how to fix wrong details, and how it differs from a bank salary certificate.',
+    content: `<p>If you have ever applied for a UAE family visa, taken out a bank loan, opened a business account, or filed a visit visa for parents, you have probably been asked for a salary certificate from MOHRE. The catch is that there are actually two documents people call a salary certificate in the UAE, and one of them is increasingly being rejected by banks and embassies. This guide explains exactly what the MOHRE salary certificate is in 2026, how to download it from the MOHRE app or website, when you need the MOHRE version versus a bank-issued one, and what to do if the details on your certificate are wrong.</p>
+<ul>
+<li>The MOHRE salary certificate is a free digital document confirming your registered employment, basic salary, and total package.</li>
+<li>You can download it in 60 seconds from the MOHRE app once your contract is active.</li>
+<li>Most government services accept the MOHRE version, but many banks now want a bank-issued certificate from your salary-transfer bank instead.</li>
+<li>If a basic salary or allowance breakdown is wrong, only your employer can fix it through a MOHRE contract amendment.</li>
+</ul>
+<h2>What is a MOHRE salary certificate?</h2>
+<p>A MOHRE salary certificate is the official confirmation, issued by the Ministry of Human Resources and Emiratisation, that you are a registered employee of a specific UAE establishment with a specific basic salary, housing allowance, transport allowance, and total monthly package. The certificate is generated automatically from the data your employer registered when they processed your work permit and MOHRE labour contract.</p>
+<p>It contains your full name, nationality and passport number, Emirates ID number, employer name and MOHRE establishment number, job title, contract start date, the full breakdown of basic plus allowances, and the MOHRE QR verification code. The QR matters because any bank, embassy, or government counter can scan it to confirm the certificate is real and current.</p>
+<h2>How to download your MOHRE salary certificate in 2026</h2>
+<p>There are three routes: the MOHRE app, the MOHRE website, or a Tas-heel typing centre. The app is the fastest.</p>
+<h3>MOHRE app method</h3>
+<ol>
+<li>Download the MOHRE - UAE app on iOS or Android. The publisher is the Ministry of Human Resources and Emiratisation.</li>
+<li>Sign in with UAE PASS or with your MOHRE username and password.</li>
+<li>From the home screen, scroll to Services and tap Issue Salary Certificate.</li>
+<li>Select Arabic plus English as the language.</li>
+<li>Confirm your details and tap Generate.</li>
+<li>The certificate appears as a PDF. Save it to your phone or email it to yourself.</li>
+</ol>
+<h3>MOHRE website method</h3>
+<p>Open mohre.gov.ae in any browser, go to Services, then Individuals, then Salary Certificate. Sign in with UAE PASS and follow the same steps as the app.</p>
+<h3>Tas-heel typing centre method</h3>
+<p>Any Tas-heel typing centre across the UAE can issue the certificate for you. Bring your Emirates ID. The fee is around AED 20 to AED 30. This route is only needed if you cannot use the app or your UAE PASS is broken.</p>
+<h2>When you need MOHRE versus a bank salary certificate</h2>
+<p>Use a MOHRE salary certificate for Emirates ID renewal, family visa applications, most Schengen and US visa applications, Tas-heel services, court cases involving labour disputes, and rental contract submissions. Use a bank-issued salary certificate for personal loans, credit cards, car loans, mortgages, and any case where a lender wants confirmation that salary credits actually hit your account.</p>
+<p>The split exists because a MOHRE certificate confirms your contractual salary but does not confirm that the salary has been paid. Lenders care about the latter. Most UAE banks issue a salary certificate against your salary-transfer account for free if you are a customer in good standing.</p>
+<h2>What to do if your MOHRE salary certificate is wrong</h2>
+<p>If your basic salary, housing allowance, or job title does not match your offer letter, the certificate cannot be edited directly. The underlying MOHRE contract record has to be amended first. Only your employer can do this.</p>
+<p>Email your HR contact with the specific incorrect field and the correct value. Attach your offer letter as evidence. HR submits a contract amendment through MOHRE Tas-heel. Once MOHRE approves the amendment (usually two to five working days), regenerate your salary certificate and the new figure will appear.</p>
+<p>If your employer refuses to correct a genuine error, especially one that under-states your basic salary, file a formal complaint with MOHRE via 600 590 000 or the Tawasul portal. Our guide on <a href="/blog/how-to-file-mohre-complaint-in-uae/">how to file a MOHRE complaint in UAE</a> walks through every step.</p>
+<h2>Common rejection reasons</h2>
+<ul>
+<li><strong>Certificate too old.</strong> Most authorities want a certificate dated within the last 30 days. Regenerate the day before submission.</li>
+<li><strong>Name mismatch with Emirates ID.</strong> Usually caused by inconsistent passport-name transliteration. The fix is a MOHRE amendment.</li>
+<li><strong>Embassy wants a bank certificate.</strong> Some Schengen consulates explicitly want bank-issued. Re-check the embassy checklist.</li>
+<li><strong>QR code unverifiable.</strong> The certificate is fake or stale. Regenerate from the app.</li>
+<li><strong>Basic salary below sponsorship minimum.</strong> The current family-visa threshold is AED 4,000 basic with housing or AED 5,000 basic without housing.</li>
+</ul>
+<h2>Why basic salary matters for your gratuity</h2>
+<p>Your gratuity (end-of-service benefit) under UAE Labour Law is calculated on basic salary as registered with MOHRE, not on your total package and not on what your offer letter said. The MOHRE salary certificate is the authoritative source.</p>
+<p>If your offer letter quoted AED 12,000 total but the MOHRE contract registered AED 5,000 basic plus AED 5,000 housing plus AED 2,000 transport, your gratuity is calculated on AED 5,000. After 10 years of service, that is roughly AED 60,000 instead of AED 144,000. Download your MOHRE salary certificate at least once a year and verify the basic salary line. Calculate your projected gratuity with the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a> using actual basic, not gross.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>Is the MOHRE salary certificate free?</h3>
+<p>Yes. Issuing the certificate through the MOHRE app or website is free. Typing centres charge AED 20 to AED 30 if you go through them.</p>
+<h3>How long is a MOHRE salary certificate valid?</h3>
+<p>There is no formal expiry, but most authorities require it to be issued within the last 30 days. Regenerate when needed.</p>
+<h3>Can I get an English-only version?</h3>
+<p>No. The standard certificate is bilingual Arabic and English. You do not need a separate translation for UAE government use.</p>
+<h3>Do free zone employees get a MOHRE salary certificate?</h3>
+<p>No. Free zone employees are registered with their free zone authority (DIFC, DMCC, ADGM, JAFZA, and others) and get the equivalent from that authority instead.</p>
+<h3>Can my employer block me from downloading my salary certificate?</h3>
+<p>No. The MOHRE app pulls directly from the live contract record. As long as your work permit is active, you can generate the certificate without your employer’s involvement.</p>
+<h2>What to do next</h2>
+<p>If your basic salary is lower than it should be, fix the contract first. Read our <a href="/blog/uae-employment-contract-types/">UAE Employment Contract Types guide</a> to understand what should be on your contract, calculate your projected gratuity with the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a>, and if you suspect your employer is under-reporting basic salary, follow our <a href="/blog/how-to-file-mohre-complaint-in-uae/">MOHRE complaint guide</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-visit-visa-to-work-visa',
+    title: 'UAE Visit Visa to Work Visa Conversion in 2026: Complete Step-by-Step Process',
+    slug: 'uae-visit-visa-to-work-visa-conversion',
+    excerpt:
+      'Full 2026 guide to converting a UAE visit visa to a work visa without leaving the country — costs, timeline, MOHRE quota check, employer documents, medical, and what changed under the new ICP rules.',
+    featuredImage: '/article-images/uae-labour-law-hero.jpg',
+    coverAlt:
+      'UAE work permit and Emirates ID held by a new resident outside the GDRFA office in Dubai after status change',
+    category: 'Career Guides',
+    tags: ['uae work visa', 'visit visa', 'visa conversion', 'mohre', 'status change', 'uae visa rules'],
+    status: 'published',
+    publishDate: '2026-05-27T08:10:00.000Z',
+    lastUpdatedDate: '2026-05-27T08:10:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'UAE Visit Visa to Work Visa Conversion 2026 (Step-by-Step)',
+    metaDescription:
+      'How to convert your UAE visit visa to a work visa in 2026 without leaving the country — costs, timeline, MOHRE quota, medical fitness, Emirates ID, and the new ICP status-change rules.',
+    content: `<p>Converting a UAE visit visa to a work visa without leaving the country used to be a paperwork ordeal that required an out-of-country status change to Oman or Iran. As of the latest ICP and MOHRE updates, in-country conversion is now the standard path, and the whole timeline can be wrapped up in 7 to 14 working days if your employer moves fast. This guide walks through the exact 2026 process, what each fee actually costs, what documents the employer needs from you, and the failure points that send candidates back to step one.</p>
+<ul>
+<li>In-country status change is now allowed for most visit-visa holders. You do not need to fly to Oman or Kish.</li>
+<li>The conversion is employer-led. You cannot start the process on your own.</li>
+<li>End-to-end cost is around AED 5,500 to AED 8,500, mostly paid by the employer.</li>
+<li>Minimum timeline is 7 working days. Realistic is 10 to 14.</li>
+<li>A failed medical fitness test is the most common showstopper, and there is no appeal.</li>
+</ul>
+<h2>When you can convert (and when you cannot)</h2>
+<p>You can convert your UAE visit visa to a work visa in-country if you hold a valid visit visa with at least 10 days remaining (Dubai is stricter and may want 30 days), you have a firm offer from a UAE employer with an active establishment card and MOHRE quota, you pass the medical fitness test, and you are not on a UAE entry or labour ban.</p>
+<p>You cannot convert if you overstayed your visit visa, the employer is not registered with MOHRE, you failed the medical (HIV, active TB, Hepatitis B in some categories), or you have an active labour ban from a previous UAE employer.</p>
+<h2>The full conversion process</h2>
+<h3>Step 1: Offer letter and MOHRE contract</h3>
+<p>Your employer issues the MOHRE-compliant offer letter through Tas-heel. You sign via UAE PASS or in person. This is a legally binding offer, so make sure the basic salary, job title, and contract term match what you negotiated. Read our <a href="/blog/uae-employment-contract-types/">UAE Employment Contract Types guide</a> if anything looks unfamiliar.</p>
+<h3>Step 2: Quota approval</h3>
+<p>The employer applies to MOHRE for a quota for your job title. If they already have unused quota, this step is instant. Otherwise MOHRE reviews based on the company’s labour-banking points and Emiratisation compliance. Timeline: one to three working days.</p>
+<h3>Step 3: Work permit (pink permit)</h3>
+<p>Once quota is approved, MOHRE issues the work permit, valid for 60 days. Cost: AED 250 to AED 500. You provide passport copy, photo, and educational certificates (some categories require attested degrees).</p>
+<h3>Step 4: Status change</h3>
+<p>Your employer’s PRO submits the status change application to ICP/GDRFA. This converts your visit visa into a status-change-pending record without you leaving the country. Cost: AED 750 to AED 1,500. Stay in the UAE during this step. Leaving voids the in-country conversion.</p>
+<h3>Step 5: Medical fitness test</h3>
+<p>You attend a government-approved medical centre and give a blood sample plus chest X-ray. The test screens for HIV, Hepatitis B, TB, syphilis, and pregnancy (women only, for some categories). Cost: AED 320 in Dubai, AED 250 in other emirates. Fast-track at AED 750 returns results in 24 hours.</p>
+<p>This is where most failures happen. A positive HIV or active TB result means residence is denied and you have 30 days to exit. There is no appeal mechanism. If you have any concern, get tested privately before arriving in the UAE.</p>
+<h3>Step 6: Emirates ID biometrics</h3>
+<p>You attend an ICP centre for fingerprints, iris scan, and photograph. Cost: AED 370 (employer-paid). The physical Emirates ID is mailed in 5 to 10 working days, but the EID number is issued immediately. Read our <a href="/blog/emirates-id-status-check-uae/">Emirates ID status check guide</a> to track the card.</p>
+<h3>Step 7: Residence visa stamping</h3>
+<p>Your residence visa is electronically stamped into the ICP system. The physical passport stamp was discontinued in 2022. Cost: AED 250 to AED 500. Timeline: one to two working days after medical clearance.</p>
+<h3>Step 8: Labour card issuance</h3>
+<p>MOHRE issues the labour card linking you to the employer. You receive a notification through the MOHRE app and can legally start work.</p>
+<h2>Total cost breakdown</h2>
+<p>For mainland Dubai in 2026, expect approximately:</p>
+<ul>
+<li>MOHRE work permit: AED 250 to AED 500 (employer)</li>
+<li>Status change: AED 750 to AED 1,500 (employer)</li>
+<li>Medical fitness: AED 320 (you, often reimbursed)</li>
+<li>Emirates ID for 2 years: AED 370 (employer)</li>
+<li>Residence stamping: AED 250 to AED 500 (employer)</li>
+<li>PRO service fees: AED 300 to AED 800 (employer)</li>
+<li>Mandatory health insurance: AED 600 to AED 1,500 per year (employer)</li>
+</ul>
+<p>If a company asks you to pay any of the employer items, push back. Under UAE Labour Law these costs are the employer’s responsibility. Recruiters who ask candidates to split work permit fees are usually running a scam. Read <a href="/blog/how-to-avoid-fake-job-offers-in-uae-saudi-qatar/">how to avoid fake job offers in UAE, Saudi, and Qatar</a> before paying any third party.</p>
+<h2>Realistic timeline</h2>
+<p>Day 0: sign MOHRE offer. Days 1 to 3: quota approval. Days 3 to 7: work permit issued. Days 7 to 10: status change approved. Days 10 to 13: medical fitness test and results. Day 13: Emirates ID biometrics. Day 14: residence stamping and labour card. Total: roughly 14 working days end to end. Fast-track under 10 days is possible with express processing.</p>
+<h2>Common pitfalls</h2>
+<ul>
+<li><strong>Leaving the UAE mid-process.</strong> Even a weekend trip to Oman voids the in-country conversion.</li>
+<li><strong>Educational certificate attestation.</strong> Engineers, accountants, doctors, and teachers need degree attestation from the UAE Embassy in the home country plus MOFAIC. Sort this during the visit-visa period.</li>
+<li><strong>Outdated passport.</strong> If your passport expires within 6 months, ICP rejects the application. Renew first.</li>
+<li><strong>Insurance gap.</strong> Mandatory health insurance must be arranged before residence is stamped.</li>
+<li><strong>Old labour ban.</strong> Check your ban status on the MOHRE app before signing a new offer.</li>
+</ul>
+<h2>Frequently Asked Questions</h2>
+<h3>Can I work while my status change is pending?</h3>
+<p>No. You can only legally work after the labour card is issued. Some employers will pressure you to start during the pending period, which is a grey area and exposes you if anything goes wrong.</p>
+<h3>What if my visit visa expires during the conversion?</h3>
+<p>If the work permit was issued before the visit visa expired, you are protected by the in-country status change. If you missed the deadline, you pay AED 100 per day overstay until exit or renewal.</p>
+<h3>Can my family convert at the same time?</h3>
+<p>No. Family members on visit visas must wait until your residence is fully stamped, then you sponsor them as dependants once you meet the salary and tenancy requirements.</p>
+<h3>Does this process work for free zone employers?</h3>
+<p>The flow is similar but the issuing authority is your free zone (DIFC, DMCC, ADGM, JAFZA, others). Free zone permits are usually faster but more expensive. Check with your employer’s PRO.</p>
+<h2>What to do next</h2>
+<p>Verify the contract before signing by reading our <a href="/blog/uae-employment-contract-types/">UAE Employment Contract Types guide</a>. Calculate the long-term impact of your basic salary using the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a>. Before you sign, verify the employer is real with our guide on <a href="/blog/how-to-verify-uae-job-offer-is-real/">how to verify a UAE job offer is real</a>. After arrival, track your Emirates ID with our <a href="/blog/emirates-id-status-check-uae/">EID status check guide</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-emirates-id-status-check',
+    title: 'Emirates ID Status Check 2026: How to Track Your Application Step-by-Step',
+    slug: 'emirates-id-status-check-uae',
+    excerpt:
+      'Track your UAE Emirates ID application in 2026 — check status on the ICP website, ICP UAE app, and by SMS. What each status code means, what to do if it is stuck, and how to escalate.',
+    featuredImage: '/article-images/uae-visa-renewal-hero.jpg',
+    coverAlt:
+      'UAE resident checking Emirates ID application status on the ICP UAE app on a smartphone',
+    category: 'Career Guides',
+    tags: ['emirates id', 'eid status', 'icp', 'uae residence', 'uae documents'],
+    status: 'published',
+    publishDate: '2026-05-27T08:20:00.000Z',
+    lastUpdatedDate: '2026-05-27T08:20:00.000Z',
+    author: 'Nishan KC',
+    metaTitle: 'Emirates ID Status Check 2026: Track Your UAE EID Application',
+    metaDescription:
+      'Step-by-step Emirates ID status check for 2026 — ICP website, ICP UAE app, SMS method, status meanings, what to do if stuck on Under process for more than a week, and how to escalate.',
+    content: `<p>Once your Emirates ID application is submitted, the waiting begins. Most applications process in 5 to 10 working days, but a small percentage get stuck — flagged for biometric verification, name mismatch with the passport, or a security review. The good news is you do not need to call anyone or visit an ICP centre to check status. There are three reliable ways to track your Emirates ID application in 2026: the ICP website, the ICP UAE app, and SMS. This guide walks through each, explains every status code you might see, and tells you exactly what to do if your application is stuck.</p>
+<ul>
+<li>The fastest method is the ICP UAE app under My Services then Status Check.</li>
+<li>You need your PRAN (also called the transaction number) from the typing centre receipt or your submission SMS.</li>
+<li>Standard processing takes 5 to 10 working days. New residents may need to attend biometrics first.</li>
+<li>If the status sits at Under process for more than 10 working days, you can escalate.</li>
+<li>The card is delivered by Emirates Post to the address on the application.</li>
+</ul>
+<h2>What you need before checking</h2>
+<p>You need one of: the PRAN (a 14-digit Personal Reference Application Number on your typing centre receipt), your application number, your Emirates ID number for renewals, or your passport number as a fallback. If you cannot find any of these, check the SMS history on the phone number you provided. ICP sends a confirmation SMS with the reference at submission.</p>
+<h2>Method 1: ICP website</h2>
+<p>Open icp.gov.ae in any browser. Go to Services, then Public Services, then Check Your Status. Choose Emirates ID as the service type, enter your PRAN or application number, pass the captcha, and tap Search. The current status appears immediately. If it shows Under process for more than 10 working days, scroll down for a sub-line explaining whether biometrics are pending, fees are unpaid, or a document is missing.</p>
+<h2>Method 2: ICP UAE app (recommended)</h2>
+<p>Download ICP UAE from the App Store or Google Play. The publisher is the Federal Authority for Identity, Citizenship, Customs and Port Security. Sign in with UAE PASS, then tap My Services and ID Card Status. Status appears with full history showing when it moved from Submitted to Under process to Approved to Card printed to Dispatched.</p>
+<p>The app sends push notifications when status changes. If you do nothing else, install the app. You will find out about issues faster than refreshing the website.</p>
+<h2>Method 3: SMS check</h2>
+<p>For Etisalat and Du customers, send the text EID followed by a space and your application number to 2535. You will receive a reply with the current status, usually within 30 seconds.</p>
+<h2>What each status means</h2>
+<ul>
+<li><strong>Submitted.</strong> Application received, not yet picked up. Wait — usually moves within 24 hours.</li>
+<li><strong>Under process.</strong> ICP is reviewing. Standard for up to 10 working days.</li>
+<li><strong>Biometrics required.</strong> You need to attend an ICP centre. Book through the app.</li>
+<li><strong>Documents required.</strong> Something is missing. Log in and upload what is requested.</li>
+<li><strong>Approved.</strong> Card is being printed. Usually 2 to 3 days.</li>
+<li><strong>Card printed.</strong> Physical card is with Emirates Post. Wait for delivery or arrange pickup.</li>
+<li><strong>Dispatched.</strong> Card is on the way. Track via Emirates Post.</li>
+<li><strong>Delivered.</strong> Card received.</li>
+<li><strong>Returned to sender.</strong> Delivery failed. Pick up from the relevant post office within 30 days.</li>
+<li><strong>Rejected.</strong> Reasons should be listed. Common: name mismatch with passport, expired passport, failed security check.</li>
+</ul>
+<h2>What to do if the application is stuck</h2>
+<h3>Step 1: Re-check biometrics</h3>
+<p>The most common stuck-state is unscheduled biometrics. Even if you submitted online, ICP may flag the application for in-person capture. Log in to the ICP app, check the status detail, and book biometrics at your nearest ICP centre.</p>
+<h3>Step 2: Call the ICP call centre</h3>
+<p>Dial 600 522222. Open Sunday to Thursday 7 AM to 9 PM, Saturday 8 AM to 5 PM. Give your application number. They can see exactly what is blocking the application.</p>
+<h3>Step 3: Visit a Customer Happiness Centre</h3>
+<p>If the call centre cannot unblock it, visit an ICP Customer Happiness Centre in your emirate. Walk-in, no appointment usually needed. Bring your passport, application receipt, and a screenshot of the stuck status.</p>
+<h3>Step 4: Employer PRO escalation</h3>
+<p>If your employer’s PRO handled the application, ask them to escalate. PROs have priority lines into ICP for employer-sponsored applications and can usually resolve in one to two working days.</p>
+<h2>Common reasons applications get stuck</h2>
+<ul>
+<li><strong>Name mismatch with passport.</strong> The name on the EID must match the passport exactly. A missing middle name or different transliteration flags the application.</li>
+<li><strong>Passport expiry under 6 months.</strong> ICP rejects applications when the passport is close to expiring. Renew first.</li>
+<li><strong>Photo not meeting specs.</strong> White background, neutral expression, both ears visible, no glasses for some categories.</li>
+<li><strong>Unpaid fees.</strong> Some applications pause if the fee transaction did not clear. Re-attempt payment.</li>
+<li><strong>Security check.</strong> A small percentage of applications get a random security flag. No way to expedite, just wait.</li>
+</ul>
+<h2>How to receive your card</h2>
+<p>Emirates Post delivery is the default. Track via emiratespost.ae using the tracking number from the dispatch SMS. If delivery fails twice, the card returns to the nearest post office and stays there for 30 days. After 30 days, ICP cancels the card and you must reapply. You can also pick up from the post office — bring your passport.</p>
+<p>You can choose Emirates ID pickup at an ICP centre during the application if you want to avoid postal delivery.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>How long does Emirates ID take to be issued?</h3>
+<p>Standard processing is 5 to 10 working days. Renewals can be faster at 2 to 3 days. Stuck applications can take 3 to 4 weeks if biometrics or security review are involved.</p>
+<h3>Can I work in the UAE before my Emirates ID is issued?</h3>
+<p>You can legally work as soon as your labour card is issued by MOHRE. Emirates ID is a separate document that follows. Most employers are fine with you starting before the physical EID card arrives, as long as the EID number has been issued.</p>
+<h3>My Emirates ID expired and I have not renewed. What happens?</h3>
+<p>Renew within 30 days of expiry to avoid the AED 20 per day late fee (capped at AED 1,000). Beyond 90 days, your residence is at risk of cancellation.</p>
+<h3>Can I get a digital Emirates ID instead of the physical card?</h3>
+<p>UAE PASS shows your digital Emirates ID and is accepted at most government counters. Some private services like banks and telecom shops still require the physical card.</p>
+<h3>Can someone else collect my Emirates ID from the post office?</h3>
+<p>Yes, but they need a notarised power of attorney plus a copy of your original passport. Easier to redirect to a pickup point you can reach yourself.</p>
+<h2>What to do next</h2>
+<p>Once you have your Emirates ID, you need it for almost everything in the UAE. If you are a new resident still settling in, read our guide on <a href="/blog/uae-visit-visa-to-work-visa-conversion/">UAE visit visa to work visa conversion</a> and <a href="/blog/uae-employment-contract-types/">UAE Employment Contract Types</a>. For salary documentation needed for bank accounts and family visa applications, see our <a href="/blog/mohre-salary-certificate-uae/">MOHRE Salary Certificate guide</a>.</p>`,
+  },
+  {
+    _id: 'seo-article-salary-negotiation-templates',
+    title: 'Salary Negotiation Email Templates for UAE Jobs (6 Real Examples for 2026)',
+    slug: 'salary-negotiation-email-templates-uae',
+    excerpt:
+      'Six ready-to-edit salary negotiation email templates for UAE job offers in 2026. Covers counter-offers, asking about housing allowance, push-back on low basic salary, and negotiating sign-on bonus.',
+    featuredImage: '/article-images/negotiate-salary-uae-hero.webp',
+    coverAlt:
+      'UAE professional drafting a salary negotiation email on a laptop with the offer letter visible on the desk',
+    category: 'Career Guides',
+    tags: ['salary negotiation', 'uae jobs', 'email templates', 'job offer', 'counter offer'],
+    status: 'published',
+    publishDate: '2026-05-27T08:30:00.000Z',
+    lastUpdatedDate: '2026-05-27T08:30:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'UAE Salary Negotiation Email Templates (6 Examples for 2026)',
+    metaDescription:
+      'Six proven salary negotiation email templates for UAE job offers in 2026 — counter-offer, basic-salary push-back, housing allowance request, sign-on bonus, and competing-offer responses.',
+    content: `<p>Most UAE candidates accept the first salary they are offered because saying anything else feels risky. In practice, well-written counter-offers succeed more often than candidates expect, especially when sent in writing rather than blurted out on a phone call. Email gives the hiring manager time to think and discuss internally, and gives you time to phrase the ask carefully. The six templates below cover the most common 2026 UAE negotiation situations — counter-offer, basic-salary push-back, housing allowance request, sign-on bonus, competing offer, and start-date negotiation. Each is ready to edit and send.</p>
+<ul>
+<li>Always counter in writing, not on a phone call.</li>
+<li>Lead with gratitude and clear acceptance intent before naming the gap.</li>
+<li>Negotiate basic salary first — it determines your gratuity and your family-visa eligibility.</li>
+<li>A reasonable counter is 5 to 15 percent above the initial offer. Beyond 15 percent, expect serious push-back unless you have a competing offer.</li>
+<li>Never invent a competing offer. UAE recruiters cross-check more than you think.</li>
+</ul>
+<h2>How UAE salary negotiation actually works</h2>
+<p>UAE hiring managers typically have a salary band rather than a single number. The first offer is usually in the lower half of the band, leaving room to land in the middle if you push back. The employer is rarely offended by a written counter — they expect it from senior candidates and are not surprised when junior candidates ask too. What does kill negotiations is ultimatums, vague asks without a number, long delays, and negotiating after signing.</p>
+<p>The right time to negotiate is between the verbal or email offer and the signed offer letter. The right channel is email unless they explicitly ask you to discuss on a call, in which case you can buy time by saying you will come back in writing tomorrow.</p>
+<h2>What to negotiate, in order of leverage</h2>
+<ol>
+<li><strong>Basic salary.</strong> Most leverage. Determines gratuity, housing allowance eligibility, family-visa minimums.</li>
+<li><strong>Housing allowance.</strong> Tax-free, easier to increase than basic in some companies.</li>
+<li><strong>Transport allowance or company car.</strong> Worth AED 500 to AED 2,000 per month depending on role.</li>
+<li><strong>Sign-on bonus.</strong> One-off payment to compensate for forfeited bonus or relocation costs.</li>
+<li><strong>Start date.</strong> Almost always granted if you need to serve notice or relocate family.</li>
+<li><strong>Annual leave.</strong> UAE Labour Law minimum is 30 calendar days. Senior roles can negotiate to 40 plus.</li>
+<li><strong>Probation period.</strong> Standard is 6 months. Experienced hires can sometimes negotiate down to 3.</li>
+<li><strong>Notice period.</strong> Standard is 30 days. Some roles see 60 to 90 days, which restricts future moves.</li>
+</ol>
+<h2>Template 1: Counter-offer (general)</h2>
+<p>Use this when the initial offer is within reasonable range but you want to push for the upper end.</p>
+<p><em>Subject: Re: Offer for [Role] — quick request before I sign.</em></p>
+<p><em>Dear [Hiring manager], thank you again for the offer for the [Role] position at [Company]. I really enjoyed the conversations with [name 1] and [name 2], and I am genuinely excited about the chance to join the team.</em></p>
+<p><em>Before I sign, I would like to discuss the basic salary. Based on my [X years] of experience in [field] in the UAE market, the salary survey data I have reviewed, and the scope of this role, I was hoping for a basic salary closer to AED [target], instead of the AED [offered] in the current offer.</em></p>
+<p><em>Everything else in the offer looks great. I am ready to sign and start as soon as we can align on this point. Looking forward to hearing your thoughts. Best regards, [Your name].</em></p>
+<h2>Template 2: Push-back on a low basic salary</h2>
+<p>Use this when the total package looks fine but the basic salary is artificially low.</p>
+<p><em>Subject: Re: Offer for [Role] — question on basic salary split.</em></p>
+<p><em>Dear [Hiring manager], thank you for the offer. The total monthly package of AED [total] is in the range I was expecting, and I appreciate the housing and transport allowances.</em></p>
+<p><em>I do want to raise one point: the basic salary is structured at AED [low basic], with the rest as allowances. As you may know, gratuity in the UAE is calculated on basic only, and the family-visa sponsorship minimum also keys off basic salary. With the current split, my projected gratuity after 5 years would be roughly AED [calculated number], significantly lower than the same total package with a more balanced split.</em></p>
+<p><em>Would it be possible to restructure the offer with basic salary at AED [higher basic], keeping the total package the same? This is a paperwork change, not a higher cost to the company, but it would mean a lot for my long-term planning. Happy to discuss on a call. Best regards, [Your name].</em></p>
+<h2>Template 3: Asking for a housing allowance increase</h2>
+<p>Use this when the basic is fine but the housing allowance is below market for where you would live.</p>
+<p><em>Subject: Re: Offer for [Role] — housing allowance question.</em></p>
+<p><em>Dear [Hiring manager], thank you for the detailed offer. I am comfortable with the basic salary and the role expectations.</em></p>
+<p><em>One point I would like to raise is the housing allowance. With one-bedroom rent in [area] currently at AED [market rent] per month, the offered allowance of AED [offered] would leave a significant out-of-pocket gap. Would it be possible to increase the housing allowance to AED [target] per month?</em></p>
+<p><em>If a full increase is not possible, even a partial adjustment to AED [middle] would help. I am ready to sign as soon as we can find an arrangement that works for both sides. Best regards, [Your name].</em></p>
+<h2>Template 4: Counter with a competing offer</h2>
+<p>Only use this if you genuinely have another offer. Be honest about the figure and never name the competing company unless asked.</p>
+<p><em>Subject: Re: Offer for [Role] — would love to make this work.</em></p>
+<p><em>Dear [Hiring manager], thank you for the offer. I want to be upfront: I have a competing offer from another UAE employer at a basic salary of AED [competing number].</em></p>
+<p><em>[Company] is genuinely my first choice. The role scope, the team, and the work you described are a stronger fit than the other opportunity. I would love to make this work without playing offers off each other. Would it be possible to revise the basic salary in your offer to AED [target]? That would let me decline the other offer and sign with you this week. Best regards, [Your name].</em></p>
+<h2>Template 5: Asking for a sign-on bonus</h2>
+<p>Use this when you are forfeiting an annual bonus by leaving your current employer mid-cycle, or relocating from outside the UAE.</p>
+<p><em>Subject: Re: Offer for [Role] — sign-on bonus discussion.</em></p>
+<p><em>Dear [Hiring manager], thank you for the strong offer. I am ready to accept on the salary terms as discussed.</em></p>
+<p><em>One factor I would like to raise: by joining in [month], I will be forfeiting the annual bonus from my current employer (typically paid in [month]), which works out to approximately AED [bonus amount]. To bridge this, would [Company] consider a one-time sign-on bonus of AED [requested amount], payable after probation completion?</em></p>
+<p><em>This would let me make the move without taking a hit on the transition. Happy to discuss the structure that works best on your side. Best regards, [Your name].</em></p>
+<h2>Template 6: Negotiating a later start date</h2>
+<p>Use this when you have accepted the offer but need more time before joining.</p>
+<p><em>Subject: Re: Signed offer for [Role] — start date request.</em></p>
+<p><em>Dear [Hiring manager], thank you again. I am excited to join the team. I have signed the offer letter and the MOHRE documents as requested.</em></p>
+<p><em>One small request: rather than starting on [original date], would it be possible to start on [requested date]? I need that extra time to [serve full notice / complete handover / relocate family]. I would use the time to prepare for the role and have all documentation, attestations, and orientation reading completed before day one. Let me know if this works or if there is a closer date that suits the team. Best regards, [Your name].</em></p>
+<h2>What to do if they say no</h2>
+<p>A polite no does not end the conversation. You have two paths: accept gracefully and signal you remain interested at the original terms, or counter once more at a smaller increment that signals flexibility without abandoning the ask entirely.</p>
+<p>Avoid: silence, repeated escalations, or threats to walk if you do not actually have another offer. UAE hiring managers compare notes more than you would think. Being known as a difficult negotiator follows you across the small Gulf job market.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>How much can I realistically negotiate in the UAE?</h3>
+<p>5 to 15 percent above the initial offer is the realistic range without a competing offer. With a competing offer, 15 to 25 percent is possible. Beyond that, expect serious push-back or a withdrawn offer.</p>
+<h3>Should I negotiate over phone or email?</h3>
+<p>Email, always. Phone gives the recruiter the upper hand because they can pressure you for an on-the-spot answer. Email lets both sides think.</p>
+<h3>Is it rude to negotiate in UAE culture?</h3>
+<p>Not at all. Salary negotiation is expected at mid-senior levels. What is rude is aggressive ultimatums or making up competing offers. A polite written counter is normal business.</p>
+<h3>What if the recruiter says this is their best and final offer?</h3>
+<p>Reply that you would like 24 hours to think about it before responding. This shows you are considering it seriously without immediately folding.</p>
+<h3>Can I negotiate after I have already accepted verbally?</h3>
+<p>Yes, but with little leverage. The right time is between the verbal offer and the signed MOHRE contract. Once the contract is registered, the window has closed.</p>
+<h2>What to do next</h2>
+<p>Before you send any of these emails, calculate the long-term value of your basic salary with the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a>. If you have not read about the contract types now available in the UAE, see our <a href="/blog/uae-employment-contract-types/">UAE Employment Contract Types guide</a>. And if you are still in the offer-comparison phase, our <a href="/blog/salary-guide-uae-2026/">UAE Salary Guide 2026</a> shows market ranges by role and emirate.</p>`,
+  },
+  {
+    _id: 'seo-article-end-of-uae-contract',
+    title: 'What Happens When Your UAE Employment Contract Ends: A Day-by-Day Guide',
+    slug: 'what-happens-when-uae-employment-contract-ends',
+    excerpt:
+      'Step-by-step 2026 guide to leaving a UAE job — notice, gratuity, final settlement, labour-card cancellation, residence visa grace period, end-of-service banking, and avoiding labour bans.',
+    featuredImage: '/article-images/uae-labour-law-hero.jpg',
+    coverAlt:
+      'UAE employee reviewing the final settlement breakdown and cancellation paperwork on the last day of work',
+    category: 'Career Guides',
+    tags: ['end of contract', 'gratuity', 'uae labour law', 'resignation', 'final settlement', 'labour ban'],
+    status: 'published',
+    publishDate: '2026-05-27T08:40:00.000Z',
+    lastUpdatedDate: '2026-05-27T08:40:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'Leaving a UAE Job: Day-by-Day End-of-Contract Guide (2026)',
+    metaDescription:
+      'Every step that happens when your UAE employment contract ends — notice period, gratuity calculation, final settlement, MOHRE cancellation, residence grace period, and the 30/60-day deadlines.',
+    content: `<p>Leaving a UAE job — whether you resigned, completed your contract term, or were let go — triggers a sequence of legal and administrative steps that have hard deadlines. Get them right and you walk away with your gratuity, a clean labour record, and the option to take a new UAE role immediately. Get them wrong and you could face a 6 to 12 month labour ban, a chunk of unpaid gratuity, or visa overstay fines. This guide walks through the entire process day by day, from the moment you give notice to the day your residence permit expires.</p>
+<ul>
+<li>Minimum notice period in the UAE is 30 days unless your contract specifies longer. Probation notice is 14 days.</li>
+<li>Gratuity is calculated on basic salary, not gross. First 5 years earn 21 days per year. Beyond 5 years, 30 days per year. Maximum is 2 years of total basic salary.</li>
+<li>Your employer must pay your final settlement within 14 days of the last working day. Delays can be reported to MOHRE.</li>
+<li>After visa cancellation, you have 30 days to either secure a new visa or exit. Some skill categories now get 60 days.</li>
+<li>Most labour bans were abolished by the 2021 Labour Law. The few remaining apply mainly to non-completion without valid reason or unprofessional conduct.</li>
+</ul>
+<h2>Day 0: The day you give notice</h2>
+<p>The clock starts on the day notice is delivered in writing. A resignation should be in writing (email is acceptable but a signed letter is stronger), addressed to your direct manager and HR, state the last working day explicitly, and request acknowledgement in writing.</p>
+<p>If the employer is initiating termination, they must give written notice with at least the contractual notice period. Verbal terminations are not legally valid.</p>
+<h2>Days 1 to 30: The notice period</h2>
+<p>During notice you continue to work and get paid normally. The employer can ask you to serve garden leave (paid, not in office) and that is legal as long as you are paid. Under Article 39 of the UAE Labour Law, you can request up to 8 hours per week of paid time off to attend job interviews. Annual leave continues to accrue. Pending bonus or commission earned during this period is still yours.</p>
+<p>Do not start a new job during notice. Even if your new employer wants you to start early, you are still legally employed by your current company. Double employment without proper permits is a violation.</p>
+<h2>Last working day</h2>
+<p>On your final day, complete handover in writing (a signed handover document protects you), return all company assets, and collect a Service Certificate (also called Experience Letter). This is legally required from the employer and you will need it for your next visa application.</p>
+<p>Ask HR for confirmation of your final settlement amount including the gratuity calculation breakdown. Confirm the date the visa cancellation will be submitted to MOHRE.</p>
+<p>If the employer refuses to issue a service certificate or delays final settlement, file a MOHRE complaint via 600 590 000 or the Tawasul portal. Read <a href="/blog/how-to-file-mohre-complaint-in-uae/">how to file a MOHRE complaint</a> for the step-by-step.</p>
+<h2>Days 1 to 14 after last working day: Final settlement</h2>
+<p>UAE Labour Law requires the employer to pay your final settlement within 14 days of the last working day. The settlement should include unpaid salary for worked days in the final month, unused annual leave encashment at basic plus housing rate, gratuity calculated on basic salary, pending bonus or commission earned before the last day, notice payment if the employer terminated without notice, and any itemised deductions.</p>
+<p>The payment is usually transferred to your same salary-transfer bank account. Get the breakdown in writing. If any number looks off, query it before signing the cancellation paperwork.</p>
+<h2>How your gratuity is actually calculated in 2026</h2>
+<p>Under the 2021 Labour Law (Federal Decree-Law No. 33 of 2021) and the 2022 implementing regulations:</p>
+<ul>
+<li>First 5 years of service: 21 days of basic salary per year.</li>
+<li>Beyond 5 years: 30 days of basic salary per year.</li>
+<li>Maximum total: 2 years of total basic salary.</li>
+<li>Calculation base: basic salary on the day you leave, not joining salary and not gross.</li>
+</ul>
+<p>Example: Basic salary AED 6,000, total service 7 years. Years 1 to 5: 5 times 21 days times (6,000 divided by 30) equals AED 21,000. Years 6 to 7: 2 times 30 days times 200 equals AED 12,000. Total gratuity: AED 33,000.</p>
+<p>Under the new law, employees who resign from a fixed-term contract after completing 1 year receive full gratuity. Previously, resignation reduced gratuity to a fraction. This is the single biggest change candidates miss. Check your calculation against the new rule, not the old one. Use the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a> to verify the number before accepting the settlement.</p>
+<h2>Visa cancellation submitted</h2>
+<p>The employer’s PRO submits the work permit cancellation through MOHRE Tas-heel. This cancels your labour card (you can no longer legally work for that employer) and your residence visa. Before signing the cancellation form, double-check the reason for cancellation matches reality, your final settlement has been paid, and you have received your service certificate.</p>
+<p>Do not sign cancellation paperwork before receiving the settlement. Once cancellation is processed, your leverage drops dramatically.</p>
+<h2>Grace period after cancellation</h2>
+<p>You have a grace period to either get a new residence visa, convert to a different sponsor (spouse, parent, others), or exit the UAE. The 2026 grace periods are: 30 days standard, 60 days for certain skilled categories under the updated ICP rules, and 180 days if you held an investor or Golden Visa (different mechanism, employment-tied cancellation does not apply).</p>
+<p>Overstaying past the grace period incurs AED 50 per day fines and after a long overstay an entry ban can be issued.</p>
+<h2>Finding the next job</h2>
+<p>If you have a job lined up, your new employer’s PRO will process your new work permit using the cancellation letter from your previous employer. The visa-to-visa transfer can happen without leaving the country. The flow is similar to the visit-to-work conversion described in our <a href="/blog/uae-visit-visa-to-work-visa-conversion/">UAE visit visa to work visa conversion guide</a>.</p>
+<p>If you are still searching, update your CV with the <a href="/tools/cv-maker/">free CV Maker</a>, browse current <a href="/jobs/">UAE jobs</a> and <a href="/jobs/walk-in/">walk-in interviews</a>, and apply to as many roles as you can within the first 30 days. The longer the gap, the harder the next conversation.</p>
+<h2>Labour bans in 2026</h2>
+<p>The 2021 Labour Law abolished most automatic labour bans. As of 2026, you face a ban only in narrow cases: leaving during probation without serving notice (typically a 1-year ban), abandoning the job (absent without leave for 7 plus consecutive days, 1-year ban), dismissal for gross misconduct under Article 44 (up to 1-year ban), or working illegally for a different employer during your contract (1-year ban plus potential deportation).</p>
+<p>You do NOT face an automatic ban for resigning with proper notice, completing a fixed-term contract, mutual separation, redundancy, or switching to another sponsor. If you suspect your employer is trying to place an unjustified ban, you can challenge it through the MOHRE conciliation process before the ban is finalised.</p>
+<h2>Final settlement: the banking side</h2>
+<p>Once your settlement hits your account and before you leave the UAE, settle outstanding personal loans or credit cards (UAE banks can place travel bans for unpaid debt), close or transition your bank account, cancel utility accounts (DEWA, etisalat or du, SEWA, FEWA) and get final bills, transfer or cancel your tenancy via Ejari, and cancel insurance, gym, school fees, and any other standing instructions.</p>
+<p>These are the items that catch people on the way out and cost more than the gratuity windfall.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What if my employer refuses to pay my gratuity?</h3>
+<p>File a MOHRE complaint on 600 590 000 or via the Tawasul portal. MOHRE will summon both parties for conciliation. If no resolution within 14 days, the case goes to the Labour Court. Bring your contract, MOHRE-registered salary certificate, and resignation letter as evidence.</p>
+<h3>My contract was 2 years and I am leaving after 18 months. Do I still get gratuity?</h3>
+<p>Yes. Under the 2021 law, fixed-term contracts pay full gratuity after 1 year of service regardless of whether you complete the full term. The old rule that reduced gratuity for early exit no longer applies.</p>
+<h3>What happens to my family’s residence visas when mine is cancelled?</h3>
+<p>Your family members’ visas are linked to yours. When yours is cancelled, theirs are cancelled too and they enter the same grace period. If you find a new job within the grace period, you can re-sponsor them under your new residence visa.</p>
+<h3>Do I have to pay back any joining bonus if I leave within the first year?</h3>
+<p>Only if your signed contract has a clawback clause. Read the offer letter and MOHRE contract carefully. Some companies pro-rate the clawback. Some require full repayment if you leave within 12 months.</p>
+<h3>My employer is asking me to sign a no-claim form. Should I?</h3>
+<p>A no-claim form (also called Final Settlement and Release) is normal at the end of a settlement. Only sign after you have received and verified every component of the settlement. Once signed, you typically cannot reopen the matter.</p>
+<h3>Can I keep my Emirates ID active after visa cancellation?</h3>
+<p>No. Your Emirates ID is tied to your residence visa. Once the visa is cancelled, the EID is automatically cancelled. If you secure a new visa within the grace period, you will be issued a new EID.</p>
+<h2>What to do next</h2>
+<p>If you are planning your exit, calculate your gratuity first with the <a href="/tools/gratuity-calculator/">Gratuity Calculator</a> — knowing the number puts you in a stronger position. If you are moving to a new UAE employer, read our <a href="/blog/uae-visit-visa-to-work-visa-conversion/">visa-conversion guide</a>. And if your employer is delaying payment or refusing to issue your service certificate, follow our <a href="/blog/how-to-file-mohre-complaint-in-uae/">MOHRE complaint guide</a>.</p>`,
+  },
 ] as const;
