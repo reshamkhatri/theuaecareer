@@ -23,7 +23,7 @@ import {
 import { buildSeoDescription, buildSeoTitle, stripBrandSuffix } from '@/lib/seo-metadata';
 import { deriveJobTargeting, getSeoPathwaysForTargeting } from '@/lib/seo-targeting';
 
-export const revalidate = 300;
+export const dynamicParams = false;
 const jobInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_INLINE_SLOT?.trim();
 const jobSidebarAdSlot = process.env.NEXT_PUBLIC_ADSENSE_JOB_SIDEBAR_SLOT?.trim();
 

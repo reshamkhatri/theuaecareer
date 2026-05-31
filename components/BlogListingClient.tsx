@@ -124,7 +124,7 @@ function BlogListingView({
         <div className="container" style={{ position: 'relative', zIndex: 10 }}>
           <p className="blg-hero-eyebrow">Career Intelligence</p>
           <h1 className="blg-hero-title">
-            Guides, salaries & hiring updates
+            Guides, salaries & hiring updates{' '}
             <br />
             <span style={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>for Gulf job seekers</span>
           </h1>

@@ -38,7 +38,7 @@ import {
 } from '@/lib/seo-targeting';
 import { getAuthor } from '@/lib/authors';
 
-export const revalidate = 300;
+export const dynamicParams = false;
 const articleInlineAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_INLINE_SLOT?.trim();
 const articleSidebarAdSlot = process.env.NEXT_PUBLIC_ADSENSE_ARTICLE_SIDEBAR_SLOT?.trim();
 
