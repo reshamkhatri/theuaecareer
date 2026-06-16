@@ -295,6 +295,167 @@ export const freshArticles = [
 <li>Find your next role: <a href="/jobs/">browse UAE jobs</a></li>
 </ul>`,
   },
+  {
+    _id: 'fresh-how-to-write-cover-letter-for-uae-jobs',
+    title: 'How to Write a Cover Letter for UAE Jobs (With Example)',
+    slug: 'how-to-write-cover-letter-for-uae-jobs',
+    excerpt:
+      'Most UAE applications never ask for a cover letter — but a short, sharp one can set you apart. Here is how to write a cover letter for UAE jobs in 2026, with a ready-to-use example.',
+    featuredImage: '/article-images/cv-for-gulf-jobs-hero.webp',
+    coverAlt: 'Job seeker writing a cover letter for a UAE job application on a laptop',
+    category: 'Career Guides',
+    tags: ['cover letter', 'uae jobs', 'job application', 'cv'],
+    status: 'published',
+    publishDate: '2026-06-16T11:00:00.000Z',
+    lastUpdatedDate: '2026-06-16T11:00:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'How to Write a Cover Letter for UAE Jobs (Example)',
+    metaDescription:
+      'A short, practical guide to writing a cover letter for UAE jobs in 2026, including what to include, what to skip, and a ready-to-use example you can adapt.',
+    content: `<p>In the UAE, most job applications are CV-first, and many never ask for a cover letter at all. So is it worth writing one? When the application allows it — especially for office, corporate, and competitive roles — a short, well-targeted cover letter can absolutely tip a recruiter in your favour. It shows effort, communication skill, and genuine interest, which a CV alone cannot.</p>
+<p>The mistake most people make is writing a long, generic letter that simply repeats the CV. A good UAE cover letter is short, specific, and easy to skim. Here is how to write one that helps rather than hurts.</p>
+<figure><img src="/article-images/cv-for-gulf-jobs-inline.webp" alt="Example of a professional cover letter prepared for a UAE job application" loading="lazy" /></figure>
+<h2>Do you even need a cover letter in the UAE?</h2>
+<p>Use one when: the job posting asks for it, you are applying directly by email, or you are changing industry and need to explain your fit. You can usually skip it for high-volume walk-in roles in retail, hospitality, and labour, where a clean CV and good presentation matter more. When in doubt, a short email cover note is better than nothing.</p>
+<h2>How long should it be?</h2>
+<p>Half a page, maximum. Three to four short paragraphs. Recruiters in Dubai screen dozens of applications a day — if your letter looks like an essay, it gets skipped. If you are sending it in the body of an email (the most common case in the UAE), keep it even tighter.</p>
+<h2>What to include</h2>
+<ul>
+<li><strong>A specific opening.</strong> Name the role and where you saw it. Avoid "To whom it may concern" if you can find the hiring manager's name.</li>
+<li><strong>Why you, in one paragraph.</strong> Pick the two or three things from your background that match the job description most closely — not your whole history.</li>
+<li><strong>Your UAE status.</strong> State your visa situation and availability clearly (for example, "currently on a visit visa, available to join immediately"). UAE employers want to know this early.</li>
+<li><strong>A confident close.</strong> Thank them, restate your interest, and point to your attached CV.</li>
+</ul>
+<h2>What to leave out</h2>
+<ul>
+<li>Don't repeat your CV line by line — complement it.</li>
+<li>Don't write about what the job will do for you; write about what you bring.</li>
+<li>Don't use flowery or over-formal language. Clear and professional wins.</li>
+<li>Don't forget to change the company name — sending a letter addressed to the wrong company is an instant rejection.</li>
+</ul>
+<h2>A cover letter example you can adapt</h2>
+<p><em>Dear [Hiring Manager's name],</em></p>
+<p><em>I am writing to apply for the [Job Title] position at [Company], advertised on [where you saw it]. With [X years] of experience in [field] and a strong record in [key skill or achievement], I am confident I can add value to your team from day one.</em></p>
+<p><em>In my current role at [Company], I [one specific, relevant achievement with a number if possible — e.g., "managed a retail floor of 12 staff and consistently exceeded monthly sales targets"]. I am particularly drawn to this role because [genuine, specific reason tied to the company or role].</em></p>
+<p><em>I am currently [your visa status] and available to join [immediately / with X weeks' notice]. My CV is attached with full details. I would welcome the opportunity to discuss how I can contribute to [Company].</em></p>
+<p><em>Thank you for your time and consideration.</em></p>
+<p><em>Kind regards,<br>[Your name]<br>[Phone] | [Email]</em></p>
+<h2>Final tips</h2>
+<p>Match the keywords in the job description, proofread twice (spelling mistakes are fatal at this stage), and save it as a PDF named clearly, like "FirstName-LastName-CoverLetter.pdf". Pair it with a strong, ATS-friendly CV — use our <a href="/blog/how-to-write-cv-for-gulf-jobs/">guide to writing a Gulf CV</a> and the free <a href="/tools/cv-maker/">CV Maker</a> to get the format right.</p>
+<h2>What to do next</h2>
+<ul>
+<li>Get your CV ready: <a href="/blog/best-cv-format-uae-jobs-2026/">best CV format for UAE jobs</a></li>
+<li>Where to apply: <a href="/blog/best-job-search-websites-in-uae-2026/">best UAE job search websites</a></li>
+<li>Prepare for the interview: <a href="/blog/uae-interview-questions-and-answers/">UAE interview questions and answers</a></li>
+<li>Browse current openings: <a href="/jobs/">UAE jobs</a></li>
+</ul>`,
+  },
+  {
+    _id: 'fresh-how-to-resign-from-a-job-in-uae',
+    title: 'How to Resign From a Job in the UAE (Notice Period + Resignation Letter Template)',
+    slug: 'how-to-resign-from-a-job-in-uae',
+    excerpt:
+      'Resigning the right way in the UAE protects your gratuity, your reputation, and your visa. Here is how notice periods work in 2026, plus a resignation letter template you can use.',
+    featuredImage: '/article-images/saudi-offer-documents-hero.jpg',
+    coverAlt: 'Employee preparing a formal resignation letter in a UAE office',
+    category: 'Career Guides',
+    tags: ['resignation', 'notice period', 'uae labour law', 'gratuity'],
+    status: 'published',
+    publishDate: '2026-06-16T12:00:00.000Z',
+    lastUpdatedDate: '2026-06-16T12:00:00.000Z',
+    author: 'Nishan KC',
+    metaTitle: 'How to Resign From a Job in the UAE (2026 Guide)',
+    metaDescription:
+      'How to resign properly from a UAE job in 2026: notice periods, your gratuity rights, what to avoid, and a resignation letter template you can copy.',
+    content: `<p>Resigning sounds simple — until you realise that doing it the wrong way in the UAE can cost you your end-of-service gratuity, delay your next visa, or even leave a mark on your record. The good news: if you follow the proper steps, leaving a job here is straightforward and your rights are well protected under the law.</p>
+<p>This guide explains how notice periods work, how to protect your gratuity, what to avoid, and gives you a resignation letter template you can adapt.</p>
+<figure><img src="/article-images/documents-walk-in-dubai-inline.jpg" alt="Resignation letter and employment documents on a desk in a UAE office" loading="lazy" /></figure>
+<h2>How much notice do you have to give?</h2>
+<p>Your notice period is set by your employment contract, within the limits of UAE Labour Law (Federal Decree-Law No. 33 of 2021). The common rules are:</p>
+<ul>
+<li><strong>After probation:</strong> typically 30 to 90 days, as stated in your contract. Thirty days is the most common.</li>
+<li><strong>During probation:</strong> if you are moving to another UAE employer, you generally give 1 month's notice; if you are leaving the country, 14 days.</li>
+</ul>
+<p>You must serve the full notice period unless your employer agrees in writing to waive or shorten it. Leaving without serving notice can expose you to compensation claims. Read your contract carefully, and check your full entitlements in our <a href="/blog/uae-labour-law-for-expats-2026/">UAE Labour Law guide</a> and <a href="/blog/uae-employment-contract-types/">contract types guide</a>.</p>
+<h2>Resign in writing — always</h2>
+<p>A verbal resignation is not enough. Submit a written resignation letter (email is fine if that is how your company operates), clearly stating your last working day based on your notice period. Keep a copy and any acknowledgement. This protects you if there is ever a dispute about dates.</p>
+<h2>Protect your end-of-service gratuity</h2>
+<p>If you have completed at least one year of continuous service, you are entitled to end-of-service gratuity, calculated on your basic salary. Resigning correctly (serving notice, not abandoning the job) keeps that entitlement intact. Before you resign, calculate what you are owed using our <a href="/tools/gratuity-calculator/">Gratuity Calculator</a> and read the <a href="/blog/uae-gratuity-calculation-guide-2026/">gratuity calculation guide</a> so the final settlement matches your expectations.</p>
+<h2>Never just stop showing up</h2>
+<p>Abandoning your job — simply not turning up — can lead your employer to file an absconding report, which causes serious visa and legal problems and can jeopardise your gratuity. However bad the situation feels, resign formally and serve your notice. If your employer is in the wrong (unpaid salary, for example), the correct route is to <a href="/blog/how-to-file-mohre-complaint-in-uae/">file a MOHRE complaint</a>, not to walk out.</p>
+<h2>What about an NOC and the new job?</h2>
+<p>Since the 2021 law, changing employers is far easier and an automatic labour ban is no longer the norm. You may still be asked for a No Objection Certificate by your new employer to smooth the transfer — see our guide on <a href="/blog/what-is-noc-in-uae/">what an NOC is and when you need one</a>. Serve your notice properly and the handover is usually clean.</p>
+<h2>Resignation letter template</h2>
+<p><em>Subject: Resignation — [Your Name], [Job Title]</em></p>
+<p><em>Dear [Manager's name],</em></p>
+<p><em>I am writing to formally resign from my position as [Job Title] at [Company]. In line with my contract, I am providing [30 / 60 / 90] days' notice, making my last working day [date].</em></p>
+<p><em>Thank you for the opportunity and support during my time here. I will do everything I can to ensure a smooth handover of my responsibilities before I leave.</em></p>
+<p><em>Please let me know the next steps regarding my final settlement and clearance.</em></p>
+<p><em>Kind regards,<br>[Your name]<br>[Employee ID, if applicable]</em></p>
+<h2>Before your last day</h2>
+<ul>
+<li>Confirm your final settlement: unpaid salary, leave encashment, and gratuity.</li>
+<li>Complete any handover and return company property to get your clearance.</li>
+<li>Keep copies of your contract, payslips, and resignation acknowledgement.</li>
+<li>Line up your next role early — see <a href="/blog/best-job-search-websites-in-uae-2026/">the best UAE job search websites</a>.</li>
+</ul>
+<h2>What to do next</h2>
+<ul>
+<li>Know your full rights: <a href="/blog/uae-labour-law-for-expats-2026/">UAE Labour Law for expats</a></li>
+<li>What happens at the end of a contract: <a href="/blog/what-happens-when-uae-employment-contract-ends/">contract-end guide</a></li>
+<li>Calculate your payout: <a href="/tools/gratuity-calculator/">Gratuity Calculator</a></li>
+<li>Find your next role: <a href="/jobs/">browse UAE jobs</a></li>
+</ul>`,
+  },
+  {
+    _id: 'fresh-dubai-vs-saudi-arabia-vs-qatar-jobs',
+    title: 'Dubai vs Saudi Arabia vs Qatar: Where Should You Work in 2026?',
+    slug: 'dubai-vs-saudi-arabia-vs-qatar-jobs',
+    excerpt:
+      'UAE, Saudi Arabia, or Qatar? Each Gulf country offers a different mix of salary, lifestyle, and opportunity. Here is an honest 2026 comparison to help you choose where to build your career.',
+    featuredImage: '/article-images/abu-dhabi-skyline-hero.jpg',
+    coverAlt: 'Gulf city skyline representing job markets in the UAE, Saudi Arabia, and Qatar',
+    category: 'Career Guides',
+    tags: ['uae jobs', 'saudi arabia jobs', 'qatar jobs', 'gulf careers'],
+    status: 'published',
+    publishDate: '2026-06-16T13:00:00.000Z',
+    lastUpdatedDate: '2026-06-16T13:00:00.000Z',
+    author: 'Resham KC',
+    metaTitle: 'Dubai vs Saudi Arabia vs Qatar: Where to Work (2026)',
+    metaDescription:
+      'An honest 2026 comparison of working in the UAE, Saudi Arabia, and Qatar — salaries, cost of living, culture, and which Gulf country suits your career.',
+    content: `<p>The three biggest destinations for Gulf job seekers — the UAE, Saudi Arabia, and Qatar — are often lumped together, but they are genuinely different places to work. The right choice depends on your industry, your savings goals, and the lifestyle you want. None of them tax your income, but almost everything else varies.</p>
+<p>Here is an honest, practical comparison for 2026 to help you decide where to focus your job search.</p>
+<figure><img src="/article-images/dubai-business-hub-inline.jpg" alt="Modern Gulf business district representing UAE, Saudi, and Qatar job markets" loading="lazy" /></figure>
+<h2>The UAE (Dubai, Abu Dhabi, Sharjah)</h2>
+<p>The UAE is the most diverse and open Gulf job market. English is used everywhere, the expat community is huge, and sectors like hospitality, retail, real estate, logistics, finance, and tech hire constantly. It is the easiest place to land your first Gulf job and to switch employers later.</p>
+<p>The trade-off is cost of living — especially Dubai rents. Salaries are strong but so are expenses, so your savings depend heavily on lifestyle. If you want maximum opportunity and an international environment, the UAE is usually the best starting point. Compare the numbers in our <a href="/blog/cost-of-living-dubai-2026/">Dubai cost of living guide</a> and <a href="/blog/abu-dhabi-vs-dubai-working-expats/">Abu Dhabi vs Dubai comparison</a>.</p>
+<h2>Saudi Arabia (Riyadh, Jeddah, NEOM)</h2>
+<p>Saudi Arabia is the Gulf's largest economy and, thanks to Vision 2030, currently one of the fastest-hiring. Mega-projects in tourism, entertainment, construction, healthcare, and technology are creating huge demand, and salaries for skilled professionals are often higher than the UAE equivalent — partly to attract talent.</p>
+<p>The culture is more conservative than the UAE, though it has been opening up quickly. Arabic is more useful day to day, and "Saudization" (Nitaqat) rules reserve some roles for Saudi nationals, which can affect certain positions. If you are a skilled professional chasing higher pay and don't mind a less Westernised lifestyle, Saudi Arabia is increasingly hard to ignore. If you are heading there, prepare your documents carefully and verify every offer first.</p>
+<h2>Qatar (Doha)</h2>
+<p>Qatar is small but extremely wealthy, with one of the highest GDP-per-capita figures in the world. Since the 2022 World Cup it has continued investing in infrastructure, hospitality, aviation, and energy. Salaries are high, and Doha is compact, safe, and increasingly cosmopolitan.</p>
+<p>The trade-off is scale: the job market is smaller than the UAE's, so there are simply fewer openings and more competition for the good ones. Qatar suits people targeting specific strong sectors — oil and gas, aviation, construction, and luxury hospitality — rather than those wanting maximum choice.</p>
+<h2>Quick comparison</h2>
+<ul>
+<li><strong>Easiest to enter / most jobs:</strong> UAE.</li>
+<li><strong>Highest growth and often highest skilled salaries right now:</strong> Saudi Arabia.</li>
+<li><strong>Highest wealth, smaller market:</strong> Qatar.</li>
+<li><strong>Income tax:</strong> none in any of the three.</li>
+<li><strong>Lifestyle / international feel:</strong> UAE leads, Qatar close behind, Saudi catching up fast.</li>
+<li><strong>Cost of living pressure:</strong> highest in Dubai; Riyadh and Doha can be more manageable depending on housing.</li>
+</ul>
+<h2>So which should you choose?</h2>
+<p>If you are early in your Gulf journey or want the widest range of opportunities, start with the UAE. If you are a skilled professional in construction, tech, healthcare, tourism, or project management chasing higher pay, look seriously at Saudi Arabia. If your field is energy, aviation, or premium hospitality and you value a smaller, high-income base, Qatar is worth targeting. Many people work across two or three of these countries over a career — the experience transfers well.</p>
+<p>Whichever you choose, the fundamentals are the same: a strong CV, a verified offer, and the right visa. Understand the visa side in our <a href="/blog/uae-work-visa-types-explained-2026/">UAE work visa types guide</a>, benchmark pay with the <a href="/blog/salary-guide-uae-2026/">UAE salary guide</a>, and never pay an agent for a "guaranteed" job.</p>
+<h2>What to do next</h2>
+<ul>
+<li>Find where to apply: <a href="/blog/best-job-search-websites-in-uae-2026/">best UAE job search websites</a></li>
+<li>Budget realistically: <a href="/blog/cost-of-living-dubai-2026/">cost of living in Dubai</a></li>
+<li>Avoid scams: <a href="/blog/avoid-fake-gulf-job-offers/">how to avoid fake Gulf job offers</a></li>
+<li>Browse current openings: <a href="/jobs/">UAE jobs</a></li>
+</ul>`,
+  },
 ];
 
 // Honestly-labelled, current representative listings. companyName uses
