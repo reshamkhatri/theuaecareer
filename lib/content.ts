@@ -237,10 +237,69 @@ const seedArticleRecords: ArticleRecord[] = seoSeedArticles.map((article) =>
 const launchJobRecords: JobRecord[] = launchJobs.map((job, index) =>
   sanitizeJobRecord(normalizeJobRecord(job, `launch-job-${index + 1}`))
 );
+// The seed set was bootstrapped with short ~200-word stubs for a few slugs that
+// also exist as full-length (1,100+ word) launch articles. Because seed wins the
+// merge, those stubs were shadowing the good launch content on the live site.
+// Drop the stub versions so the substantial launch articles surface instead.
+const PREFER_LAUNCH_SLUGS = new Set<string>([
+  'cost-of-living-dubai-2026',
+  'abu-dhabi-vs-dubai-working-expats',
+]);
+const dedupedSeedArticleRecords = seedArticleRecords.filter(
+  (article) => !PREFER_LAUNCH_SLUGS.has(article.slug)
+);
 const staticArticleRecords = mergeContentBySlug(
-  [...launchArticleRecords, ...seedArticleRecords],
+  [...launchArticleRecords, ...dedupedSeedArticleRecords],
   (article) => article.slug
 );
+
+// Slugs removed during the 2026-06 content cleanup (AdSense "low value content"
+// remediation). These articles were unpublished because they were duplicates of
+// a stronger page, thin (<~400 words), stale time-sensitive listings, off-topic
+// for a job-seeker audience, or low-value entries in an over-templated cluster.
+// Filtering by slug here is the single source of truth: it drops them from the
+// blog index, /blog/[slug] static params, the sitemap, and related-article
+// widgets. Removing a slug from this set republishes the article (fully
+// reversible). See SEO-AUDIT / cleanup notes for the per-slug rationale.
+const REMOVED_ARTICLE_SLUGS = new Set<string>([
+  // --- Duplicate topics (kept the stronger/longer version) ---
+  'driver-salary-in-uae-2026', // dup of driver-salary-uae-2026
+  'nurse-salary-uae-2026', // dup of nurse-salary-in-uae
+  'best-cv-format-for-uae-saudi-qatar-job-applications', // dup of best-cv-format-uae-jobs-2026
+  'uae-golden-visa-eligibility-guide-2026', // dup of uae-golden-visa-2026-guide
+  'how-to-get-uae-driving-licence-2026', // dup of convert-driving-licence-to-uae-2026
+  'uae-labour-law-guide-for-expats', // dup of uae-labour-law-for-expats-2026
+  'uae-gratuity-calculator-end-of-service-benefits-2026', // dup of uae-gratuity-calculation-guide-2026
+  'walk-in-interview-self-introduction-sample-uae', // dup of self-introduction-for-walk-in-interview-in-uae
+  'what-to-carry-for-walk-in-interview-uae', // dup of what-to-carry-for-walk-in-interview-in-uae
+  'how-to-find-a-job-in-dubai-as-a-fresher', // dup of how-to-find-a-job-in-dubai-as-a-fresher-2026
+  'how-to-avoid-fake-job-offers-in-uae-saudi-qatar', // dup of avoid-fake-gulf-job-offers
+  'housekeeping-interview-questions-for-qatar-hotel-jobs', // dup of housekeeping-interview-questions-dubai-hotels
+  // --- Thin content (<~400 words) ---
+  'cv-for-housekeeping-jobs-dubai-sample', // ~84 words
+  'walk-in-interview-checklist-uae', // ~321 words, overlaps walk-in prep guides
+  'documents-for-walk-in-interview-dubai', // ~375 words, overlaps what-to-carry guide
+  // --- Stale time-sensitive listings (dated Mar/Apr 2026) ---
+  'walk-in-interviews-dubai-this-week',
+  'walk-in-interviews-abu-dhabi-this-week',
+  'walk-in-interviews-sharjah-this-week',
+  'verified-dubai-jobs-open-now-direct-employer-march-2026',
+  // --- Off-topic for a job-seeker audience ---
+  'best-remittance-options-uae-2026',
+  'best-uae-remittance-options-compare-exchange-rates-2026',
+  'best-free-zones-dubai-2026',
+  'dubai-free-zone-comparison-2026',
+  // --- Over-templated low-value cluster entries ---
+  'cleaner-salary-in-uae',
+  'security-guard-salary-in-uae',
+  'dubai-salary-guide-2026-by-industry', // overlaps salary-guide-uae-2026 hub
+  'cashier-interview-questions-for-saudi-retail-jobs',
+  'driver-interview-questions-in-qatar',
+  'retail-sales-associate-interview-questions-uae',
+  'room-attendant-interview-questions-dubai', // overlaps housekeeping interview guide
+  'emirates-airline-job-scams-how-to-apply-safely',
+  'difference-between-walk-in-interview-and-online-application-in-gulf-jobs',
+]);
 let hasLoggedDatabaseFallback = false;
 const isRuntimeDatabaseFallbackEnabled = process.env.ENABLE_DATABASE_FALLBACK === 'true';
 
@@ -630,9 +689,9 @@ function filterArticleCollection(
 }
 
 function buildMergedArticleCollection(sanityItems: ArticleRecord[] = []): ArticleRecord[] {
-  return mergeContentBySlug([...staticArticleRecords, ...sanityItems], (article) => article.slug).map(
-    enrichArticleWithImages
-  );
+  return mergeContentBySlug([...staticArticleRecords, ...sanityItems], (article) => article.slug)
+    .filter((article) => !REMOVED_ARTICLE_SLUGS.has(article.slug))
+    .map(enrichArticleWithImages);
 }
 
 export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedResult<JobRecord>> {
@@ -848,6 +907,10 @@ export async function getArticles(
 }
 
 export async function getArticleByIdentifier(identifier: string): Promise<ArticleRecord | null> {
+  if (REMOVED_ARTICLE_SLUGS.has(identifier)) {
+    return null;
+  }
+
   const sanityArticle = await getSanityArticleByIdentifier(identifier);
   if (sanityArticle?.item) {
     return enrichArticleWithImages(sanityArticle.item);

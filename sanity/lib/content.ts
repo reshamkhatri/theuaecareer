@@ -535,8 +535,18 @@ export async function getSanityJobs(
     sort
   );
 
+  // collectionCount must reflect *available* jobs (respecting expiry), not the
+  // raw document count. getJobs() uses it to decide whether Sanity is the live
+  // source or whether to fall back to launch jobs. Counting expired docs here
+  // meant that once every Sanity job expired, getJobs returned an empty result
+  // instead of falling back — which made /jobs/[slug] generateStaticParams()
+  // return [] and broke the static export build.
+  const availableCount = includeExpired
+    ? items.length
+    : items.filter((job) => job.status !== 'expired').length;
+
   return {
-    collectionCount: items.length,
+    collectionCount: availableCount,
     result: paginate(filtered, page, limit),
   };
 }
