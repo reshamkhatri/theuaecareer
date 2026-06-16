@@ -81,7 +81,7 @@ export default function CvMakerLayout({ children }: { children: React.ReactNode 
             <p style={{ fontSize: '0.875rem', fontWeight: 600, color: '#64748b', marginBottom: '12px' }}>Related guides</p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               <Link href="/blog/how-to-write-cv-for-gulf-jobs/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>How to Write a CV for Gulf Jobs</Link>
-              <Link href="/blog/how-to-find-a-job-in-dubai-as-a-fresher/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>Finding a Job in Dubai as a Fresher</Link>
+              <Link href="/blog/how-to-find-a-job-in-dubai-as-a-fresher-2026/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>Finding a Job in Dubai as a Fresher</Link>
               <Link href="/blog/uae-interview-questions-and-answers/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>UAE Interview Questions & Answers</Link>
               <Link href="/blog/top-10-in-demand-jobs-uae-2026/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>Top 10 In-Demand Jobs UAE 2026</Link>
               <Link href="/tools/gratuity-calculator/" style={{ fontSize: '0.875rem', color: '#6366f1', fontWeight: 600, textDecoration: 'underline' }}>Gratuity Calculator</Link>

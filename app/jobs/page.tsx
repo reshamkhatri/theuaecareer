@@ -115,7 +115,7 @@ export default async function JobsPage() {
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-             <Link href="/blog/uae-labour-law-guide-for-expats/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
+             <Link href="/blog/uae-labour-law-for-expats-2026/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Labour Law Guide</Link>
              <Link href="/tools/cv-maker/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>CV Maker</Link>
              <Link href="/tools/gratuity-calculator/" style={{ background: '#0f172a', color: '#fff', padding: '12px 24px', borderRadius: '12px', textDecoration: 'none', fontWeight: 600 }}>Gratuity Calculator</Link>
           </div>

@@ -322,9 +322,9 @@ export default function InterviewQuestionBankPage() {
                {[
                  { label: 'Free CV Maker', href: '/tools/cv-maker' },
                  { label: 'Gratuity Calculator', href: '/tools/gratuity-calculator' },
-                 { label: 'Latest Walk-In Interviews', href: '/blog/walk-in-interviews-dubai-this-week' },
-                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
-                 { label: 'How to Find Jobs as a Fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher' }
+                 { label: 'Latest Walk-In Interviews', href: '/jobs/walk-in/' },
+                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-for-expats-2026/' },
+                 { label: 'How to Find Jobs as a Fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher-2026/' }
                ].map((link) => (
                  <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#fff', padding: '8px 16px', borderRadius: '8px', border: '1px solid #CBD5E1', textDecoration: 'none' }}>
                    {link.label}

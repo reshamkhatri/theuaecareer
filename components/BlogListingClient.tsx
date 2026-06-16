@@ -107,10 +107,10 @@ function BlogListingView({
     'what-to-carry-for-walk-in-interview-in-uae',
     'self-introduction-for-walk-in-interview-in-uae',
     'how-to-renew-uae-work-visa-2026',
-    'how-to-find-a-job-in-dubai-as-a-fresher',
-    'walk-in-interviews-dubai-this-week',
-    'uae-labour-law-guide-for-expats',
-    'driver-salary-in-uae-2026',
+    'how-to-find-a-job-in-dubai-as-a-fresher-2026',
+    'best-job-search-websites-in-uae-2026',
+    'uae-labour-law-for-expats-2026',
+    'driver-salary-uae-2026',
     'cost-of-living-dubai-2026',
   ];
   const featuredGuides = featuredGuideSlugs

@@ -238,7 +238,7 @@ export default function GratuityCalculatorPage() {
                <div>
                   <div style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', color: '#10B981', letterSpacing: '1px', marginBottom: '8px' }}>Read Expert Guide</div>
                   <h4 style={{ fontSize: '1rem', color: 'var(--primary)', marginBottom: '8px', lineHeight: 1.3 }}>What is UAE Gratuity? A Complete Guide 2024</h4>
-                  <Link href="/blog/uae-labour-law-guide-for-expats/" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Link href="/blog/uae-labour-law-for-expats-2026/" style={{ fontSize: '0.8125rem', color: 'var(--accent)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                     Read Article <FiArrowRight />
                   </Link>
                </div>
@@ -397,12 +397,12 @@ export default function GratuityCalculatorPage() {
             <h3 style={{ fontSize: '1.25rem', color: 'var(--primary)', marginBottom: '16px', fontWeight: 700 }}>Related Career Resources</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
                {[
-                 { label: 'Full UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
-                 { label: '2026 Salary Guide by Industry', href: '/blog/salary-guide-uae-2026' },
-                 { label: 'Work Visa Renewal Process', href: '/blog/how-to-renew-uae-work-visa' },
-                 { label: 'Dubai vs Abu Dhabi Salaries', href: '/blog/abu-dhabi-vs-dubai-working-expats' },
-                 { label: 'Best Remittance Rates AED', href: '/blog/best-remittance-options-uae-2026' },
-                 { label: 'How to find a job as a fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher' },
+                 { label: 'Full UAE Labour Law Guide', href: '/blog/uae-labour-law-for-expats-2026/' },
+                 { label: '2026 UAE Salary Guide', href: '/blog/salary-guide-uae-2026/' },
+                 { label: 'Work Visa Renewal Process', href: '/blog/how-to-renew-uae-work-visa-2026/' },
+                 { label: 'Dubai vs Abu Dhabi Salaries', href: '/blog/abu-dhabi-vs-dubai-working-expats/' },
+                 { label: 'UAE Work Visa Types Explained', href: '/blog/uae-work-visa-types-explained-2026/' },
+                 { label: 'How to find a job as a fresher', href: '/blog/how-to-find-a-job-in-dubai-as-a-fresher-2026/' },
                  { label: 'Building a Gulf CV', href: '/tools/cv-maker' }
                ].map((link) => (
                  <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#F1F5F9', padding: '8px 16px', borderRadius: '8px', textDecoration: 'none' }}>

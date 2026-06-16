@@ -244,9 +244,9 @@ export default function CurrencyConverterPage() {
                {[
                  { label: 'Gratuity Calculator', href: '/tools/gratuity-calculator' },
                  { label: 'Free CV Maker', href: '/tools/cv-maker' },
-                 { label: 'Latest Walk-In Interviews', href: '/blog/walk-in-interviews-dubai-this-week' },
-                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-guide-for-expats' },
-                 { label: 'Best Remittance Options 2026', href: '/blog/best-remittance-options-uae-2026' }
+                 { label: 'Latest Walk-In Interviews', href: '/jobs/walk-in/' },
+                 { label: 'UAE Labour Law Guide', href: '/blog/uae-labour-law-for-expats-2026/' },
+                 { label: 'UAE Salary Guide 2026', href: '/blog/salary-guide-uae-2026/' }
                ].map((link) => (
                  <Link key={link.href} href={link.href} style={{ fontSize: '0.875rem', color: 'var(--accent)', fontWeight: 600, background: '#fff', padding: '8px 16px', borderRadius: '8px', border: '1px solid #CBD5E1', textDecoration: 'none' }}>
                    {link.label}

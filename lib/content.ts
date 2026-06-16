@@ -4,8 +4,9 @@ import Article from '@/lib/models/Article';
 import Job from '@/lib/models/Job';
 import { formatDisplayDate } from '@/lib/format';
 import { sanitizeArticleRecord, sanitizeJobRecord } from '@/lib/content-sanitizer';
-import { articles as launchArticles, jobs as launchJobs } from '@/lib/launch-content';
+import { articles as launchArticles } from '@/lib/launch-content';
 import { seoSeedArticles } from '@/lib/seo-seed-content';
+import { freshArticles, freshJobs } from '@/lib/fresh-content';
 import {
   mergeContentBySlug,
   scoreArticleForJobTargeting,
@@ -174,7 +175,58 @@ function getCategoryKey(category: string): string {
   return 'default';
 }
 
+// Where in-body links to removed articles should now point. Applied at load
+// time so internal links never 404 after the content cleanup — covers static
+// and Sanity content from a single place. Values are full paths (a kept article,
+// a tool, or a section) and already include the trailing slash.
+const REMOVED_LINK_REDIRECTS: Record<string, string> = {
+  'driver-salary-in-uae-2026': '/blog/driver-salary-uae-2026/',
+  'nurse-salary-uae-2026': '/blog/nurse-salary-in-uae/',
+  'best-cv-format-for-uae-saudi-qatar-job-applications': '/blog/best-cv-format-uae-jobs-2026/',
+  'uae-golden-visa-eligibility-guide-2026': '/blog/uae-golden-visa-2026-guide/',
+  'how-to-get-uae-driving-licence-2026': '/blog/convert-driving-licence-to-uae-2026/',
+  'uae-labour-law-guide-for-expats': '/blog/uae-labour-law-for-expats-2026/',
+  'uae-gratuity-calculator-end-of-service-benefits-2026': '/blog/uae-gratuity-calculation-guide-2026/',
+  'walk-in-interview-self-introduction-sample-uae': '/blog/self-introduction-for-walk-in-interview-in-uae/',
+  'what-to-carry-for-walk-in-interview-uae': '/blog/what-to-carry-for-walk-in-interview-in-uae/',
+  'how-to-find-a-job-in-dubai-as-a-fresher': '/blog/how-to-find-a-job-in-dubai-as-a-fresher-2026/',
+  'how-to-avoid-fake-job-offers-in-uae-saudi-qatar': '/blog/avoid-fake-gulf-job-offers/',
+  'housekeeping-interview-questions-for-qatar-hotel-jobs': '/blog/housekeeping-interview-questions-dubai-hotels/',
+  'cv-for-housekeeping-jobs-dubai-sample': '/blog/how-to-write-cv-for-gulf-jobs/',
+  'walk-in-interview-checklist-uae': '/blog/what-to-carry-for-walk-in-interview-in-uae/',
+  'documents-for-walk-in-interview-dubai': '/blog/what-to-carry-for-walk-in-interview-in-uae/',
+  'walk-in-interviews-dubai-this-week': '/jobs/walk-in/',
+  'walk-in-interviews-abu-dhabi-this-week': '/jobs/walk-in/',
+  'walk-in-interviews-sharjah-this-week': '/jobs/walk-in/',
+  'verified-dubai-jobs-open-now-direct-employer-march-2026': '/jobs/',
+  'best-remittance-options-uae-2026': '/tools/currency-converter/',
+  'best-uae-remittance-options-compare-exchange-rates-2026': '/tools/currency-converter/',
+  'best-free-zones-dubai-2026': '/blog/mainland-vs-free-zone-jobs-uae/',
+  'dubai-free-zone-comparison-2026': '/blog/mainland-vs-free-zone-jobs-uae/',
+  'cleaner-salary-in-uae': '/blog/salary-guide-uae-2026/',
+  'security-guard-salary-in-uae': '/blog/security-guard-jobs-dubai-2026/',
+  'dubai-salary-guide-2026-by-industry': '/blog/salary-guide-uae-2026/',
+  'cashier-interview-questions-for-saudi-retail-jobs': '/blog/uae-interview-questions-and-answers/',
+  'driver-interview-questions-in-qatar': '/blog/uae-interview-questions-and-answers/',
+  'retail-sales-associate-interview-questions-uae': '/blog/uae-interview-questions-and-answers/',
+  'room-attendant-interview-questions-dubai': '/blog/housekeeping-interview-questions-dubai-hotels/',
+  'emirates-airline-job-scams-how-to-apply-safely': '/blog/avoid-fake-gulf-job-offers/',
+  'difference-between-walk-in-interview-and-online-application-in-gulf-jobs':
+    '/blog/best-job-search-websites-in-uae-2026/',
+};
+
+function rewriteRemovedLinks(html: string): string {
+  let out = html;
+  for (const [from, to] of Object.entries(REMOVED_LINK_REDIRECTS)) {
+    // Match the exact slug with its trailing slash so e.g. ".../as-a-fresher/"
+    // is rewritten without touching ".../as-a-fresher-2026/".
+    out = out.split(`/blog/${from}/`).join(to);
+  }
+  return out;
+}
+
 function enrichArticleWithImages(article: ArticleRecord): ArticleRecord {
+  article = { ...article, content: rewriteRemovedLinks(article.content) };
   const hasInlineImages = article.content.includes('<img');
   const key = getCategoryKey(article.category);
 
@@ -234,8 +286,16 @@ const launchArticleRecords: ArticleRecord[] = launchArticles.map((article) =>
 const seedArticleRecords: ArticleRecord[] = seoSeedArticles.map((article) =>
   sanitizeArticleRecord(normalizeArticleRecord(article))
 );
-const launchJobRecords: JobRecord[] = launchJobs.map((job, index) =>
-  sanitizeJobRecord(normalizeJobRecord(job, `launch-job-${index + 1}`))
+const freshArticleRecords: ArticleRecord[] = freshArticles.map((article) =>
+  sanitizeArticleRecord(normalizeArticleRecord(article))
+);
+// Fallback job source. The original launch jobs had literal "[update with
+// company name]" placeholders and expiry dates that have all passed; freshJobs
+// replaces them with current, honestly-labelled representative listings so the
+// /jobs section is populated and JobPosting validThrough stays in the future
+// even when Sanity has no active postings.
+const fallbackJobRecords: JobRecord[] = freshJobs.map((job, index) =>
+  sanitizeJobRecord(normalizeJobRecord(job, `fallback-job-${index + 1}`))
 );
 // The seed set was bootstrapped with short ~200-word stubs for a few slugs that
 // also exist as full-length (1,100+ word) launch articles. Because seed wins the
@@ -249,7 +309,7 @@ const dedupedSeedArticleRecords = seedArticleRecords.filter(
   (article) => !PREFER_LAUNCH_SLUGS.has(article.slug)
 );
 const staticArticleRecords = mergeContentBySlug(
-  [...launchArticleRecords, ...dedupedSeedArticleRecords],
+  [...launchArticleRecords, ...dedupedSeedArticleRecords, ...freshArticleRecords],
   (article) => article.slug
 );
 
@@ -769,7 +829,7 @@ export async function getJobs(options: JobQueryOptions = {}): Promise<PaginatedR
   }
 
   const filtered = sortJobs(
-    launchJobRecords.filter((job) => {
+    fallbackJobRecords.filter((job) => {
       if (!includeExpired && job.status === 'expired') {
         return false;
       }
@@ -823,7 +883,7 @@ export async function getJobByIdentifier(identifier: string): Promise<JobRecord 
     return dbJob;
   }
 
-  return launchJobRecords.find((job) => job.slug === identifier || job._id === identifier) || null;
+  return fallbackJobRecords.find((job) => job.slug === identifier || job._id === identifier) || null;
 }
 
 export async function getArticles(
