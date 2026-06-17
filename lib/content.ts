@@ -135,6 +135,23 @@ const slugFeaturedImages: Record<string, string> = {
   'retail-sales-associate-interview-questions-uae': '/article-images/cashier-interview-saudi-hero.jpg',
   'construction-helper-interview-questions-uae': '/article-images/saudi-warehouse-jobs-inline.jpg',
   'walk-in-interview-self-introduction-sample-uae': '/article-images/self-introduction-uae-hero.jpg',
+
+  // 2026-06 image-relevance fixes: these (mostly Sanity-sourced) articles had
+  // no image of their own and were falling back to an unrelated stock photo
+  // (e.g. a housekeeping image on the cost-of-living / scams cards). Map each
+  // to the correct, topically-relevant image that already exists on disk.
+  'driver-salary-uae-2026':                   '/article-images/driver-salary-uae-hero.jpg',
+  'nurse-salary-in-uae':                      '/article-images/nurse-salary-uae-hero.webp',
+  'accountant-jobs-dubai-guide-2026':         '/article-images/salary-slip-chart-hero.jpg',
+  'security-guard-jobs-dubai-2026':           '/article-images/security-guard-salary-uae-hero.webp',
+  'work-from-home-jobs-uae-2026':             '/article-images/dubai-business-hub-hero.jpg',
+  'best-cv-format-uae-jobs-2026':             '/article-images/gulf-cv-format-hero.svg',
+  'convert-driving-licence-to-uae-2026':      '/article-images/uae-driving-licence-hero.jpg',
+  'uae-gratuity-calculation-guide-2026':      '/article-images/gratuity-calculator-hero.webp',
+  'uae-labour-law-for-expats-2026':           '/article-images/uae-labour-law-hero.jpg',
+  'uae-visit-visa-to-work-visa-conversion':   '/article-images/uae-visa-renewal-hero.jpg',
+  'top-10-mistakes-job-seekers-make-in-uae':  '/article-images/top-10-jobs-uae-2026-hero.jpg',
+  'how-to-find-a-job-in-dubai-as-a-fresher-2026': '/article-images/dubai-fresher-jobs-hero.jpg',
 };
 
 // Fallback pool — unique images used when slug doesn't match above

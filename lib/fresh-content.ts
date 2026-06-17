@@ -72,7 +72,7 @@ export const freshArticles = [
     slug: 'uae-work-visa-types-explained-2026',
     excerpt:
       'Confused about which UAE work visa you need? A clear 2026 breakdown of the standard employment visa, Green Visa, freelance permit, and Golden Visa — who qualifies, how long they last, and how each one works.',
-    featuredImage: '/article-images/uae-visa-renewal-hero.jpg',
+    featuredImage: '/article-images/uae-golden-visa-hero.jpg',
     coverAlt: 'UAE work visa and Emirates ID documents laid out on a desk',
     category: 'Visa & Documents',
     tags: ['uae visa', 'work visa', 'green visa', 'golden visa'],
@@ -128,7 +128,7 @@ export const freshArticles = [
     slug: 'how-to-follow-up-after-job-interview-uae',
     excerpt:
       'A well-timed follow-up can be the difference between an offer and silence. Here is exactly when and how to follow up after a UAE job interview — with ready-to-use email and WhatsApp templates.',
-    featuredImage: '/article-images/uae-interview-qa-hero.jpg',
+    featuredImage: '/article-images/self-introduction-uae-hero.jpg',
     coverAlt: 'Candidate writing a polite follow-up message after a Dubai job interview',
     category: 'Interview Prep',
     tags: ['interview', 'follow up', 'uae jobs', 'templates'],
@@ -191,7 +191,7 @@ export const freshArticles = [
     slug: 'what-is-noc-in-uae',
     excerpt:
       'An NOC (No Objection Certificate) can affect your job move, visa, driving licence, and more in the UAE. Here is what an NOC actually is, when you genuinely need one in 2026, and how to request one.',
-    featuredImage: '/article-images/uae-labour-law-hero.jpg',
+    featuredImage: '/article-images/documents-walk-in-dubai-hero.jpg',
     coverAlt: 'No Objection Certificate document being signed in a UAE office',
     category: 'Career Guides',
     tags: ['noc', 'uae', 'employment', 'visa'],
