@@ -376,6 +376,21 @@ const REMOVED_ARTICLE_SLUGS = new Set<string>([
   'room-attendant-interview-questions-dubai', // overlaps housekeeping interview guide
   'emirates-airline-job-scams-how-to-apply-safely',
   'difference-between-walk-in-interview-and-online-application-in-gulf-jobs',
+  // --- Legacy MongoDB content leaking into the Cloudflare build (these slugs
+  // exist in NEITHER the static files NOR the Sanity dataset, but were rendered
+  // live from the old database fallback). Includes two internal dev notes that
+  // must never be public, plus older duplicates of pages we already keep. ---
+  'phase-2-transforming-tools-into-seo-pillars', // internal dev note — never publish
+  'walkthrough-uae-career-portal-seo-scaling-phase', // internal dev note — never publish
+  'abu-dhabi-vs-dubai-guide-2026', // dup of abu-dhabi-vs-dubai-working-expats
+  'best-cv-format-gulf-jobs', // dup of best-cv-format-uae-jobs-2026
+  'best-way-to-send-money-from-uae-2026', // off-topic remittance
+  'cashier-interview-questions-saudi-retail', // legacy dup, cashier cluster cut
+  'how-to-renew-uae-work-visa', // dup of how-to-renew-uae-work-visa-2026
+  'master-guide-walk-in-interviews-dubai', // stale walk-in roundup
+  'top-in-demand-jobs-uae-2026', // dup of top-10-in-demand-jobs-uae-2026
+  'uae-driving-licence-guide-2026', // dup of convert-driving-licence-to-uae-2026
+  'verified-dubai-jobs-direct-employer', // stale dated jobs list
 ]);
 let hasLoggedDatabaseFallback = false;
 const isRuntimeDatabaseFallbackEnabled = process.env.ENABLE_DATABASE_FALLBACK === 'true';
