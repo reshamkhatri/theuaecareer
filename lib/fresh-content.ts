@@ -57,6 +57,14 @@ export const freshArticles = [
 <li>Twice a week: check Bayt, Naukrigulf, and your shortlist of company career pages.</li>
 <li>Weekly: refresh your CV keywords, review job alerts, and follow up on previous applications.</li>
 </ul>
+<blockquote><p><strong>From experience:</strong> the single biggest time-saver is setting job alerts on LinkedIn and Bayt for your exact role and city, then applying within the first few hours of a new posting. In the UAE, the candidates who get interviews are usually the early applicants, not the most qualified ones who applied three days later.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Which job site is best for freshers in the UAE?</h3>
+<p>Bayt and Naukrigulf carry the most entry-level listings, but walk-in interviews and direct company career pages are often faster for freshers because they hire on the spot or with lighter screening.</p>
+<h3>Are the recruiters who message me on LinkedIn genuine?</h3>
+<p>Official LinkedIn job listings are generally real, but be cautious with recruiters who DM you out of the blue, ask for any fee, or request your passport copy before a single interview. Verify before sharing documents.</p>
+<h3>How many jobs should I apply to per day?</h3>
+<p>Quality beats quantity. Five to ten well-targeted applications a day, each with a CV tailored to the role, will out-perform fifty generic ones.</p>
 <h2>What to do next</h2>
 <p>Pick three platforms, build one strong CV, and apply consistently for four to six weeks. Most people who succeed in the UAE job market are simply the ones who kept going.</p>
 <ul>
@@ -114,6 +122,14 @@ export const freshArticles = [
 </ul>
 <h2>A note on doing this safely</h2>
 <p>Always verify visa information against official sources — MOHRE (mohre.gov.ae) and the Federal Authority for Identity, Citizenship, Customs and Port Security (ICP). Never pay an agent for a "guaranteed" work visa with no job behind it; that is a classic scam. Read <a href="/blog/how-to-verify-uae-job-offer-is-real/">how to verify a UAE job offer is real</a> before paying anyone anything.</p>
+<blockquote><p><strong>From experience:</strong> never let an agent process a "work visa" for you when there is no real employer behind it. A genuine UAE work visa always starts with an actual job offer and a MOHRE work permit. If someone offers the visa first and promises a job "later", it is almost always a scam.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Can I change jobs on a standard employment visa?</h3>
+<p>Yes. Since the 2021 law, you can usually move to a new employer after serving your notice period, and the new employer transfers or issues a fresh work permit.</p>
+<h3>Does the Green Visa let me work for any employer?</h3>
+<p>The Green Visa is self-sponsored, so you are not tied to one employer. You do need to stay eligible under the category you applied through — skilled worker, freelancer, or investor.</p>
+<h3>How long does a UAE work visa take?</h3>
+<p>Once the employer starts the process, two to four weeks is typical, including the medical fitness test, Emirates ID registration, and visa stamping.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Coming on a visit visa first? <a href="/blog/dubai-visit-visa-for-job-search-2026/">Dubai visit visa for job search</a></li>
@@ -177,6 +193,14 @@ export const freshArticles = [
 </ul>
 <h2>If you keep getting silence</h2>
 <p>Sometimes the role is frozen, filled internally, or the company simply went quiet — none of which is about you. Keep your pipeline full so no single interview carries all the pressure. Our guides on <a href="/blog/uae-interview-questions-and-answers/">common UAE interview questions</a> and <a href="/blog/top-10-mistakes-job-seekers-make-in-uae/">the top mistakes job seekers make</a> will help you convert more of your interviews into offers.</p>
+<blockquote><p><strong>From experience:</strong> the follow-up that works best is not "any update?" — it is offering something. A short message like "I jotted down how I'd approach the first 30 days in this role, happy to share" restarts a stalled conversation far more often than a plain status request.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>How long should I wait before following up?</h3>
+<p>Send a thank-you within 24 hours of the interview, then a polite check-in three to five business days after the date they said they would decide.</p>
+<h3>Is it okay to follow up on WhatsApp?</h3>
+<p>Yes, if that is the channel the recruiter already used with you — common for retail, hospitality, and blue-collar roles. For corporate and office roles, email is safer.</p>
+<h3>What if they never reply at all?</h3>
+<p>Send one final polite message after about a week, then move on. Silence usually means the role was filled or frozen, not that you did something wrong.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Prepare better answers: <a href="/blog/uae-interview-questions-and-answers/">UAE interview questions and answers</a></li>
@@ -230,6 +254,14 @@ export const freshArticles = [
 </ol>
 <h2>What if your employer refuses?</h2>
 <p>An employer can decline to issue an NOC in some situations, but they cannot use it to violate your legal rights. If you have served your notice correctly and are being unfairly blocked, you can raise the matter with MOHRE. Our guide on <a href="/blog/how-to-file-mohre-complaint-in-uae/">filing a MOHRE complaint</a> explains the process. Know your rights first by reading the <a href="/blog/uae-labour-law-for-expats-2026/">UAE Labour Law guide for expats</a>.</p>
+<blockquote><p><strong>From experience:</strong> always request your NOC by email, not verbally, and state exactly who it should be addressed to and what it is for. A vague request gets a vague letter — and an NOC missing the company stamp or the correct recipient is routinely rejected by the authority you hand it to.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Do I legally need an NOC to change jobs in the UAE?</h3>
+<p>In most cases, no — the 2021 law removed the automatic labour ban. But some new employers still ask for one to avoid disputes, so having it makes the move smoother.</p>
+<h3>Can my employer refuse to give an NOC?</h3>
+<p>They can decline in certain situations, but they cannot use it to deny your legal rights. If you have served notice and are being unfairly blocked, you can raise it with MOHRE.</p>
+<h3>Is an NOC the same as a salary certificate?</h3>
+<p>No. An NOC states no objection to a specific action; a salary certificate confirms your job title, salary, and length of service for banks or official applications.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Understand your contract: <a href="/blog/uae-employment-contract-types/">UAE employment contract types</a></li>
@@ -287,6 +319,14 @@ export const freshArticles = [
 <li>DIFC and ADGM roles (finance, legal, professional services) come with their own robust legal protections, which many senior professionals value.</li>
 </ul>
 <p>When you evaluate an offer, focus on the salary, the company's reputation, the contract terms, and your rights — the mainland-or-free-zone question is a detail to understand, not a dealbreaker. Compare what's fair using our <a href="/blog/salary-guide-uae-2026/">UAE salary guide</a>.</p>
+<blockquote><p><strong>From experience:</strong> before you sign, ask HR one question — "Is the company mainland or free zone, and which authority is my contract registered with?" It takes ten seconds and tells you exactly where you would stand if there is ever a pay or contract dispute.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Is a free zone job worse than a mainland job?</h3>
+<p>Neither is inherently better — it depends on the employer. Free zones often host international companies and startups; mainland gives you the familiar MOHRE framework and the widest range of roles.</p>
+<h3>Does a free zone visa stop me living outside the zone?</h3>
+<p>No. Your residence visa lets you live anywhere in the UAE. The zone only refers to where your employer is licensed, not where you can live or go.</p>
+<h3>Is my gratuity calculated differently in a free zone?</h3>
+<p>The basics are the same — basic salary times years of service — except in DIFC and ADGM, which may use a workplace savings scheme (such as DEWS) instead of the traditional lump sum.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Know your rights: <a href="/blog/uae-labour-law-for-expats-2026/">UAE Labour Law for expats</a></li>
@@ -342,6 +382,14 @@ export const freshArticles = [
 <p><em>Kind regards,<br>[Your name]<br>[Phone] | [Email]</em></p>
 <h2>Final tips</h2>
 <p>Match the keywords in the job description, proofread twice (spelling mistakes are fatal at this stage), and save it as a PDF named clearly, like "FirstName-LastName-CoverLetter.pdf". Pair it with a strong, ATS-friendly CV — use our <a href="/blog/how-to-write-cv-for-gulf-jobs/">guide to writing a Gulf CV</a> and the free <a href="/tools/cv-maker/">CV Maker</a> to get the format right.</p>
+<blockquote><p><strong>From experience:</strong> most UAE recruiters read your cover letter on their phone, in the email body, in under ten seconds. Put your strongest, most relevant line first — your visa status and availability belong in the opening, not buried at the end. The notes that lead with "available to join immediately" get opened first.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Do I really need a cover letter for UAE jobs?</h3>
+<p>Not always — many applications are CV-only. Use one when the posting asks for it, when you apply directly by email, or when you are switching industries and need to explain your fit.</p>
+<h3>How long should a UAE cover letter be?</h3>
+<p>Half a page — three to four short paragraphs. If you are sending it in the body of an email, keep it even tighter.</p>
+<h3>Should I attach the cover letter or put it in the email?</h3>
+<p>In the UAE, a short version in the email body works best, with your CV attached as a clearly-named PDF.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Get your CV ready: <a href="/blog/best-cv-format-uae-jobs-2026/">best CV format for UAE jobs</a></li>
@@ -399,6 +447,14 @@ export const freshArticles = [
 <li>Keep copies of your contract, payslips, and resignation acknowledgement.</li>
 <li>Line up your next role early — see <a href="/blog/best-job-search-websites-in-uae-2026/">the best UAE job search websites</a>.</li>
 </ul>
+<blockquote><p><strong>From experience:</strong> the most expensive mistake people make is going silent instead of resigning formally. An absconding report can wreck your gratuity and your next visa. Even if your employer is in the wrong, resign in writing, serve your notice, and use MOHRE — never just stop showing up.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>How much notice do I have to give in the UAE?</h3>
+<p>Usually 30 to 90 days as stated in your contract (30 is most common). During probation it is typically one month, or 14 days if you are leaving the country.</p>
+<h3>Do I lose my gratuity if I resign?</h3>
+<p>No. If you have completed at least one year and serve your notice properly, you keep your end-of-service gratuity, calculated on your basic salary.</p>
+<h3>Can I leave immediately without serving notice?</h3>
+<p>Only if your employer agrees in writing. Otherwise you may owe compensation, so always get any waiver of notice documented.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Know your full rights: <a href="/blog/uae-labour-law-for-expats-2026/">UAE Labour Law for expats</a></li>
@@ -448,6 +504,14 @@ export const freshArticles = [
 <h2>So which should you choose?</h2>
 <p>If you are early in your Gulf journey or want the widest range of opportunities, start with the UAE. If you are a skilled professional in construction, tech, healthcare, tourism, or project management chasing higher pay, look seriously at Saudi Arabia. If your field is energy, aviation, or premium hospitality and you value a smaller, high-income base, Qatar is worth targeting. Many people work across two or three of these countries over a career — the experience transfers well.</p>
 <p>Whichever you choose, the fundamentals are the same: a strong CV, a verified offer, and the right visa. Understand the visa side in our <a href="/blog/uae-work-visa-types-explained-2026/">UAE work visa types guide</a>, benchmark pay with the <a href="/blog/salary-guide-uae-2026/">UAE salary guide</a>, and never pay an agent for a "guaranteed" job.</p>
+<blockquote><p><strong>From experience:</strong> do not pick the country with the biggest headline salary — pick the one where you will actually save. A higher Saudi or Qatar package can leave you with less than a modest Dubai one once housing, family costs, and how often you fly home are factored in. Run the real net numbers before you decide.</p></blockquote>
+<h2>Frequently asked questions</h2>
+<h3>Which Gulf country pays the most?</h3>
+<p>For skilled professionals, Saudi Arabia is currently offering some of the highest packages thanks to Vision 2030 hiring; Qatar pays strongly in energy and aviation; the UAE is competitive across the board.</p>
+<h3>Do any of them tax my income?</h3>
+<p>No — the UAE, Saudi Arabia, and Qatar all have no personal income tax on salaries.</p>
+<h3>Which is easiest to find a first job in?</h3>
+<p>The UAE, by a wide margin — it has the largest, most diverse, and most expat-friendly job market of the three.</p>
 <h2>What to do next</h2>
 <ul>
 <li>Find where to apply: <a href="/blog/best-job-search-websites-in-uae-2026/">best UAE job search websites</a></li>
